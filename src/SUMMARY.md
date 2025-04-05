@@ -9,6 +9,7 @@
 - [Дискретная математика](./DiscretMath/DiscretMath.md)
 - [Введение в программирование](./ProgIntro/ProgIntro.md)
 - [Алгоритмы и структуры данных](./Algorithms/Algorithms.md)
+    1. [Бинарное дерево поиска и AVL](./Algorithms/01-search-tree.md)
     1. [Splay-tree](./Algorithms/02-splay-tree.md)
     2. [Внешняя память](./Algorithms/04-external-memory.md)
     3. [Курево](./Algorithms/03-treap.md)
