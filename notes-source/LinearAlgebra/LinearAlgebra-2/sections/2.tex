@@ -500,7 +500,7 @@ $\xi_1,\ldots, \xi_{p_1} \in V;\eta^1,\ldots, \eta^{q_1}\in V^*;\zeta_1,\ldots, 
 $\gamma = a \otimes \beta \in T(p_1+p_2, q_1+q_1)\leftrightarrow t: V^{p_1+p_2}\times (V^*)^{q_1+q_2}\rightarrow K$
 $$t(\xi_1,\ldots,\xi_{p_1},\zeta_1,\ldots,\zeta_{p_2}, \eta^1,\ldots, \eta^{q_1},\theta^1,\ldots, \theta^{q_2}) =$$$$= \gamma_{j_1,\ldots,j_{p_1},k_1,\ldots,k_{p_2}}^{i_1,\ldots,i_{q_1},m_1,\ldots,m_{q_2}} \xi_1^{j_1}\ldots \xi_{p_1}^{j_{p_1}}\cdot \zeta_1^{k_1}\ldots \zeta_{p_2}^{k_{p_2}} \cdot \eta^1_{i_1}\ldots \eta_{i_{q_1}}^{q_1} \cdot \theta_{m_1}^1 \ldots \theta^{q_2}_{m_{q_2}} = $$
 $$=f(\xi_1,\ldots, \xi_{p_1},\eta^1,\ldots, \eta^{q_1})\cdot g(\zeta_1,\ldots \zeta_{p_2}, \theta^1,\ldots \theta^{q_2}) $$
-Вывели формулу, по которой мы можем легко находить значения функций. Воспользуемся нашей формулой и выведем еще одну:
+Вывели формулу, по которой мы можем легко находить значения функций. Воспользуемся нашей формулойd и выведем еще одну:
 
 $f^1,\ldots , f^p \in V^* = T(1,0)$ --- $f^j:V\rightarrow K$  - линейная форма
 
@@ -535,7 +535,7 @@ $$=\xi_1^{j_1}\xi_2^{j_2}\ldots \xi_p^{j_p} \cdot \eta_{i_1}^1 \ldots \eta_{i_q}
     $$f(\xi_1,\ldots, \xi_p,\eta^1,\ldots, \eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q}\xi_1^{j_1}\ldots \xi_{p}^{j_p}\cdot \eta_{i_1}^1 \ldots \eta_{i_q}^q = $$
     Выразим координаты через базис и дуальный к нему:
     $$=\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}(\xi_1)\ldots w^{j_p}(\xi_p) e_{i_1}(\eta^1)\ldots e_{i_q}(\eta^q) = \alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} w^{j_1}\otimes \ldots \otimes p_{i_q}(\xi_1,\ldots, \eta^q)$$
-    Что мы получили? Разложение в нашем базисе с коэффицентами: $\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} $
+    Что мы получили? Разложение в нашем базисе с коэффициентами: $\alpha_{j_1,\ldots,j_p}^{i_1,\ldots,i_q} $
 
     Откуда порождаемо.
     \item Докажем, что линейно независимо. Для этого, как обычно, покажем единственность разложения нуля:
@@ -578,3 +578,467 @@ $$=\alpha_{j_1,\ldots,\widetilde{\ae},\ldots,j_p}^{i_1,\ldots, \widetilde{\ae},\
 
 \textbf{Замечание:} Если в результате свертки получалась константа, то такая свертка называется \deff{полной}.
 
+
+\newpage
+\subsection{Транспонирование тензора. Симметричные, кососимметричные тензоры.}
+
+Пускай $\alpha \in T(2,0), \alpha = (\alpha_{ij})$, мы умеем ее транспонировать --- $\alpha^T =(a_{ij})^T =\beta = (\beta_{ij}),$ причем $\beta_{ij} = \alpha_{ji}$. Это называется транспонированием 2-мерной матрицы.
+Казалось бы, можно транспонировать многомерную матрицу, но нет так нельзя
+
+Для тензоров транспонирование происходит только по одному типу индексов \uline{либо по нижним, либо по верхним}.
+
+Пускай $\beta = \alpha^T$. $\beta_{j_1j_2} = \alpha_{j_2j_1}$. На самом деле случилась перестановка. Теперь для тензора произвольного типа
+
+\deff{def:} $\alpha \in T(p,q), p\geq 2$. Пусть $\sigma$ это перестановка из $p$ чисел $(1,2,3,\ldots, p)$. $\sigma = (\sigma_1,\ldots,\sigma_p)$
+
+$\beta = \sigma(\alpha)$. $\beta$ получен \deff{транспонированием} (перестановкой $\sigma$) по нижним индексам из тензора $\alpha$ по перестановке $\sigma$, если
+$$\beta_{j_1\ldots j_p}^{i_1,\ldots i_q} = \alpha_{j_{\sigma_1 \ldots j_{\sigma_p}}}^{i_1,\ldots i_q}$$
+\textbf{Замечание.} Аналогично определяется тарнспонирование по верхним индексам.
+
+\textbf{Замечание.} При транспонировании по нижним индексам верхние индексы никак не задействованы.
+
+\textbf{Замечание.} В длаьнейшем мы будем рассматривать транспонирвоаниепо нижним индексам. Все, что будет доказано для транспонированяи по нижним индексам будет выполнено и для транспонирования по верхним индексам.
+
+Как и было раньше нам надо проверить корректность определение тензора(то самое свойство).
+
+$\forall \sigma$ = конечное число транспозиций двух элементов(доказывали в прошлом семестре). То есть достаточно проверить корректность определения для транспонирования при котором переставляются только 2 индекса.
+
+
+$\beta_{j_1, \ldots* \ldots  \Delta \ldots j_p}^{i_1\ldots i_q}= \alpha_{j_1, \ldots \Delta\ldots  * \ldots j_p}^{i_1\ldots i_q}$, где $*$ и $\Delta$ - наша перестановка.
+$$\beta_{m_1.\ldots m_{*}\dots m_{\Delta}\ldots m_p}'^{\, k_1 \ldots k_q} = \alpha_{m_1.\ldots m_{\Delta}\dots m_{*}\ldots m_p}'^{\, k_1 \ldots k_q}  = \alpha^{i_1 \ldots i_1}_{j_1\ldots \Delta \ldots * \ldots  j_p}t_{m_1}^{j_1} \ldots t_{m_\Delta}^{j_\Delta}\ldots t_{m_*}^{j_*} \ldots t_{m_p}^{j_p}s_{i_1}^{k_1}\ldots s_{i_q}^{k_q}$$
+Заметим, что $\alpha_{j_1\ldots \Delta\ldots *\ldots j_p} = \beta_{j_1\ldots * \ldots \Delta \ldots j_p}^{i_1 \ldots i_q}$, переставим множители $t_{m_\Delta}^{j_\Delta}, t_{m_*}^{j_*}$ и получим наше определение.
+
+\textbf{Теперь посмотрим на это с функциональной стороны:}
+
+$\alpha \in T(p,q) \leftrightarrow f: V^p \times (V^*)^q \rightarrow K$, $\beta = \sigma(\alpha) \leftrightarrow g: V^p\times (V^*)^q\rightarrow K$
+
+$\forall \xi_1,\xi_2,\ldots, \xi_p \in V;\forall \eta^1,\ldots,\eta^q \in V^*:$
+$$g(\xi_1, \ldots, \xi_p, \eta^1,\ldots, \eta^q) = \beta_{j_1\ldots j_p}^{i_1.\ldots i_q} \xi_1^{j_1}\ldots \xi_{p}^{j_p}\eta_{i_1}^1 \ldots \eta_{i_q}^q = \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}^{i_1\ldots i_q} \xi_1^{j_1}\ldots \xi^{j_p}_p \eta_{i_1}^1 \ldots \eta_{i_q}^q $$
+Немного переставим внутри и получим:
+$$=\alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}^{i_1\ldots i_q} \xi_{\sigma_1}^{j_{\sigma_1}}\ldots \xi^{j_{\sigma_p}}_{\sigma_p} \eta_{i_1}^1 \ldots \eta_{i_q}^q = f(\xi_{\sigma_1},\ldots \xi_{\sigma_p}, \eta^1,\ldots, \eta^q)$$
+То есть:
+$$g = \sigma(f) \leftrightarrow g(\xi_1,\ldots, \xi_p, \eta^1, \ldots, \eta^q) = f(\xi_{\sigma_1},\ldots \xi_{\sigma_p}, \eta^1,\ldots, \eta^q)$$
+
+\textbf{Пример:}
+
+Пусть $\alpha \in T(3,0)$, $\alpha = f^1 \otimes f^2 \otimes f^3, f^j \in V^* = T(1,0)$, $\sigma = (312), \beta = \sigma(\alpha)$.
+
+$\forall \xi_1,\xi_2,\xi_3 \in V$
+
+$\beta(\xi_1,\xi_2,\xi_3) = \alpha(\xi_3,\xi_1,\xi_2) = f^1\otimes f^2 \otimes f^3 (\xi_3,\xi_1,\xi_2) = f^1(\xi_3)\cdot f^2(\xi_1)\cdot f^3(\xi_2)$
+
+И из этого примера следует формула:
+
+Если $\alpha \in T(p,q): \alpha = f^1 \otimes \ldots \otimes f^p \otimes \gamma $, $\beta = \sigma(\alpha)$,$p\geq 2$, $\gamma \in T(0,q)$
+
+$\beta = f^{\sigma_1^{-1}}\otimes \ldots \otimes f^{\sigma_p^{-1}} \otimes \gamma = \sigma^{-1}(f^1\otimes \ldots \otimes f^p) \otimes \gamma$
+
+На практике транспонирование многомерной матрицы тензора осуществляется:
+
+\deff{МЕТОДОМ ТРАНСПОНИРОВАНИЯ СЛОЯМИ:}
+
+Для этого разобьем нашу $\sigma$ на транспозиции и будем транспонировать по ним по очереди:
+
+Для этого фиксируется набор верхних индексов,  и набор нижних индексов, за исключением двух нижних. Таким образом из многомерной матрицы тензора извлекается двумерная матрица, которая называется \deff{слой}.
+$$\alpha^{i_1\ldots i_q}_{j_1 \ldots * \ldots \Delta \ldots j_p}$$ 
+Здесь я фиксирую все $i$-шки, а $j$ все фиксированнны кроме $*$  и $\Delta$. Получили двумерную матрицу порядка $n$ - \deff{слой}. 
+$$(\alpha_{j_1\ldots * \ldots \Delta \ldots j_p}^{i_1 \ldots i_q})^T = \overline{\alpha}$$
+(просто обычная транспозицая квадратной двумерной матрицы).
+
+И после транспонирования слой $\overline{\alpha}$ размещается обратно в исходную матрицу на те же позиции. Таким образом, в тензоре будут произведена перестановка (транспозиция) двух индексов. Назовем такую операцию $\tau$.
+
+Тогда наша последовательность действий выглядит так: 
+$$\sigma \xrightarrow{\tau_1}\overline{\sigma}\xrightarrow{\tau_2}\ldots \xrightarrow{} (1,2,\ldots n)$$
+\textbf{Пример:}
+
+$n = 4, \alpha \in T(3,0), \sigma = (3 12)\rightarrow \overline{\sigma} =  (132) \rightarrow \overline{\overline{\sigma }} = (123)$
+
+1) Проведем первую операцию. Так как у нас зафиксирована 3-я координата, то на самом деле нам надо лишь транспонировать 3 матрицы слоев. На рисунке снизу изображены все 4-и слоя и матрицы $A_1,A_2,A_3,A_4$. Поэтому для операции транспонирования я должен взять каждую из матриц $A_i$ и транспонировать ее
+\begin{center}
+         \includegraphics[width = 18cm]{assets/8_4-sample-1.png}
+ \end{center}
+2) Проведем вторую операцию. В этот раз у нас зафиксирована 1-ая координата(строка). Зафиксируем $i=1$ и выпишем соответствующий ей слой:
+\begin{center}
+         \includegraphics[width = 18cm]{assets/8_4-sample-2.png}
+         \includegraphics[width = 12cm]{assets/8_4-sample-3.png}
+ \end{center}
+А теперь возвращаем наш слой обратно. На рисунке показано, как мы это делаем:
+ \begin{center}
+         \includegraphics[width = 18cm]{assets/8_4-sample-4.png}
+ \end{center}
+Проделываем то же самое с остальными 3-емя слоями и получаем протранспонированную матрицу тензора.
+
+\textbf{Замечание:} Если в матрице тензора много нулей, то проще пересчитать элементы по формуле.
+
+\textbf{Замечание:} $\beta =\sigma(\alpha), \sigma = (kij)$. $\alpha_{ikj} = \beta_{kij}$ --- неверно!!! Это ошибка!!!
+
+Операция транспонирования - \uline{линейная операция}, очевидно из определения.
+
+$\sigma = \tau_k \cdot \ldots \tau_1$ произведение перестановок ассоциативно и не коммутативно, откуда операция транспозиции тензора аналогично ассоциативна и коммутативна.
+
+\deff{def:} $\alpha \in T(p,q)$ называется \deff{симметричным} тензором по нижним индексам, если $\forall \sigma$ перестановки $\sigma(\alpha) = \alpha$
+
+\deff{def:} $\alpha \in T(p,q)$ называется \deff{кососимметричным} тензором по нижним индексам, если $\forall \sigma: \sigma(\alpha) = (-1)^{\varepsilon(\sigma)
+}\alpha$, где $\varepsilon$ знак перестановки. (смотрите конспект первого семестра, раздел 6)
+
+Поговорим, про равносильные определения:
+
+$\alpha$ симметричный $\Leftrightarrow \sigma: \alpha_{j_1,\ldots, j_p}^{i_1,\ldots, i_q} = \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}^{i_1 \ldots i_q} \Leftrightarrow \forall (k,m): \alpha_{\ldots j_k \ldots j_m \ldots}^{i_1,\ldots, i_q} = \alpha_{\ldots j_m \ldots j_k \ldots}^{i_1 \ldots i_q}$
+
+$\alpha$ кососимметричный $\Leftrightarrow \sigma: \alpha_{j_1,\ldots, j_p}^{i_1,\ldots, i_q} = (-1)^{\varepsilon(\sigma)}\alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}^{i_1 \ldots i_q} \Leftrightarrow \forall (k,m): \alpha_{\ldots j_k \ldots j_m \ldots}^{i_1,\ldots, i_q} = -\alpha_{\ldots j_m \ldots j_k \ldots}^{i_1 \ldots i_q}$
+
+Теперь про функциональные:
+
+$\alpha$ - симметричный $\Leftrightarrow \forall \sigma: \forall \xi_1,\ldots , \xi_p \in V; \forall \eta^1,\ldots, \eta^q \in V^*: $
+$$\alpha(\xi_1,\ldots, \xi_p,\eta^1,\ldots, \eta^q) = \alpha (\xi_{\sigma_1},\ldots \xi_{\sigma_p
+}, \eta^1, \ldots, \eta^q) \Leftrightarrow$$
+$$\Leftrightarrow \forall (k,m): \alpha(\ldots, \xi_m, \ldots,\xi_k,\ldots) = \alpha (\ldots, \xi_k,\ldots, \xi_m,\ldots)$$
+$\alpha$ - кососимметричный $\Leftrightarrow \forall \sigma: \forall \xi_1,\ldots , \xi_p \in V; \forall \eta^1,\ldots, \eta^q \in V^*: $
+$$\alpha(\xi_1,\ldots, \xi_p,\eta^1,\ldots, \eta^q) =(-1)^{\varepsilon(\sigma)} \alpha (\xi_{\sigma_1},\ldots \xi_{\sigma_p
+}, \eta^1, \ldots, \eta^q) \Leftrightarrow$$
+$$\Leftrightarrow \forall (k,m): \alpha(\ldots, \xi_m, \ldots,\xi_k,\ldots) = -\alpha (\ldots, \xi_k,\ldots, \xi_m,\ldots)$$
+\deff{Утверждение.} $\alpha $ кососимметричный $\Leftrightarrow\forall (k,m):\forall \xi: \alpha(\ldots, \xi, \ldots \xi, \ldots ) = 0$
+
+\textbf{Замечание:} $\alpha \in T(p,q)$ --- кососимметричная. Тогда
+\begin{enumerate}
+    \item Если $p>n \Rightarrow \alpha \equiv \zero$, тк обязательно в наборе $j_1,\ldots, j_p$ будут одни индексы, а из этого следует, что все компоненты будут нулями
+    \item Если $p=n \Rightarrow$ ненулевые элементы матрицы $\alpha$ будут только те, у которых наобор нижних индексов $j_1,\ldots j_n$ = перестановка от $1$ до $n$. Все остальные будут нулями , тк совпадают индексы:
+    $$\alpha_{j_1\ldots j_p}^{i_1\ldots i_q} = (-1)^{\varepsilon(\sigma)}\alpha_{1\ldots n}^{i_1* \ldots i_q}$$
+\end{enumerate}
+
+\textbf{Примеры:}
+
+\begin{enumerate}
+    \item $V_3$, $\alpha(\overline{a}, \overline{b}) = (\overline{a}, \overline{b})\in T(2,0)$ --- скалярное произведение --- симметрично.
+     \item $V_3$, $\alpha(\overline{a}, \overline{b}, \overline{c}) = \overline{a} \overline{b}\overline{c}\in T(3,0)$ --- смешанное произведение --- кососимметрично.
+     \item $n =3, \alpha \in T(3,0)$, $\alpha$ - симметрично $\alpha = (\alpha_{ijk})$. Тогда $\alpha_{123}=\alpha_{132}=\alpha_{213}= \alpha_{231} = \alpha_{312} = \alpha_{321}$, $\alpha_{112} = \alpha_{121}  =\alpha_{211}$, $\ldots$. См рисунок
+
+     \begin{center}
+         \includegraphics[width = 18cm]{assets/8_4-table.jpg}
+     \end{center}
+     \sout{он перерисуется, когда у славы руки дойдут}
+\end{enumerate}
+
+\subsection{Операции симметрирования и альтернировании тензора.}
+
+кососиметричный = антисимметричный = альтернированный.
+
+\deff{def:} $\alpha \in T(p,q), p \geq 2$. $\Sim \alpha = \cfrac{1}{p!}\sum\limits_{\sigma \in S_p}\sigma(\alpha)$, где $S_p$ - множество всех перестановок $(1,\ldots, p)$. Такая операция называется \deff{сииметрированием} тензора по нижним индексам.
+
+\deff{def:} $\Alt \alpha = \cfrac{1}{p!}\sum\limits_{\sigma \in S_p}(-1)^{\varepsilon(\sigma)}\sigma(\alpha)$ - операция \deff{альтернирования}  тензора по нижним индексам.
+
+\textbf{Замечание:} по верхним аналогичным.
+
+Позамечаем некоторые интересные факты 
+\begin{enumerate}
+    \item $\Sim \alpha \in T(p,q), \Alt \alpha \in T(p,q) $ 
+    \item $\Sim, \Alt$ --- линейные операции, так как $\sigma$ - линейные операторы.
+    \item если $\alpha$ симметричный $\Rightarrow \Sim \alpha = \alpha$
+    \item  если $\alpha$ кососимметричный $\Rightarrow \Alt \alpha = \alpha$
+    \item $\Sim$ и $\Alt$ можно проводить не по всему набору (нижних) индексов. В этом случае, тот набор по которому происходит симметрирование(альтернирование) заключается в кругые (квадратные) скобки. Индексы, не участвующие в операндах выделяются вертикальными чертами. При этом квадратные и круглые скобки должны быть только одни.
+
+\end{enumerate}
+
+\thmm{Теорема.}
+
+$\alpha \in T(p,q), p \geq 2.$ 
+
+$\forall \sigma: \Sim \sigma(\alpha) = \sigma(\Sim \alpha) = \Sim \alpha, \Alt(\sigma(\alpha)) = \sigma(\Alt\alpha) = (-1)^{\varepsilon(\sigma)}\Alt \alpha$
+
+\textbf{Доказательство:}
+
+Будем доказывать для $\Alt$ для ($\Sim$ упр).
+$$\Alt (\sigma(\alpha))=\cfrac{1}{p!}\sum\limits_{\tau\in S_p}(-1)^{\varepsilon(\tau)}\tau(\sigma(\alpha))$$
+Пусть $r \sigma = \rho$. Заметим, что $\rho$ пробегает все $P$. Тогда заменим и получим:
+$$=  \cfrac{(-1)^{\varepsilon(\sigma)}}{p!}\sum\limits_{\rho \in S_\rho} (-1)^{\varepsilon(\rho)}\rho(\alpha)$$
+Теперь вторая часть:
+$$\sigma(\Alt \alpha) = \sigma\left(\cfrac{1}{p}\sum_{\tau\in S_P}(-1)^{\varepsilon}\tau(\alpha)\right)$$
+Как мы знаем транспонирование это линейная операция. Сделаем замену на $\rho$, как в прошлой части и получим:
+$$= \cfrac{1}{p!}\sum\limits_{\tau \in S_p}(-1)^{\varepsilon(\tau)}\sigma(\tau(\alpha)) = \cfrac{(-1)^{\varepsilon(\sigma)}}{p!}\sum\limits_{\rho \in S_p}(-1)^{\varepsilon(\tau)} \rho(\alpha)$$
+Получили то, что хотели.
+
+\hfill Q.E.D.
+
+\textbf{Следствие 1.} $\forall \alpha \in T(p,q)$, $\Alt \alpha$ - кососимметричный тензор, $\Sim \alpha$ - симметричный тензор. Очевидно по определению.
+
+\textbf{Следствие 2.} $\alpha$ кососимметричный $\Leftrightarrow$ $\Alt \alpha= \alpha$ и $\alpha$ симметричный $\Leftrightarrow \Sim \alpha = \alpha$
+
+\textbf{Доказательство:}
+
+В правую сторону очевидно по определению. Докажем в левую сторону.
+
+Пусть $\alpha = \Alt \alpha$. Тогда $\sigma(\Alt \alpha) = \sigma(\alpha) = (-1)^{\varepsilon(\sigma)}\Alt \alpha = (-1)^{\varepsilon(\sigma)}\alpha$. Откуда $\sigma(\alpha) = (-1)^{\varepsilon(\sigma)} \alpha$. Откуда кососимметричено по определению.
+
+\hfill Q.E.D.
+
+\textbf{Следствие 3.} $\Alt(\Alt \alpha) = \Alt \alpha$, $\Sim(\Sim \alpha) = \Sim \alpha$, $\Alt(\Sim \alpha) = \zero$, $\Sim(\Alt \alpha) = \Sim \alpha$
+
+Очевидно по определению.
+
+\textbf{Замечание.} Теорема и следствия верны для неполного набора индексов.
+
+\textbf{Замечание.} $T(p,q)^{\text{кососим}}$ и  $T(p,q)^{\text{сим}}$ - линейные пространства в $T(p,q)$.
+
+\textbf{Замечание.}$T(p,q)^{\text{кососим}} \oplus T(p,q)^{\text{сим}} = T(p,q)$
+
+\pagebreak
+
+\subsection{p-формы. Внешнее произведение $p$ форм.}
+
+\deff{def:} $f \in T(p,0)$ --- ковариантный тензор валентности $p$ --- \deff{полилинейная форма}.
+
+$f \in T(p,0)$ и \deff{полилинейная антисимметричная} форма = ковар. тензор валентности $p$ и кососимметричный. В таком случае $f$ называется \deff{$p$-формой}, или \deff{внешней формой}, или внешней формой порядка $p$. 
+
+$\Lambda^pV^* = \{f \in T(p,0): \Alt f = f\}$ --- линейное подпространство тензоров --- \deff{линейное пространство} $p$-форм.
+
+$p = 1: \Lambda^1 V^* \equiv V^*$.
+
+\deff{def:} $g\in T(0,q)$ --- \deff{контрвариантный тензор} валентности $q$ или \deff{поливектор}.
+
+$g \in T(0,q)$ --- \deff{антисимметричный поливектор} --- \deff{q-вектор}
+
+$V^qV = \{g\in T(0,q): \Alt g =g\}$ --- \deff{линейное пространство} $q$-векторов.
+
+\textbf{Замечание:} все, что мы выведем для $p$-форм, будет верно и для $q$-форм
+
+\deff{def:} $f^1 \in \Lambda^{p_1}V^*,f^2\in \Lambda^{p_2}V^*$ $p_1$ и $p_2$ формы. Введем новую операцию, такую:
+$$f^1 \wedge f^2 = \cfrac{(p_1+p_2)!}{p_1!p_2!}\Alt (f^1\otimes f^2)$$
+Такая операция называется \deff{внешним произведением} $p$-форм.
+
+\textbf{Свойства внешнего произведение:}
+
+\begin{enumerate}
+    \item $f^1\wedge f^2 = (-1)^{p_1 \cdot p_2} \cdot  f^2 \wedge f^1$
+    
+    \textbf{Доказательство:}
+    $$f^1 \wedge f^2 = \cfrac{(p_1 + p_2)!}{p_1!p_2!} (\Alt f^1 \otimes f^2)$$
+    Заметим, что тогда должно быть выполнено:
+    $$\Alt (f^1 \otimes f^2)  = (-1)^{p_1\cdot p_2} \Alt(f^2\otimes f^1)$$
+    Введем больше формальности в доказательства. Разложим $f^1,f^2$ по базису пространства тензоров. Получим:
+    $$f^1 \leftrightarrow (a_{i_1,\ldots i_{p_1}}), f^2 \leftrightarrow (b_{j_1,\ldots, j_{p_2} }) $$
+    Тогда давайте выпишем:
+    $$f^1 \otimes f^2 \leftrightarrow \gamma_{i_1\ldots i_{p_1}j_1\ldots j_[p_2]} = \alpha_{i_1\ldots i_{p_1} } \beta_{j_1\ldots j_{p_2}}$$
+    $$f^2\otimes f^1 \leftrightarrow \theta_{j_1\ldots j_{p_2} i_1\ldots i_{p_1}}  = \beta_{j_1\ldots, j_{p_2}}\alpha_{i_1\ldots i_{p_1}}$$
+    Тогда
+    $$\Alt (\gamma) = \cfrac{1}{(p_1 + p_2)!} \sum\limits_{\sigma \in S_{p_1+p_2}} \sigma(\gamma)(-1)^{\varepsilon(\sigma)} \quad \Alt(\theta) = \cfrac{1}{(p_1+p_2)!} \sum_{\tau \in S_{p_1+p_2}}\tau(\theta)(-1)^{\varepsilon(\tau)}$$
+    Не трудно присмотреться, что в альтернировании второго, мы дополнительно  
+     перестановку  из $(i_1,\ldots,i_{p_1},j_1,\ldots, j_{p_2})$ в $(j_1,\ldots, j_{p_2},i_{1},\ldots i_{p_1})$, обозначим ее $ab$ (Заметим, что мы тратим  $p_1\cdot p_2$ транспозиций). То есть на самом деле я применяю к исходному $\alpha$ перестановку, а это значит, что 
+    $$\Alt \gamma = \Alt(ab(\theta))=(-1)^{\varepsilon(ab)}\Alt \theta=(-1)^{p_1p_2}\Alt \theta$$
+
+    \hfill Q.E.D.
+
+    В частности, $f^1\in V^*,f^2\in V^*$, то $f^1 \wedge f^2 = -f^2 \wedge f^1$. Так же $f \wedge f = \zero$. 
+
+    Отсюда выводится свойство, что $w^i \wedge w^j = - w^j \wedge w^i$ и $w^i \wedge w^i = \zero$. 
+
+    \item $(f^1+f^2)\wedge f^3 = f^1\wedge f^3 + f^2 \wedge f^3$ и $f^1 \wedge (f^2 + f^3) = f^1 \wedge f^2 + f^1 \wedge f^3$
+    \item $\forall \lambda \in K: (\lambda f^1)\wedge f^2 = \lambda(f^1 \wedge f^2) = f^1 \wedge (\lambda f^2)$
+    \item $\zero_{\Lambda^{p_1}V^*} \wedge f^2 = f^1 \wedge \zero_{\Lambda^{p_2}V^*}=\zero_{\Lambda^{p_1+p_2}V^*}$
+    \item $(f^1 \wedge f^2 ) \wedge f^3 = f^1 \wedge (f^2 \wedge f^3) = f^1 \wedge f^2 \wedge f^3$
+
+    \textbf{Доказательство:}
+
+    Распишем первое:
+    $$(f^1 \wedge f^2)\wedge f^3 = \left(\cfrac{(p_1+p_2)!}{p_1! p_2!}\Alt (f^1 \otimes f^2)\right)\wedge f^3 =$$  $$=\cfrac{(p_1 + p_2 + p_3)!}{(p_1+p_2)!(p_3)!} \Alt\left(\left(\cfrac{(p_1+p_2)!}{p_1! p_2} \Alt (f^1 \otimes f^2)\right)\otimes f^3 \right) = \cfrac{(p_1+p_2+p_3)!}{p_1!p_2!p_3!} \Alt \left( \Alt(f^1 \otimes f^2) \otimes f^3 \right)$$
+    Распишем второе:
+    $$(f^1 \wedge f^2)\wedge f^3 = \cfrac{(p_1+p_2+p_3)!}{p_1!p_2!p_3!} \Alt \left( f^1 \otimes \Alt(f^2 \otimes f^3) \right)$$
+    Нам надо лишь доказать, что $\Alt(\Alt(f^1 \otimes f^2)\otimes f^3) = \Alt (f^1 \otimes \Alt (f^2 \otimes f^3))$
+
+    Ну, давайте докажем:
+    $$\Alt(\Alt(f^1 \otimes f^2)\otimes f^3) = \Alt \left(\cfrac{1}{(p_1+p_2)!} \sum\limits_{\sigma \in S_{p_1+p_2}}\left((-1)^{\varepsilon(\sigma)}\sigma(f^1\otimes f^2)\otimes f^3\right)\right) $$
+    $$f^1 \otimes f^2 \leftrightarrow \alpha_{i_1\ldots i_{p_1}}\beta_{j_1\ldots j_{p_2}} \quad f^3 \leftrightarrow \gamma_{\theta_1\ldots \theta_{p_3}}$$
+    
+    Заметим, что $\sigma $ это перестановка, которая переставляет $p_1 + p_2$ индексов.
+
+    Возьму $\tau$ такую перестановку, что она переставляет $(p_1+p_2+p_3)$ индексов $i_1,,\ldots, i_{p_1},j_1,\ldots, j_{p_2},\theta_1,\ldots,\theta_{p_3}$, но при этом последние $p$ индексов будут стоять на месте(Расширим нашу перестановку $\sigma$).
+    $$= \cfrac{1}{(p_1+p_2)!}\Alt\left(\sum_{\sigma \in S_{p_1+p_2}}(-1)^{\varepsilon(\tau)}\tau(f^1 \otimes f^2 \otimes f^3)\right) = \cfrac{1}{(p_1+p_2)!}\sum\limits_{\sigma} (-1)^{\varepsilon(\tau)}\Alt(\tau(f^1 \otimes f^2 \otimes f^3)) =$$$$= \cfrac{1}{(p_1+p_2)!}\Alt (f^1 \otimes f^2 \otimes f^3)\sum\limits_{\sigma \in S_{p_1+p_2}}1 = \Alt (f^1 \otimes f^2 \otimes f^3)$$
+    Аналогичным образом раскрываем и получаем, для другой то же самое. Откуда они равны.
+
+
+    \hfill Q.E.D
+
+    \textbf{Следствие:} $f^1 \wedge f^2 \wedge f^3 = \cfrac{(p_1 + p_2 + p_3)!}{p_1!p_2!p_3!}\Alt (f^1 \otimes f^2 \otimes f^3)$
+
+    \textbf{Следствие:} По индукции верно $f^1 \wedge \ldots \wedge f^n = \cfrac{(p_1 +\ldots +  p_n)}{p_1!\ldots p_n!} \Alt (f^1 \otimes \ldots \otimes f^n)$
+
+    \textbf{Следствие:} $\forall j = 1 \ldots p: f^j\in V^* = \Lambda^1 V^*$
+    $$f^1\wedge \ldots \wedge f^p = p!\cdot \Alt(f^1 \otimes \ldots \otimes f^n)$$
+    Это следует из нашего свойства и поэтому у нас именно такое обозначение $p$-форм (у нас как бы значок $\wedge$)
+
+    \item $\forall j=1\ldots p : f^j \in V^*= \Lambda^1V^*$.
+    
+    Тогда $$\sigma(f^1 \wedge f^2 \wedge \ldots\wedge  f^p) = (-1)^{\varepsilon(\sigma)}f^1\wedge \ldots \wedge f^p = \sigma^{-1}(f^1\wedge \ldots \wedge f^n) = f^{\sigma_1}\wedge \ldots \wedge f^{\sigma_p}$$
+
+    \textbf{Доказательство:}
+
+    Докажем только последний переход, все остальные очевидны из определения:
+    $$\sigma^{-1}(f^1 \wedge \ldots \wedge f^p ) = p! \sigma^{-1}\Alt (f^1 \otimes \ldots \otimes f^p ) =p!\Alt (\sigma^{-1}(f^1 \otimes \ldots \otimes f^p)) $$
+
+    \textbf{Следствие:} Если $f^j$--- 1 формы, тогда:
+    $$f^1 \wedge \ldots \wedge f^k \wedge \ldots \wedge f^m \wedge \ldots \wedge f^p = -f^1 \wedge \ldots \wedge f^m \wedge \ldots \wedge f^k \wedge \ldots f^P$$
+    $$\ldots \wedge f \wedge \ldots \wedge f \wedge \ldots = \zero$$
+\end{enumerate}
+
+\thmm{Теорема (о базисе пространства $p$ - форм)}
+
+Пусть $j_1 < \ldots  < j_p$ --- упорядоченный набор $j_l \in (1,\ldots,n)$
+
+$\{w^{j_1}\wedge \ldots \wedge w^{j_p}\}$ совокупность по всем упорядоченным наборам $(j_1,\ldots, j_p)$ --- базис $\Lambda^pV^*$.
+
+\textbf{Доказательство:}
+
+\deff{Докажем порождаемость:}
+
+$\forall f \in \Lambda^p V^*$. $f\in T(p,0)$ и $f = \Alt f$ - кососимметричный. Разложим по координатам тензора
+$$f= \alpha_{i_1\ldots i_p} w^{i_1}\otimes \ldots \otimes w^{i_p}$$
+С другой стороны $\Alt f = \Alt (\alpha_{i_1\ldots i_p}w^{i_1}\otimes  \ldots \otimes w^{i_p}) = a_{i_1\ldots i_p}\Alt (w^{i_1}\otimes \ldots \otimes w^{i_p})$. Из следствия 2 свойства 5 $\Alt (w^{i_1}\otimes \ldots \otimes w^{i_p}) = \cfrac{1}{p!}w^{i_1}\wedge \ldots \wedge w^{i_p}$. 
+
+Если среди $(i_1\ldots i_p)$ есть одинаковые индексы, то $w^{i_1} \wedge \ldots \wedge w^{i_p} = \zero$. Если все индексы различные, то это просто перестановка $(j_1,\ldots,j_p): j_1<\ldots <j_p$. Тогда заменим на равное:
+$$=\sum_{j_1<\ldots<j_p}\cfrac{1}{p!}\sum\limits_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}} w^{j_{\sigma_1}}\wedge \ldots \wedge w^{j_{\sigma_p}} = \sum_{j_1<\ldots<j_p}\cfrac{1}{p!}\sum\limits_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}} (-1)^{\varepsilon(\sigma)}w^{j_1}\wedge \ldots w^{j^p}$$
+Вынесем за скобки и получим:
+$$=\sum_{j_1<\ldots<j_p}\left(\cfrac{1}{p!}\sum\limits_{\sigma \in S_p}\alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}(-1)^{\varepsilon(\sigma)}\right)w^{j_1}\wedge \ldots \wedge w^{j_p}$$
+Откуда порождаемый.
+
+\textbf{Замечание:} коээффицент перед омегами равен $\beta_{j_1\ldots j_p}$ b называется \deff{существенной} координатой $p$-формы $f$.  Она равна $\alpha_{[j_1\ldots j_p]}=\alpha_{j_1\ldots j_p}$. 
+
+\deff{Докажем линейно-независимость:}
+
+Для этого составим комбинацию. 
+$$\zero=\sum\limits_{j_1 <\ldots j_p}\beta_{j_1\ldots j_p} w^{j_1}\wedge \ldots \wedge w^{j_P}= 
+\sum\limits_{j_1 < \ldots <j_p} \beta_{j_1\ldots j_p}\sum_{\sigma \in S_p} w^{j_{\sigma_1}}\otimes\ldots\otimes w^{j_{\sigma(p)}} \cdot (-1)^{\varepsilon(\sigma)} = $$
+$$= \alpha_{i_1\ldots i_p} w^{i_1}\otimes \ldots \otimes w^{i_p}$$
+где если хотя бы 2 индекса совпадают,то $\alpha_{i_1\ldots i_p} = 0$. Получили, что базис из тензоров = нулю, откуда и искомые.
+
+\hfill Q.E.D.
+
+\textbf{Следствие 1:} $\dim \Lambda^pV^* = C^p_n = \cfrac{n!}{p!(n-p)!}$
+
+\textbf{Следствие 2:} $\forall f \in \Lambda^p V^*:$
+$$f = \sum\limits_{j_1<\ldots <j_p} \beta_{j_1\ldots j_p}w^{j_1}\wedge \ldots \wedge w^{j_p}$$
+где $\beta_{j_1\ldots j_p} = \alpha_{j_1\ldots j_p}$--- 
+\deff{существенные} координаты.
+
+Существенные координаты принято записывать в строку
+(перестановки в лексикографическом порядке)
+
+\textbf{Пример:}
+
+$n=4, p=3: f\in \Lambda^{p}V^* \leftrightarrow \beta = (\beta_{123},\beta_{124},\beta_{134}, \beta_{234})$
+
+\thmm{Теорема 1}
+
+$\forall \xi_1,\ldots, \xi_p \in V:$ $w^{j_1}\wedge \ldots \wedge w^{j_p} (\xi_1,\ldots,\xi_p) = \det(\xi^{j_m}_k)_{p\times p} = \begin{vmatrix}
+    \xi_1^{j_1} & \ldots & \xi_p^{j_1}\\
+    \vdots & & \vdots \\
+    \xi_1^{j_p} & \ldots & \xi_p^{j_p}
+\end{vmatrix}$
+
+\textbf{Доказательство:}
+$$w^{j_1}\wedge \ldots \wedge w^{j_p} (\xi_1,\ldots,\xi_p) = p! \Alt (w^{j_1}\otimes \ldots  \otimes w^{j_p})(\xi_1,\ldots,\xi_p) =$$
+$$=\cfrac{p!}{p!} \sum\limits_{\sigma \in S_p}(-1)^{\varepsilon(\sigma)}\sigma(w^{j_1}\otimes \ldots \otimes w^{j_p})(\xi_1,\ldots,\xi_p) = \sum_{\sigma \in S_p} (-1)^{\varepsilon(\sigma)}w^{j_1}\otimes \ldots \otimes w^{j_p}(\xi_{\sigma_1},\ldots ,\xi_{\sigma_p}) = $$
+$$= \sum\limits_{\sigma\in S_p}(-1)^{\varepsilon(\sigma)}\xi_{\sigma_1}^{j_1}\ldots \xi_{\sigma_p}^{j_p} = \det(\xi_k^{j_m})$$
+\hfill Q.E.D.
+
+
+\textbf{Следствие:} $\forall f \in \Lambda^p V^*$:
+$$f(\xi_1, \ldots,\xi_p)=\sum\limits_{j_1<\ldots<j_p}\beta_{j_1\ldots j_p} \begin{vmatrix}
+\xi_1^{j_1}&\ldots& \xi_p^{j_1}\\
+\vdots & & \vdots \\
+\xi_1^{j_p} & \ldots & \xi_p^{j_p}
+\end{vmatrix}$$ 
+
+\thmm{Теорема 2.}
+
+$\forall j = 1\ldots p. f^j \in V^* = \Lambda^1V^*$ - 1 форма.
+
+$f= f^1 \wedge f^2 \wedge \ldots \wedge f^p$ - $p$ - форма.
+
+$f^j \leftrightarrow a^j = (a_1^j \ldots a_n^j)$ --- координатная строка в базисе $w^j$. $f^j= a_i^j w^i$. Тогда 
+$$\beta_{j_1\ldots j_p}= \begin{vmatrix}
+    a_{j_1}^1 & \ldots & a_{j_p}^{1}\\
+    \vdots & & \vdots \\
+    a_{j_1}^p & \ldots & a_{j_p}^p
+\end{vmatrix} = \det (a_{j_k}^m)$$
+А также: 
+$$f^1 \wedge \ldots \wedge f^p = \sum\limits_{j_1 < \ldots < j_p}\begin{vmatrix}
+    a_{j_1}^1 & \ldots & a_{j_p}^1 \\
+    \vdots & & \vdots \\
+    a^p_{j_1} & \ldots & a_{j_p}^p 
+\end{vmatrix} w^{j_1}\wedge \ldots \wedge w^{j_p}$$
+\textbf{Доказательство:}
+$$\beta_{j_1\ldots j_p}= f^1\wedge \ldots \wedge f^p (e_{j_1},\ldots, e_{j_p})=$$
+Теперь смотрите доказательство первой теоремы, но в качестве $w^j$ возьмите $f^j$, а в качестве $\xi_i \rightarrow e_{j_i}$:
+$$= \sum\limits_{\sigma \in S_p} (-1)^{\varepsilon(\sigma)}f^1(e_{j_{\sigma_1}})\ldots f^p(e_{j_{\sigma_p}}) = \det (a_{j_{k}}^m) = \begin{vmatrix}
+    a_{j_1}^1 & \ldots & a_{j_p}^1\\
+    \vdots & & \vdots \\
+    a_{j_1}^p & \ldots & a_{j_p}^p
+\end{vmatrix} $$
+
+\hfill Q.E.D
+
+
+\textbf{Следствие:} $\forall j = 1\ldots m: f^j$ - 1-форма. $\forall \xi_1,\ldots, \xi_p \in V$. Тогда
+$$f^1 \wedge \ldots \wedge f^p (\xi_1,\ldots, \xi_n) = \sum\limits_{j_1 < \ldots < j_p} \begin{vmatrix} a_{j_1}^1\ & \ldots & a_{j_p}^1 \\
+\vdots & & \vdots \\
+a_{j_1}^p & \ldots & a_{j_p}^{p}
+\end{vmatrix}\cdot \begin{vmatrix}
+\xi_1^{j_1} & \ldots & \xi_p^{j_1}\\
+\vdots & & \vdots \\
+\xi_{1}^{j_p} & \ldots  &  \xi_p^{j_p}
+\end{vmatrix}$$
+\thmm{Теорема 3.}
+
+$\forall j = 1\ldots p$, $f^j$ - 1-формы. $\forall \xi_1,\ldots,\xi_p \in V$ выполнено:
+$$f^1\wedge f^2 \wedge \ldots \wedge f^p(\xi_1,\ldots \xi_p) = \begin{vmatrix}
+    f^1(\xi_1) & \ldots & f^1(\xi_p)\\
+    \vdots & &\vdots \\
+    f^p(\xi_1) &\ldots & f^p(\xi_p) 
+\end{vmatrix} = \det (f^j(\xi_i))$$
+\textbf{Доказательство:}
+
+Смотрите доказательство теоремы 2. Записать $e_{j_k}\rightarrow \xi_k$.
+$$f^1 \wedge \ldots \wedge f^p(\xi_1\ldots \xi_p) = \sum\limits_{\sigma \in S_p}(-1)^{\varepsilon(\sigma)} f^1(\xi_{\sigma_1})\ldots f^p(\xi_{\sigma_p}) = \det(f^{j}(\xi_k)) $$
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} $\begin{vmatrix}
+f^1(\xi_1) & \ldots & f^1(\xi_p)\\
+\vdots & & \vdots \\
+f^p(\xi_1) & \ldots & f^p(\xi_p)
+\end{vmatrix} = \sum\limits_{j_1 < \ldots j_p} \begin{vmatrix}
+    a_{j_1}^1 & \ldots & a^1_{j_p}\\
+    \vdots & & \vdots \\
+    a_{j_1}^p & \ldots & a_{j_{p}}^p 
+\end{vmatrix} \begin{vmatrix}
+    \xi^{j_1}_{1} & \ldots & \xi_{p}^{j_1} \\
+    \vdots & & \vdots \\
+    \xi_{1}^{j_p} & \ldots & \xi_{p}^{j_p}
+\end{vmatrix}$ 
+
+% todo: кучерук тут что-то говорила про умножение матриц
+
+\textbf{Пример: частный случай.}
+
+$p=n, \dim \Lambda^n V^* =1 $. Тогда в таком случае:
+$$f^1 \wedge \ldots \wedge f^n (\xi_1,\ldots , \xi_n) = \det(A\xi) = \det A \cdot \det \xi$$
+$$f = \det A \cdot w^1\wedge \ldots \wedge w^n$$
+
+\textbf{Замечание.} Все вышесказанное верно  и для $q$-векторов. Есть лишь пару отличий:
+
+$g_1 \vee g_2 = \cfrac{(q_1+q_2)!}{q_1!q_2!} \Alt(g_1 \otimes g_2)$ --- \deff{внешнее произведение} $q$-векторов.
+
+Все свойства и теоремы выполнены, но базис $\{e_{i_1}\vee \ldots \vee e_{i_q} \}$, для $i_1 < \ldots < i_1$.
+
+Как мы помним $f(\xi) = \xi(f)$. Так что давайте применим это.
+
+Пусть $p= q$. Тогда $\xi_j \in V  \cong V^{**}$, $f^j \in V^*$. Тогда
+$$\xi_1 \vee \ldots \vee \xi_p(f^1,\ldots, f^p) = \sum\limits_{j_1<\ldots<j_p} \begin{vmatrix}
+    \xi_1^{j_1} & \ldots & \xi_p^{j_1}\\
+    \vdots & & \vdots \\
+    \xi_1^{j_p} & \ldots &\xi_p^{j_o}
+\end{vmatrix} \begin{vmatrix}
+    a^1_{j_1} & \ldots & a^1_{j_p}\\
+    \vdots & & \vdots \\
+    a_{j_1}^p & \ldots & a^p_{j_p}
+\end{vmatrix} = f^1 \wedge \ldots \wedge f^p(\xi_1,\ldots \xi_p) =$$
+$$= \det (f^j(\xi_i))=\det (\xi_i(f^j))$$ 
