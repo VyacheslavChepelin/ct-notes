@@ -16,4 +16,6 @@
 
 [Конспект практики](./CalculusPractice-2.pdf).
 
+[Теоритический опрос](./theoretical-survey.pdf).
+
 
