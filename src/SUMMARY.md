@@ -15,7 +15,7 @@
     4. [Конец деревьев (Целые числа)](./Algorithms/06-end-of-trees.md)
     4. [Деревья отрезков](./Algorithms/07-segment-tree.md)
     4. [Продолжение деревьев отрезков](./Algorithms/08-segment-tree-lazy.md)
-     4. [Семинар Аисд](./Algorithms/09-seminar.md)
+     4. [Персистентное дерево](./Algorithms/09-persistent-tree.md)
 - [Cpp](./Cpp/Cpp.md)
     1. [Ассемблер](./Cpp/01_ass.md)
     2. [Операционные системы](./Cpp/02_lecture.md)    
