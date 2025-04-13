@@ -269,7 +269,9 @@ $f$ - \deff{плотность} $\varPhi$: $\forall \Delta \in \Segm (\langle a,
 
 \subsection{Кусочно-непрерывная функция, интеграл от неё}
 
-\deff{def:} $f:[a.b] \rightarrow \mathbb{R}$ \deff{кусочно-непрерывной.}
+\deff{def:} $f:[a.b] \rightarrow \mathbb{R}$ \deff{кусочно-непрерывной}, если:
+
+$\exists A \ = \{x_1,\ldots,x_n\} \subset [a,b]$. Такая функция будет непрерывны на $[a,b]$, кроме этих точек, а в них происходят скачки.
 
 $f$ - кусочно-непрерывно на $[a,b]$. $x_0 = a, x_n = b$. Положим $\integral{a}{b} = \sum\limits_{i=1}^{n+1}\integral{x_{i-1}}{x_i}f\Big|_{[x_{i-1},x_i]}$
 
@@ -283,7 +285,7 @@ $\forall x \in [a,b] \textbackslash A: \exists F'(x) = f(x)$ и $\forall x \in A
 \subsection{Гладкий путь, вектор скорости, носитель пути}
 
 
-Путь - $\gamma :[a,b] \rightarrow \mathbb{R}^m$. То есть $t\rightarrow (\gamma_1(t),\gamma_2(t),\ldots,\gamma_m(t)) = \gamma(t)$. Мы обычно думаем, что они непрерывны и диффернцируему --- \deff{гладки пути}
+Путь - $\gamma :[a,b] \rightarrow \mathbb{R}^m$. То есть $t\rightarrow (\gamma_1(t),\gamma_2(t),\ldots,\gamma_m(t)) = \gamma(t)$. Мы обычно думаем, что они непрерывны и дифференцируемы --- \deff{гладкие пути}.
 
 
 $\gamma'(t) = (\gamma_1'(t),\gamma_2'(t),\ldots,\gamma_m'(t))$ - \deff{вектор скорости}.
@@ -307,7 +309,9 @@ $\gamma'(t) = (\gamma_1'(t),\gamma_2'(t),\ldots,\gamma_m'(t))$ - \deff{вект�
 
 \subsection{Вариация функции на промежутке}
 
-\deff{def:} Пусть $f$ - любая из $[a,b] \rightarrow \mathbb{R}$. Тогда \deff{вариация функции} на $[a,b]$: $$\Var_a^b f = \sup (\sum\limits_{k=1}^n |f(t_k)-f(t_{k-1})|)$$
+\deff{def:} Пусть $f$ - любая из $[a,b] \rightarrow \mathbb{R}$. Тогда \deff{вариация функции} на $[a,b]$: 
+$$\Var_a^b f = \sup (\sum\limits_{k=1}^n |f(t_k)-f(t_{k-1})|)$$
+где $\tau = \{t_0,\ldots, t_n\}$ --- дробление отрезка
 
 \subsection{Теорема о функциях ограниченной вариации}
 
@@ -326,7 +330,7 @@ $y_n$ - не возрастает, $z_n$ - не убывает. $\forall n: z_n\
 
 \deff{Верхний предел последовательности}--- $\overline{\lim\limits_{n\rightarrow \infty}}x_n=\lim y_n \in \overline{R}$
 
-\deff{Нижний предел последовательности}--- $\underline{\lim\limits_{n\rightarrow \infty}}x_n=\lim y_n \in \overline{R}$
+\deff{Нижний предел последовательности}--- $\underline{\lim\limits_{n\rightarrow \infty}}x_n=\lim z_n \in \overline{R}$
 
 
 \subsection{Частичный предел}
@@ -396,7 +400,7 @@ $1+\cfrac{1}{2}+\cfrac{1}{3}+\ldots +\cfrac{1}{n}= \ln n + \gamma + o(1)$. Пр�
 $\integral{a}{b}f$ - \deff{абсолютно сходится}, если:
 \begin{enumerate}
     \item $\integral{a}{b}f$ сходится.
-    \item $\integral{a}{b} |b|$ сходится.
+    \item $\integral{a}{b} |f|$ сходится.
 \end{enumerate}
 
 
@@ -565,6 +569,10 @@ $x_n,y_n$ - вещ. последовательности, $x_n \rightarrow 0 , y
 
 Пусть $\lim\limits_{n\rightarrow \infty} \cfrac{x_{n+1}-x_n}{y_{n+1}-y_n} =  a\in \overline{\mathbb{R}}\cup \{0\}^*$. Тогда: $\exists \lim\limits_{n \rightarrow\infty}\cfrac{x_n}{y_n} = a$.
 
+Для случая $a = 0$ - считаем, что $x_n, y_n$ монотонны (строго) с какого-то момента. 
+
+(Поэтому там стоит *)
+
 
 
 
@@ -582,8 +590,17 @@ $f:\langle a,b\rangle \rightarrow \mathbb{R}$, $\varPhi: \Segm(\langle a,b\rangl
 Тогда $\forall \Delta \in \Segm(\langle a,b\rangle) $, $\varPhi(\Delta) = \integral{\Delta}{}f$
 
 \subsection{Площадь криволинейного сектора: в полярных координатах и для параметрической кривой}
+$[a,b] \subset [0,2\pi)$
 
-В указанных условия, а так же $\rho: [a,b] \rightarrow \mathbb{R}, \rho>0$ и непрерывна. $[\alpha,\beta]\in \Segm([a,b])$. Тогда: $$\varPhi([\alpha,\beta]) = \cfrac{1}{2}\integral{\alpha}{\beta}\rho^2(\varphi) \, d\varphi$$
+$\rho:[a,b]\rightarrow \mathbb{R}, \rho>0$
+
+$\varphi \in [a,b] \rightarrow (\varphi,\rho(\varphi))$
+
+Введем определение: \deff{Сектор} $[\alpha,\beta] = \{(\varphi,r)\subset R^2: \varphi\in[\alpha,b], 0\leq r\leq p(\varphi)\}$
+
+$\varPhi: \Delta = \sigma(\text{Сектора}) $, $\Delta \in \Segm([a,b])$
+
+В указанных условия, а также $\rho: [a,b] \rightarrow \mathbb{R}, \rho>0$ и непрерывна. $[\alpha,\beta]\in \Segm([a,b])$. Тогда выполнено: $$\varPhi([\alpha,\beta]) = \cfrac{1}{2}\integral{\alpha}{\beta}\rho^2(\varphi) \, d\varphi$$
 \subsection{Изопериметрическое неравенство}
 
 $G \subset \mathbb{R}^2$ - выпукло, замкнуто, ограниченно. 
@@ -598,6 +615,12 @@ $\varPhi: Segm(\langle a,b\rangle) \rightarrow \mathbb{R}$ - а.ф.п. $f: \lang
 
 Пусть $\forall\Delta \in Segm(\langle a,b \rangle)$ заданы $m_\Delta, M_{\Delta} $ - функции от сегмента:
 
+\begin{enumerate}
+    \item $m_\Delta\cdot l(\Delta) \leq \varPhi(\Delta) \leq M_{\Delta} \cdot l(\Delta)$
+    \item $\forall x  \in \Delta: m_{\Delta}\leq f(x)\leq M_{\Delta}$
+    \item $\forall$ фикс. $x\in \langle a,b \rangle$, $M_{\Delta}-m_{\Delta}\rightarrow 0$, при $l(\Delta)\rightarrow 0 $ и $x\in \Delta$ 
+\end{enumerate}
+Тогда $f$ - плотность $\varPhi$. 
 
 \subsection{Объем фигур вращения}
 
@@ -773,9 +796,8 @@ $n!\, \mytilde\, \cfrac{n^n}{e^n}\sqrt{n}\cdot \sqrt{2\pi}$ --- \deff{Форму
 \begin{enumerate}
     \item \textbf{Критерий Больцана-Коши} (сходимости несобственного интеграла):
   
-  $\integral{a}{b}f(x)dx$ --- сходящаяся $\Leftrightarrow \forall \varepsilon >0:\exists \Delta \in (a,b): \forall A,B\in (a,b),  |\integral{A}{B}f|< \varepsilon$
+  $\integral{a}{b}f(x)dx$ --- сходящаяся $\Leftrightarrow \forall \varepsilon >0:\exists \Delta \in (a,b): \forall A,B\in \Delta,  |\integral{A}{B}f|< \varepsilon$
   
-  Оно тривиально (так сказал КПК).
 
   \textbf{Следствие:} Если $\exists A_n,B_n \rightarrow b-0: \integral{A_n}{B_n}f \not \rightarrow 0$, то $\integral{a}{b}f$ - расходится.
 
@@ -881,7 +903,7 @@ $a_n$ --- любого знака. Тогда эквивалентно:
 
 $\integral{0}{+\infty}\cfrac{\sin x}{x}dx  =\cfrac{\pi}{2}$
 
-\textbf{Свойства рядов: линейность, свойства остатка, необх. условие сходимости, критерий Больцано--Коши}
+\subsection{Свойства рядов: линейность, свойства остатка, необх. условие сходимости, критерий Больцано--Коши}
 
 \textbf{Свойства рядов:}
 
@@ -904,12 +926,78 @@ $\sum a_n$ - сходится. Тогда $a_n \rightarrow 0$
 
 \thmm{Теорема (критерий Больцано-Коши)}
 
-не смотрел
+$\sum a_n$ - сходится $\Leftrightarrow \forall \varepsilon>0: \exists N:\forall n > N: \forall k \in \mathbb{N}: |\sum\limits_{i=n+1}^{n+k}a_n|<\varepsilon$
 
 \subsection{Признак сравнения сходимости положительных рядов}
+
+\thmm{Теорема (Признак сравнения)}
+
+Есть $a_k \geq 0 , b_k \geq 0$
+
+\begin{enumerate}
+    \item  $\forall n: a_n \leq b_n$. Тогда, если $b$ сходится $\Rightarrow$  $a$ сходится. Если $a$ расходится, то $b$ расходится.
+    \item $\cfrac{a_n}{b_n}\rightarrow l$. Если $ l \in (0,+\infty)$, тогда a,b сходятся расходятся одновременно. Если $l = 0$, то выполнено утв. из пункта 1. Если $l=+\infty$, то выполнено утв. из пункта 1 наоборот
+    \item Начиная с некоторого места $\cfrac{a_{n+1}}{a_n}\leq \cfrac{b_{n+1}}{b_n}$, то см утв. пункт 1.
+\end{enumerate}
+
 \subsection{Признак Коши сходимости положительных рядов}
+
+\thmm{Теорема (Признак Коши)}
+
+$\sum a_n, a_n \geq 0 , K_n = \sqrt[n]{a_n}$
+
+light:
+\begin{enumerate}
+    \item $\exists q \in (0,1)$, $K_n \leq q$. Тогда $\sum a_n$ - сходится
+    \item $K_{n}\geq 1$ для бесконечного множества номеров. Тогда $\sum a_n$ - расходится
+\end{enumerate}
+pro:
+
+$K = \overline{\lim} K_n$
+\begin{enumerate}
+    \item $K>1$ ряд расходится.
+    \item $K<1$ ряд сходится
+\end{enumerate}
+
+\textbf{Замечание} $K=1$ - признак не работает.
+
 \subsection{Признак Даламбера сходимости положительных рядов}
+
+\thmm{Теорема (Признак Даламбера)}
+
+$a_n > 0: D_n = \cfrac{a_{n+1}}{a_n}$
+
+light: 
+\begin{enumerate}
+    \item $\exists q \in (0,1): D_n \leq q$ НСНМ. Тогда $\sum a_n$ - сходится
+    \item $D_n \geq 1$ НСНМ. Тогда $\sum a_n$ - расходится.
+\end{enumerate}
+
+pro: $D:= \lim D_n$
+\begin{enumerate}
+    \item $D>1$: Ряд расходится
+    \item $D<1$: Ряд сходится
+\end{enumerate}
+
 \subsection{Признак Раабе сходимости положительных рядов}
+
+\thmm{Признак (Раабе)}
+
+$a_n > 0$. $R_n := n(\cfrac{a_n}{a_{n+1}}-1)$
+
+light:
+\begin{enumerate}
+    \item $\exists r>1:$ НСНМ $R_n \geq r \Rightarrow $ Ряд $\sum a_n$ сходится
+    \item $R_n\leq 1$ НСНМ $\Rightarrow$ Ряд $\sum a_n$ расходится
+\end{enumerate}
+pro:
+
+$R:= \lim R^n$
+\begin{enumerate}
+    \item $R>1$: ряд сходится
+    \item $R<1$: расходится.
+\end{enumerate}
+
 \subsection{Интегральный признак Коши сходимости числовых рядов}
 
 \thmm{Теорема (Интегральный признак Коши)}
