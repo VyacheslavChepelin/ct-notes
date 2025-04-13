@@ -27,3 +27,4 @@
     3. [Практика: C++ Матрицы](./Cpp/practice_3.md) 
 - [Парадигмы программирования](./Paradigms/Paradigms.md)
     1. [Clojure. Введение](./Paradigms/clojure-01.md)
+    2. [Clojure.](./Paradigms/clojure-02.md)
