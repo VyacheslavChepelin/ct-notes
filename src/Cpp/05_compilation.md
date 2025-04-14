@@ -97,7 +97,7 @@ hello world insert
 
 <!-- TODO обновить схему -->
 
-![Compilation graph](./assets/05.01_compilation_graph.png)
+![Compilation graph](./images/03.28_compilation_graph.png)
 
 Есть похожая [статья на хабре](https://habr.com/ru/post/478124/) по теме.
 
