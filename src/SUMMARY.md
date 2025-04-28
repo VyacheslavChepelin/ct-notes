@@ -30,4 +30,5 @@
 
 - [Парадигмы программирования](./Paradigms/Paradigms.md)
     1. [Clojure. Введение](./Paradigms/clojure-01.md)
-    2. [Clojure.](./Paradigms/clojure-02.md)
+    2. [Clojure. Функциональные выражения](./Paradigms/clojure-02.md)
+     3. [Clojure. Объекты](./Paradigms/clojure-03.md)
