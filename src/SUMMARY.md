@@ -7,7 +7,7 @@
 - [Математический анализ](./Calculus/Calculus.md)
 - [Дискретная математика](./DiscretMath/DiscretMath.md)
 - [Введение в программирование](./ProgIntro/ProgIntro.md)
-- [Алгоритмы и структуры данных](https://vyacheslavchepelin.github.io/aisd-notes/)
+- [Алгоритмы и структуры данных](./Algorithms.md)
 - [Cpp](./Cpp/Cpp.md)
     1. [Ассемблер](./Cpp/01_asm.md)
     2. [Операционные системы](./Cpp/02_os_cpu.md)    

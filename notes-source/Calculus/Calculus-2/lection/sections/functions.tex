@@ -1,0 +1,797 @@
+\subsection{Напоминание.}
+
+Вводим норму: $||x|| = \sqrt{x_1^2 + \ldots + x_m^2}$.
+
+Cкал. произведение $\langle x,y\rangle = \sum\limits_{i=1}^mx_iy_i$.
+
+Другие напоминания можете посмотреть в конспекте первого семестра
+
+$f: D \subset R^m \xrightarrow{} \R$, $a$ - пр. точка $D$.
+
+Метрический предел:
+$$\lim\limits_{x\rightarrow a} f(x) = L \quad \quad \forall \varepsilon > 0:\exists \delta >0: \forall x \in D: |x-a|<\delta:|f(x)-L|<\varepsilon$$
+
+\deff{Суррогатные пределы}
+
+\deff{def:} $D_1, D_2 \subset \R$, $a$ - пр. точка $D_1$, $b$ - пр. точка $D_2$. $(D_1 \textbackslash \{ a\})\times (D_2 \textbackslash \{ b\}) \subset D$.
+
+$f:D \subset \R^2 \rightarrow \R$
+
+\begin{enumerate}
+    \item Если $\forall x \in D_1 \textbackslash \{a\}: \exists\lim\limits_{y\rightarrow b} f(\langle x,y \rangle) = \varphi(x)$ - обозначу. 
+    
+    То $\lim\limits_{x \rightarrow a }\varphi(x)$ - \deff{повторный предел} $\lim\limits_{x\rightarrow a}(\lim\limits_{y\rightarrow b} f(\langle x,y \rangle))$
+
+    \item Если $\forall y \in D_2 \textbackslash \{b\}: \exists\lim\limits_{x\rightarrow a} f(\langle x,y \rangle) = \psi(y)$ - обозначу. 
+    
+    То $\lim\limits_{y \rightarrow b }\psi(y)$ - \deff{повторный предел} $\lim\limits_{y\rightarrow b}(\lim\limits_{x\rightarrow a} f(\langle x,y \rangle))$
+
+    \item \deff{Двойной предел} $\lim\limits_{x\rightarrow a; y\rightarrow b}f(x,y) = L$:
+    $$\forall W(L): \exists U(a):\exists V(b): \forall x \in U(a)\cap D_1:\forall y \in V(b) \cap D_2: f(x,y) \in W(L)$$
+
+    Очевидно, если существует метрический, то существует и двойной, но в обратную не работает.
+    \item \deff{Предел по направлению}.
+    
+    $f: U(a,b) \rightarrow \R$. Возьму $L = $ прямая с направляющим $v$:
+    $$\lim\limits_{t \rightarrow 0 } f(a + tv_1, b + tv_2)$$
+    
+
+    В будущем мы будем считать, что он нормированный
+
+    \item \deff{Предел вдоль кривой} 
+    
+    $\gamma: [-\varepsilon, \varepsilon] \rightarrow U(a,b), \gamma(0) =(a,b)$ - непр.(??? Кохась ничего не сказал) $$\lim\limits_{(x,y)\rightarrow(a,b)}f|_\gamma = \lim\limits_{t\rightarrow0}f(x(t),y(t))$$ 
+    
+\end{enumerate}
+
+
+\thmm{Теорема (о двойном и повторном пределе)}
+
+$D_1, D_2 \subset \R$, $a$ - пр. точка $D_1$, $b$ - пр. точка $D_2$. $(D_1 \textbackslash \{ a\})\times (D_2 \textbackslash \{ b\}) \subset D$.
+
+$f:D \subset \R^2 \rightarrow \R$. 
+
+Пусть:
+
+\begin{enumerate}
+    \item $\lim\limits_{x\rightarrow a; y\rightarrow b}f(x,y) = A \in  \overline{R}$.
+    \item $\forall x \in D_1 \textbackslash \{a\}: \exists\lim\limits_{y\rightarrow b} f(\langle x,y \rangle) = \varphi(x)$  
+    
+    Тогда $\exists \lim\limits_{x\rightarrow A} \varphi(x) = A$.
+\end{enumerate}
+
+\textbf{Доказательство:} 
+
+$A \in \R.$ Напишем определение двойного предела:
+$$ \forall \varepsilon > 0 : \exists U(a): \exists V(b): \forall x \in U(a) \cap D_1: \forall y \in V(b) \cap D_2 : |f(x,y)-A|<\varepsilon$$
+Устремим $y$ к $b$ и получим:
+$$ \forall \varepsilon > 0 : \exists U(a): \forall x \in U(a) \cap D_1: |\varphi(x)-A|\leq\varepsilon$$
+А это определение предела.
+
+\hfill Q.E.D.
+
+\deff{def:} $\mathcal{A}: R^m \rightarrow R^n$ \deff{линейное отображение}, если:
+$$\forall \alpha,\beta \in \R : \forall n, v \in R^m: \mathcal{A}(\alpha n + \beta v) = \alpha \mathcal{A}(n) + \beta \mathcal{A}(v) $$
+При $n=1$ мы будем говорить линейный функционал, иначе линейный оператор.
+
+Линейные отображения образуют линейное пространство. Как мы знаем из линейной алгебры: у них есть матрицы.
+
+\thmm{Теорема.}
+
+$\mathcal{A}: \R^m \rightarrow \R^m$ - линейный оператор. Тогда экв:
+\begin{enumerate}
+    \item $\mathcal{A}$ - обратима
+    \item $\mathcal{A}(\R^m)=\R^m$
+    \item $\det A \neq 0$
+\end{enumerate}
+
+\pagebreak
+
+\subsection{Дифференцирование.}
+
+\deff{def:} \deff{Бесконечно малая} $\varphi : E \subset \R^m \rightarrow \R^n$, $a \in Int E, \varphi$ - б.м. в точке $a$, если $\varphi(x)\xrightarrow{x \rightarrow a}\zero$
+
+\deff{def:} $o(h), h \rightarrow 0, \varphi: E \subset \R^m \rightarrow \R^n, 0 \in Int E: \varphi(h) = o(h)$, при $h\rightarrow0$, если $\cfrac{\varphi(h)}{|h|}\rightarrow \zero$
+
+\textbf{Замечание:} $o(h)$ эквивалентно $o(|h|)$. Также  можно вводить аналогично прошлому семестру (через существование б. м.).
+
+\deff{def:} $F: E \subset R^m \rightarrow R^n, a \in Int(E)$.
+Говорят, что $F$ \deff{дифференцируема в точке $a$}, если существует линейный оператор $L:\R^m\rightarrow R^n: \exists$ б.м. при стремлении к нулю $\alpha : R^m\rightarrow R^n$:
+$$F(a+h) = F(a)+L h + \alpha(h) \cdot |h| $$
+$\exists B(a,r) < R$, при $h\in R^m: |h|<r$
+
+\textbf{Соглашение:} для наших бесконечно малых, считаем, что $\alpha(0)$
+
+\deff{def:} Оператор $L$ называется \deff{производным оператором} отображения $F$ в точке $a$ или просто \deff{производная}.
+
+\deff{def:} Матрица оператора $L$ называется \deff{матрицей Якоби} (отображения $f$ в точке $a$).
+
+\deff{def:} $h \rightarrow Lh$ - \deff{дифференциал}.
+
+\thmm{Лемма (Единственность производной)}
+
+Производный оп. определен однозначно.
+
+\textbf{Доказательство:}
+
+В терминах определения, возьмем $\forall u \in \R^m: h =tu, t \in \R$ - маленькое
+$$F(a + tu) = F(a) + t \cdot Lu +o(t), t \rightarrow 0 $$
+$$Lu = \cfrac{F(a+tu) - F(a)}{t} - \cfrac{o(t)}{t}$$
+Возьму пределы по $t$:
+$$Lu = \lim\limits_{t \rightarrow 0}\cfrac{F(a+tu) - F(a)}{t}$$
+Получилось, что $L$ задается однозначно.
+
+\hfill Q.E.D.
+
+\thmm{Лемма (о дифференцируемости отобр. и его коорд. функций)}
+
+$F : E \subset \R^m \rightarrow \R^n, a \in Int E, F = (f_1,\ldots,f_n)$. Тогда:
+\begin{enumerate}
+    \item $F$ - дифф. в $a \Leftrightarrow$ все $f$ дифф. в $a$.
+    \item Строки матрицы Якоби отображения $F$ в точке $a$ - это матрицы Якоби координатной функции.
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\textbf{Замечание от Кохася:} Это зоология какая-то. На нее надо сидеть смотреть и медитировать.
+$$F(a+h) = F(a) + Lh + \alpha(h) |h|$$
+Как будет в координатах:
+$$\begin{pmatrix}
+    f_1(a+h)\\
+    \vdots\\
+    f_n(a+h)
+\end{pmatrix} = \begin{pmatrix}
+    f_1(a) \\
+    \vdots \\
+    f_n(a)
+\end{pmatrix}  + \begin{pmatrix}
+    l_1\\
+    \vdots\\
+    l_n
+\end{pmatrix}\cdot h + \begin{pmatrix}
+    \alpha_1(h)|h|\\
+    \vdots\\
+    \alpha_n(h)|h|
+\end{pmatrix}$$
+$$\begin{pmatrix}
+    f_1(a+h)\\
+    \vdots\\
+    f_n(a+h)
+\end{pmatrix} = \begin{pmatrix}
+    f_1(a) \\
+    \vdots \\
+    f_n(a)
+\end{pmatrix}  + \begin{pmatrix}
+    \langle l_1, h\rangle\\
+    \vdots\\
+     \langle l_n, h\rangle
+\end{pmatrix}\cdot  + \begin{pmatrix}
+    \alpha_1(h)|h|\\
+    \vdots\\
+    \alpha_n(h)|h|
+\end{pmatrix}$$
+А теперь просто смотрим на получившиеся строчки и получаем то, что надо
+
+\hfill Q.E.D.
+
+\deff{deff:} $f: E \subset \R^m \rightarrow \R, a \in Int E$
+
+Фиксируем $k \in \{1\ldots m\}$
+$$\varphi_k(n) = f(a_1,\ldots a_{k-1}, n, a_{k+1},\ldots,a_m), n \in U(a_k)\subset \R$$
+$$\varphi_k'(a_k) = \lim\limits_{t \rightarrow 0}\cfrac{ f(a_1,\ldots a_{k-1}, a_k + t, a_{k+1},\ldots,a_m) -  f(a_1,\ldots ,a_m)}{t} $$
+- это называется \deff{частная производная}, или частная производная по параметру $x_k$. 
+
+Обозначается $\cfrac{\delta f}{\delta x_k}(a), f'_k , f'_{x_k},D_kf$. Частный = partial в литературе.
+
+\thmm{Теорема (необходимое условие дифференцируемости)}
+
+$f: E \subset \R^m \rightarrow \R, a \in Int E, f$ - дифф. в $a$.
+
+Тогда $\exists f'_{x_1}(a) ,\ldots \exists f_{x_m}(a)$ и матрица Якоби $f'(x) = (f_{x_1}',f_{x_2}',\ldots, f_{x_m}')$.
+
+\textbf{Доказательство:}
+
+$f'(x) = (l_1,\ldots, l_m)$
+$$f(x) = f(a) + l_1(x_1 - a_1) + \ldots + l_m (x_m - a_m) + \varphi(x) |x-a|$$
+$$x = \begin{pmatrix}
+    n,0,0,\ldots,0 
+\end{pmatrix} + a$$
+$$f(a_1 + n, a_2 ,\ldots, a_m) = f(a) + l_1 n + \overline{\varphi}(n)\cdot |n|$$
+Тогда $l_1 = \cfrac{\delta f}{\delta x_1}(a)$
+
+Аналогично другие.
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} $F: E \subset \R^m \rightarrow \R^n$ - дифф в $a$
+$F'(a) = \left(\cfrac{\delta f_i}{\delta x_j}(a)\right),i = 1,\ldots,n, j = 1,\ldots, n$
+
+\thmm{Теорема (достаточное условие дифференцируемости)}
+
+$f: E \subset \R^m \rightarrow \R, B(a,r) \subset E$. $\exists$ кон $f'_{x_1},\ldots, f'_{x_m}$ во всех точках шара и все они непрерывны в $a$. Тогда $f$ дифференцируема в точке $a$.
+
+\textbf{Доказательство:}
+
+$m=2:$
+$$f(x_1,x_2) - f(a_1,a_2) = (f(x_1,x_2)-f(x_1,a_1))+(f(x,a_2)-f(a_1,a_2))$$
+Используем теорему Лагранжа.  Выражение преобразуется в:
+$$f_{x_2}'(x_1,\overline{x_2})(x_2-a_2) + f'_{x_1}(\overline{x}_1,a_2)(x_1,a_1) = $$
+$$f'_{x_1}(a_1,a_2)(x_1-a_1) + f'_{x_2}(a_1,a_2)(x_2-a_1) + $$$$ + (f'_{x_1}(\overline{x_1}, a_2)-f'_{x_1}(a_1,a_2))\cdot\cfrac{(x_1-a_1)}{|x_-a|}\cdot |x-a| + (f'_{x_2}(a_1,\overline{x_2})-f'_{x_2}(a_1,a_2))\cdot\cfrac{x_2-a_2}{|x-a|}\cdot |x-a| = $$
+$$=f'_{x_1}(a_1,a_2)(x_1-a_1) + f'_{x_2}(a_1,a_2)(x_2-a_1) + \alpha_1(x) |x-a| + \alpha_2(x)|x-a|$$
+$\alpha_1(x), \alpha_2(x)$ бесконечно малые при $x\rightarrow a$, это следует из непрерывности и того, что $\overline{x_i}$ зажаты между $x_i$ и $a_i$(что следует из теоремы Лагранжа)
+
+\hfill Q.E.D.
+
+\pagebreak
+
+\subsection{Правила дифференцирования.}
+
+\deff{def:} \deff{Линейность дифференцирования}.
+
+$f,g: E \subset \R^m \rightarrow \R$, дифф. в $a \in Int E$.
+
+Тогда $\forall \lambda \in \R: f+g, \lambda f$ дифф. в $a$:
+$$(f+g)'(a) = f'(a)+ g'(a)\quad (\lambda f)'(a) = \lambda f'(a)$$
+\textbf{Доказательство:}
+
+Возьмите 2 определения и сложите(умножьте).
+
+\hfill Q.E.D.
+
+\deff{def:} \deff{Производная композиции}
+
+\thmm{Лемма (об оценке нормы линейного отображения)}
+
+$\mathcal{A}: \R^m \rightarrow \R^n$ линейный оператор $A = (a_{ij})$.
+
+Тогда $\forall x \in \R^m : |Ax|\leq C_A|x|$, где $C_a = \sqrt{\sum\limits_{i,j}a_{ij}^2}$
+
+\textbf{Доказательство:}
+$$|Ax|^2 = \sum\limits_{i = 1}^n|\sum\limits_{j=1}^ma_{ij}x_j|^2\leq \sum\limits_{i} (\sum\limits_{j}|a_{ij}|^2)\cdot (\sum\limits_{j}|x_j^2|) = |x|^2\sum\limits_{i}\sum\limits_{j}|a_{ij}|^2 $$
+\hfill Q.E.D.
+
+
+\thmm{Теорема.}
+
+$F: E\subset \R^m \rightarrow \R^n, G:I \subset \R^n \rightarrow \R^l$, $F(E)\subset I$. 
+
+Пусть $a \in Int E, F(a)\in Int I$, $F$ - дифф в $a$, $G$ дифф в $b = f(a)$.
+
+Тогда $G\cdot F$ дифф. в $a:$
+$$(G\cdot F)'(a) = G'(F(a))\cdot F'(a)$$
+\textbf{Доказательство:}
+
+Дано:
+$$F(a+h) = F(a) = F'(a)h + \alpha_1(h) |h|$$
+$$G(b+k) = G(b) + G'(b)k + \alpha_2(k)|k| $$
+Теперь аналогично теореме из прошлого семестра, хотим найти $G(F(a+h)):$
+$$G(F(a+h)) = G(F(a) + F'(a)h + a_1(h)|h|)$$
+Мы знаем, что $F(a) = b,$ пусть $k = F'(a)h+ \alpha_1(h)|h|$:
+$$G(F(a+h)) = G(F(a)) + G'(F(a))(F'(a)h + \alpha_1(h)|h|) + \alpha_2(k) |F(a)h + \alpha_1(h)|h|| = $$
+$$=G(F(a)) + G'(F(a)) F'(a)h + (G'(F(a))\alpha_1(h)|h| + \alpha_2(k)|F'(a)h + \alpha(h) |h||)$$
+Посмотрим на первое выражение:
+$$|h||G'(F(a))\alpha_1(h)| \leq |h| C_{G(F(a))}|\alpha(h)|$$
+Оно бесконечно малое при $h \rightarrow 0$ на норму $h$. Посмотрим на второе выражение:
+$$|\alpha_2(k)||F'(a)h + \alpha_1(h) |h|| \leq( C_{F'(a)}+ |\alpha_1(h)|) |\alpha_2(k)||h|$$
+Оно бесконечно малое при $h \rightarrow 0$ на норму $h$. Откуда получаем то, что нам надо.
+
+\hfill Q.E.D.
+
+\textbf{Замечание:} $(H \cdot G \cdot F)'(a) = H'(G(F(a)))G'(F(a))F'(a)$
+
+\thmm{Лемма (Дифференцирование "произведений")}
+
+$F, G: E \subset \R^m \rightarrow \R^n, \lambda : E \rightarrow \R$, $a \in Int E,$ а также $F,G,\lambda$- дифф. в $a$.
+
+Тогда $\lambda F, \langle F,G\rangle$ - дифф. $a$:
+\begin{enumerate}
+    \item $(\lambda F)'(a)h = (\lambda'(a)h)F(a) + \lambda(a)(F'(a)h)$
+    \item $(\langle F, G\rangle)'(a)h = \langle F'(a)h, G(a)\rangle + \langle F(a),G'(a)h\rangle$
+\end{enumerate}
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item 
+
+Рассмотрим каждую координатную функцию $n=1$.
+$$\lambda F(a + h) - \lambda F(a) = (\lambda(a) + \lambda '(a)h + \alpha(h)|h|)(F(a) + F'(a)h + \beta(h)|h|) - \lambda(a)F(a) = $$
+$$\lambda'(a)hF(a) + \lambda(a)F'(a)h + \lambda(a) \beta(h)|h| + \lambda'(a)hF'(a)h + \ldots$$
+Осталось показать, что все кроме первых двух бесконечно малые, а это очевидно.
+
+Теперь вместо координатных смотрим на все, дифференцируемость следует из теоремы о дифф. отобр и коорд функций, а формула получается сложеним формул
+
+    \item $$\langle F,G\rangle'(a)h = (\sum\limits_{i=1}f_ig_i)'h = \sum\limits_{i=1}(f_ig_i)'h = \sum\limits_{}((f_i'(a))hg_i(a) + f_i(a)\cdot(g'(a)h))$$
+    А это как раз то, что от нас и хотят
+\end{enumerate}
+\hfill Q.E.D.
+
+
+\thmm{Теорема(Лагранжа для векторозначных функций)}
+
+$F:[a,b] \rightarrow \R^n$, непр. на $[a,b]$, дифф на $[a,b]$.
+
+Тогда $\exists c \in (a,b): |F(b) -F(a)|\leq|F'(c)||b-a|$
+
+\textbf{Доказательство:}
+
+$\varphi(t) = \langle F(b)-F(a), F(t) -F(a)\rangle$
+
+$\varphi(a) = 0, \varphi(b) = |F(b)-F(a)|^2$, $\varphi'(t) = \langle F(b)-F(a),F'(t)\rangle$
+
+$\varphi(b) - \varphi(a) = \varphi'(c) (b-a)$ по теореме Лагранжа.
+
+$|F(b) - F(a) |^2 = <F(b)-F(a), F'(c)>|b-a| \leq |F(b)-F(a)| |F'(c)||b-a|$
+
+Откуда получаем нужное неравенство.
+
+\hfill Q.E.D.
+
+\pagebreak
+\subsection{Градиент}
+
+\deff{def:} $f: E \subset \R^m \rightarrow \R$ дифф. в точке $a\in Int E$
+
+$f(a+h) = f(a) + \langle L,h\rangle + o(h)$, $h\rightarrow 0 $, Тогда $L$ - \deff{градиент} функции $f$ в точке $a$.
+
+
+Обозначается $grad_af, grad \,f(a), \nabla f(a)= (f'_{x_1}(a),\ldots , f'_{x_m}(a))$ 
+
+\deff{def:} $v\in \R^m$. Производная $f$ по вектору $v$:
+$$\cfrac{\delta f}{\delta v}(a) = \lim\limits_{t\rightarrow 0}\cfrac{f(a+tv)-f(a)}{t}$$
+
+\deff{def:} $v\in \R^m, v$ - нормирована. Производная $f$ по вектору в таком будет случае называться по направлению.
+
+\thmm{Теорема (Экстремальное свойство градиента)}
+
+$f : E \subset\R^m \rightarrow \R , a \in Int E$, $f$ дифф. в точке $a$. $\nabla f(a) \neq 0$.
+
+Тогда $l = \cfrac{\nabla f(a)}{|\nabla f(a)|}$ - это направление наискорейшего возр. функции $f$, то есть:
+$$\forall h\in \R^m, |h| =1: -|\nabla f(a)|\leq\cfrac{\delta f}{\delta h}(a) \leq |\nabla f(a)|$$
+\textbf{Доказательство:}
+$$\cfrac{\delta f}{\delta h}(a) = \lim\limits_{t\rightarrow0} \cfrac{f(a+th) - f(a)}{t} = \lim\limits_{t\rightarrow0}\cfrac{f(a) + \langle \nabla f(a), th \rangle +\alpha(t)|t| - f(a)}{t} = \langle \nabla f(a),h \rangle$$
+По КБШ:
+$$|\langle \nabla f(a), h\rangle|\leq |\nabla f(a)| \cdot |h|=|\nabla f(a)|$$
+
+\hfill Q.E.D.
+
+\pagebreak 
+
+\subsection{Формула Тейлора}
+
+\deff{def:} $f: E \subset \R^m \rightarrow \R, a \in Int E$. $k,l \in \{1,\ldots, m\}$
+
+$\forall x \in U(a): \exists \cfrac{\delta f}{\delta x_k}(a)$
+
+Если $\exists$ частная производная $\cfrac{\delta\left( \cfrac{\delta f}{\delta x _k}\right)}{\delta x_l}(a)$, то она называется \deff{частной производной 2 порядка}  $f$ по параметрам $x_k, x_l$ в точке $a$. Обозначается $\cfrac{\delta^2 f}{\delta x_l\delta x_k}(a), f_{x_kx_l}'', f_{kl}''$
+
+\thmm{Теорема (Независимость частных производных от порядка дифференцирования)}
+
+$f: E \subset \R^2 \rightarrow \R$, $B((x_0,y_0),r) \subset E$, в этом шаре $\exists f''_{xy}, f''_{yx}$ и они непрерывны.
+
+Тогда $f''_{xy}(x_0,y_0)=f''_{yx}(x_0,y_0)$.
+
+\textbf{Доказательство:}
+
+Рассмотрим $\Delta^2f(h,k) = f(x_0+h,y_0+h)-f(x_0+h,y_0) - f(x_0,y_0+h)+f(x_0,y_0) $
+
+$\alpha(h) = \Delta^2 f(h,k)$, при фикс. $k$
+
+Воспользуемся Лагранжем для функций с одной переменной и получим:
+$$\alpha(h) = \alpha(h) - \alpha(0) = \alpha'(\overline{h})h = (f'_{x}(x_0 + \overline{h}, y_0 + k)-f'_x(x_0 + h', y_0))h=$$
+Давайте воспользуемся Лагранжем для второй переменной и получу:
+$$=f''_{xy}(x_0 + \overline{h}, y_0 + \overline{k})hk$$
+Аналогично $\beta(k) = f''_{yx}(x_0 + \overline{\overline{h}}, y_0 + \overline{\overline{k}})kh$
+
+Получаем, что фикс $h,k$ $f''_{yx}(x_0 + \overline{\overline{h}}, y_0 + \overline{\overline{k}})kh =f''_{xy}(x_0 + \overline{h}, y_0 + \overline{k})hk $
+
+Устремим $h,k \rightarrow 0$, воспользуемся непрерывностью и получим искомое нами выражение.
+
+\hfill Q.E.D.
+
+\deff{def:} \deff{Класс функций} $C^r(E), r \in \N \cup \{\infty\}, E \subset \R^m$ - откр. --- такое множество $f: E\rightarrow \R$, у которых существуют все частные производные порядка до $r$ включительно, и все эти производные непрерывны.
+
+\textbf{Замечание:} Если $f \in C^n(E)$, тогда $\forall k \leq n, \forall x \in E, \forall i_1,\ldots,i_k:\forall j_1,\ldots, j_k$ - наборы чисел от $1,\ldots ,n$ , отличающиеся перестановкой выполняется:
+$$\cfrac{\delta^kf}{\delta x_{i_1}\ldots \delta{x_{i_k}}} =\cfrac{\delta^kf}{\delta x_{j_1}\ldots \delta{x_{j_k}}} $$
+Делаете транспозиции, пользуйтесь теоремой, приводите к тривиальной и получаете  то что надо
+
+\deff{def:} \deff{Мультиндекс} (для $R^m$) - набор чисел $k = (k_1,\ldots, k_m), k_i\in Z_{+}$
+
+Введем некоторые определения:
+\begin{enumerate}
+    \item $|k| = k_1 + \ldots + k_m$ - высота мультиндекса
+    \item $x\in \R^m : x^k= x_1^{k_1}\ldots x_m^{k_m}$
+    \item $k! = k_1!\ldots k_m!$
+    \item $f^{(k)}(a) = \cfrac{\delta^{|k|}f}{(\delta x_1)^{k_1}\ldots (\delta x_m)^{k_m}}(a)$
+\end{enumerate}
+
+\thmm{Лемма (полиномиальная формула)}
+
+$a_i \in \R$
+$$(a_1 + a_2 + \ldots + a_m)^r = \sum\limits_{i_1=1}^r\sum\limits_{i_2=1}^r\ldots\sum\limits_{i_m=1}^ra_{i_1}\ldots a_{i_m} = \sum\limits_{j, |j| = r}\cfrac{r!}{j!}a^j = \sum\limits_{j_1 + \ldots +j_m = r} \cfrac{r!}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m}$$
+\textbf{Доказательство:}
+
+Индукция по $r$. База $r = 1$ тривиальна.
+
+Пусть верно для $r$, докажем для $r+1$:
+$$(a_1 + \ldots + a_m)^{r+1} = (a_1 + \ldots + a_m)\cdot (a_1 + \ldots + a_m)^r = (a_1 + \ldots + a_m) \sum\limits_{j, |j| = r}\cfrac{r!}{j!}a^j = $$
+$$=\sum\limits_{j_1 + \ldots +j_m = r} \cfrac{r!}{j_1!\ldots j_m!}a_1^{j_1+1}\ldots a_m^{j_m} + \ldots + \sum\limits_{j_1 + \ldots +j_m = r} \cfrac{r!}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m+1}=$$
+Переобозначим все переменные и запихнем $+1$ в степени в переменную:
+$$=\sum\limits_{j_1 + \ldots +j_m = r+1, \, j_1 \geq 1} \cfrac{r!j_1}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m} + 
+\ldots + \sum\limits_{j_1 + \ldots +j_m = r+1, \, j_m \geq 1} \cfrac{r!j_m}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m} = $$
+Главный фокус: Из-за того, что в числителе у нас $j_i$, мы можем продлить наше суммирование на случай $j_i =0$. Да добавятся, слагаемые, но они будут нулями. Сделаем:
+$$=\sum\limits_{j_1 + \ldots +j_m = r+1} \cfrac{r!j_1}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m} + 
+\ldots + \sum\limits_{j_1 + \ldots +j_m = r+1} \cfrac{r!j_m}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m} = $$
+$$=\sum\limits_{j_1 + \ldots +j_m = r+1}\cfrac{r!(j_1 + \ldots + j_m)}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m}  =\sum\limits_{j_1 + \ldots +j_m = r+1}\cfrac{(r+1)!}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m} $$
+
+\hfill Q.E.D.
+
+\thmm{Лемма (Лемма о дифференцировании сдвига):}
+
+$f: F \subset \R^m \rightarrow \R, f \in C^r(E), a\in E, h \in R^m, \forall t \in [-1,1], a+th \in E, \varphi(t) = f(a+th)$
+
+Тогда $\forall l \leq r:$
+$$\varphi^{(l)}(t) = \sum\limits_{j,|j| = l} \cfrac{l!}{j!} h^j \cfrac{\delta^{|j|}f}{\delta x^j}(a+th)$$
+
+\textbf{Замечание:} Эквивалентная запись: $ \sum\limits_{j,|j| = l} \cfrac{l!}{j!} h^j f^{(j)}(a+th)$
+
+\textbf{Доказательство:}
+$$\varphi^{(l)}(t) = \sum\limits_{j_1= 1}^n\ldots \sum\limits_{j_l=1}^n 
+\cfrac{\delta^lf}{\delta x_{j_1}\ldots \delta x_{j_l}}(a+th)h_{j_1}\ldots h_{j_k}$$
+Если долго смотреть, то можно увидеть что-то очень похожее на полиномиальную формулу:
+$$\sum\limits_{j_1= 1}^n\ldots \sum\limits_{j_l=1}^n 
+h_{j_1}\ldots h_{j_k}$$
+Но у нас еще есть какие-то константы. Станет ли от них хуже? При одинаковом наборе стоит одинаковая константа (по теореме о независимости частных производных от порядка). То есть это константа просто для конкретного $h_{j_1}\ldots h_{j_k}$ вынесется за "скобку". Поэтому в данном случае мы можем применить полиномиальную формулу, которая даст нам в точности, что надо
+
+\hfill Q.E.D.
+
+\thmm{Теорема (Формула Тейлора с остатком в форме Лагранжа)}
+
+$f \in C^{r+1}(E), x \in B(a,R)\subset E$ - откр. Тогда $\exists t \in (0,1)$:
+$$f(x) = \sum\limits_{k, |k| \leq r} \cfrac{f^{(k)}}{k!}(x-a)^k + \sum\limits_{k, |k| = r+1} \cfrac{f^{(k)}(a + t(x-a))}{k!}(x-a)^j$$
+\textbf{Замечание:} Это выглядит п**дец как страшно
+
+\textbf{Доказательство:}
+
+$\varphi(t) = f(a+th)$, где $h =x-a$
+
+Воспользуемся формулой Тейлора из первого семестра:
+$$\varphi(1) = \varphi(0) + \cfrac{\varphi'(0)}{1!} 1 + \cfrac{\varphi''(0)}{2!} 1^2 + \dots + \cfrac{\varphi^{(r)}(0)}{r!} 1^r + \cfrac{\varphi^{(r+1)}(t)}{(r+1)!} 1^{r+1} = f(x)$$
+Теперь заметим, что $\varphi(0) = f(a)$, а теперь заменим по лемме о дифференцировании каждую из производных и получим нашу формулу
+
+\textbf{Замечание:} TODO: в угоду малого времени полной формулы не будет
+
+\hfill Q.E.D.
+
+\textbf{Замечание:} Мы использовали только, что $[a,x] \subset E$
+
+\thmm{Теорема (Формула Тейлора с остатком в форме Пеано)}
+$$f(x) = \sum\limits_{k, |k| \leq r} \cfrac{f^{(k)}}{k!}(x-a)^k + o(|x-a|^r)$$
+\textbf{Доказательство:}
+
+Нам надо показать, что последняя сумма в остатке Лагранжа это $o(|x-a|^r)  = o(|h|^r)$. Будем показывать для изначального остатка (с $h$).
+
+Посмотрим на $\varphi^{(r+1)}$: 
+$$\varphi^{(r+1)}(t) = \sum\limits_{j,|j| = r+1} \cfrac{r+1!}{j!} h^j f^{(j)}(a+th)$$
+Любая производная $f$ степени $r+1$- непрерывна и ограниченна,  у нас конечное число слагаемых - ограниченных. 
+
+Откуда из-за этого они по модулю $\leq M|h^j|=M |h_1^{k_1}\cdot h_m^{k_m}| = o(|h|^r)$
+
+Покажем, что $M |h_1^{k_1}\cdot h_m^{k_m}| = o(|h|^r)$
+
+$\cfrac{|h_1^{k_1}\cdot \ldots h_m^{k_m}|}{|h|^r} = \cfrac{|h_1|^k}{|h|^k}\cdot \ldots \cdot \cfrac{|h_m|^{k_m}}{|h|^{k_m}}\cdot |h| \rightarrow 0$, при $h\rightarrow 0$
+
+Откуда получили, что нам надо
+
+\hfill Q.E.D.
+
+\deff{def:} \deff{Дифференциал} $f$ в точке $a$
+
+Отображение $(a,h) \rightarrow \cfrac{\delta f}{\delta x_1}(a) h_1 + \ldots + \cfrac{\delta f}{\delta x_m}(a) h_m$
+
+Традиционный образ: $h \leftrightarrow dx = (dx_1,\ldots dx_m)$: $df(a) = f'_{x_1}(a)dx_1 + \ldots + f'_{x_m}(a)dx_m$
+
+\deff{Дифференциал l-ого порядка}: $d^lf(a)= l! \sum\limits_{k, |k| = l}\cfrac{l!}{k!}f^{(k)}(a)(dx)^k$
+
+\deff{Конструктивное определение $l$-ого дифференциала}: см лекция 13 1:50
+
+
+\pagebreak
+
+\subsection{Линейные отображения.}
+
+\deff{def:} $Lin(\R^m, \R^n ) = $ множество линейных отображений $\R^m \rightarrow \R^n$.
+
+Беру $\mathcal{A} \in Lin(\R^m, \R^n): ||A|| = \sup_{x\in \R^n, |x| =1}|Ax|$.
+
+\textbf{Замечание:} В случае $\R^m$ шар $|x| =1$ - компактен, тогда $\sup \Leftrightarrow \max$
+
+\textbf{Замечание:} $||A|| \leq \sqrt{\sum\limits_{}a_{ij}^2}$
+
+\textbf{Замечание:} $\forall x \in \R^m: |Ax|\leq ||A|| |x|$
+
+\textbf{Замечание:} Если $\exists C >0: \forall x \in \R^m: |Ax|\leq C|x|$, то $||A|| \leq C$
+
+\thmm{Лемма(об условиях, эквивалентных непрерывности линейного оператора)}
+
+$X,Y$ - нормированные пространства $A \in Lin(X,Y)$. Тогда эквив:
+
+\begin{enumerate}
+    \item $A$ - ограничен, т.е. $||A|| < + \infty$
+    \item $A$ непр. в $x_0 = 0$
+    \item $A$ непр на $X$
+    \item $A$ - равномерно непрерывно: $\forall \varepsilon >0:\exists \delta >0:\forall x_1,x_2:|x_1-x_2|<\delta: |Ax_1-Ax_2|<\varepsilon$
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    
+
+\item $4 \Rightarrow 3 \Rightarrow 2:$ - Очевидно, мы просто упрощаем условие.
+
+\item $2 \Rightarrow 1:$
+
+Для $\varepsilon = 1: \exists \delta : \forall x: |x|<\delta: |Ax|<1$. Значит $||A|| \leq \cfrac{1}{\delta}$ - ограниченно
+
+\item $1 \Rightarrow 4:$ Считаем, что оператор $A \neq \zero$
+$$\forall \varepsilon >0: \exists \delta := \cfrac{\varepsilon}{||A||}:\forall x_1,x_2:|x_2-x_1|<\delta:$$
+$$|Ax_1-Ax_2| = |A(x_1-x_2)|\leq ||A|| |x_1-x_2| < ||A|| \cfrac{\varepsilon}{||A||}=\varepsilon$$
+\end{enumerate}
+\hfill Q.E.D.
+
+\thmm{Теорема (о пространстве линейных отображений)}
+
+\begin{enumerate}
+    \item $A \rightarrow ||A||$ является нормой в пространстве $Lin(\R^m,\R^n)$, те
+    \begin{enumerate}
+        \item $||A|| \geq 0 $ и $||A|| = 0 \Leftrightarrow A =0$
+        \item $\forall \alpha \in \R: ||\alpha A|| = |\alpha|\cdot ||A||$
+        \item $||A+B||\leq ||A|| + ||B||$
+    \end{enumerate}
+    \item $A \in Lin(\R^m,\R^n), B \in Lin(\R^n,\R^l)$, тогда $||BA||\leq ||B|| \cdot ||A||$
+\end{enumerate}
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item[1)] 1.a, 1.b - Очевидно
+    \item[] 1.в. Докажем: $\forall x: |x|= 1:$
+    $$|(A+B)x|\leq |Ax| + |Bx| \leq ||A|| |x| + ||B|||x| = (||A||+||B||)|x|$$
+    Откуда $||A+B|| \leq ||A||+ ||B||$
+    \item[2)] $|BAx| \leq ||B|||Ax|\leq ||B||||A|||x| \Rightarrow ||BA||\leq ||B||\cdot||A||$
+\end{enumerate}
+
+\hfill Q.E.D.
+
+\thmm{Теорема (Лагранжа для отображений)}
+
+$F:D \subset \R^m \rightarrow \R^n$ - дифф на $D$ - открытое.
+
+$a,b \in D, [a,b] \subset D$, $[a,b] = \{a+ t(b-a), t\in[0,1]\}$.  
+
+Тогда $\exists \theta \in (0,1): c:= a+\theta(b-a):$
+$$|F(b)-F(a)|\leq ||F'(c)|||b-a|$$
+
+\textbf{Доказательство:}
+
+$f(t) = F(a  + t(b-a)), t\in[0,1]$--- векторозначная функция.
+
+$f'(t) = F'(a+t(b-a))\cdot(b-a)$
+
+Воспользуемся т. Лагранжа для $f:$
+$$|f(1)-f(0)|\leq |f'(\theta)|, \theta \in (0,1)$$
+$$|F(b)-F(a)|\leq |F'(a+ \theta (b-a))\cdot (b-a)|\leq ||F'(c)||\cdot |b-a|$$
+\hfill Q.E.D.
+
+\deff{def:} $\Omega_m := \{A \in Lin(\R^m, \R^m): \exists A^{-1}\}$
+
+
+\thmm{Лемма.}
+
+$B \in Lin(\R^m, \R^m)$, пусть $\exists C >0 : \forall x : |Bx|\geq C|x|$, тогда $B \in \Omega_m : ||B^{-1}|| \leq \cfrac{1}{C}$
+
+\textbf{Доказательство:}
+
+Видим, что $\rg B = n,$ откуда $\exists B^{-1}$.  $y = Bx, x=B^{-1}y$,  заменим и получим:
+$$|y| \geq  C |B^{-1}y|\Leftrightarrow |B^{-1}y|\leq\cfrac{1}{C}|y|$$
+Откуда $||B^{-1}||\leq \cfrac{1}{C}$.
+
+\hfill Q.E.D.
+
+\textbf{Следствие:} $A \in \Omega_m \Rightarrow |Ax| \geq \cfrac{1}{|A^{-1}|}|x|$
+
+\textbf{Доказательство:} $|x| = |A^{-1}Ax|\leq ||A^{-1}|||Ax|$.
+
+\thmm{Теорема (об обратимости линейного отображения, близкого к обратимому)}
+
+$L \in \Omega_m$ - обратимый. $M\in Lin (\R^m, \R^m)$, $||L-M||< \cfrac{1}{||L^{-1}||}$ 
+
+Тогда:
+\begin{enumerate}
+    \item $M \in  \Omega_m$
+    \item $||M^{-1}|| \leq \cfrac{1}{\cfrac{1}{||L^{-1}||}-||L-M||}$
+    \item $||L^{-1}- M^{-1}||\leq \cfrac{||L^{-1}||}{||L^{-1}||^{-1}- ||L-M||}\cdot ||L-M||$
+\end{enumerate}
+\textbf{Доказательство:}
+
+$$|Mx|\geq |Lx|- |(M-L)x|\geq \cfrac{1}{|L^{-1}|}|x|  - ||M-L|| |x| = \left( \cfrac{1}{||L^{-1}||}- ||M-L||\right)|x|$$
+По лемме выше доказаны пункт 1, 2.
+
+Покажем, что выполнен еще пункт 3:
+$$M^{-1}-L^{-1}=M^{-1}(L-M)L^{-1}$$
+$$||M^{-1}-L^{-1}||\leq ||M^{-1}|| \cdot ||L-M|| \cdot||L^{-1}||\leq \cfrac{1}{\cfrac{1}{||L^{-1}||}-||L-M||}\cdot ||L^{-1}||\cdot ||L-M||$$
+Откуда уже верно искомое.
+
+
+\hfill Q.E.D.
+
+\textbf{Следствие:}  Непрерывность вычисления обратного оператора.
+
+Отображение $\Omega_m\rightarrow \Omega_m:L \rightarrow L^{-1}$ непрерывно. 
+
+\textbf{Доказательство:}
+
+Возьму точку $A\in \Omega_m$. Хочу показать непрерывность в точке $A$. Буду доказывать непрерывность по Гейне. Пусть $B_k$ - последовательность. $B_k \rightarrow A$, хочу показать $B_k^{-1} \rightarrow A^{-1}_k$.
+
+По предыдущей теореме: 
+$$||B_k^{-1}- A^{-1}||\leq  \cfrac{||A^{-1}||}{||A^{-1}||^{-1}- ||B_k-A||} \cdot ||B_k-A|| \rightarrow 0$$
+$||B_k-A||$ - бесконечно малая, $\cfrac{||A^{-1}||}{||A^{-1}||^{-1}- ||B_k-A||} $ - ограниченная.
+
+\hfill Q.E.D.
+
+
+\thmm{Теорема о непрерывно дифференцируемых отображениях}
+
+$F:D \subset \R^m \rightarrow \R^n$ - дифф на $D$ - откр.
+
+Тогда равносильно:
+\begin{enumerate}
+    \item $F \in C^1(D)$, т.е. все $\cfrac{\delta F_i}{\delta x_j}$ - непрерывно.
+    \item $F': D \rightarrow Lin(\R^m, \R^n)$ - непр.
+
+    \textbf{Замечание:} Сопоставляем точке, производный оператор в ней
+\end{enumerate}
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item I $\Rightarrow$ II
+    $$||F'(x)-F'(x_0)|| = ||\left(\cfrac{\delta F_i}{\delta x_j}(x) - \cfrac{\delta F_i}{\delta x_j}(x_0)\right)_{ij}|| \leq \sqrt{\sum\limits_{i,j}\left( \cfrac{\delta F_i}{\delta x_j}(x) - \cfrac{\delta F_i}{\delta x_j}(x_0)   \right)^2}$$
+    Напишем определение непрерывности:
+    $$\forall \varepsilon >0: \exists \delta >0: \forall x : |x-x_0|<\delta: |\cfrac{\delta F_i}{\delta x_j}(x) - \cfrac{\delta F_i}{\delta x_j}(x_0)|<\varepsilon$$
+    Причем это определение сразу при всех $i,j$.
+    
+    Получим, что $\leq \varepsilon\sqrt{mn}$, а это то, что нам надо.
+    \item II $\Rightarrow$ I
+$$\forall \varepsilon >0: \exists \delta > 0: \forall x: |x-x_0|<\delta: ||F'(x)-F'(x_0)||<\varepsilon$$
+Возьму $e_k$ - базисные вектора(на $k$-ой позиции стоит $1$, в остальных $0$).
+
+Тогда:
+$$|(F'(x)-F'(x_0))(e_j)|\leq ||F'(x) - F'(x_0)||\cdot |h| < \varepsilon \cdot |1|$$
+Теперь посмотрим, что у нас с левой стороны:
+$$|(F'(x)-F'(x_0))(e_j)| \geq |\sqrt{\sum\limits_{i}\left(\cfrac{\delta F_i}{\delta x_j}(x)- \cfrac{\delta F_i}{\delta x_j}(x_0)\right)^2}|\Leftrightarrow |\cfrac{\delta F_i}{\delta x_j}(x)- \cfrac{\delta F_i}{\delta x_j}(x_0)|< \varepsilon $$
+Для текущего $j$ и для любого $i$.
+
+
+\end{enumerate}
+
+
+
+\hfill Q.E.D.
+
+
+\pagebreak
+
+\subsection{Экстремумы.}
+
+\deff{def:} $f: D \subset \R^m \rightarrow \R$
+\begin{enumerate}
+    \item $x_0$ --- \deff{точка локального максимума}: $\exists U(x_0) \forall x \in U(x_0)\cap D: f(x_0) \geq f(x)$
+ \item  $x_0$ --- \deff{точка строгого локального максимума}, если заменить  знак $\geq$ на $>$\
+\item $x_0$ --- \deff{точка (строгого) локального минимума}, если заменить знак на $\leq(<)$
+\item  $x_0$ --- \deff{экстремум}, если выполнено хотя бы одно из пунктов $1-3$ 
+\end{enumerate}
+
+
+\thmm{Теорема (Ферма)}
+
+$f :D \in \R^m \rightarrow \R, x_0 \in Int(D), x_0$ - точка локального экстремума, $f$ дифф в $x_0$
+
+Тогда:
+$$\forall l \in \R^m, |l|=1 :\cfrac{\delta f}{\delta l}(x_0) = 0 $$
+\textbf{Доказательство:}
+
+$g(t) = f(x_0 + tl), t \in (-\varepsilon, \varepsilon)$
+
+$t = 0$ - локальный экстремум $g$, тогда по одномерной теореме Ферма $g'(0) = 0 = \cfrac{\delta f}{\delta l}(x_0)$
+
+\hfill Q.E.D.
+
+\textbf{Следствие 1:} необходимое условие сходимости:
+
+$x_0$ - экстремум, тогда градиент равен $0$
+
+\textbf{Следствие 2:} Теорема Ролля.
+
+$K \subset \R^m$ - компактно, $f$ непр. на $K$, $f: K \rightarrow \R, f$ дифф на  $Int K, f|_{\delta K} = const$ - значение $f$ на всех граничных точкахх совпадают.
+
+Тогда  $\exists x_0 \in Int K, grad(f) (x_0) = 0$
+
+\textbf{Доказательство:}
+
+Существует максимум и минимум $f$  на $K$ по теореме Вейерштрасса (о непр. образе компакта).  Пусть наибольшее и наименьшее значение достигаются на границе. Но тогда они равны и $f = const$ на всем $K$. Иначе есть где-то посередине. Это точка будет очевидно экстремумом и по необходимому условию градиент будет $0$.
+
+\hfill Q.E.D.
+
+\deff{def:} $h \in \R^m$, $Q(h) = \sum\limits_{ij}a_{ij}h_ih_j$ - \deff{квадратичная форма.}
+
+\begin{enumerate}
+\item $\forall h \neq 0: Q(h) > 0$ --- положительно опр. форма
+\item $\forall h \neq 0: Q(h) < 0$ --- отрицательно опр. форма
+\item $\exists h: Q(h) > 0,  \exists \tilde{h}: Q(\tilde{h}) < 0$ --- незнакоопределеная форма
+\item есть полуопределенные - те, где существует вектор с нулем.
+\end{enumerate}
+
+\thmm{Лемма(об оценке квадратичной формы и об эквивалентных нормах)}
+\begin{enumerate}
+    \item  $Q$ - положит. определенная кв. форма. Тогда $\exists \delta_Q>0 : \forall h: |Q(h)|\geq \gamma_Q|h|^2$
+    \item $p: \R^m \rightarrow \R$ - норма. Тогда $\exists c_1,c_2>0:$
+    $$\forall x: c_1|x|\leq p(x)\leq c_2|x|$$
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\begin{enumerate}
+    \item $\gamma_Q := \min_{|h|=1} Q(h)$ он достигается по теореме Вейерштрасса
+
+    $\forall h \neq 0 : Q(h) \geq \gamma_Q|h|^2$, $\cfrac{Q(h)}{|h|^2}=Q(\cfrac{h}{|h|}) \geq \gamma_Q$
+    \item $c_1 = \min_{|h| = 1}p(h), c_2 = \max_{|h|=1}p(h)$, аналогичным образом получим:
+    $$c_2\geq\cfrac{p(h)}{|h|} = p\left(\cfrac{h}{|h|}\right)\geq c_1$$
+    Осталось доказать непрерывность $p(x)$, чтобы показать, что у нас компакт:
+    $$|p(x)-p(y) \leq p(x-y) = p(\sum\limits_{}(x_k-y_k)e_k) \leq \sum\limits_{}p((x_k-y_k)e_k)\leq \sum\limits_{}|x_k-y_k|p(e_k) \leq ||x-y||\sqrt{ \sum\limits_{}p(e_k)^2}$$
+\end{enumerate}
+\hfill Q.E.D.
+
+\thmm{Теорема(Достаточное условие экстремума)}
+
+$f: D \subset \R^m \rightarrow \R,  f \in C^2(D),  D$ --- открытое
+
+$x_0 \in D: f'_{x_1} (x_0) = 0, \ldots, f'_{x_m} (x_0) = 0$ или по-другому $grad f(x_0) = 0$, $Q(h) := d^2 f(x_0, h)$
+
+Тогда:
+\begin{enumerate}
+    \item  Если $Q(h)$ --- положительна опр., то $x_0$ - локальный $min$
+\item Если $Q(h)$ --- отрицательна опр., то $x_0$ - локальный $max$
+\item Если $Q(h)$ --- неопр., то $x_0$ --- не экстремум.
+\item  Если $Q(h)$ --- положительно опр. вырожденная, то $x_0$ может быть и $min$, и не экстремумом (недостаточно информации)
+\item Аналогично для отрицательно опр. вырожденной
+\end{enumerate}
+
+\textbf{Доказательство:}
+
+\uline{Пункт 1}:
+
+Напишем формулу Тейлора в точке $x_0$ для $f$:
+$$f(x_0+h) = f(x_0) + df(x_0,th) +  \cfrac{1}{2}d^2f(x_0 + \theta h,h)$$
+$$f(x_0+h) - f(x_0) = \cfrac{1}{2}d^2f(x_0 + \theta h,h) = \cfrac{1}{2}Q(h) + \cfrac{1}{2}\sum\limits_{i=1}^m\left (\cfrac{\delta^2f }{\delta    x_i^2}(x_0 + \theta h) - \cfrac{\delta^2 f}{\delta x_i^2}(x_0)\right)\cdot h_i^2  + \ldots = $$
+А что у нас осталось? Осталось выписать для $i\neq j$ сумму. Оценим ее $\alpha(h)|h|^2$
+
+Остается:
+$$= \cfrac{1}{2}Q(h) + \cfrac{1}{2}\sum\limits_{i=1}^m\left (\cfrac{\delta^2f }{\delta    x_i^2}(x_0 + \theta h) - \cfrac{\delta^2 f}{\delta x_i^2}(x_0)\right)\cdot h_i^2  + \alpha(h) |h|^2 = \cfrac{1}{2}Q(h) + \beta(h)|h|^2 \geq \left(\cfrac{1}{2}\gamma_Q + \alpha(h)\right)|h|^2>0$$
+
+\uline{Пункт 2:} Аналогично
+
+\uline{Пункт 3:} 
+
+$\exists h \in \R^m : Q(h) > 0: \exists \tilde{h}: Q(\tilde{h})<0$, тогда точка $x_0$ не точка экстремума.
+
+$f(x_0+th) = f(x_0) + df(x_0,th) + \cfrac{1}{2}d^2f(x_0 + \theta th,th)$
+
+Аналогично пункту 1, будем устремлять $t \rightarrow 0 $.
+
+Получим, что вдоль направления $h$:$f(x_0) < f(x_0 + t \cdot h)$, а вдоль направления $\tilde{h}: f(x_0) > f(x_0 + t \cdot \tilde{h})$, поэтому $x_0$ --- не экстремум
+
+\uline{Пункт 4:} TODO: лекция 15, начало
+
+\hfill Q.E.D.
+
+\textbf{Замечание:} чтобы понять, что $Q$ - кв. форма, распишите по определению
+

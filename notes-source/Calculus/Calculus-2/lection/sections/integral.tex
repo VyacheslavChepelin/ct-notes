@@ -532,7 +532,7 @@ $0<q^nH_n \leq \cfrac{q^n}{n!}4^n\pi=\cfrac{(4q)^n}{n!}\pi\rightarrow 0$, но �
 
 \hfill Q.E.D.
 
-\deff{def:} $f:[a.b] \rightarrow \mathbb{R}$ \deff{кусочно-непрерывной.}
+\deff{def:} $f:[a.b] \rightarrow \mathbb{R}$ \deff{кусочно-непрерывной}, если
 
 $\exists A \ = \{x_1,\ldots,x_n\} \subset [a,b]$. Такая функция будет непрерывны на $[a,b]$, кроме этих точек, а в них происходят скачки.
 
@@ -621,7 +621,7 @@ $\varPhi: \Delta = \sigma(\text{Сектора}) $, $\Delta \in \Segm([a,b])$
 
 \thmm{Теорема (Площадь криволинейного сектора).}  
 
-В указанных условия, а так же $\rho: [a,b] \rightarrow \mathbb{R}, \rho>0$ и непрерывна. $[\alpha,\beta]\in \Segm([a,b])$. Тогда: $$\varPhi([\alpha,\beta]) = \cfrac{1}{2}\integral{\alpha}{\beta}\rho^2(\varphi) \, d\varphi$$
+В указанных условия, а также $\rho: [a,b] \rightarrow \mathbb{R}, \rho>0$ и непрерывна. $[\alpha,\beta]\in \Segm([a,b])$. Тогда выполнено: $$\varPhi([\alpha,\beta]) = \cfrac{1}{2}\integral{\alpha}{\beta}\rho^2(\varphi) \, d\varphi$$
 \textbf{Доказательство:}
 
 Если мы докажем, что $\frac{1}{2}\rho^2(\varphi)$ - плотность $\varPhi$, тогда по предыдущей теореме, мы получим, что данная формула будет верна. Будем опрделять определение плотности.
@@ -839,7 +839,11 @@ $l(\gamma) = \sup (\sum\limits\gamma(t_k)-\gamma(t_{k-1}) | a = t_0<t_1<\ldots<t
 
 \textbf{Замечание:} $\gamma \in C^1:$ $l(\gamma) = \integral{a}{b}|\gamma'(t)|dt$.
 
-\textbf{Замечание:} Пусть $f$ - любая из $[a,b] \rightarrow \mathbb{R}$. Тогда \deff{вариация функции} на $[a,b]$: $$\Var_a^b f = \sup (\sum\limits_{k=1}^n |f(t_k)-f(t_{k-1})|)$$
+
+\deff{def:} Пусть $f$ - любая из $[a,b] \rightarrow \mathbb{R}$. Тогда \deff{вариация функции} на $[a,b]$: 
+$$\Var_a^b f = \sup (\sum\limits_{k=1}^n |f(t_k)-f(t_{k-1})|)$$
+где $\tau = \{t_0,\ldots, t_n\}$ --- дробление отрезка
+
 Пример:
 $f(x) = \begin{cases}
     1,x \in \Q \\
@@ -1106,7 +1110,7 @@ $\forall A \in (a,b): f$ - кусочно непрерывная на $[a,A]$
 \begin{enumerate}
     \item \textbf{Критерий Больцана-Коши} (сходимости несобственного интеграла):
   
-  $\integral{a}{b}f(x)dx$ --- сходящаяся $\Leftrightarrow \forall \varepsilon >0:\exists \Delta \in (a,b): \forall A,B\in (a,b),  |\integral{A}{B}f|< \varepsilon$
+  $\integral{a}{b}f(x)dx$ --- сходящаяся $\Leftrightarrow \forall \varepsilon >0:\exists \Delta \in (a,b): \forall A,B\in \Delta,  |\integral{A}{B}f|< \varepsilon$
   
   Оно тривиально (так сказал КПК).
 
@@ -1243,7 +1247,7 @@ $$\cfrac{\sqrt{\pi}}{2} \leq \integral{0}{+\infty}e^{-x^2}dx \leq \cfrac{\pi}{2}
 $\integral{a}{b}f$ - \deff{абсолютно сходится}, если:
 \begin{enumerate}
     \item $\integral{a}{b}f$ сходится.
-    \item $\integral{a}{b} |b|$ сходится.
+    \item $\integral{a}{b} |f|$ сходится.
 \end{enumerate}
 
 \textbf{Замечание от Славы.} От слова abs - по модулю.
@@ -1321,3 +1325,58 @@ $$=\integral{0}{\pi}\sin (n + \frac{1}{2})x \left( \cfrac{1}{x} - \cfrac{1}{2 \s
 Тогда мы можем сделать интегрирование по частям.
 $$=\cfrac{1}{n + \frac{1}{2}}\cos (n + \frac{1}{2})x h(x) \Big|^\pi_0 + \frac{1}{n + \frac{1}{2}}\integral{0}{\pi}\cos (n + \frac{1}{2})x h'(x) dx$$
 Откуда, заметим, что каждое из выражений стремится к нулю при $n\rightarrow \infty$, откуда победили
+
+
+\pagebreak
+\subsection{Интегрирование асимптотического ряда.}
+
+$\varphi: \langle a,b\rangle \rightarrow \R$, при $x \rightarrow a, \varphi_{k+1} = o(\varphi_k)$
+$$f = \sum\limits_{k=0}^n c_k \varphi_k + o(\varphi_n)$$
+Если такое ассимпт. разложение существует $\forall n$, то $f \mytilde \sum\limits_{k=1}^{+\infty}c_k \varphi_k$
+
+\textbf{Замечание:} Это формальная запись, ряд не предполагается сходящимся.
+
+\textbf{Замечание:} $f \neq g$ могут иметь одно и то же асимптотическое разложение: $\forall n: f-g = o(\varphi_n)$. Пример: $e^{-\frac{1}{x^2}}$ и $\zero$ функция.
+
+\textbf{Лемма (об интегрировании асимпт. равенств)}
+
+$f,g \in C[a,b)$, $g \geq 0$, интеграл $\integral{a}{b}g(x)dx = +\infty$. Пусть $F(x) = \integral{a}{x}f, G(x) = \integral{a}{x}g $
+
+Тогда из соотношений при $x\rightarrow b-0$:
+\begin{enumerate}
+    \item $f \mytilde g \Rightarrow F(x) \mytilde G(x)$
+    \item $f = O(g)  \Rightarrow F = O(G)$
+    \item $f = o(g) \Rightarrow F = o(G)$
+\end{enumerate}
+
+\textbf{Доказательство:}
+\begin{enumerate}
+    \item $F \mytilde G$ - это правило Лопиталя.  $g \geq 0, f \mytilde g \Rightarrow f \geq 0$ в окрестности $b$ $\Rightarrow \integral{a}{b}f = +\infty$. 
+    $$\lim \cfrac{F(x)}{G(x)} = \left[\frac{+\infty}{+\infty}\right] = \lim \cfrac{f(x)}{g(x)} = 1$$
+    \item $f = O(g) \Leftrightarrow \exists M:\exists x_0\in [a,b):\forall x \geq x_0: |f(x)|\leq M|g(x)|$. Тогда при $x > x_0$:
+    $$|\integral{x_0}{x}f| \leq M \integral{x_0}{x}g$$
+    Пусть $\integral{a}{x_0}|f| = c_1 >0$. Выберем $x_1$ так, что $\integral{a}{x_1}g(x) = \alpha>0$. Тогда для $x > x_1:$
+    $$|\integral{a}{x}f|\leq \integral{a}{x_0}|f| + \integral{x_0}{x}|f| \leq c_1 \cdot 1 + M \integral{x_0}{x}g \leq \cfrac{c_1}{\alpha}\integral{a}{x_1}g + M\integral{x}{x_0}g \leq$$
+    $$\leq \left(\cfrac{c_1}{\alpha} + M\right) \integral{a}{x}g$$
+    Заметим, что тк $\integral{a}{b}g = + \infty$, то $\alpha$ я мог выбирать сколь угодно большую. Выберу ее такой, что $\cfrac{c_1}{\alpha}$ очень маленькое и получу то, что от нас и требовалось
+    \item $f = o(g)$. Фиксируем $\varepsilon > 0: \exists x_0 : \forall x>x_0: |\integral{x_0}{x} f| < \cfrac{\varepsilon}{2}\integral{x_0}{x}g$.
+
+    Выбираем $c_1$, потом $x_1$, делаем аналогично
+\end{enumerate}
+\hfil Q.E.D.
+
+\thmm{Лемма 2.} $\varphi_n \in C[a,b)$ - шкала асимпт. разложения при $x\rightarrow b-0$, $\varphi_n \geq 0$.
+
+$\varPhi_n (x) = \integral{x}{b}\varphi$ - сх. $\forall n$.
+
+Тогда $\varPhi_n$ тоже шкала и если $f \in C[a,b): F(x) = \integral{x}{b}f$ сх., $f \mytilde \sum\limits_{n=1}^{+\infty}c_n \varphi_n$, то $F(x) \mytilde \sum\limits_{n=1}^{+\infty}c_n \varPhi_n$.
+
+\textbf{Доказательство:}
+
+Следует из правил Лопиталя:
+$$\lim\limits_{x\rightarrow b-0} \cfrac{\varPhi_{m+1}(x)}{\varPhi(x)} = \left[\cfrac{0}{0}\right] = \lim\limits_{x\rightarrow b-0} \cfrac{-\varphi_{n+1}(x)}{-\varphi_n(x)}= 0 $$
+
+Покажем, что асимптотическое  разложение:
+$$\lim\limits_{x\rightarrow b-0} \cfrac{F(x) - \sum\limits_{k=1}^n c_k\varPhi_k}{\varPhi_n} = \left[\cfrac{0}{0}\right] = \lim\limits_{x \rightarrow b-0} \cfrac{f(x)- \sum\limits_{k=1}^n c_k \varphi_k}{\varphi_n}=0$$
+
+\hfill Q.E.D
