@@ -19,3 +19,8 @@
 [Теоритический опрос](./theoretical-survey.pdf).
 
 
+#### 3 семестр
+
+[Основной конспект](./Calculus-3.pdf).
+
+[Конспект практики](./CalculusPractice-3.pdf).
