@@ -24,3 +24,5 @@
 [Основной конспект](./Calculus-3.pdf).
 
 [Конспект практики](./CalculusPractice-3.pdf).
+
+[Конспект прошлых лет](./CalculusExam.pdf)
