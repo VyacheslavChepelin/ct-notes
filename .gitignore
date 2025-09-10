@@ -1,11 +1,13 @@
 
 *.toc
 *synctex.gz
+*synctex(busy)
 *.out
 *.log
 *.fls
 *fdb_latexmk
 *.aux
+/notes-source/**/*.pdf
 
 Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.aux
 Algorithms - Алгоритмы и структуры данных/2 семестр/source/main.fdb_latexmk
