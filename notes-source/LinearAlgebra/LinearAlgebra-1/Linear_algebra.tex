@@ -1809,13 +1809,13 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(\Rightarrow \dfrac{x^2(a^2 - c^2)}{a^2} + y^2 = a^2 - c^2 \Rightarrow \dfrac{x^2}{a^2} - \dfrac{y^2}{c^2 - a^2} = 1 \Rightarrow\) \fbox{\(\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1\)} \(Q.E.D.\)
 
-          Из \(r_2 = -2a + r_1\) аналогично можно получить \(r_1 = x \varepsilon + a\). Значит \fbox{\(r_{1, 2} = x \varepsilon \pm a\)}
+          Из \(r_1 = 2a + r_2\) получаем \(r_1 = x \varepsilon + a\). Значит \fbox{\(r_{1, 2} = x \varepsilon \pm a\)}
 
           Если \(r_1 < r_2\) (левая ветвь): \fbox{\(r_{1, 2} = -x \varepsilon \mp a\)}
 
     \item Директрисы:
 
-          \(D_2: x = \pm \dfrac{a}{\varepsilon}\), \(d_2 = |M, D_2| = \left|x - \dfrac{a}{\varepsilon}\right|\)
+          \(D_2: x = \pm \dfrac{a}{\varepsilon}\), \(d_2 = dist(M, D_2) = \left|x - \dfrac{a}{\varepsilon}\right|\)
 
           Правая ветвь: \(r_2 = x \varepsilon - a \Rightarrow \dfrac{r_2}{d_2} = \dfrac{x \varepsilon - a}{x - \dfrac{a}{\varepsilon}} = \varepsilon \dfrac{x - \dfrac{a}{\varepsilon}}{x - \dfrac{a}{\varepsilon}} = \varepsilon\)
 
@@ -1827,7 +1827,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
     \item Определение 2:
 
-          Пусть известно \(Q = |F, D|\) и \(\varepsilon = \dfrac{r}{d} > 1\)
+          Пусть известно \(q = dist(F, D)\) и \(\varepsilon = \dfrac{r}{d} > 1\)
 
           Проведём ДСК, в которой \(D \parallel Oy\). Давайте найдём параметры канонического уравнения, считая, что \(D: x = \dfrac{a}{\varepsilon}\), а \(F = (c, 0)\).
 
@@ -1838,7 +1838,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(\Rightarrow\) \fbox{\(c = \dfrac{\varepsilon^2 Q}{\varepsilon^2 - 1}\)}
 
-          Мы в узнали чему равны \(a\) и \(c\) из известных нам \(\varepsilon\) и \(Q\), значит точки, удовлетворяющие 2-му определению, удовлетворяют \(\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1\), а \(D\) --- очевидно директриса гиперболы. \(Q.E.D.\)
+          Мы узнали чему равны \(a\) и \(c\) из известных нам \(\varepsilon\) и \(Q\), значит точки, удовлетворяющие 2-му определению, удовлетворяют \(\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1\), а \(D\) --- очевидно директриса гиперболы. \(Q.E.D.\)
 
     \item Асимптоты:
 
@@ -1854,25 +1854,25 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(=b \lim\limits_{x \to +\infty} \left(\dfrac{\dfrac{x^2}{a^2} - 1 - \dfrac{x^2}{a^2}}{\sqrt{\dfrac{x^2}{a^2} - 1} + \dfrac{x}{a}} \right) = b \lim\limits_{x \to +\infty} \left(\dfrac{-1}{\sqrt{\dfrac{x^2}{a^2} - 1} + \dfrac{x}{a}} \right) = 0\)
 
-          Значит асимптота: \(y = \dfrac{b}{a} x\)
+          Значит асимптота: \(y = \dfrac{b}{a} x\) --- в первой координатной четверти
 
           По симметрии получаем \(y = \pm \dfrac{b}{a} x\) \(Q.E.D.\)
 
     \item Полярное уравнение:
 
-          Зададим ПСК\((r, \varphi)\), у которой полюс \(O'= F_2 = (c, 0)\), а ось направлена в сторону \(-x\).
+          Зададим ПСК\((r, \varphi)\), у которой полюс \(O'= F_2 = (c, 0)\), а ось направлена в сторону, противоположную направлению оси \(Ox\).
 
           \(x = c - r \cos \varphi\)
 
           Правая ветвь: \(r = r_2 = x \varepsilon - a\)
 
-          \(r = \varepsilon(c - r \cos \varphi) - a = \varepsilon c - \varepsilon r \cos \varphi - a \Rightarrow r(1 + \varepsilon \cos \varphi) = \varepsilon c - a = \varepsilon \left(c - \dfrac{a}{\varepsilon}\right) = P \Rightarrow r = \dfrac{P}{1 + \varepsilon \cos \varphi}\)
+          \(r = \varepsilon(c - r \cos \varphi) - a = \varepsilon c - \varepsilon r \cos \varphi - a \Rightarrow r(1 + \varepsilon \cos \varphi) = \varepsilon c - a = \varepsilon \left(c - \dfrac{a}{\varepsilon}\right) = \varepsilon q = p \Rightarrow r = \dfrac{P}{1 + \varepsilon \cos \varphi}\)
 
           Левая ветвь: \(r = r_2 = - x \varepsilon + a\)
 
-          \(r = - \varepsilon(c - r \cos \varphi) + a = - \varepsilon c + \varepsilon r \cos \varphi + a \Rightarrow r(1 - \varepsilon \cos \varphi) = a - \varepsilon c = \varepsilon \left(\dfrac{a}{\varepsilon} - c\right) = -P \Rightarrow r = \dfrac{-P}{1 - \varepsilon \cos \varphi}\)
+          \(r = - \varepsilon(c - r \cos \varphi) + a = - \varepsilon c + \varepsilon r \cos \varphi + a \Rightarrow r(1 - \varepsilon \cos \varphi) = a - \varepsilon c = \varepsilon \left(\dfrac{a}{\varepsilon} - c\right) = \varepsilon \left(-q \right) = -p \Rightarrow r = \dfrac{-P}{1 - \varepsilon \cos \varphi}\)
 
-          Если ось направлена в противоположную сторону, то \(\cos(2 \pi - \varphi) = - \cos \varphi\), и \(\cos \varphi\) в формулы записывается со знаком минус.
+          Если ось направлена в противоположную сторону, то \(\cos(\pi - \varphi) = - \cos \varphi\), и \(\cos \varphi\) в формулы записывается со знаком минус.
 
           Аналогично, если у ПСК полюс в \(F_1\).
 
@@ -1898,9 +1898,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(\vec r_1 = \overrightarrow{F_1 M_0} = (x_0 + c, y_0)\), \(\vec r_2 = \overrightarrow{F_2 M_0} = (x_0 - c, y_0)\)
 
-          Проверим, что биссектриса между \(\vec r_1\) и \(\vec r_2\) параллельна касательной в точке \(M_0\), то есть перпендикулярна перпендикуляру касательной \(\vec N = \left(\dfrac{x_0}{a^2}, -\dfrac{y_0}{b^2}\right)\).
+          Проверим, что вектор биссектрисы угла между \(\vec r_1\) и \(\vec r_2\) параллелен касательной в точке \(M_0\), то есть перпендикулярен нормали касательной \(\vec N = \left(\dfrac{x_0}{a^2}, -\dfrac{y_0}{b^2}\right)\).
 
-          Биссектриса между \(\vec r_1\) и \(\vec r_2\): \(|\vec r_1|\vec r_2 + |\vec r_2| \vec r_1 = (\varepsilon x_0 + a) \vec r_2 + (\varepsilon x_0 - a) \vec r_1 =\)
+          Вектор биссектрисы угла между \(\vec r_1\) и \(\vec r_2\): \(|\vec r_1|\vec r_2 + |\vec r_2| \vec r_1 = (\varepsilon x_0 + a) \vec r_2 + (\varepsilon x_0 - a) \vec r_1 =\)
 
           \(=((x_0 - c)(\varepsilon x_0 + a) + (\varepsilon x_0 - a)(x_0 + c), y_0(\varepsilon x_0 + a) + y_0(\varepsilon x_0 - a)) =\)
 
@@ -1914,7 +1914,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 \subsection{Приведение КВП к каноническому виду}
 \(a_{11} x^2 + 2 a_{12} x y + a_{22} y^2 + 2 a_1 x + 2 a_2 y + a_0 = 0\), \(a_{11}^2 + a_{12}^2 + a_{22}^2 \neq 0\)
 
-Очевидно, что КВП не меняет своего типа при повороте и сдвиге.
+Очевидно, что уравнение КВП не меняет своего типа при повороте и сдвиге.
 
 \begin{enumerate}
     \item Если \(a_{12} \neq 0\), подберём такой угол поворота \(\alpha\), чтобы в новом уравнении \(a_{12}' = 0\).
@@ -1925,7 +1925,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           Выразим \(a_{12}'\) через старые коэффициенты, \(\sin \alpha = S_\alpha\) и \(\cos \alpha = C_\alpha\) и приравняем к \(0\):
 
-          \(a_{12} = -2 a_{11} C_\alpha S_\alpha + 2 a_{12} (C_\alpha^2 S_\alpha^2) + 2 a_{22} C_\alpha S_\alpha = 0\)
+          \(a'_{12} = -2 a_{11} C_\alpha S_\alpha + 2 a_{12} (C_\alpha^2 - S_\alpha^2) + 2 a_{22} C_\alpha S_\alpha = 0\)
 
           \((a_{22} - a_{11}) \tan \alpha + a_{12} (1 - \tan^2 \alpha) = 0\)
 
@@ -1935,11 +1935,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           По теореме Виета \(\tan \alpha_1 \cdot \tan \alpha_2 = -1 \Rightarrow \alpha_1 \in \left(0, \dfrac{\pi}{2}\right)\), \(\alpha_2 \in \left(-\dfrac{\pi}{2}, 0\right)\), \(\alpha_1 - \alpha_2 = 90^\circ\)
 
-          \(\alpha_{1, 2} = \arctan\left(\dfrac{-\dfrac{a_{22} - a_{11}}{a_{12}} \pm \sqrt{\left(\dfrac{a_{22} - a_{11}}{a_{12}}\right) ^ 2 + 4}}{2}\right)\)
+          \(\alpha_{1, 2} = \arctan\left(\dfrac{\dfrac{a_{22} - a_{11}}{a_{12}} \pm \sqrt{\left(\dfrac{a_{22} - a_{11}}{a_{12}}\right) ^ 2 + 4}}{2}\right)\)
 
           Начало координат \(O' = O\)
 
-    \item \(a_{11}' x'^2 + a_{22} y'^2 + 2 a_1' x' + 2 a_2' y' + a_0 = 0\)
+    \item \(a_{11}' x'^2 + a'_{22} y'^2 + 2 a_1' x' + 2 a_2' y' + a_0 = 0\)
           Есть два случая:
           \begin{enumerate}
               \item \(\begin{cases}
@@ -1963,7 +1963,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
                     \begin{enumerate}
                         \item \(a_0' \neq 0\)
 
-                              \(\alpha = \dfrac{a_{11}'}{a_0'}\), \(\beta = \dfrac{a_{22}'}{a_0'}\)
+                              \(\alpha = \dfrac{a_{11}'}{-a_0'}\), \(\beta = \dfrac{a_{22}'}{-a_0'}\)
 
                               \(\alpha x''^2 + \beta y''^2 = 1\)
 
@@ -1997,16 +1997,16 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
                               Сделаем сдвиг ДСК:
 
-                              \(x'' = x' + \dfrac{a_0}{a_{11}'}\)
+                              \(x'' = x' + \dfrac{a'_1}{a_{11}'}\)
 
-                              \(y'' = y' + \dfrac{a_0}{2 a_2'}\)
+                              \(y'' = y' + \dfrac{a_0 - \dfrac{{a'_1}^2}{a'_{11}}}{2 a_2'}\)
 
-                              Начало координат \(O''\left(-\dfrac{a_0}{a_{11}'}, -\dfrac{a_0}{2 a_2'}\right)\)
+                              Начало координат \(O''\left(-\dfrac{a'_1}{a_{11}'}, -\dfrac{a_0 - \dfrac{{a'_1}^2}{a'_{11}}}{2 a_2'}\right)\)
 
                               Получим \(a_{11}' x''^2 + 2 a_2' y''^2 = 0 \Leftrightarrow x''^2 = \alpha y''\), \(\alpha \neq 0\) ~--- Парабола
                         \item \(a_2' = 0\)
 
-                              \(x'' = x' + \dfrac{a_0}{a_{11}'}\)
+                              \(x'' = x' + \dfrac{a'_1}{a_{11}'}\)
 
                               \(a_{11}' x''^2 + a_0' = 0 \Rightarrow x''^2 = \alpha\)
 
@@ -2027,11 +2027,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 \subsection{Операции, группа, кольцо, поле}
 \subsubsection{Законы композиции.}
 
-$f: A \times B \rightarrow C$ - функция отображения.
+$f: A \times B \rightarrow C$ - функция, отображение.
 
 $\forall (a,b): a \in A, b \in B: \exists! c \in C$ --- \deff{закон внешней композиции.}
 
-$f: A \times A \rightarrow A$ --- \deff{закон внутренней композиции} или алгебраическая операция.
+$f: A \times A \rightarrow A$ --- \deff{закон внутренней композиции} или алгебраическая операция, бинарная операция.
 
 \subsubsection{Ассоциативность, коммутативность алгебраических операций.}
 
@@ -2046,42 +2046,49 @@ $a * (b *c) = (a * b) *c$ --- \deff{ассоциативность}.
 
 \deff{Алгебраическая структура} --- множество с набором $\Omega$ --- операция и отношений на ней, с некоторой системой аксиом. Обозначают $(A, \Omega)$
 
-\deff{Группа} (A, \{+\}):
+\deff{Группа} (A, \{*\}):
+
+* --- групповая операция, чаще всего обозначается как ``$\cdot$'' --- умножение, или как ``$+$'' --- сложение.
+``$\cdot$'' --- мультипликативная запись, где $e$ --- единица, а $-a$ --- обратный.
+``$+$'' --- аддитивная запись, где $e$ заменяется на $0$ --- нулевой, а $-a$ --- противоположный.
 
 \begin{enumerate}
-    \item $a+(b+c) = (a+b)+c$ --- ассоциативность.
-    \item $\exists 0:\forall a: a + 0 = 0+ a =a$.
-    \item $\exists$  обратного: $\forall a: \exists (-a): a+ (-a) = 0$.
+    \item $a * (b * c) = (a * b) * c$ --- ассоциативность.
+    \item $\exists e:\forall a: a * e = e * a = a$ --- существование нейтрального элемента $e$.
+    \item $\forall a: \exists (-a): a+ (-a) = e$ --- существование обратного элемента $-a$.
 \end{enumerate}
 
-Если группа обладает еще и коммутативностью, то такая группа --- \deff{абелева}.
+Если группа обладает еще и коммутативностью, то такая группа --- \deff{абелева}:
+
+\begin{enumerate}[resume]
+    \item $a * b = b * a$
+\end{enumerate}
 
 \deff{Кольцо} (A, \{+, $\cdot$\}):
 
 \begin{enumerate}
-    \item Абелева групппа по сложению.
+    \item[1--4.] Абелева групппа по сложению.
+    \setcounter{enumi}{4}
     \item $a \cdot (b+c) = a\cdot b + a\cdot c$ --- левая дистрибутивность.
     \item $(b+c)\cdot a  = b \cdot a + c \cdot a$  --- правая дистрибутивность.
-    \item $a \cdot (b\cdot c) = (a\cdot b)\cdot c$ --- ассоциативность умножения
 \end{enumerate}
 
 \deff{Поле}  (A, \{+, $\cdot$\}):
 \begin{enumerate}
-    \item Абелева групппа по сложению.
-    \item Абелева групппа по умножению.
-    \item $a(b+c) = ab+ac$ --- дистрибутивность.
+    \item[1--5.] Абелева группа по сложению.
+    \item[6--9.] Абелева группа по умножению для ненулевых элементов.
 \end{enumerate}
 
-\textbf{Замечание.} У нуля нет обратного и это нормально!
+Поле --- это ассоциативное коммутативное кольцо с единицей, то есть для $\forall$ ненулевого элемента $\exists$ обратный, а вот у нуля обратного нет и это нормально.
 
 Свойства кольца:
 
 \begin{enumerate}
     \item $0 \cdot a = 0$
     \item $a+x = a+ y \rightarrow x=y$
-    \item $a + x = b$ имеет единственное решение
-    \item $0$ --- единственнен.
-    \item $1$ --- единственна в кольце с единицой.
+    \item $a + x = b$ имеет единственное решение $x = -a + b$
+    \item $0$ --- единственен.
+    \item $1$ --- единственна в кольце с единицей.
 \end{enumerate}
 
 \subsection{Линейное пространство, алгебра, свойства.}
@@ -2089,21 +2096,19 @@ $a * (b *c) = (a * b) *c$ --- \deff{ассоциативность}.
 $K - $ поле, $V$ - множество. $+: V \times V \rightarrow V$, $\cdot: K\times V \rightarrow V$. Если все, что сказано ниже выполнено  $\forall \phi, \lambda \in K, a,b \in V$.
 
 \begin{enumerate}
-    \item аксиомы
-    \item аббелевой
-    \item для V
-    \item по сложению.
+    \item[1--4.] Абелева группа по сложению.
+    \setcounter{enumi}{4}
     \item $ \phi(\lambda(a)) = \lambda(\phi(a))$.
     \item $\lambda (a+b) = \lambda a + \lambda b$.
     \item $a ( \phi + \lambda) = a\phi + a \lambda $.
     \item $\exists 1: a \cdot 1 =a$.
 \end{enumerate}
 
-То тогда такую систему называют \deff{линейным пространством}.
+То тогда такую систему называют \deff{линейным пространством} над полем $K$.
 
 Если добавить еще одну операцию $\times: V \times V \rightarrow V$.
 
-\begin{enumerate}
+\begin{enumerate}[resume]
     \item $(a+b)\times c = a \times c + b \times c $
 
           $c\times (a+b) = c \times a + c \times b$
@@ -2113,14 +2118,14 @@ $K - $ поле, $V$ - множество. $+: V \times V \rightarrow V$, $\cdot
 
 То такую структуру называют \deff{алгеброй}.
 
-\begin{enumerate}
+\begin{enumerate}[resume]
     \item добавим коммутативность $\times$ --- коммутативная алгебра.
 
     \item добавим ассоциативность $\times$ --- ассоциативная алгебра.
 
     \item добавим единицу --- унитальная алгебра.
 
-    \item добавим обратное --- алгебра с делением.
+    \item добавим обратное (для ненулевых элементов) --- алгебра с делением.
 \end{enumerate}
 
 \subsection{Нормированные линейные пространства и алгебры.}
