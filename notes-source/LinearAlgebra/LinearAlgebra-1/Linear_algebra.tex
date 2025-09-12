@@ -641,6 +641,8 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
     c_1 & c_2 & c_3
 \end{vmatrix}\)
 
+по св-ву определителя и скалярного произведения.
+
 Доказательство аддитивности векторного произведения:
 
 \(\forall \vec a_1, \vec a_2, \vec b \in V_3\)
@@ -664,6 +666,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 Двойное векторное произведение
 
 \(\vec a \times (\vec b \times \vec c) = \vec b(\vec a \cdot \vec c) - \vec c(\vec a \cdot \vec b)\)
+
+Мнемоника --- ``бац минус цаб''.
+
 \begin{itemize}
     \item \(\vec b \nparallel \vec c\):
           \begin{center}
@@ -691,7 +696,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
           \(\exists \lambda \in \mathbb{R}: \vec b = \lambda \vec c\)
 
           \(\begin{rcases}
-              \vec b(\vec a \cdot \vec c) = \lambda c(\vec a \cdot \vec c) \\
+              \vec b(\vec a \cdot \vec c) = \lambda \vec c(\vec a \cdot \vec c) \\
               \vec c(\vec a \cdot \vec b) = \vec c(\vec a \cdot \lambda\vec c) = \lambda \vec c(\vec a \cdot \vec c)
           \end{rcases} \Rightarrow \vec b(\vec a \cdot \vec c) - \vec c(\vec a \cdot \vec b) = \vec 0 = \vec b \times \vec c\) \(Q.E.D.\)
 \end{itemize}
@@ -713,7 +718,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
           \(Ax + By + C = 0\), \(A^2 + B^2 \neq 0\)
           Не умаляя общности, пусть \(B \neq 0\). Тогда \(M_0(x_0, y_0) = (0, \frac{-C}{B})\) - удовлетворяет уравнению.
 
-          Пусть \(M(x, y) \neq M\) - тоже удовлетворяет уравнению. Тогда \(A(x - x_0) + B(y - y_0) = 0\).
+          Пусть \(M(x, y) \neq M_0\) - тоже удовлетворяет уравнению. Тогда \(A(x - x_0) + B(y - y_0) = 0\).
 
           \(\overrightarrow{M_0 M} = (x - x_0, y - y_0)\)
 
