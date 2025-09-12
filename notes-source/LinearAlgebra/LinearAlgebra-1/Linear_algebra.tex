@@ -1675,57 +1675,58 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(r = \dfrac{P}{1 + \varepsilon \cos\varphi}\)
 
-        \(P\) --- фокальный параметр.
+        \(p\) --- фокальный параметр.
 
-        \(P = \varepsilon \cdot q = \dfrac{b^2}{a}\)
+        \(p = \varepsilon \cdot q = \dfrac{b^2}{a}\)
 
-        \(q = |F, D| = \dfrac{a}{\varepsilon} - c\)
+        \(q = dist(F, D) = \dfrac{a}{\varepsilon} - c\)
 
-        \(P\) --- Длина перпендикуляра от \(F\) до эллипса
+        \(p\) --- Длина перпендикуляра от \(F\) до эллипса
 
         Директрисы:
 
         \(r = \dfrac{\pm \dfrac{a}{\varepsilon} - c}{\cos\varphi}\)
 
-        Если ось направлена в противоположную сторону, то меняем знак косинуса.
+        Если ось направлена в противоположную сторону, то заменяем все вхождения $\cos{\varepsilon}$ на $-\cos{\varepsilon}$.
          &
         \begin{center}
             \includegraphics[width=4.5cm]{Images/Chapter_1/3-1-11.png}
         \end{center}
         Начало ПСК в одном из фокусов, ось направлена в сторону соответствующей директрисы.
 
-        \(r = \dfrac{\pm P}{1 \pm \varepsilon \cos\varphi}\)
+        \(r = \dfrac{\pm p}{1 \pm \varepsilon \cos\varphi}\)
 
-        Ветвь, более близкая к фокусу: \(``+"\)
+        Ветвь, соответствующая фокусу: \(``+"\)
 
-        Ветвь, более далёкая от фокуса: \(``-"\)
+        Ветвь, не соответствующая фокусу: \(``-"\)
 
-        \(P\) --- фокальный параметр.
+        \(p\) --- фокальный параметр.
 
-        \(P = \varepsilon \cdot q = \dfrac{b^2}{a}\)
+        \(p = \varepsilon \cdot q = \dfrac{b^2}{a}\)
 
-        \(q = |F, D| = c - \dfrac{a}{\varepsilon}\)
+        \(q = dist(F, D) = c - \dfrac{a}{\varepsilon}\)
 
-        \(P\) --- Длина перпендикуляра от \(F\) до гиперболы.
+        \(p\) --- Длина перпендикуляра от \(F\) до гиперболы.
 
         Директрисы:
 
         \(r = \dfrac{\pm \dfrac{a}{\varepsilon} + c}{\cos\varphi}\)
 
-        Если ось направлена в противоположную сторону, то меняем знак косинуса.
+        Если ось направлена в противоположную сторону, то заменяем все вхождения $\cos{\varepsilon}$ на $-\cos{\varepsilon}$.
+
          &
         \begin{center}
             \includegraphics[width=4.5cm]{Images/Chapter_1/3-1-12.png}
         \end{center}
         Начало ПСК в фокусе, ось направлена в сторону директрисы.
 
-        \(r = \dfrac{P}{1 + \varepsilon \cos\varphi} = \)
+        \(r = \dfrac{p}{1 + \varepsilon \cos\varphi} = \)
 
-        \(= \dfrac{P}{1 + \cos\varphi}\)
+        \(= \dfrac{p}{1 + \cos\varphi}\)
 
-        \(P\) --- Длина перпендикуляра от \(F\) до параболы
+        \(p\) --- Длина перпендикуляра от \(F\) до параболы
 
-        Если ось направлена в противоположную сторону, то меняем знак косинуса.
+        Если ось направлена в противоположную сторону, то заменяем все вхождения $\cos{\varepsilon}$ на $-\cos{\varepsilon}$.
         \\
         \hline
         Касательные
@@ -1749,7 +1750,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         \(M(x_0, y_0) \in\) параболе
 
-        \(y y_0 = P(x + x_0)\)
+        \(y y_0 = p(x + x_0)\)
         \\
         \hline
         Оптические свойства
@@ -1866,11 +1867,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           Правая ветвь: \(r = r_2 = x \varepsilon - a\)
 
-          \(r = \varepsilon(c - r \cos \varphi) - a = \varepsilon c - \varepsilon r \cos \varphi - a \Rightarrow r(1 + \varepsilon \cos \varphi) = \varepsilon c - a = \varepsilon \left(c - \dfrac{a}{\varepsilon}\right) = \varepsilon q = p \Rightarrow r = \dfrac{P}{1 + \varepsilon \cos \varphi}\)
+          \(r = \varepsilon(c - r \cos \varphi) - a = \varepsilon c - \varepsilon r \cos \varphi - a \Rightarrow r(1 + \varepsilon \cos \varphi) = \varepsilon c - a = \varepsilon \left(c - \dfrac{a}{\varepsilon}\right) = \varepsilon q = p \Rightarrow r = \dfrac{p}{1 + \varepsilon \cos \varphi}\)
 
           Левая ветвь: \(r = r_2 = - x \varepsilon + a\)
 
-          \(r = - \varepsilon(c - r \cos \varphi) + a = - \varepsilon c + \varepsilon r \cos \varphi + a \Rightarrow r(1 - \varepsilon \cos \varphi) = a - \varepsilon c = \varepsilon \left(\dfrac{a}{\varepsilon} - c\right) = \varepsilon \left(-q \right) = -p \Rightarrow r = \dfrac{-P}{1 - \varepsilon \cos \varphi}\)
+          \(r = - \varepsilon(c - r \cos \varphi) + a = - \varepsilon c + \varepsilon r \cos \varphi + a \Rightarrow r(1 - \varepsilon \cos \varphi) = a - \varepsilon c = \varepsilon \left(\dfrac{a}{\varepsilon} - c\right) = \varepsilon \left(-q \right) = -p \Rightarrow r = \dfrac{-p}{1 - \varepsilon \cos \varphi}\)
 
           Если ось направлена в противоположную сторону, то \(\cos(\pi - \varphi) = - \cos \varphi\), и \(\cos \varphi\) в формулы записывается со знаком минус.
 
