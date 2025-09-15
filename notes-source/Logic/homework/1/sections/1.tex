@@ -1,0 +1,1072 @@
+Во всех задачах буду пользоваться данной таблицей:
+
+
+\begin{tabular}{ll}
+(1) &$ \axiomOne{\alpha}{\beta}$ \\
+(2) & $\axiomTwo{\alpha}{\beta}{\gamma}$ \\
+(3) & $\axiomThree{\alpha}{\beta}$ \\
+(4) & $\axiomFour{\alpha}{\beta}$ \\
+(5) &$ \axiomFive{\alpha}{\beta}$ \\
+(6) & $\axiomSix{\alpha}{\beta}$ \\
+(7) & $\axiomSeven{\beta}{\alpha}$ \\
+(8) &$ \axiomEight{\alpha}{\beta}{\gamma}$ \\
+(9) & $\axiomNine{\alpha}{\beta}$ \\
+(10) &$ \axiomTen{\alpha} $\\
+\end{tabular}
+
+\newpage
+\subsection{Задача 1.}
+
+\begin{equation}
+    \vdash (A \xrightarrow{} A \xrightarrow{} B) \xrightarrow{} (A \rightarrow B) \tag{a}
+\end{equation}
+
+\uline{\textbf{Доказательство:}}
+
+\begin{tabular}{lll}
+    (1) &  $(A \xrightarrow{} A) \rightarrow(A \xrightarrow{} A \xrightarrow{} B) \xrightarrow{} (A \rightarrow B)$  &  \text{(A9)}\\
+    (2) & & \\
+    \vdots & copy-paste from lection & \\
+    (8) & $A \rightarrow A$ & \\
+    (9) & $ (A \xrightarrow{} A \xrightarrow{} B) \xrightarrow{} (A \rightarrow B)$ &(MP (8,1 ))
+\end{tabular}
+
+\hfill Q.E.D.
+
+
+\newpage
+
+\begin{equation}
+    \vdash \neg (A \& \neg A) \tag{\text{b}}
+\end{equation}
+
+\uline{\textbf{Доказательство:}}
+
+
+\begin{tabular}{ll}
+     (1)& $((A \& \neg A)  \rightarrow A) \rightarrow ((A \& \neg A)  \rightarrow \neg A) \rightarrow \neg (A \& \neg A)     $   \\
+     & {\color{cyan}Аксиома 9 $[\alpha :=  (A \& \neg A), \beta = A ]$} \\
+  \space & \\
+        
+        
+     (2)& $(A \&  \neg A )\rightarrow A$  \\
+     & \docyan{Аксиома 4 $[\alpha:=  A, \beta = \neg A]$}\\
+        \space & \\
+        (3)& $(A \&  \neg A )\rightarrow \neg  A$  \\
+     & \docyan{Аксиома 5 $[\alpha:=  A, \beta = \neg A]$}\\
+        \space & \\
+
+        
+             (4)& $((A \& \neg A)  \rightarrow \neg A) \rightarrow \neg (A \& \neg A)$  \\
+     & \docyan{Moduse Ponens 2, 1}\\
+        \space & \\
+             (5)& $\neg (A \& \neg A)$  \\
+     & \docyan{Moduse Ponens 3, 4}\\
+        \space & \\
+\end{tabular}
+
+\newpage
+
+
+\begin{equation}
+    \vdash (A \& B) \rightarrow (B \& A ) \tag{\text{c}}
+    \end{equation}
+Для доказательство этого воспользуемся Теоремой о дедукции и докажем:
+$$ (A \& B)\vdash (B \& A ) $$
+
+\uline{\textbf{Доказательство:}}
+
+\begin{tabular}{lll}
+     (1)&  $\axiomFour{A}{B}$
+     & \AxiomTwo{4}{$A$}{$B$}\\
+     \space & \\
+
+ (2)&  $\axiomFive{A}{B}$ 
+     & \AxiomTwo{5}{$A$}{$B$}\\
+     \space & \\
+     (3)&  $(A \& B)$ 
+     & \docyan{Гипотеза}\\
+     \space & \\
+      (4)&  $A$ 
+     & \moduse{3}{1}\\
+     \space & \\
+      (5)&  $B$ 
+     & \moduse{3}{2}\\
+     \space & \\
+     (6) & $\axiomThree{B}{A}$ & \AxiomTwo{3}{B}{A}\\
+      \space & \\
+     (7) & $A \rightarrow B \& A$ & \moduse{5}{6}\\
+      \space & \\
+         (8) & $ B \& A$ & \moduse{4}{7}\\
+      \space & \\
+     
+\end{tabular}
+
+\hfill Q.E.D.
+\newpage 
+
+\begin{equation}
+    \vdash (A \lor B) \rightarrow (B \lor A ) \tag{\text{d}}
+    \end{equation}
+
+
+\uline{\textbf{Доказательство:}}
+
+\begin{tabular}{lll}
+(1) & $\axiomEight{A}{B}{A \lor B}$ & \AxiomThree{8}{A}{B}{$A \lor B$}\\
+(2) & $\axiomSix{A}{B}$ & \AxiomTwo{6}{A}{B} \\
+(3) & $\axiomSeven{B}{A}$ & \AxiomTwo{7}{B}{A} \\
+(4) & $(B \rightarrow A \lor B) \rightarrow ((A \lor B) \rightarrow (B \lor A ))$ & \moduse{2}{1}\\
+(5) & $ (A \lor B) \rightarrow (B \lor A) $ & \moduse{3}{4}\\
+
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+
+\begin{equation}
+    A \& \neg A\vdash B \tag{\text{e}}
+    \end{equation}
+
+\deff{Доказательство:}
+
+\begin{tabular}{lll}
+
+     (1)& $\axiomFour{A}{\neg A}$  & \AxiomTwo{4}{$A$}{$\neg A$}\\
+     (2)& $\axiomFive{A}{\neg A}$  & \AxiomTwo{5}{$A$}{$\neg A$}\\
+     (3)& $ A \& \neg A$& \docyan{Гипотеза}\\
+     (4) & $A$ & \moduse{3}{1}\\
+     (5) & $ \neg A $ & \moduse{3}{2}\\
+     (6) & $\axiomNine{B}{ A}$  & \AxiomTwo{9}{B}{A}\\
+     (7) & $\axiomOne{A}{B}$ & \AxiomTwo{1}{A}{B}\\
+     (8) & $\axiomOne{\neg A}{B}$ & \AxiomTwo{1}{$\neg A$}{B}\\
+     (9) & $\axiomOne{A}{ \neg B}$ & \AxiomTwo{1}{A}{$\neg B$}\\
+     (10) & $\axiomOne{\neg A}{\neg B}$ & \AxiomTwo{1}{$\neg A$}{$\neg B$}\\
+     (11) & $B \rightarrow A$ & \moduse{4}{7}\\
+     (12) & $ B \rightarrow \neg A$ & \moduse{5}{8}\\
+     (13) & $\neg B \rightarrow A$ & \moduse{4}{9}\\
+     (14) & $\neg B \rightarrow \neg A$ & \moduse{5}{10}\\
+     (15) & $(B \rightarrow \neg A) \rightarrow \neg B$& \moduse{11}{6}\\
+     (16) & $ \neg B$& \moduse{12}{15}\\
+     (17) & $ \axiomNine{\neg B}{A}$&  \AxiomTwo{9}{$\neg B$}{A}\\
+     (18) & $ (\neg B \rightarrow \neg A) \rightarrow \neg \neg B$&  \moduse{13}{17}\\
+     (19) & $\neg \neg B$&  \moduse{14}{18}\\
+     (20) & $\axiomTen{B} $ &\AxiomOne{10}{B} \\
+     (21) & $B$ & \moduse{19}{20}\\
+       
+     
+\end{tabular}
+
+\newpage
+
+
+\subsection{Задача 2.}
+
+а) Докажем, что $\vdash  \alpha \rightarrow \neg \neg \alpha$. Для этого воспользуемся Теоремой о дедукции и докажем:
+$$\alpha \vdash  \neg \neg \alpha$$
+\uline{\textbf{Доказательство:
+}}
+
+\begin{tabular}{ll}
+     (1)& $\alpha \rightarrow \neg \alpha \rightarrow \alpha$\\
+     & {\color{cyan}Аксиома 1 $[\alpha := \alpha, \beta  := \neg \alpha ]$}\\
+     \space\\
+     (2) & $\alpha$ \\
+      & \docyan{Гипотеза}\\
+      \space\\
+      (3) & $\neg \alpha \rightarrow \alpha$\\
+       & \docyan{Moduse Ponens 2, 1} \\
+       \space\\
+       (4) & $(\neg \alpha \rightarrow  \alpha) \rightarrow (\neg \alpha \rightarrow \neg \alpha ) \rightarrow \neg \neg \alpha$\\
+       & \docyan{Аксиома 9 $[\alpha := \neg \alpha, \beta:= \alpha]$}\\
+       \space\\
+       (5) & \\
+       \vdots & copy-paste from lection\\
+       (12) & $\neg \alpha \rightarrow \neg \alpha$\\
+         \space\\
+       (13) & $(\neg \alpha \rightarrow \neg \alpha) \rightarrow \neg \neg \alpha$\\
+        & \docyan{Moduse Ponens 3, 4}\\
+       \space\\
+       (14) & $\neg \neg \alpha$\\ 
+        & \docyan{Moduse Ponens 12, 13}
+        
+    \end{tabular}
+
+\hfill Q.E.D.
+\newpage
+\begin{equation}
+    \neg A, B\vdash \neg(A \& B) \tag{\text{b}}
+    \end{equation}
+
+\deff{Доказательство:}
+
+
+\begin{tabular}{lll}
+
+     (1)& $\axiomNine{ (A \& B)}{A}$  & \AxiomTwo{9}{$(A \& B)$}{$ A$}\\
+     (2)& $\axiomFour{A}{B}$  & \AxiomTwo{4}{$A$}{$B$}\\
+     (3)& $ \neg A $& \docyan{Гипотеза}\\
+     (4)& $ B$& \docyan{Гипотеза}\\
+     (5) & $\axiomOne{\neg A}{(A \& B)}$ & \AxiomTwo{1}{$\neg A$}{$(A \& B)$}\\
+     (6) & $(A \& B)\rightarrow \neg A $ & \moduse{3}{5}\\
+     (7) & $((A \& B)\rightarrow \neg A) \rightarrow \neg (A \& B)$ & \moduse{2}{1}\\
+      (8) & $ \neg (A \& B)$ & \moduse{6}{7}\\
+     
+
+     
+\end{tabular}
+
+\newpage
+
+
+
+\begin{equation}
+    \neg A, \neg B\vdash \neg(A \lor B) \tag{\text{c}}
+    \end{equation}
+
+\deff{Доказательство:}
+
+Докажем, что $\neg A \vdash A \rightarrow \neg (A \lor B)$. Для этого  по теореме о дедукции, надо доказать $\neg A, A \rightarrow \neg (A \lor B)$. Для этого воспользуемся доказательством 1е. Откуда есть доказательство вышесказанного.
+Аналогично есть доказательство  $\neg B \vdash B \rightarrow \neg (A \lor B)$. Назовем эти доказательства Леммой 1 и Леммой 2 соответственно.
+    
+Вернемся к исходному доказательству:
+    
+    \begin{tabular}{ll}
+    (1)& $\neg  A$\\ &\docyan{Гипотеза}\\
+    (2)& $\neg B$\\ &\docyan{Гипотеза}\\
+ (3)& $\axiomNine{ (A \lor B)}{A}$  \\ &\AxiomTwo{9}{$(A \lor B)$}{$ A$}\\
+    (4)  & $\axiomEight{A}{B}{\neg (A \lor B)}$ \\
+    & \AxiomThree{8}{$A$}{$ B$}{$\neg (A \lor B)$}\\
+    (5) & $\axiomOne{\neg A}{\neg A}$     
+\end{tabular}
+
+Теперь воспользуемся нашими предположениями:
+
+    \begin{tabular}{ll}
+    (6)& \\
+    \vdots& \docyan{copy-paste from lemma 1}\\
+ (5+n)&  $A \rightarrow \neg(A \lor B)$  
+ \\
+    (6+n)  &  \\
+    \vdots & \docyan{copy-paste from lemma 2}\\
+    $(5 + n + m)$ &  $B \rightarrow \neg(A \lor B)$\\
+    $(6+n+m)$& $(B \rightarrow \neg(A \lor B)) \rightarrow (A \lor B \rightarrow \neg(A \lor B))$ \\& \moduse{$(5+n)$}{4}\\
+     $(7    +n+m)$& $A \lor B \rightarrow \neg(A \lor B)$ \\& \moduse{$(5+n+m)$}{$(6+n+m)$}\\
+     $(8+n+m)$ & \\
+     \vdots & \docyan{copy-paste from lection}\\
+     $(15+n+m)$ &  $A \lor B \rightarrow A \lor B$\\
+     $(16+n+m)$ & $\axiomNine{(A \lor B)}{ (A \lor B)}$ \\
+     & \AxiomTwo{9}{$A \lor B$}{$A \lor B$}\\
+     $(17+n+m)$ & $((A \lor B) \rightarrow \neg (A \lor B)) \rightarrow \neg(A \lor B)$\\
+     & \moduse{$(15+n+m)$}{$(16+n+m)$}\\
+      $(18+n+m)$ & $ \neg(A \lor B)$\\
+     & \moduse{$(7+n+m)$}{$(17+n+m)$}\\
+\end{tabular}
+\hfill Q.E.D
+\newpage
+\begin{equation}
+     A,\neg B \vdash \neg(A \rightarrow B) \tag{d}
+\end{equation}
+
+\begin{tabular}{lll}
+     (1)& $A$ &\docyan{Гипотеза} \\
+     (2)& $\neg B$&\docyan{Гипотеза} \\
+     (3) & $\axiomOne{\neg B}{(A\rightarrow B)}$ & \AxiomTwo{1}{$\neg B$}{$(A \rightarrow B)$}\\
+     (4) & $(A \rightarrow B) \rightarrow \neg B $ & \moduse{2}{3}\\
+    (5) & $\axiomOne{A}{(A\rightarrow B)}$ & \AxiomTwo{1}{$A$}{$(A \rightarrow B)$}\\
+     (6) & $(A \rightarrow B) \rightarrow A$ & \moduse{1}{5}\\
+     (7) & \\
+       \vdots & \docyan{copy-paste from lection}\\
+     (15) &  $(A \rightarrow B) \rightarrow (A \rightarrow B)$\\
+     (16) & $\axiomTwo{(A\rightarrow B)}{A}{B}$ & \AxiomThree{2}{$A \rightarrow B$}{A}{B}\\
+     (17) & $((A \rightarrow B)\rightarrow A \rightarrow B)\rightarrow ((A\rightarrow B) \rightarrow A)$ & \moduse{6}{16}\\
+     (18) & $(A \rightarrow B) \rightarrow B$ & \moduse{15}{17}\\
+     (19) & $\axiomNine{(A\rightarrow B)}{B}$ & \AxiomTwo{9}{$A \rightarrow B$}{B}\\
+     (20) & $((A\rightarrow B) \rightarrow \neg B)\rightarrow \neg (A \rightarrow B)$ &\moduse{18}{19}\\
+     (21) & $\neg (A \rightarrow B)$ & \moduse{4}{20}\\
+\end{tabular}
+
+
+
+
+
+
+
+
+\newpage
+\begin{equation}
+     \neg A, B\vdash A \rightarrow B \tag{e}
+\end{equation}
+
+\deff{Доказательство:}
+
+\begin{tabular}{lll}
+     (1)& $\neg A$ &\docyan{Гипотеза} \\
+     (2)& $B$&\docyan{Гипотеза} \\
+     (3)& $\axiomOne{B}{A}$ & \AxiomTwo{1}{B}{A}\\
+     (4)& $A \rightarrow B$ & \moduse{2}{3}
+     
+\end{tabular}
+
+\newpage
+\subsection{Задача 3.}
+\begin{equation}
+     \vdash (A \rightarrow B) \rightarrow (B \rightarrow C) \rightarrow (A \rightarrow C) \tag{a}
+\end{equation}
+
+Воспользуемся теоремой о дедукции и будем доказывать:
+$$
+      (A \rightarrow B) , (B \rightarrow C) \vdash (A \rightarrow C) 
+$$
+
+\deff{Доказательство:}
+
+\begin{tabular}{lll}
+     (1)& $ (A \rightarrow B)$ &\docyan{Гипотеза} \\
+     (2)& $(B \rightarrow C)$&\docyan{Гипотеза} \\
+     (3)& $\axiomTwo{A}{B}{C}$ & \AxiomThree{2}{A}{B}{C}\\
+     (4) & $\axiomOne{(B\rightarrow C)}{A}$ & \AxiomTwo{1}{$B\rightarrow C$}{A}\\
+     (5) & $A \rightarrow B \rightarrow C$ & \moduse{2}{4}\\
+     (6) & $(A \rightarrow B \rightarrow C) \rightarrow (A \rightarrow C)$ & \moduse{1}{3}\\
+     (7) & $A \rightarrow C$ & \moduse{5}{6}\\
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+\begin{equation}
+     \vdash (A \rightarrow B) \rightarrow (\neg B \rightarrow \neg A) \tag{b}
+\end{equation}
+
+\deff{Доказательство:}
+
+Воспользуемся теоремой о дедукции и будем доказывать:
+$$
+      (A \rightarrow B), \neg B \vdash \neg A
+$$
+
+
+\begin{tabular}{lll}
+     (1)& $ (A \rightarrow B)$ &\docyan{Гипотеза} \\
+     (2)& $ \neg B$ &\docyan{Гипотеза} \\
+     (3)& $\axiomNine{A}{B}$ & \AxiomTwo{9}{A}{B}\\
+     (4) & $\axiomOne{\neg B}{A}$ & \AxiomTwo{1}{$\neg B$}{A}\\
+     (5) & $A \rightarrow \neg B $ & \moduse{2}{4}\\
+     (6) & $(A \rightarrow \neg B) \rightarrow \neg A$ & \moduse{1}{3}\\
+     (7) & $\neg A$ & \moduse{5}{6}
+\end{tabular}
+
+\hfill Q.E.D
+
+\newpage
+\begin{equation}
+     \vdash \neg(\neg A \& \neg B) \rightarrow (A \lor B) \tag{c}
+\end{equation}
+
+\deff{Доказательство:}
+
+Воспользуемся теоремой о дедукции и будем доказывать:
+$$
+        \neg(\neg A \& \neg B)\vdash (A \lor B)
+$$
+
+
+
+
+
+\begin{tabular}{lll}
+     (1)& $  \neg(\neg A \& \neg B)$ &\docyan{Гипотеза} \\
+    (2) & $\axiomThree{\neg A}{\neg B}$ & \AxiomTwo{3}{$\neg A$}{$\neg B$}\\
+    (3) & $\axiomSix{A}{B}$ & \AxiomTwo{6}{A}{B}\\
+    \vdots & \docyan{copy-paste from 3b}\\
+    (3 + n) & $(A \rightarrow A \lor B) \rightarrow (\neg(A \lor B)\rightarrow \neg A)$\\
+    (4 + n) & $\neg(A \lor B)\rightarrow \neg A$ & \moduse{3}{3+n} \\
+    (5 + n) & $\axiomSeven{B}{A}$ & \AxiomTwo{7}{B}{A}\\
+    \vdots &  \docyan{copy-paste from 3b}\\
+    $(5 + 2n)$ & $(B \rightarrow A \lor B) \rightarrow (\neg(A \lor B)\rightarrow \neg B)$\\
+    $(6 + 2n)$ & $\neg(A \lor B)\rightarrow \neg B$ & \moduse{$5+n$}{$5+2n$} \\
+\end{tabular}
+
+\begin{tabular}{ll}
+& \docyan{Хотим получить: $\neg (A \lor B) \rightarrow (\neg A \& \neg B)$}\\
+    $(7+2n)$ & $ \axiomTwo{(\neg(A \lor B))}{\neg B}{(\neg A \& \neg B)}$\\
+     & \AxiomThree{2}{$(\neg(A \lor B))$}{$\neg B$}{$(\neg A \& \neg B)$}\\
+     $(8+2n)$ & $\axiomTwo{\neg(A \lor B)}{\neg A}{(\neg B \rightarrow (\neg A \& \neg B))}$\\
+     &\docyan{помогите, оно не влезает}\\
+     &\AxiomThree{2}{$\neg(A \lor B)$}{$\neg A$}{$(\neg B \rightarrow (\neg A \& \neg B))$}\\
+     $(9+2n)$  & $(\neg(A \lor B) \rightarrow \neg A \rightarrow (\neg B \rightarrow (\neg A \& \neg B))) \rightarrow (\neg(A \lor B) \rightarrow (\neg B \rightarrow (\neg A \& \neg B)))$ \\
+      & \moduse{$(4+n)$}{$(8+2n)$}\\
+      $(10+2n)$ & $\axiomOne{(\neg A \rightarrow \neg B \rightarrow \neg A \& \neg B)}{\neg(A \lor B)}$\\
+      & \AxiomTwo{1}{$(\neg A \rightarrow \neg B \rightarrow \neg A \& \neg B)$}{$\neg(A \lor B)$}\\
+      $(11 +2n)$ & $\neg(A \lor B) \rightarrow \neg A \rightarrow (\neg B \rightarrow (\neg A \& \neg B))$ \\
+      & \moduse{2}{$10+2n$}\\
+      $(12 + 2n)$ & $\neg(A \lor B)\rightarrow \neg B \rightarrow (\neg A \& \neg B)$\\
+      & \moduse{$(11+2n)$}{$(9+2n)$}\\
+      $(13+2n)$& \docyan{Пропущу 13-ый + 2n шаг в угоду сохранения моей психики}\\
+       & \moduse{$6+2n$}{$7+2n$}\\
+      $ (14 + 2n)$ &$\neg (A \lor B) \rightarrow (\neg A \& \neg B)$ \\
+      &   \moduse{$12+2n$}{$13+2n$}\\
+      $(15+ 2n)$ & $\axiomNine{\neg (A \lor B)}{(\neg A \& \neg B)}$\\
+       & \AxiomTwo{9}{$\neg (A \lor B)$}{$\neg A \& \neg B$}\\
+     $(16+ 2n)$ & $\axiomOne{\neg(\neg A \& \neg B)}{\neg (A \lor B)}$\\
+       & \AxiomTwo{1}{$\neg(\neg A \& \neg B)$}{$\neg (A \lor B)$}\\
+       $(17+ 2n)$ & $\axiomTen{(A \lor B)}$\\
+       & \AxiomOne{10}{$(A \lor B)$}\\  
+\end{tabular}
+
+\begin{tabular}{ll}
+     $(18 +2n)$& $\neg (A \lor B)\rightarrow \neg (\neg A \& B)$ \\
+       &   \moduse{$1$}{$16+2n$}\\
+     $(19+2n)$& $(\neg (A \lor B)\rightarrow \neg (\neg A \& \neg B))\rightarrow \neg \neg (A \lor B)$ \\
+      &   \moduse{$14+2n$}{$15+2n$}\\
+      $(20+2n)$& $ \neg \neg (A \lor B)$ \\
+      &   \moduse{$18+2n$}{$19+2n$}\\
+      $(21+2n)$& $  (A \lor B)$ \\
+      &   \moduse{$20+2n$}{$17+2n$}\\
+      
+      
+\end{tabular}
+
+\hfill Q.E.D.
+
+Моя психика травмирована
+
+\newpage
+
+\begin{equation}
+     \vdash A \lor B\rightarrow\neg(\neg A \& \neg B) \tag{d}
+\end{equation}
+
+\deff{Доказательство:}
+
+Сперва докажем, что:
+$$
+    \vdash A \rightarrow \neg (\neg A \& \neg B))
+$$
+Буду пользоваться теоремой о дедукции и докажу:
+$$
+     A \vdash \neg (\neg A \& \neg B))
+$$
+\begin{tabular}{ll}
+     (1)&  $A$ \\
+     & \docyan{Гипотеза}\\
+     (2) & $\axiomNine{(\neg A \&  \neg B)}{A}$\\
+     & \AxiomTwo{9}{$(\neg A \&  \neg B)$}{$A$}\\
+     (3) & $\axiomOne{A}{(\neg A \&  \neg B)}$\\
+      & \AxiomTwo{1}{$A$}{$(\neg A \&  \neg B)$}\\
+      (4) & $\axiomFour{\neg A   }{\neg B}$\\
+      & \AxiomTwo{4}{$\neg A$}{$\neg B$}\\
+      (5) & $(\neg A \&  \neg B) \rightarrow  A $\\
+      & \moduse{1}{3} \\
+      (6) & $((\neg A \&  \neg B) \rightarrow \neg A) \rightarrow \neg(\neg A \&  \neg B)$\\
+      & \moduse{5}{2}\\
+      (7) & $ \neg(\neg A \&  \neg B)$\\
+      & \moduse{4}{6}\\
+\end{tabular}
+
+\hfill Q.E.D.
+
+Аналогично докажем
+$$
+    \vdash B \rightarrow \neg (\neg A \& B))
+$$
+Назовем это Леммой 1 и Леммой 2 соответственно. Докажем искомое:
+
+\begin{tabular}{ll}
+     (1)& $  A \lor B$ \\&\docyan{Гипотеза} \\
+    (2) & $\axiomEight{A}{B}{\neg(\neg A \& \neg B)}$ \\& \AxiomThree{8}{A}{B}{$\neg(\neg A \& \neg B)$}\\
+    \vdots &\\
+    $(2+n)$ & $B \rightarrow \neg (\neg A \& B))$\\
+      &\docyan{copy-paste from lemma 2}\\
+    \vdots & \\
+    $(2+2n)$ & $ A \rightarrow \neg (\neg A \& B))$\\
+    &\docyan{copy-paste from lemma 1} \\
+    $(3+2n)$ & $ (B \rightarrow \neg (\neg A \& \neg B))\rightarrow (A \lor B\rightarrow\neg(\neg A \& \neg B))$\\
+    & \moduse{$(2+2n$}{2}\\
+     $(4+2n)$ & $A \lor B\rightarrow\neg(\neg A \& \neg B)$\\
+    & \moduse{$(2+n$}{$3+2n$}\\
+    
+    
+\end{tabular}
+
+\hfill Q.E.D
+
+\newpage
+
+\begin{equation}
+     \vdash (\neg A \lor \neg B)\rightarrow\neg( A \&  B) \tag{e}
+\end{equation}
+
+Сперва докажем, что:
+$$\vdash \neg A \rightarrow \neg ( A \&  B)$$
+Для этого по теореме о дедукции докажем, что:
+$$\neg A \vdash \neg ( A \&  B)$$
+\begin{tabular}{ll}
+     (1)&$\neg A$  \\
+     & \docyan{Гипотеза}\\
+     (2)&$ \axiomFour{A}{B}$\\
+      & \AxiomTwo{4}{$ A$}{$B$}\\
+      (3) & $\axiomNine{( A \&  B)}{A}$\\
+       & \AxiomTwo{9}{$ ( A \&  B)$}{$A$}\\
+    (4) & $\axiomOne{\neg A}{(A \& B)}$\\
+& \AxiomTwo{1}{$ \neg A$}{$(A \& B)$}\\
+    (5) & $A \& B \rightarrow \neg A$\\
+    & \moduse{1}{4}\\
+    (6) & $ (A \& B \rightarrow \neg A) \rightarrow \neg (A \& B)$\\
+    & \moduse{2}{3}\\
+     (7) & $ \neg (A \& B)$\\
+    & \moduse{5}{6}
+
+\end{tabular}
+
+\hfill Q.E.D.
+
+Аналогично докажем, что $$\vdash \neg B \rightarrow \neg ( A \&  B)$$Назовем это Леммой 1 и Леммой 2 соответственно.
+
+Теперь докажем искомое:
+
+\begin{tabular}{ll}
+     (1)& $\axiomEight{\neg A}{\neg B}{\neg( A \&  B)}$  \\
+     & \AxiomThree{8}{$\neg A$ } {$\neg B$}{$\neg( A \&  B)$}\\
+     \vdots & \\
+     $(1+n)$ & $\neg A \rightarrow \neg ( A \&  B)$\\
+     & \docyan{copy-paste from lemma 1}\\
+     \vdots & \\
+     $(1+2n)$ & $\neg B \rightarrow \neg ( A \&  B)$\\
+     & \docyan{copy-paste from lemma 2}\\
+     $(2+2n)$ & $(\neg B \rightarrow \neg ( A \&  B))\rightarrow ((\neg A \lor \neg B)\rightarrow\neg( A \&  B))$\\
+     & \moduse{$1+n$}{1}\\
+     $(3+2n)$ & $(\neg A \lor \neg B)\rightarrow\neg( A \&  B)$\\
+     & \moduse{$1+2n$}{$2+2n$}\\
+
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+
+\begin{equation}
+     \vdash (A \rightarrow B)\rightarrow(\neg A \lor  B) \tag{f}
+\end{equation}
+\deff{Соглашение:} В дальнейшем доказательстве буду пользоваться раннее доказанными фактами, они будут как бы вставляться в доказательство, а снизу будет подписано, чем я пользовался (иначе это займет бесконечность времени)
+
+Используем  теорему о дедукции и будем доказывать
+$$
+   (A \rightarrow B)\vdash(\neg A \lor  B) 
+$$
+\begin{tabular}{ll}
+     (1)& $A \rightarrow B$  \\
+     & \docyan{Гипотеза}\\
+     (2) & $\axiomSeven{B}{\neg A}$\\
+      & \AxiomTwo{7}{B}{$\neg A$}\\
+      (3) & $\axiomTwo{A}{B}{\neg A \lor B}$\\ 
+       & \AxiomThree{2}{A}{B}{$\neg A \lor B$}\\
+       (4)  & $(A \rightarrow B \rightarrow \neg A \lor B) \rightarrow (A \rightarrow \neg A \lor B)$\\
+        &  \moduse{1}{3}\\
+        (5) & $\axiomOne{(B \rightarrow \neg A \lor B)}{A}$\\
+        & \AxiomTwo{1}{$(B \rightarrow \neg A \lor B)$}{$A$}\\
+        (6) & $A \rightarrow B \rightarrow \neg A \lor B$\\
+        & \moduse{2}{5}\\
+        (7) & $A \rightarrow \neg A \lor B$\\
+        & \moduse{6}{4}\\
+        (8) & $\axiomSix{\neg A}{B}$\\
+         & \AxiomTwo{6}{$\neg A$}{B}\\
+         (9) & $\axiomEight{A}{\neg A}{(A \lor \neg A)}$\\
+         & \AxiomThree{9}{A}{$\neg A$}{$(A \lor \neg A)$}\\
+         (10) & $(\neg A \rightarrow \neg A \lor B) \rightarrow (A \lor \neg A\rightarrow \neg A \lor B)$\\
+         & \moduse{7}{9}\\
+         (11) & $A \lor \neg A\rightarrow \neg A \lor B$\\
+         & \moduse{8}{10}\\
+         (12) & $A \lor \neg A$\\
+          & \docyan{ $\alpha \lor \neg \alpha $ по 3i}\\
+          (13) &$\neg A \lor B$\\
+          & \moduse{12}{11}\\
+                
+        
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+
+\begin{equation}
+     \vdash A \& B \rightarrow A \lor B\tag{g}
+\end{equation}
+
+\deff{Доказательство:}
+
+Используем  теорему о дедукции и будем доказывать
+$$
+   A \& B\vdash A \lor B
+$$
+\begin{tabular}{ll}
+     (1)& $A \& B$  \\
+     & \docyan{Гипотеза}\\
+     (2) & $\axiomFour{A}{B}$\\
+     & \AxiomTwo{4}{A}{B}\\
+     (3) & $\axiomSix{A}{B}$\\
+     & \AxiomTwo{6}{A}{B}\\
+     (4) & $A$ \\
+     & \moduse{1}{2}\\
+     (5) & $A \lor B$ \\
+     & \moduse{4}{3}\\
+     
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+
+\begin{equation}
+    \vdash ((A\rightarrow B) \rightarrow A) \rightarrow A \tag{h}
+\end{equation}
+
+\deff{Доказательство:}
+
+\deff{Соглашение:} В дальнейшем доказательстве буду пользоваться раннее доказанными фактами, они будут как бы вставляться в доказательство, а снизу будет подписано, чем я пользовался (иначе это займет бесконечность времени)
+
+
+Используем  теорему о дедукции и будем доказывать:
+$$
+  (A\rightarrow B) \rightarrow A \vdash  A
+$$
+\begin{tabular}{ll}
+     (1)& $(A \rightarrow B)\rightarrow A $  \\
+     & \docyan{Гипотеза}\\
+     (2)& $\axiomNine{\neg A}{A}$\\
+      & \AxiomTwo{9}{$\neg A$}{$A$}\\
+      (3) & $\axiomTwo{\neg A}{(A \rightarrow B)}{ A}$\\
+       & \AxiomThree{2}{$\neg A$}{$(A \rightarrow B)$}{$A$}\\
+     (4) & $\neg A \rightarrow A \rightarrow B$\\
+      & \docyan{$A, \neg A \vdash B$ по заданию 1е}  \\
+      (5) & $\axiomOne{((A \rightarrow B)\rightarrow A)}{\neg B} $\\
+     & \AxiomTwo{1}{$((A \rightarrow B)\rightarrow A)$}{$\neg B$}\\
+     (6) &  $\neg A \rightarrow (A \rightarrow B)\rightarrow A$\\
+      & \moduse{1}{5}\\
+      (7) &  $(\neg A \rightarrow (A \rightarrow B)\rightarrow A) \rightarrow (\neg A \rightarrow A)$\\
+      & \moduse{4}{3}\\
+      (8) &  $ \neg A \rightarrow A$\\
+      & \moduse{6}{7}\\
+      (9) &  $ \neg A \rightarrow \neg A$\\
+      & \docyan{$\alpha \rightarrow \alpha$, доказано на лекции}\\
+      (10) &  $ (\neg A \rightarrow \neg A)\rightarrow \neg \neg A$\\
+      & \moduse{8}{2}\\
+      (11) &  $ \neg \neg A$\\
+      & \moduse{9}{10}\\
+     (12)& $\axiomTen{A}$  \\
+     & \AxiomOne{10}{$A$} \\
+      (13) &  $  A$\\
+      & \moduse{11}{12}\\
+     
+       
+      
+       
+\end{tabular}
+
+
+
+\newpage
+
+\begin{equation}
+     \vdash A \lor \neg A  \tag{i}
+\end{equation}
+
+\deff{Соглашение:} В дальнейшем доказательстве буду пользоваться раннее доказанными фактами, они будут как бы вставляться в доказательство, а снизу будет подписано, чем я пользовался (иначе это займет бесконечность времени)
+
+\deff{Доказательство:}
+
+\begin{tabular}{ll}
+     (1)& $\axiomSix{A}{\neg A}$  \\
+     & \AxiomTwo{6}{A}{$\neg A$} \\
+     (2)& $\axiomTen{(A \lor \neg A)}$  \\
+     & \AxiomOne{10}{$A \lor \neg A$} \\
+     (3) &$\axiomNine{\neg(A \lor \neg A)}{(A \lor \neg A)}$ \\
+      & \AxiomTwo{9}{$\neg(A \lor \neg A)$}{$A \lor \neg A$} \\
+      (4) & $\neg(A \lor \neg A) \rightarrow \neg(A \lor \neg A)$\\
+      & \docyan{$\alpha \rightarrow \alpha$, доказано на лекции}\\
+      (5) & $\axiomTwo{\neg(A \lor \neg A)}{\neg A}{(A \lor \neg A)}$\\
+    & \AxiomThree{2}{$\neg(A \lor \neg A)$}{$\neg A$}{$A \lor \neg A$} \\
+     (6)& $\axiomSeven{\neg A}{ A}$  \\
+     & \AxiomTwo{7}{$\neg   A$}{$ A$} \\
+     (7) & $\axiomOne{(\neg A \rightarrow A \lor \neg A )}{\neg (A \lor \neg A)}$\\
+       & \AxiomTwo{1}{$\neg A \rightarrow A \lor \neg A $}{$\neg (A \lor \neg A)$} \\
+     (8) & $\neg(A \lor \neg A)\rightarrow (\neg A  \rightarrow A \lor \neg A)$\\
+      & \moduse{6}{7}\\
+      (9) & $(A \rightarrow A \lor \neg A) \rightarrow (\neg(A \lor \neg A)\rightarrow \neg A) $\\
+      & \docyan{$(\alpha \rightarrow \beta) \rightarrow (\neg \beta \rightarrow \neg \alpha)$, доказано в $3b$}\\
+      (10) & $\neg(A \lor \neg A)\rightarrow \neg A$\\
+      &  \moduse{1}{9}\\
+      (11) & $(\neg(A \lor \neg A)\rightarrow (\neg A  \rightarrow A \lor \neg A)) \rightarrow (\neg (A \lor \neg A) \rightarrow (A \lor \neg A))$\\
+      &  \moduse{10}{5}\\
+      (12) & $\neg (A \lor \neg A) \rightarrow (A \lor \neg A)$\\
+      & \moduse{8}{11} \\
+        (13) & $(\neg (A \lor \neg A)\rightarrow \neg (A \lor \neg A))\rightarrow \neg \neg (A \lor \neg A)$ \\
+        &\moduse{12}{3}\\
+         (14) & $ \neg \neg (A \lor \neg A)$ \\
+        &\moduse{4}{13}\\
+         (15) & $ A \lor \neg A$ \\
+        &\moduse{14}{2}\\
+\end{tabular}
+
+\hfill Q.E.D.   
+
+
+\newpage
+
+\begin{equation}
+ \vdash (A \& B \rightarrow C) \rightarrow (A \rightarrow B \rightarrow C)\tag{j}    
+\end{equation}
+
+\deff{Доказательство:}
+
+Если я докажу:
+$$
+(A \& B \rightarrow C) , A , B  \vdash  C     
+$$
+То воспользуясь теоремой о дедукции получу искомое.
+
+
+Докажем:
+
+\begin{tabular}{ll}
+     (1)& $(A \& B)\rightarrow C $  \\
+     & \docyan{Гипотеза}\\
+     (2)& $A $  \\
+     & \docyan{Гипотеза}\\
+     (3)& $B $  \\
+     & \docyan{Гипотеза}\\
+     (4)& $\axiomThree{A}{B}$\\
+      & \AxiomTwo{3}{A}{B}\\
+      (5) &$B \rightarrow A \& B$\\
+      & \moduse{2}{4}\\
+      (6) &$A \& B$\\
+      & \moduse{3}{5}\\
+      (7) & $C$\\
+      & \moduse{6}{1}\\
+      
+      
+\end{tabular}
+
+\hfill Q.E.D.
+
+
+\newpage
+
+\begin{equation}
+    \vdash A \& (B \lor C) \rightarrow (A \&  B) \lor (A \& C) \tag{k}
+\end{equation}
+
+\deff{Доказательство:}
+
+Воспользуемся теоремой о дедукции, надо доказать:
+$$
+A \& (B \lor C) \vdash (A \&  B) \lor (A \& C)    
+$$
+\begin{tabular}{ll}
+    (1)& $A \& (B \lor C)$  \\
+     & \docyan{Гипотеза}\\
+     (2) & $\axiomFour{A}{(B \lor C)}$\\
+       & \AxiomTwo{4}{$A$}{$B \lor C$} \\
+    (3) & $\axiomFive{A}{(B \lor C)}$\\
+       & \AxiomTwo{5}{$A$}{$B \lor C$} \\
+    (4) & $A$\\
+     & \moduse{1}{2}\\
+    (5) & $B \lor C$\\
+    & \moduse{1}{3}\\
+    (6) & $\axiomThree{A}{B}$\\
+    & \AxiomTwo{3}{$A$}{$B$} \\
+     (7) & $\axiomThree{A}{C}$\\
+     & \AxiomTwo{3}{$A$}{$C$} \\
+     (8) & $\axiomEight{B}{C}{(A \&  B) \lor (A \& C)}$\\
+      & \AxiomThree{8}{$B$}{$C$}{$(A \&  B) \lor (A \& C)$}\\
+      (9) & $\axiomTwo{B}{A \& B}{(A \&  B) \lor (A \& C)}$\\
+       & \AxiomThree{2}{$B$}{$A \& B$}{$(A \&  B) \lor (A \& C)$}\\
+    (10) & $B \rightarrow A \& B$\\
+    & \moduse{4}{6} \\
+    (11) & $ (B \rightarrow A \& B \rightarrow (A \&  B) \lor (A \& C)) \rightarrow (B \rightarrow (A \&  B) \lor (A \& C))$\\
+     & \moduse{10}{9}\\
+     (12) & $\axiomSix{(A \& B)}{(A \& C)}$\\
+     & \AxiomTwo{6}{$(A \& B)$}{$(A \& C)$} \\
+     (13) & $\axiomOne{(A \& B \rightarrow (A \&  B) \lor (A \& C))}{B}$ \\
+     & \AxiomTwo{1}{$A \& B \rightarrow (A \&  B) \lor (A \& C)$}{$B$} \\
+     (14) & $ (B \rightarrow A \& B \rightarrow (A \&  B) \lor (A \& C))$\\
+     & \moduse{12}{13}\\
+     (15) & $B \rightarrow (A \&  B) \lor (A \& C)$\\
+      &  \moduse{14}{11}\\
+      \end{tabular}
+      
+\begin{tabular}{ll}
+    (16) & $\axiomTwo{C}{A \& C}{(A \&  B) \lor (A \& C)}$\\
+       & \AxiomThree{2}{$C$}{$A \& C$}{$(A \&  B) \lor (A \& C)$}\\
+    (17) & $B \rightarrow A \& B$\\
+    & \moduse{4}{7} \\
+    (18) & $ (C \rightarrow A \& C \rightarrow (A \&  B) \lor (A \& C)) \rightarrow (C \rightarrow (A \&  B) \lor (A \& C))$\\
+     & \moduse{17}{16}\\
+     (19) & $\axiomSeven{(A \& C)}{(A \& B)}$\\
+     & \AxiomTwo{7}{$(A \& C)$}{$(A \& B)$} \\
+     (20) & $\axiomOne{(A \& C \rightarrow (A \&  B) \lor (A \& C))}{C}$ \\
+     & \AxiomTwo{1}{$A \& C \rightarrow (A \&  B) \lor (A \& C)$}{$C$} \\
+     (21) & $ (C \rightarrow A \& С \rightarrow (A \&  B) \lor (A \& C))$\\
+     & \moduse{19}{20}\\
+     (22) & $C \rightarrow (A \&  B) \lor (A \& C)$\\
+      &  \moduse{21}{18}\\
+      (23) & $(C \rightarrow (A \&  B) \lor (A \& C)) \rightarrow (B \lor C \rightarrow (A \& B)\lor (A \& C))$\\
+      & \moduse{15}{8}\\
+        (24) & $B \lor C \rightarrow (A \& B)\lor (A \& C)$\\
+      & \moduse{22}{23}\\
+     (25) & $(A \& B)\lor (A \& C)$\\
+      & \moduse{5}{24}\\
+     
+     
+\end{tabular}
+
+\newpage 
+\begin{equation}
+    \vdash (A \rightarrow B \rightarrow C) \rightarrow (A \& B \rightarrow C) \tag{l}
+\end{equation}
+
+\deff{Доказательство:}
+
+По теореме о дедукции:
+$$
+     (A \rightarrow B \rightarrow C), A \& B \vdash C 
+$$
+\begin{tabular}{ll}
+      (1)& $A \rightarrow B \rightarrow C$  \\
+     & \docyan{Гипотеза}\\
+         (2)& $A \& B$  \\
+     & \docyan{Гипотеза}\\
+        (3)& $\axiomFour{A}{B}$  \\
+     & \AxiomTwo{4}{A}{B}\\
+     (4)& $\axiomFive{A}{B}$  \\
+     & \AxiomTwo{5}{A}{B}\\
+        (5) & $A$\\
+        & \moduse{2}{3} \\
+     (6) & $B$\\
+        & \moduse{2}{4} \\
+        (7) & $B \rightarrow C$\\
+        & \moduse{5}{1} \\
+    (8) & $ C$\\
+        & \moduse{6}{7} \\     
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+
+\begin{equation}
+    \vdash (A \rightarrow B) \lor (B \rightarrow A)\tag{m}
+\end{equation}
+
+\deff{Доказательство:}
+
+
+
+\begin{tabular}{ll}
+      (1) & $\axiomEight{A}{\neg A}{(A \rightarrow B) \lor (B \rightarrow A)}$\\
+       & \AxiomThree{7}{$A$}{$\neg A$}{$(A \rightarrow B) \lor (B \rightarrow A)$}\\
+       (2) & $\axiomTwo{A}{(B\rightarrow A)}{(A \rightarrow B) \lor (B \rightarrow A)}$\\
+       & \AxiomThree{2}{$A$}{$B\rightarrow A$}{$(A \rightarrow B) \lor (B \rightarrow A)$}\\
+       (3) & $\axiomOne{A}{B}$\\
+       & \AxiomTwo{1}{$A$}{$B$}\\
+       (4) & $ (A \rightarrow (B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A))\rightarrow (A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A))$\\
+       & \moduse{3}{2}\\
+       (5) & $\axiomSeven{(B \rightarrow A)}{(A\rightarrow B)}$\\
+       & \AxiomTwo{7}{$(B \rightarrow A)$}{$(A\rightarrow B)$}\\
+       (6) & $\axiomOne{((B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A))}{A}$\\
+       & \AxiomTwo{1}{$(B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$}{$A$}\\
+       (7) & $A \rightarrow (B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\ 
+        & \moduse{5}{6}\\
+        (8) & $A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        & \moduse{7}{4}\\
+         (9) & $(\neg A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A)) \rightarrow (A \lor \neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A))$\\
+        & \moduse{8}{1}\\
+        (10) & $\axiomTwo{\neg A}{A \rightarrow B}{(A\rightarrow B)\lor (B \rightarrow A)}$\\
+         & \AxiomThree{2}{$\neg A$}{$(A \rightarrow B)$}{$(A \rightarrow B) \lor (B \rightarrow A)$}\\
+         (11) & $\neg A \rightarrow A \rightarrow B$\\
+ & \docyan{$A, \neg A \vdash B$ по заданию 1е}  \\
+        (12) & $(\neg A \rightarrow (A \rightarrow B) \rightarrow(A\rightarrow B)\lor (B \rightarrow A)) \rightarrow (\neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A))$\\
+        & \moduse{11}{10}\\
+        (13) & $\axiomSix{(A\rightarrow B)}{(B \rightarrow A)}$\\
+       & \AxiomTwo{6}{$(A\rightarrow B)$}{$(B \rightarrow A)$}\\
+       (14) & $\axiomOne{((A \rightarrow B) \rightarrow (A\rightarrow B)\lor (B \rightarrow A))}{A}$\\
+       & \AxiomTwo{1}{$(B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$}{$\neg A$}\\
+       (15)& $\neg A \rightarrow (A \rightarrow B) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\ 
+        & \moduse{13}{14}\\
+        (16) & $\neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\
+        & \moduse{15}{12}\\
+        (17) & $ A \lor \neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\
+        & \moduse{16}{9}\\
+        (18) & $  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        & \docyan{по 3i}\\
+        (19) & $ A \lor \neg A$\\
+        & \moduse{18}{17}\\
+    
+
+
+
+
+
+        
+        %(10) & $\neg A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        % & \docyan{по Лемме 1}\\
+         %   (11) & $ A \lor \neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \moduse{10}{9}\\
+        % (12) & $ A \lor \neg A $\\
+        %& \docyan{По пукнту 3i}\\
+        %(13) & $  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \moduse{12}{11}\\
+\end{tabular}
+
+\hfill Q.E.D.
+
+
+
+\newpage
+
+\begin{equation}
+    \vdash (A \rightarrow B) \lor (B \rightarrow C)\lor (C \rightarrow A)\tag{n}
+\end{equation}
+
+Временно обозначу за $F :=(A \rightarrow B)\lor (B \rightarrow C) $
+
+\begin{tabular}{ll}
+      (1) & $\axiomEight{A}{\neg A}{F \lor (C \rightarrow A)}$\\
+       & \AxiomThree{8}{$A$}{$\neg A$}{$F \lor (C \rightarrow A)$}\\
+       (2) & $\axiomTwo{A}{(C\rightarrow A)}{F \lor (C \rightarrow A)}$\\
+       & \AxiomThree{2}{$A$}{$C\rightarrow A$}{$F \lor (C \rightarrow A)$}\\
+       (3) & $\axiomOne{A}{C}$\\
+       & \AxiomTwo{1}{$A$}{$C$}\\
+       (4) & $ (A \rightarrow (C \rightarrow A) \rightarrow F\lor (C \rightarrow A))\rightarrow (A \rightarrow  F\lor (C \rightarrow A))$\\
+       & \moduse{3}{2}\\
+       (5) & $\axiomSeven{(C \rightarrow A)}{F}$\\
+       & \AxiomTwo{7}{$(C \rightarrow A)$}{$F$}\\
+       (6) & $\axiomOne{((C \rightarrow A)  \rightarrow F\lor (C \rightarrow A))}{A}$\\
+       & \AxiomTwo{1}{$((C \rightarrow A)  \rightarrow F\lor (C \rightarrow A))$}{$A$}\\
+        (7) & $A \rightarrow (C \rightarrow A) \rightarrow F\lor (C \rightarrow A)$\\
+        & \moduse{5}{6}\\
+        (8) & $A \rightarrow F\lor (C \rightarrow A)$\\
+        & \moduse{7}{4}\\
+        (9) & $(\neg A \rightarrow F\lor (C \rightarrow A)) \rightarrow (A \lor \neg A \rightarrow F\lor (C \rightarrow A))$\\
+        & \moduse{8}{1}\\
+         (10) & $\neg A \rightarrow A \rightarrow B$\\
+     & \docyan{$A, \neg A \vdash B$ по заданию 1е}  \\
+       (11) & $\axiomTwo{\neg A}{(A \rightarrow B)}{F}$\\
+         & \AxiomThree{2}{$\neg A$}{$(A \rightarrow B)$}{$F$}\\
+        (12) & $ (\neg A \rightarrow (A \rightarrow B)\rightarrow F)\rightarrow (\neg A \rightarrow F)$\\
+      & \moduse{10}{11}\\
+       (13) & $\axiomSix{(A \rightarrow B)}{(B \rightarrow C)}$\\
+       & \AxiomTwo{6}{$(A \rightarrow B)$}{$(B \rightarrow C)$}\\
+       (14) & $\axiomOne{((A \rightarrow B) \rightarrow F)}{\neg A}$\\
+       & \AxiomTwo{1}{$(A \rightarrow B) \rightarrow F$}{$\neg A$}\\
+       (15) & $(\neg A \rightarrow (A \rightarrow B)\rightarrow F)$\\
+        & \moduse{13}{14}\\
+        (16) & $\neg A \rightarrow F$ \\
+         & \moduse{15}{12}\\
+         
+
+       %(6) & $\axiomOne{((B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A))}{A}$\\
+       %& \AxiomTwo{1}{$(B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$}{$A$}\\
+       %(7) & $A \rightarrow (B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\ 
+       % & \moduse{5}{6}\\
+       % (8) & $A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A)$\\
+       % & \moduse{7}{4}\\
+        % (9) & $(\neg A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A)) \rightarrow (A \lor \neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A))$\\
+        %& \moduse{8}{1}\\
+        %(10) & $\axiomTwo{\neg A}{A \rightarrow B}{(A\rightarrow B)\lor (B \rightarrow A)}$\\
+        % & \AxiomThree{2}{$\neg A$}{$(A \rightarrow B)$}{$(A \rightarrow B) \lor (B \rightarrow A)$}\\
+        % (11) & $\neg A \rightarrow A \rightarrow B$\\
+ %& \docyan{$A, \neg A \vdash B$ по заданию 1е}  \\
+  %      (12) & $(\neg A \rightarrow (A \rightarrow B) \rightarrow(A\rightarrow B)\lor (B \rightarrow A)) \rightarrow (\neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A))$\\
+   %     & \moduse{11}{10}\\
+    %    (13) & $\axiomSix{(A\rightarrow B)}{(B \rightarrow A)}$\\
+     %  & \AxiomTwo{6}{$(A\rightarrow B)$}{$(B \rightarrow A)$}\\
+      % (14) & $\axiomOne{((A \rightarrow B) \rightarrow (A\rightarrow B)\lor (B \rightarrow A))}{A}$\\
+      % & \AxiomTwo{1}{$(B \rightarrow A) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$}{$\neg A$}\\
+       %(15)& $\neg A \rightarrow (A \rightarrow B) \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\ 
+       % & \moduse{13}{14}\\
+       % (16) & $\neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \moduse{15}{12}\\
+        %(17) & $ A \lor \neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \moduse{16}{9}\\
+        %(18) & $  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \docyan{по 3i}\\
+        %(19) & $ A \lor \neg A$\\
+        %& \moduse{18}{17}\\
+    
+
+
+
+
+
+        
+        %(10) & $\neg A \rightarrow  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        % & \docyan{по Лемме 1}\\
+         %   (11) & $ A \lor \neg A \rightarrow (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \moduse{10}{9}\\
+        % (12) & $ A \lor \neg A $\\
+        %& \docyan{По пукнту 3i}\\
+        %(13) & $  (A\rightarrow B)\lor (B \rightarrow A)$\\
+        %& \moduse{12}{11}\\
+\end{tabular}
+
+\begin{tabular}{ll}
+     (17) & $\axiomTwo{\neg A}{F}{F \lor (C \rightarrow A)}$ \\
+      & \AxiomThree{2}{$\neg A$}{$F$}{$F \lor (C \rightarrow A)$}\\
+      (18) & $(\neg A \rightarrow F \rightarrow  F \lor (C\rightarrow A)) \rightarrow (\neg A  \rightarrow  F \lor (C\rightarrow A))$\\
+      & \moduse{16}{17}\\
+       (19) & $\axiomSix{F}{(C \rightarrow A)}$\\
+       & \AxiomTwo{7}{$F$}{$(C \rightarrow A)$}\\
+        (20) & $\axiomOne{(F \rightarrow  F \lor (C\rightarrow A))}{\neg A}$\\
+       & \AxiomTwo{1}{$(F \rightarrow  F \lor (C\rightarrow A))$}{$\neg A$}\\
+       (21) & $\neg A \rightarrow F \rightarrow  F \lor (C\rightarrow A)$\\
+        & \moduse{19}{20}\\
+        (22) & $\neg A  \rightarrow  F \lor (C\rightarrow A)$\\
+        & \moduse{21}{18}\\
+        (23) & $A \lor \neg A \rightarrow F\lor (C \rightarrow A)$\\
+         & \moduse{22}{9}\\
+        (24) & $ A \lor \neg A $\\
+         & \docyan{По пукнту 3i}\\
+         (25) & $F\lor (C \rightarrow A)$\\
+         & \moduse{24}{23}\\
+\end{tabular}
+
+\hfill Q.E.D.
+
+\newpage
+
+\subsection{Задача 4.}
+
+
+Будем пользоваться фактом из $3i : \vdash\alpha \lor \neg \alpha $
+
+По теореме о дедукции $\alpha \vdash \beta \Leftrightarrow \vdash \alpha \rightarrow \beta$.
+
+По теореме о дедукции $\neg \alpha \vdash \beta \Leftrightarrow \vdash \neg \alpha \rightarrow \beta$
+
+Докажем, что $\vdash \beta$:
+
+\deff{Доказательство}
+
+\begin{tabular}{ll}
+     \vdots&   \\
+     $(n)$& $\alpha \rightarrow \beta$  \\
+     & \docyan{по вышесказанному}\\
+     \vdots&   \\
+      $(n+m)$& $\neg \alpha \rightarrow \beta$  \\
+     & \docyan{по вышесказанному}\\
+     $(n+m+1)$ & $\axiomEight{\alpha}{\neg \alpha}{\beta}$\\
+     & \AxiomThree{8}{$\alpha$}{$\neg \alpha$}{$\beta$} \\
+     $(n+m+2)$& $(\neg \alpha \rightarrow \beta)\rightarrow (\alpha \lor \neg \alpha \rightarrow \beta)$\\
+     & \moduse{n}{$(n+m+1)$}\\
+     $(n+m+3)$& $ (\alpha \lor \neg \alpha \rightarrow \beta)$\\
+     & \moduse{$ (n+m)$}{$(n+m+2) $}\\
+     $\vdots$ &\\
+     $(n+m+k+3)$&$\alpha \lor \neg \alpha$\\
+      & \docyan{По 3i}\\
+      $(n+m+k+4)$ & $\beta$ \\
+      &\moduse{$(n+m+k+3)$}{$(n+m+3)$}
+\end{tabular}
+
+
