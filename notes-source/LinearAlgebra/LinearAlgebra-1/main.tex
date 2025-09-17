@@ -1,8 +1,6 @@
 \documentclass[twoside]{book}
 \usepackage[normalem]{ulem}
 \usepackage[12pt]{extsizes}
-\usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
@@ -23,9 +21,15 @@
 \usepackage{colortbl}
 \usepackage{xcolor}
 \usepackage[left=1.5cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0.1cm]{geometry}
-\usepackage[russian]{babel}
 \usepackage[pdf]{graphviz}
 \usepackage{tikz}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+
+\usepackage{fontspec}
+\setmainfont{CMU Serif} % Requires cm-unicode package or system-side installation
 
 \usepackage{etoolbox}
 \AtBeginEnvironment{enumerate}{\linespread{.84}\selectfont}
