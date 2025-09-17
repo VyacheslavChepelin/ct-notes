@@ -38,7 +38,7 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
-    filecolor=magenta,      
+    filecolor=magenta,
     urlcolor=blue,
     pdftitle={Alfo},
     pdfpagemode=FullScreen,
@@ -641,6 +641,8 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
     c_1 & c_2 & c_3
 \end{vmatrix}\)
 
+по св-ву определителя и скалярного произведения.
+
 Доказательство аддитивности векторного произведения:
 
 \(\forall \vec a_1, \vec a_2, \vec b \in V_3\)
@@ -664,6 +666,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 Двойное векторное произведение
 
 \(\vec a \times (\vec b \times \vec c) = \vec b(\vec a \cdot \vec c) - \vec c(\vec a \cdot \vec b)\)
+
+Мнемоника --- ``бац минус цаб''.
+
 \begin{itemize}
     \item \(\vec b \nparallel \vec c\):
           \begin{center}
@@ -691,7 +696,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
           \(\exists \lambda \in \mathbb{R}: \vec b = \lambda \vec c\)
 
           \(\begin{rcases}
-              \vec b(\vec a \cdot \vec c) = \lambda c(\vec a \cdot \vec c) \\
+              \vec b(\vec a \cdot \vec c) = \lambda \vec c(\vec a \cdot \vec c) \\
               \vec c(\vec a \cdot \vec b) = \vec c(\vec a \cdot \lambda\vec c) = \lambda \vec c(\vec a \cdot \vec c)
           \end{rcases} \Rightarrow \vec b(\vec a \cdot \vec c) - \vec c(\vec a \cdot \vec b) = \vec 0 = \vec b \times \vec c\) \(Q.E.D.\)
 \end{itemize}
@@ -713,7 +718,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
           \(Ax + By + C = 0\), \(A^2 + B^2 \neq 0\)
           Не умаляя общности, пусть \(B \neq 0\). Тогда \(M_0(x_0, y_0) = (0, \frac{-C}{B})\) - удовлетворяет уравнению.
 
-          Пусть \(M(x, y) \neq M\) - тоже удовлетворяет уравнению. Тогда \(A(x - x_0) + B(y - y_0) = 0\).
+          Пусть \(M(x, y) \neq M_0\) - тоже удовлетворяет уравнению. Тогда \(A(x - x_0) + B(y - y_0) = 0\).
 
           \(\overrightarrow{M_0 M} = (x - x_0, y - y_0)\)
 
@@ -794,7 +799,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\vec N = (A, B)\) --- нормаль. \(\vec N \perp L\).
 
-        \(C = 0 \Rightarrow L \cap (0, 0)\)
+        \(C = 0 \Leftrightarrow 0 \in L\)
          &
         Общее уравнение:
         \begin{center}
@@ -806,7 +811,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\vec N = (A, B, C)\) --- нормаль. \(\vec N \perp \alpha\).
 
-        \(C = 0 \Rightarrow \alpha \cap (0, 0, 0)\)
+        \(C = 0 \Leftrightarrow 0 \in \alpha\)
          &
         Пересечение плоскостей:
         \begin{center}
@@ -849,11 +854,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \begin{center}
             \includegraphics[width=5.5cm]{Images/Chapter_1/2-2-19.png}
         \end{center}
-        \(\vec S \perp \vec N_1, \vec S \perp \vec N_2\)
+        \(\vec s \perp \vec N_1, \vec s \perp \vec N_2\)
 
-        \(\vec S = \vec N_1 \times \vec N_2\)
+        \(\vec s = \vec N_1 \times \vec N_2\)
 
-        Пусть \(M_0 = (x_0, y_0, 0) = L \cap Oz\)
+        Пусть \(M_0 = (x_0, y_0, 0) = L \cap Oy\)
 
         Тогда решим систему:
 
@@ -863,9 +868,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
                 A_2 x_0 + B_2 y_0 + D_2 = 0
             \end{cases}\)}\normalsize
 
-        Если не получилось, то \(M_0 = (x_0, 0, z_0) = L \cap Oy\)
+        Если не получилось, то \(M_0 = (x_0, 0, z_0) = L \cap Oz\)
 
-        Cнова не получилось: \(M_0 = (0, y_0, z_0) = L \cap Ox\)
+        Cнова не получилось: \(M_0 = (0, y_0, z_0) = L \cap Oz\)
         \\
         \hline
         Уравнение через нормаль и точку:
@@ -916,11 +921,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \scriptsize\(L:
         \begin{cases}
-            l(x - x_0) + m(y - y_0) = 0 \\
-            l(x - x_0) + n(z - z_0) = 0
+            m(x - x_0) - l(y - y_0) = 0 \\
+            n(x - x_0) - l(z - z_0) = 0
         \end{cases}\)\normalsize
 
-        Где \((l, m, n) = \vec S\) - направляющий вектор прямой \(L\),
+        Где \((l, m, n) = \vec s\) - направляющий вектор прямой \(L\),
 
         \((x_0, y_0, z_0) = M_0 \in L\)
         \\
@@ -931,7 +936,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         \(M_0(x_0, y_0) \in L\)
 
-        \(\vec S(l, m) \parallel L\)
+        \(\vec s(l, m) \parallel L\)
 
         \(M(x, y) \in L\)
 
@@ -939,13 +944,13 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\vec r = \overrightarrow{OM} = (x, y)\)
 
-        \(\overrightarrow{M_0M} = \vec r - \vec r_0 \parallel \vec S \Leftrightarrow\)
+        \(\overrightarrow{M_0M} = \vec r - \vec r_0 \parallel \vec s \Leftrightarrow\)
 
-        \(\Leftrightarrow \exists t \in \mathbb{R}: \vec r - \vec r_0 = t \vec S \Leftrightarrow\)
+        \(\Leftrightarrow \exists t \in \mathbb{R}: \vec r - \vec r_0 = t \vec s \Leftrightarrow\)
 
         \(\Leftrightarrow\)\fbox{\(\dfrac{x - x_0}{l} = \dfrac{y - y_0}{m} = t\)}
 
-        \fbox{\(\vec r = \vec r_0 + t \vec S\)}
+        \fbox{\(\vec r = \vec r_0 + t \vec s\)}
 
         \fbox{
             \(
@@ -972,7 +977,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         \(M_0(x_0, y_0, z_0) \in L\)
 
-        \(\vec S(l, m, n) \parallel L\)
+        \(\vec s(l, m, n) \parallel L\)
 
         \(M(x, y, z) \in L\)
 
@@ -980,11 +985,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\vec r = \overrightarrow{OM} = (x, y, z)\)
 
-        \(\overrightarrow{M_0M} = \vec r - \vec r_0 \parallel \vec S \Leftrightarrow\)
+        \(\overrightarrow{M_0M} = \vec r - \vec r_0 \parallel \vec s \Leftrightarrow\)
 
-        \scriptsize\(\Leftrightarrow\)\fbox{\(\dfrac{x - x_0}{l} = \dfrac{y - y_0}{m} = \dfrac{z - z_0}{n} = t\)}\normalsize
+        \scriptsize\(\Leftrightarrow\)\fbox{\(\dfrac{x - x_0}{l} = \dfrac{y - y_0}{m} = \dfrac{z - z_0}{n} = t \in \mathbb{R} \)}\normalsize
 
-        \fbox{\(\vec r = \vec r_0 + t \vec S\)}
+        \fbox{\(\vec r = \vec r_0 + t \vec s\)}
 
         \fbox{
             \(
@@ -1005,7 +1010,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         \(O(0, 0) \notin L\)
 
-        \(P = |O, L| > 0\)
+        \(p = dist(O, L) > 0\)
 
         \(\vec n_0 \perp L\), \(|\vec n_0| = 1\)
 
@@ -1015,11 +1020,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(M(x, y) \in L\)
 
-        \(P = \proj_{\vec n_0} \vec r \Leftrightarrow\)
+        \(p = \proj_{\vec n_0} \vec r \Leftrightarrow\)
 
-        \(\Leftrightarrow\) \fbox{\(\vec r \cdot \vec n_0 - P = 0\)}
+        \(\Leftrightarrow\) \fbox{\(\vec r \cdot \vec n_0 - p = 0\)}
 
-        \fbox{\(x \cos \alpha + y \sin \alpha - P = 0\)}
+        \fbox{\(x \cos \alpha + y \sin \alpha - p = 0\)}
 
         \(L: Ax + By + C = 0\), \(A^2 + B^2 \neq 0\)
 
@@ -1029,15 +1034,15 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \small\(= \pm \left(\dfrac{A}{\sqrt{A^2 + B^2}}, \dfrac{B}{\sqrt{A^2 + B^2}}\right)\)\normalsize
 
-        \(C > 0: ``+"\)
+        \(C > 0: ``-"\)
 
-        \(C < 0: ``-"\)
+        \(C < 0: ``+"\)
 
         \(\cos \alpha = \dfrac{\pm A}{\sqrt{A^2 + B^2}}\)
 
         \(\sin \alpha = \dfrac{\pm B}{\sqrt{A^2 + B^2}}\)
 
-        \(P = \dfrac{\pm C}{\sqrt{A^2 + B^2}}\)
+        \(p = \dfrac{|C|}{\sqrt{A^2 + B^2}}\)
          &
         Нормальное уравнение:
         \begin{center}
@@ -1045,7 +1050,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         \(O(0, 0, 0) \notin L\)
 
-        \(P = |O, \alpha| > 0\)
+        \(p = dist(O, \alpha) > 0\)
 
         \(\vec n_0 \perp \alpha\), \(|\vec n_0| = 1\)
 
@@ -1055,11 +1060,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(M(x, y, z) \in \alpha\)
 
-        \(P = \proj_{\vec n_0} \vec r \Leftrightarrow\)
+        \(p = \proj_{\vec n_0} \vec r \Leftrightarrow\)
 
-        \(\Leftrightarrow\) \fbox{\(\vec r \cdot \vec n_0 - P = 0\)}
+        \(\Leftrightarrow\) \fbox{\(\vec r \cdot \vec n_0 - p = 0\)}
 
-        \scriptsize\fbox{\(x \cos \alpha + y \cos \beta + z \cos \gamma - P = 0\)}\normalsize
+        \scriptsize\fbox{\(x \cos \alpha + y \cos \beta + z \cos \gamma - p = 0\)}\normalsize
 
         \(\alpha: Ax + By + Cz + D = 0\), \(A^2 + B^2 + C^2 \neq 0\)
 
@@ -1067,9 +1072,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\Rightarrow \vec n_0 = \dfrac{\pm \vec N}{|\vec N|}\)
 
-        \(C > 0: ``+"\)
+        \(D > 0: ``-"\)
 
-        \(C < 0: ``-"\)
+        \(D < 0: ``+"\)
 
         \(\cos \alpha = \dfrac{\pm A}{\sqrt{A^2 + B^2 + C^2}}\)
 
@@ -1077,7 +1082,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\cos \gamma = \dfrac{\pm C}{\sqrt{A^2 + B^2 + C^2}}\)
 
-        \(P = \dfrac{\pm D}{\sqrt{A^2 + B^2 + C^2}}\)
+        \(p = \dfrac{|D|}{\sqrt{A^2 + B^2 + C^2}}\)
          &
 
         \\
@@ -1092,17 +1097,17 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(L\) задана нормальным уравнением
 
-        \(\proj_{\vec n_0} \vec{r'} - P = \delta\) --- отклонение
+        \(\proj_{\vec n_0} \vec{r'} - p = \delta\) --- отклонение
 
         \(\delta > 0\), если \(M'\) и \(O\) лежат по разные стороны от \(L\)
 
         \(\delta < 0\), если \(M'\) и \(O\) лежат по одну сторону от \(L\)
 
-        \(d = |M', L| = |\delta| = \)
+        \(d = dist(M', L) = |\delta| = \)
 
-        \(=\) \fbox{\(|\vec{r'} \cdot \vec n_0 - P|\)} \(=\)
+        \(=\) \fbox{\(|\vec{r'} \cdot \vec n_0 - p|\)} \(=\)
 
-        \small\(=\) \fbox{\(|x' \cos \alpha + y' \sin \alpha - P|\)} \(=\)\normalsize
+        \small\(=\) \fbox{\(|x' \cos \alpha + y' \sin \alpha - p|\)} \(=\)\normalsize
 
         \(L: Ax + By + C = 0\)
 
@@ -1120,17 +1125,17 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\alpha\) задана нормальным уравнением
 
-        \(\proj_{\vec n_0} \vec{r'} - P = \delta\) --- отклонение
+        \(\proj_{\vec n_0} \vec{r'} - p = \delta\) --- отклонение
 
         \(\delta > 0\), если \(M'\) и \(O\) лежат по разные стороны от \(\alpha\)
 
         \(\delta < 0\), если \(M'\) и \(O\) лежат по одну сторону от \(\alpha\)
 
-        \(d = |M', \alpha| = |\delta| = \)
+        \(d = dist(M', \alpha) = |\delta| = \)
 
-        \(=\) \fbox{\(|\vec{r'} \cdot \vec n_0 - P|\)} \(=\)
+        \(=\) \fbox{\(|\vec{r'} \cdot \vec n_0 - p|\)} \(=\)
 
-        \scriptsize\(=\) \fbox{\(|x' \cos \alpha + y' \cos \beta + z' \cos \gamma - P|\)} \(=\)\normalsize
+        \scriptsize\(=\) \fbox{\(|x' \cos \alpha + y' \cos \beta + z' \cos \gamma - p|\)} \(=\)\normalsize
 
         \(\alpha: Ax + By + Cz + D = 0\)
 
@@ -1142,11 +1147,13 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \begin{center}
             \includegraphics[width=5.5cm]{Images/Chapter_1/2-2-21.png}
         \end{center}
-        \(d = |M', L| = \)
+        \(d = dist(M', L) = \)
 
-        \small\(= h(\)параллелограмма, построенного на \(\vec S\) и \(\overrightarrow{M_0 M'}) =\)\normalsize
+        \small\(= h(\)параллелограмма, построенного на \(\vec s\) и \(\overrightarrow{M_0 M'}) =\)\normalsize
 
-        \(=\) \fbox{\(\dfrac{|\vec S \times \overrightarrow{M_0 M'}|}{|\vec S|}\)}
+        \(=\) \fbox{\(\dfrac{|\vec s \times \overrightarrow{M_0 M'}|}{|\vec s|}\)}
+
+        где \(M_0 \in L\) --- точка на прямой
         \\
         \hline
         Полярное уравнение:
@@ -1170,17 +1177,17 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(L\) задана нормальным уравнением:
 
-        \small\(x \cos \alpha + y \sin \alpha - P = 0 \Leftrightarrow\)
+        \small\(x \cos \alpha + y \sin \alpha - p = 0 \Leftrightarrow\)
 
-        \scriptsize\(\Leftrightarrow r \cos \varphi \cos \alpha - r \sin \varphi \sin \alpha - P = 0 \Leftrightarrow\)
+        \scriptsize\(\Leftrightarrow r \cos \varphi \cos \alpha - r \sin \varphi \sin \alpha - p = 0 \Leftrightarrow\)
 
-        \small\(\Leftrightarrow r \cos (\varphi - \alpha) - P = 0 \Leftrightarrow\)\normalsize
+        \small\(\Leftrightarrow r \cos (\varphi - \alpha) - p = 0 \Leftrightarrow\)\normalsize
 
-        \fbox{\(r = \dfrac{P}{\cos(\varphi - \alpha)}\)}
+        \fbox{\(r = \dfrac{p}{\cos(\varphi - \alpha)}\)}
 
         \(r > 0\)
 
-        \(P > 0\)
+        \(p > 0\)
 
         \(\cos(\varphi - \alpha) > 0\)
          &
@@ -1190,14 +1197,14 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\alpha: Ax + By + Cz + D = 0\), \(A^2 + B^2 + C^2 \neq 0\)
 
-        \(L: \vec S = (l, m, n), M(x_0, y_0, z_0)\)
+        \(L: \vec s = (l, m, n), M_0(x_0, y_0, z_0)\)
 
         \textbullet \(
         \left[\begin{array}{ll}
                   L \parallel \alpha \\
                   L \subset \alpha
               \end{array}\right .\)
-        \(\Leftrightarrow \vec S \perp \vec N \Leftrightarrow \vec S \cdot \vec N = 0 \Leftrightarrow\)
+        \(\Leftrightarrow \vec s \perp \vec N \Leftrightarrow \vec s \cdot \vec N = 0 \Leftrightarrow\)
 
         \(\)
 
@@ -1205,7 +1212,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \textbullet \(L \subset \alpha \Leftrightarrow\)
         \(\begin{cases}
-              \vec S \cdot \vec N = 0 \\
+              \vec s \cdot \vec N = 0 \\
               M_0 \in \alpha
           \end{cases} \Leftrightarrow\)
 
@@ -1240,9 +1247,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\Leftrightarrow\)\fbox{\(t_Q = - \dfrac{Ax_0 + By_0 + Cz_0 + D}{Al + Bm + Cn}\)}
 
-        \(\sin\angle(L, \alpha) = \cos(90^\circ - \angle(L, \alpha)) = \cos\angle(\vec N, \vec S) = \)
+        \(\sin\angle(L, \alpha) = \cos(90^\circ - \angle(L, \alpha)) = \cos\angle(\vec N, \vec s) = \)
 
-        \(=\) \fbox{\(\dfrac{\vec N \cdot \vec S}{|\vec N||\vec S|}\)}
+        \(=\) \fbox{\(\dfrac{\vec N \cdot \vec s}{|\vec N||\vec s|}\)}
         }\vline
         \\
         \hline
@@ -1255,17 +1262,17 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\Leftrightarrow \vec N_1 \parallel \vec N_2 \Leftrightarrow\)
 
-        \(\Leftrightarrow \vec S_1 \parallel \vec S_2 \Leftrightarrow\)
+        \(\Leftrightarrow \vec s_1 \parallel \vec s_2 \Leftrightarrow\)
 
         \(\Leftrightarrow\)\fbox{\(\dfrac{A_1}{A_2} = \dfrac{B_1}{B_2} \Leftrightarrow \dfrac{m_1}{m_2} = \dfrac{n_1}{n_2}\)}
 
-        \(d = |L_1, L_2|\)(парам. ур.)\(=\)
+        \(d = dist(L_1, L_2)\)(парам. ур.)\(=\)
 
-        \small\(= h(\)параллелограмма, построенного на \(\vec S_2\) и \(\overrightarrow{M_2 M_1}) =\)\normalsize
+        \small\(= h(\)параллелограмма, построенного на \(\vec s_2\) и \(\overrightarrow{M_2 M_1}) =\)\normalsize
 
-        \(=\) \fbox{\(\dfrac{|\vec S_2 \times \overrightarrow{M_2 M_1}|}{|\vec S_2|}\)} \(=\)
+        \(=\) \fbox{\(\dfrac{|\vec s_2 \times \overrightarrow{M_2 M_1}|}{|\vec s_2|}\)} \(=\)
 
-        \(= |M_1, L_2|\)
+        \(= dist(M_1, L_2)\)
 
         \textbullet \(L_1 = L_2 \Leftrightarrow\)
 
@@ -1304,9 +1311,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\Leftrightarrow\) \fbox{\(\dfrac{A_1}{A_2} = \dfrac{B_1}{B_2} = \dfrac{C_1}{C_2}\)}
 
-        \(d = |\alpha_1, \alpha_2|\)
+        \(d = dist(\alpha_1, \alpha_2)\)
 
-        \(M_1 \in \alpha_1 \Rightarrow d = |M_1, \alpha_2|\)
+        \(M_1 \in \alpha_1 \Rightarrow d = dist(M_1, \alpha_2)\)
 
         \(\alpha_1, \alpha_2\) заданы нормальным уравнением:
 
@@ -1350,17 +1357,17 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \begin{array}{ll}
             L_1 \parallel L_2 \\
             L_1 = L_2
-        \end{array}\right .\Leftrightarrow \vec S_1 \parallel \vec S_2 \Leftrightarrow\)\normalsize
+        \end{array}\right .\Leftrightarrow \vec s_1 \parallel \vec s_2 \Leftrightarrow\)\normalsize
 
         \(\Leftrightarrow\) \fbox{\(\dfrac{l_1}{l_2} = \dfrac{m_1}{m_2} = \dfrac{n_1}{n_2}\)}
 
         \small\textbullet\(L_1 = L_2 \Leftrightarrow
         \begin{cases}
-            \vec S_1 \parallel \vec S_2 \\
+            \vec s_1 \parallel \vec s_2 \\
             M_1 \in L_2
         \end{cases} \Leftrightarrow\)\normalsize
 
-        \(\Leftrightarrow \vec S_1 \parallel \vec S_2 \parallel \overrightarrow{M_1 M_2} \Leftrightarrow\)
+        \(\Leftrightarrow \vec s_1 \parallel \vec s_2 \parallel \overrightarrow{M_1 M_2} \Leftrightarrow\)
 
         \scriptsize\fbox{\(\Leftrightarrow
             \begin{cases}
@@ -1376,29 +1383,27 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \(\Leftrightarrow
         \begin{cases}
-            \vec S_1 \parallel \vec S_2 \\
+            \vec s_1 \parallel \vec s_2 \\
             M_1 \notin L_2
         \end{cases}\Leftrightarrow\)
 
         \(\Leftrightarrow
         \begin{cases}
-            \vec S_1 \parallel \vec S_2 \\
-            \vec S_1 \nparallel \overrightarrow{M_1 M_2}
+            \vec s_1 \parallel \vec s_2 \\
+            \vec s_1 \nparallel \overrightarrow{M_1 M_2}
         \end{cases}\)
 
-        \(d = |L_1, L_2| = |M_1, L_2| =\)
-
-        \(= \dfrac{|\vec S \times \overrightarrow{M_1 M_2}|}{|\vec S|}\)
+        \(d = dist(L_1, L_2) = dist(M_1, L_2) = \dfrac{|\vec s \times \overrightarrow{M_1 M_2}|}{|\vec s|}\)
 
         \textbullet\(L_1 \cap L_2 = Q \Leftrightarrow\)
 
         \(\Leftrightarrow\)\fbox{\(
             \begin{cases}
-                \vec S_1 \nparallel \vec S_2 \\
-                \vec S_1 \vec S_2 \overrightarrow{M_1 M_2} = 0
+                \vec s_1 \nparallel \vec s_2 \\
+                \vec s_1 \vec s_2 \overrightarrow{M_1 M_2} = 0
             \end{cases}\)}
 
-        \(\cos\angle(L_1, L_2) = \dfrac{\vec S_1 \cdot \vec S_2}{|\vec S_1||\vec S_2|}\)
+        \(\cos\angle(L_1, L_2) = \dfrac{\vec s_1 \cdot \vec s_2}{|\vec s_1||\vec s_2|}\)
 
         \textbullet \(L_1 \skewed L_2:\)
 
@@ -1406,7 +1411,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
             \includegraphics[width=5.5cm]{Images/Chapter_1/2-2-23.png}
         \end{center}
 
-        \(\vec S_1 \vec S_2 \overrightarrow{M_1 M_2} \neq 0 \Rightarrow\)
+        \(\vec s_1 \vec s_2 \overrightarrow{M_1 M_2} \neq 0 \Rightarrow\)
 
         \(\Rightarrow \exists \alpha_1, \alpha_2:
         \begin{cases}
@@ -1415,28 +1420,29 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
             L_2 \subset \alpha_2
         \end{cases}\)
         \\ & &
-        \(|L_1, L_2| = |\alpha_1, \alpha_2| = h(\)параллелепипед, построенный на \(\vec S_1, \vec S_2, \overrightarrow{M_1 M_2}) = \)
+        \(dist(L_1, L_2) = dist(\alpha_1, \alpha_2) = h\)
+        (параллелепипед, построенный на \(\vec s_1, \vec s_2, \overrightarrow{M_1 M_2}\)) \(=\)
 
-        \(=\)\fbox{\(\dfrac{|\vec S_1 \vec S_2 \overrightarrow{M_1 M_2}|}{|\vec S_1 \times \vec S_2|}\)}
+        \(=\)\fbox{\(\dfrac{|\vec s_1 \vec s_2 \overrightarrow{M_1 M_2}|}{|\vec s_1 \times \vec s_2|}\)}
 
         \begin{center}
             \includegraphics[width=5.5cm]{Images/Chapter_1/2-2-24.png}
         \end{center}
-        \(L(M, \vec S):
+        \(L(M, \vec s):
         \begin{cases}
             L \perp L_1 \\
             L \perp L_2
         \end{cases}\)
 
-        \(\vec S = \vec S_1 \times \vec S_2\)
+        \(\vec s = \vec s_1 \times \vec s_2\)
 
-        \(\beta_1(\vec S_1, \vec S, M_1) \Rightarrow\)
+        \(\beta_1(\vec s_1, \vec s, M_1) \Rightarrow\)
 
         \(\Rightarrow\)\fbox{\(M = L_2 \cap \beta_1\)}
 
-        \(\vec N_1 = \vec S_1 \times \vec S =\)
+        \(\vec N_1 = \vec s_1 \times \vec s =\)
 
-        \(= \vec S_1 \times (\vec S_1 \times \vec S_2)\)
+        \(= \vec s_1 \times (\vec s_1 \times \vec s_2)\)
         \\
         \hline
     \end{longtable}
@@ -1466,11 +1472,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 \begin{center}
     \includegraphics[height=7cm]{Images/Chapter_1/2-3-2.png}
 \end{center}
-\(PQ \perp L(M_0, \vec S = (l, m, n))\), \(Q \in L\)
+\(PQ \perp L(M_0, \vec s = (l, m, n))\), \(Q \in L\)
 
 \(P = (P_1, P_2, P_3)\)
 
-\(\alpha(P, \vec S): l(x - P_1) + m(y - P_2) + n(z - P_3) = 0\)
+\(\alpha(P, \vec s): l(x - P_1) + m(y - P_2) + n(z - P_3) = 0\)
 \(L:
 \begin{cases}
     x = x_0 + t l \\
@@ -1590,7 +1596,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
         \fbox{\(y^2 = 2px\)}
 
-        \(p = |F, D|\)
+        \(p = dist(F, D)\)
 
         \(p\) --- фокальный параметр
         \\
@@ -1673,59 +1679,60 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         Начало ПСК в одном из фокусов, ось направлена в сторону соответствующей директрисы.
 
-        \(r = \dfrac{P}{1 + \varepsilon \cos\varphi}\)
+        \(r = \dfrac{p}{1 + \varepsilon \cos\varphi}\)
 
-        \(P\) --- фокальный параметр.
+        \(p\) --- фокальный параметр.
 
-        \(P = \varepsilon \cdot q = \dfrac{b^2}{a}\)
+        \(p = \varepsilon \cdot q = \dfrac{b^2}{a}\)
 
-        \(q = |F, D| = \dfrac{a}{\varepsilon} - c\)
+        \(q = dist(F, D) = \dfrac{a}{\varepsilon} - c\)
 
-        \(P\) --- Длина перпендикуляра от \(F\) до эллипса
+        \(p\) --- Длина перпендикуляра от \(F\) до эллипса
 
         Директрисы:
 
         \(r = \dfrac{\pm \dfrac{a}{\varepsilon} - c}{\cos\varphi}\)
 
-        Если ось направлена в противоположную сторону, то меняем знак косинуса.
+        Если ось направлена в противоположную сторону, то заменяем все вхождения $\cos{\varepsilon}$ на $-\cos{\varepsilon}$.
          &
         \begin{center}
             \includegraphics[width=4.5cm]{Images/Chapter_1/3-1-11.png}
         \end{center}
         Начало ПСК в одном из фокусов, ось направлена в сторону соответствующей директрисы.
 
-        \(r = \dfrac{\pm P}{1 \pm \varepsilon \cos\varphi}\)
+        \(r = \dfrac{\pm p}{1 \pm \varepsilon \cos\varphi}\)
 
-        Ветвь, более близкая к фокусу: \(``+"\)
+        Ветвь, соответствующая фокусу: \(``+"\)
 
-        Ветвь, более далёкая от фокуса: \(``-"\)
+        Ветвь, не соответствующая фокусу: \(``-"\)
 
-        \(P\) --- фокальный параметр.
+        \(p\) --- фокальный параметр.
 
-        \(P = \varepsilon \cdot q = \dfrac{b^2}{a}\)
+        \(p = \varepsilon \cdot q = \dfrac{b^2}{a}\)
 
-        \(q = |F, D| = c - \dfrac{a}{\varepsilon}\)
+        \(q = dist(F, D) = c - \dfrac{a}{\varepsilon}\)
 
-        \(P\) --- Длина перпендикуляра от \(F\) до гиперболы.
+        \(p\) --- Длина перпендикуляра от \(F\) до гиперболы.
 
         Директрисы:
 
         \(r = \dfrac{\pm \dfrac{a}{\varepsilon} + c}{\cos\varphi}\)
 
-        Если ось направлена в противоположную сторону, то меняем знак косинуса.
+        Если ось направлена в противоположную сторону, то заменяем все вхождения $\cos{\varepsilon}$ на $-\cos{\varepsilon}$.
+
          &
         \begin{center}
             \includegraphics[width=4.5cm]{Images/Chapter_1/3-1-12.png}
         \end{center}
         Начало ПСК в фокусе, ось направлена в сторону директрисы.
 
-        \(r = \dfrac{P}{1 + \varepsilon \cos\varphi} = \)
+        \(r = \dfrac{p}{1 + \varepsilon \cos\varphi} = \)
 
-        \(= \dfrac{P}{1 + \cos\varphi}\)
+        \(= \dfrac{p}{1 + \cos\varphi}\)
 
-        \(P\) --- Длина перпендикуляра от \(F\) до параболы
+        \(p\) --- Длина перпендикуляра от \(F\) до параболы
 
-        Если ось направлена в противоположную сторону, то меняем знак косинуса.
+        Если ось направлена в противоположную сторону, то заменяем все вхождения $\cos{\varepsilon}$ на $-\cos{\varepsilon}$.
         \\
         \hline
         Касательные
@@ -1749,7 +1756,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
         \end{center}
         \(M(x_0, y_0) \in\) параболе
 
-        \(y y_0 = P(x + x_0)\)
+        \(y y_0 = p(x + x_0)\)
         \\
         \hline
         Оптические свойства
@@ -1809,13 +1816,13 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(\Rightarrow \dfrac{x^2(a^2 - c^2)}{a^2} + y^2 = a^2 - c^2 \Rightarrow \dfrac{x^2}{a^2} - \dfrac{y^2}{c^2 - a^2} = 1 \Rightarrow\) \fbox{\(\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1\)} \(Q.E.D.\)
 
-          Из \(r_2 = -2a + r_1\) аналогично можно получить \(r_1 = x \varepsilon + a\). Значит \fbox{\(r_{1, 2} = x \varepsilon \pm a\)}
+          Из \(r_1 = 2a + r_2\) аналогично получаем \(r_1 = x \varepsilon + a\). Значит \fbox{\(r_{1, 2} = x \varepsilon \pm a\)}
 
           Если \(r_1 < r_2\) (левая ветвь): \fbox{\(r_{1, 2} = -x \varepsilon \mp a\)}
 
     \item Директрисы:
 
-          \(D_2: x = \pm \dfrac{a}{\varepsilon}\), \(d_2 = |M, D_2| = \left|x - \dfrac{a}{\varepsilon}\right|\)
+          \(D_2: x = \pm \dfrac{a}{\varepsilon}\), \(d_2 = dist(M, D_2) = \left|x - \dfrac{a}{\varepsilon}\right|\)
 
           Правая ветвь: \(r_2 = x \varepsilon - a \Rightarrow \dfrac{r_2}{d_2} = \dfrac{x \varepsilon - a}{x - \dfrac{a}{\varepsilon}} = \varepsilon \dfrac{x - \dfrac{a}{\varepsilon}}{x - \dfrac{a}{\varepsilon}} = \varepsilon\)
 
@@ -1827,7 +1834,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
     \item Определение 2:
 
-          Пусть известно \(Q = |F, D|\) и \(\varepsilon = \dfrac{r}{d} > 1\)
+          Пусть известно \(q = dist(F, D)\) и \(\varepsilon = \dfrac{r}{d} > 1\)
 
           Проведём ДСК, в которой \(D \parallel Oy\). Давайте найдём параметры канонического уравнения, считая, что \(D: x = \dfrac{a}{\varepsilon}\), а \(F = (c, 0)\).
 
@@ -1838,7 +1845,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(\Rightarrow\) \fbox{\(c = \dfrac{\varepsilon^2 Q}{\varepsilon^2 - 1}\)}
 
-          Мы в узнали чему равны \(a\) и \(c\) из известных нам \(\varepsilon\) и \(Q\), значит точки, удовлетворяющие 2-му определению, удовлетворяют \(\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1\), а \(D\) --- очевидно директриса гиперболы. \(Q.E.D.\)
+          Мы узнали чему равны \(a\) и \(c\) из известных нам \(\varepsilon\) и \(Q\), значит точки, удовлетворяющие 2-му определению, удовлетворяют \(\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1\), а \(D\) --- очевидно директриса гиперболы. \(Q.E.D.\)
 
     \item Асимптоты:
 
@@ -1854,25 +1861,25 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(=b \lim\limits_{x \to +\infty} \left(\dfrac{\dfrac{x^2}{a^2} - 1 - \dfrac{x^2}{a^2}}{\sqrt{\dfrac{x^2}{a^2} - 1} + \dfrac{x}{a}} \right) = b \lim\limits_{x \to +\infty} \left(\dfrac{-1}{\sqrt{\dfrac{x^2}{a^2} - 1} + \dfrac{x}{a}} \right) = 0\)
 
-          Значит асимптота: \(y = \dfrac{b}{a} x\)
+          Значит асимптота: \(y = \dfrac{b}{a} x\) --- в первой координатной четверти
 
           По симметрии получаем \(y = \pm \dfrac{b}{a} x\) \(Q.E.D.\)
 
     \item Полярное уравнение:
 
-          Зададим ПСК\((r, \varphi)\), у которой полюс \(O'= F_2 = (c, 0)\), а ось направлена в сторону \(-x\).
+          Зададим ПСК\((r, \varphi)\), у которой полюс \(O'= F_2 = (c, 0)\), а ось направлена в сторону, противоположную направлению координатной оси \(Ox\).
 
           \(x = c - r \cos \varphi\)
 
           Правая ветвь: \(r = r_2 = x \varepsilon - a\)
 
-          \(r = \varepsilon(c - r \cos \varphi) - a = \varepsilon c - \varepsilon r \cos \varphi - a \Rightarrow r(1 + \varepsilon \cos \varphi) = \varepsilon c - a = \varepsilon \left(c - \dfrac{a}{\varepsilon}\right) = P \Rightarrow r = \dfrac{P}{1 + \varepsilon \cos \varphi}\)
+          \(r = \varepsilon(c - r \cos \varphi) - a = \varepsilon c - \varepsilon r \cos \varphi - a \Rightarrow r(1 + \varepsilon \cos \varphi) = \varepsilon c - a = \varepsilon \left(c - \dfrac{a}{\varepsilon}\right) = \varepsilon q = p \Rightarrow r = \dfrac{p}{1 + \varepsilon \cos \varphi}\)
 
           Левая ветвь: \(r = r_2 = - x \varepsilon + a\)
 
-          \(r = - \varepsilon(c - r \cos \varphi) + a = - \varepsilon c + \varepsilon r \cos \varphi + a \Rightarrow r(1 - \varepsilon \cos \varphi) = a - \varepsilon c = \varepsilon \left(\dfrac{a}{\varepsilon} - c\right) = -P \Rightarrow r = \dfrac{-P}{1 - \varepsilon \cos \varphi}\)
+          \(r = - \varepsilon(c - r \cos \varphi) + a = - \varepsilon c + \varepsilon r \cos \varphi + a \Rightarrow r(1 - \varepsilon \cos \varphi) = a - \varepsilon c = \varepsilon \left(\dfrac{a}{\varepsilon} - c\right) = \varepsilon \left(-q \right) = -p \Rightarrow r = \dfrac{-p}{1 - \varepsilon \cos \varphi}\)
 
-          Если ось направлена в противоположную сторону, то \(\cos(2 \pi - \varphi) = - \cos \varphi\), и \(\cos \varphi\) в формулы записывается со знаком минус.
+          Если ось направлена в противоположную сторону, то \(\cos(\pi - \varphi) = - \cos \varphi\), и \(\cos \varphi\) в формулы записывается со знаком минус.
 
           Аналогично, если у ПСК полюс в \(F_1\).
 
@@ -1898,9 +1905,9 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           \(\vec r_1 = \overrightarrow{F_1 M_0} = (x_0 + c, y_0)\), \(\vec r_2 = \overrightarrow{F_2 M_0} = (x_0 - c, y_0)\)
 
-          Проверим, что биссектриса между \(\vec r_1\) и \(\vec r_2\) параллельна касательной в точке \(M_0\), то есть перпендикулярна перпендикуляру касательной \(\vec N = \left(\dfrac{x_0}{a^2}, -\dfrac{y_0}{b^2}\right)\).
+          Проверим, что вектор биссектрисы угла между \(\vec r_1\) и \(\vec r_2\) параллелен касательной в точке \(M_0\), то есть перпендикулярен нормали касательной \(\vec N = \left(\dfrac{x_0}{a^2}, -\dfrac{y_0}{b^2}\right)\).
 
-          Биссектриса между \(\vec r_1\) и \(\vec r_2\): \(|\vec r_1|\vec r_2 + |\vec r_2| \vec r_1 = (\varepsilon x_0 + a) \vec r_2 + (\varepsilon x_0 - a) \vec r_1 =\)
+          Вектор биссектрисы угла между \(\vec r_1\) и \(\vec r_2\): \(|\vec r_1|\vec r_2 + |\vec r_2| \vec r_1 = (\varepsilon x_0 + a) \vec r_2 + (\varepsilon x_0 - a) \vec r_1 =\)
 
           \(=((x_0 - c)(\varepsilon x_0 + a) + (\varepsilon x_0 - a)(x_0 + c), y_0(\varepsilon x_0 + a) + y_0(\varepsilon x_0 - a)) =\)
 
@@ -1914,7 +1921,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 \subsection{Приведение КВП к каноническому виду}
 \(a_{11} x^2 + 2 a_{12} x y + a_{22} y^2 + 2 a_1 x + 2 a_2 y + a_0 = 0\), \(a_{11}^2 + a_{12}^2 + a_{22}^2 \neq 0\)
 
-Очевидно, что КВП не меняет своего типа при повороте и сдвиге.
+Очевидно, что уравнение КВП не меняет своего типа при повороте и сдвиге декартовой системы координат.
 
 \begin{enumerate}
     \item Если \(a_{12} \neq 0\), подберём такой угол поворота \(\alpha\), чтобы в новом уравнении \(a_{12}' = 0\).
@@ -1925,21 +1932,21 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
           Выразим \(a_{12}'\) через старые коэффициенты, \(\sin \alpha = S_\alpha\) и \(\cos \alpha = C_\alpha\) и приравняем к \(0\):
 
-          \(a_{12} = -2 a_{11} C_\alpha S_\alpha + 2 a_{12} (C_\alpha^2 S_\alpha^2) + 2 a_{22} C_\alpha S_\alpha = 0\)
+          \(a'_{12} = -2 a_{11} C_\alpha S_\alpha + 2 a_{12} (C_\alpha^2 - S_\alpha^2) + 2 a_{22} C_\alpha S_\alpha = 0\)
 
           \((a_{22} - a_{11}) \tan \alpha + a_{12} (1 - \tan^2 \alpha) = 0\)
 
-          \(\tan^2 \alpha + \dfrac{a_{22} - a_{11}}{a_{12}} \tan \alpha - 1 = 0\) ~--- квадратное уравнение относительно \(\tan \alpha\)
+          \(\tan^2 \alpha - \dfrac{a_{22} - a_{11}}{a_{12}} \tan \alpha - 1 = 0\) ~--- квадратное уравнение относительно \(\tan \alpha\)
 
           Дискриминант \(D = \left(\dfrac{a_{22} - a_{11}}{a_{12}}\right) ^ 2 + 4 > 0\) ~--- 2 решения
 
           По теореме Виета \(\tan \alpha_1 \cdot \tan \alpha_2 = -1 \Rightarrow \alpha_1 \in \left(0, \dfrac{\pi}{2}\right)\), \(\alpha_2 \in \left(-\dfrac{\pi}{2}, 0\right)\), \(\alpha_1 - \alpha_2 = 90^\circ\)
 
-          \(\alpha_{1, 2} = \arctan\left(\dfrac{-\dfrac{a_{22} - a_{11}}{a_{12}} \pm \sqrt{\left(\dfrac{a_{22} - a_{11}}{a_{12}}\right) ^ 2 + 4}}{2}\right)\)
+          \(\alpha_{1, 2} = \arctan\left(\dfrac{\dfrac{a_{22} - a_{11}}{a_{12}} \pm \sqrt{\left(\dfrac{a_{22} - a_{11}}{a_{12}}\right) ^ 2 + 4}}{2}\right)\)
 
           Начало координат \(O' = O\)
 
-    \item \(a_{11}' x'^2 + a_{22} y'^2 + 2 a_1' x' + 2 a_2' y' + a_0 = 0\)
+    \item \(a_{11}' x'^2 + a'_{22} y'^2 + 2 a_1' x' + 2 a_2' y' + a_0 = 0\)
           Есть два случая:
           \begin{enumerate}
               \item \(\begin{cases}
@@ -1963,7 +1970,7 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
                     \begin{enumerate}
                         \item \(a_0' \neq 0\)
 
-                              \(\alpha = \dfrac{a_{11}'}{a_0'}\), \(\beta = \dfrac{a_{22}'}{a_0'}\)
+                              \(\alpha = \dfrac{a_{11}'}{-a_0'}\), \(\beta = \dfrac{a_{22}'}{-a_0'}\)
 
                               \(\alpha x''^2 + \beta y''^2 = 1\)
 
@@ -1997,16 +2004,16 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 
                               Сделаем сдвиг ДСК:
 
-                              \(x'' = x' + \dfrac{a_0}{a_{11}'}\)
+                              \(x'' = x' + \dfrac{a'_1}{a_{11}'}\)
 
-                              \(y'' = y' + \dfrac{a_0}{2 a_2'}\)
+                              \(y'' = y' + \dfrac{a_0 - \dfrac{{a'_1}^2}{a'_{11}}}{2 a_2'}\)
 
-                              Начало координат \(O''\left(-\dfrac{a_0}{a_{11}'}, -\dfrac{a_0}{2 a_2'}\right)\)
+                              Начало координат \(O''\left(-\dfrac{a'_1}{a_{11}'}, -\dfrac{a_0 - \dfrac{{a'_1}^2}{a'_{11}}}{2 a_2'}\right)\)
 
                               Получим \(a_{11}' x''^2 + 2 a_2' y''^2 = 0 \Leftrightarrow x''^2 = \alpha y''\), \(\alpha \neq 0\) ~--- Парабола
                         \item \(a_2' = 0\)
 
-                              \(x'' = x' + \dfrac{a_0}{a_{11}'}\)
+                              \(x'' = x' + \dfrac{a'_1}{a_{11}'}\)
 
                               \(a_{11}' x''^2 + a_0' = 0 \Rightarrow x''^2 = \alpha\)
 
@@ -2027,11 +2034,11 @@ $(x^2+y^2)^2=x^2-y^2$. Но приведя в п.с.к:  \(r^4=r^2(\cos^2x-\sin^
 \subsection{Операции, группа, кольцо, поле}
 \subsubsection{Законы композиции.}
 
-$f: A \times B \rightarrow C$ - функция отображения.
+$f: A \times B \rightarrow C$ - функция, отображение.
 
 $\forall (a,b): a \in A, b \in B: \exists! c \in C$ --- \deff{закон внешней композиции.}
 
-$f: A \times A \rightarrow A$ --- \deff{закон внутренней композиции} или алгебраическая операция.
+$f: A \times A \rightarrow A$ --- \deff{закон внутренней композиции} или алгебраическая операция, бинарная операция.
 
 \subsubsection{Ассоциативность, коммутативность алгебраических операций.}
 
@@ -2046,42 +2053,49 @@ $a * (b *c) = (a * b) *c$ --- \deff{ассоциативность}.
 
 \deff{Алгебраическая структура} --- множество с набором $\Omega$ --- операция и отношений на ней, с некоторой системой аксиом. Обозначают $(A, \Omega)$
 
-\deff{Группа} (A, \{+\}):
+\deff{Группа} (A, \{*\}):
+
+* --- групповая операция, чаще всего обозначается как ``$\cdot$'' --- умножение, или как ``$+$'' --- сложение.
+``$\cdot$'' --- мультипликативная запись, где $e$ --- единица, а $-a$ --- обратный.
+``$+$'' --- аддитивная запись, где $e$ заменяется на $0$ --- нулевой, а $-a$ --- противоположный.
 
 \begin{enumerate}
-    \item $a+(b+c) = (a+b)+c$ --- ассоциативность.
-    \item $\exists 0:\forall a: a + 0 = 0+ a =a$.
-    \item $\exists$  обратного: $\forall a: \exists (-a): a+ (-a) = 0$.
+    \item $a * (b * c) = (a * b) * c$ --- ассоциативность.
+    \item $\exists e:\forall a: a * e = e * a = a$ --- существование нейтрального элемента $e$.
+    \item $\forall a: \exists (-a): a+ (-a) = e$ --- существование обратного элемента $(-a)$.
 \end{enumerate}
 
-Если группа обладает еще и коммутативностью, то такая группа --- \deff{абелева}.
+Если группа обладает еще и коммутативностью, то такая группа --- \deff{абелева}:
+
+\begin{enumerate}[resume]
+    \item $a * b = b * a$
+\end{enumerate}
 
 \deff{Кольцо} (A, \{+, $\cdot$\}):
 
 \begin{enumerate}
-    \item Абелева групппа по сложению.
+    \item[1--4.] Абелева групппа по сложению.
+    \setcounter{enumi}{4}
     \item $a \cdot (b+c) = a\cdot b + a\cdot c$ --- левая дистрибутивность.
     \item $(b+c)\cdot a  = b \cdot a + c \cdot a$  --- правая дистрибутивность.
-    \item $a \cdot (b\cdot c) = (a\cdot b)\cdot c$ --- ассоциативность умножения
 \end{enumerate}
 
 \deff{Поле}  (A, \{+, $\cdot$\}):
 \begin{enumerate}
-    \item Абелева групппа по сложению.
-    \item Абелева групппа по умножению.
-    \item $a(b+c) = ab+ac$ --- дистрибутивность.
+    \item[1--5.] Кольцо по сложению.
+    \item[6--9.] Абелева группа по умножению для ненулевых элементов.
 \end{enumerate}
 
-\textbf{Замечание.} У нуля нет обратного и это нормально!
+Поле --- это ассоциативное коммутативное кольцо с единицей, то есть для $\forall$ ненулевого элемента $\exists$ обратный, а вот у нуля обратного нет и это нормально.
 
 Свойства кольца:
 
 \begin{enumerate}
     \item $0 \cdot a = 0$
     \item $a+x = a+ y \rightarrow x=y$
-    \item $a + x = b$ имеет единственное решение
-    \item $0$ --- единственнен.
-    \item $1$ --- единственна в кольце с единицой.
+    \item $a + x = b$ имеет единственное решение $x = -a + b$
+    \item $0$ --- единственен.
+    \item $1$ --- единственна в кольце с единицей.
 \end{enumerate}
 
 \subsection{Линейное пространство, алгебра, свойства.}
@@ -2089,21 +2103,19 @@ $a * (b *c) = (a * b) *c$ --- \deff{ассоциативность}.
 $K - $ поле, $V$ - множество. $+: V \times V \rightarrow V$, $\cdot: K\times V \rightarrow V$. Если все, что сказано ниже выполнено  $\forall \phi, \lambda \in K, a,b \in V$.
 
 \begin{enumerate}
-    \item аксиомы
-    \item аббелевой
-    \item для V
-    \item по сложению.
+    \item[1--4.] Абелева группа по сложению.
+    \setcounter{enumi}{4}
     \item $ \phi(\lambda(a)) = \lambda(\phi(a))$.
     \item $\lambda (a+b) = \lambda a + \lambda b$.
     \item $a ( \phi + \lambda) = a\phi + a \lambda $.
     \item $\exists 1: a \cdot 1 =a$.
 \end{enumerate}
 
-То тогда такую систему называют \deff{линейным пространством}.
+То тогда такую систему называют \deff{линейным пространством} над полем $K$.
 
 Если добавить еще одну операцию $\times: V \times V \rightarrow V$.
 
-\begin{enumerate}
+\begin{enumerate}[resume]
     \item $(a+b)\times c = a \times c + b \times c $
 
           $c\times (a+b) = c \times a + c \times b$
@@ -2113,26 +2125,26 @@ $K - $ поле, $V$ - множество. $+: V \times V \rightarrow V$, $\cdot
 
 То такую структуру называют \deff{алгеброй}.
 
-\begin{enumerate}
+\begin{enumerate}[resume]
     \item добавим коммутативность $\times$ --- коммутативная алгебра.
 
     \item добавим ассоциативность $\times$ --- ассоциативная алгебра.
 
     \item добавим единицу --- унитальная алгебра.
 
-    \item добавим обратное --- алгебра с делением.
+    \item добавим обратное (для ненулевых элементов) --- алгебра с делением.
 \end{enumerate}
 
 \subsection{Нормированные линейные пространства и алгебры.}
 
-\deff{Нормированное пространство} --- линейное пространство над $\mathbb{R}$ с нормой.
+\deff{Нормированное пространство} --- линейное пространство над $\mathbb{R}(\mathbb{C})$ с нормой.
 
-\deff{Норма} $||\cdot||:V \rightarrow \mathbb{R}$, удовлетворящее:
+\deff{Норма} $||\cdot||:V \rightarrow \mathbb{R}(\mathbb{C})$, удовлетворящее:
 
 \begin{enumerate}
-    \item $||x|| + ||y||\leq ||x+y||$.
-    \item $||x||\geq 0$, причем $||x||=0 \Leftrightarrow$ $x = 0$.
-    \item  $||\alpha x|| = |\alpha|||x||$.
+    \item $\forall x, y \in V : ||x|| + ||y||\geq ||x+y||$.
+    \item $\forall x \in V : ||x||\geq 0$, причем $||x||=0 \Leftrightarrow$ $x = 0$.
+    \item $\forall x \in V : \forall \alpha \in \mathbb{R}(\mathbb{C}) : ||\alpha x|| = |\alpha|||x||$.
 \end{enumerate}
 
 Алгебра называется \deff{нормированной}, если существует норма согласованная с умножением:
@@ -2180,14 +2192,16 @@ $$z=(x;y)=x+iy$$
 
 При \(y=0\) число можно отождествлять с вещественным числом \(x\).
 
-Теперь можем ввести полярную систему координат с центром, совпадающим с центром декартовой системы координат и осью вдоль оси \(Re\,z\). Тогда для каждого ненулевого комплексного числа получим \(r\) и\(\varphi\). Для \(z=x+iy\neq0\) модуль числа \(r=\sqrt{x^2 + y^2}\), а \(\varphi\) - аргумент - такой угол, что \(\tan{\varphi}= x/y\) (Функция аргумента имеет своё обозначение \(\varphi=Arg(x+iy)\) или \(\varphi=\arg_k(x+iy)\), если хотим аргумент, как многозначную функцию и \(\varphi=\arg(x+iy)\) или \(\varphi=\arg_0(x+iy)\), если хотим получить главный аргумент, то есть значение аргумента лежащее в \([-\pi;\pi)\) или в \([0;2\pi)\) в зависимости от выбранного диапазона).
+Теперь можем ввести полярную систему координат с центром, совпадающим с центром декартовой системы координат и осью вдоль оси \(Re\,z\). Тогда для каждого ненулевого комплексного числа получим \(r\) и \(\varphi\). Для \(z=x+iy\neq0\) модуль числа \(r=\sqrt{x^2 + y^2}\), а \(\varphi\) - аргумент - такой угол, что \(\tan{\varphi}= y/x\)
+
+Функция аргумента --- \(\varphi=Arg(x+iy)\) --- многозначная, то есть её результат --- множество всех подходящих значений, а формат \(\arg_k\) означает использование k-ого значения. Нулевой аргумент (результат \(\arg_0\) или просто \(\arg\)) называется главным аргументом и лежит в \([-\pi;\pi)\) или в \([0;2\pi)\), в зависимости от выбранного диапазона.
 \begin{center}
     \includegraphics[width=5cm]{Images/Chapter_2/2-2-1.png}
 \end{center}
 Заметим, что тогда \(x=r\cos{\varphi}\), а \(y=r\sin{\varphi}\). Тогда получим третий вариант записи комплексного числа - Тригонометрическую форму записи: $$z=x+iy=r(\cos{\varphi}+i\sin{\varphi})$$
 \subsection{Комплексные = алгебра с нормой.}
 
-То, что это линейное пространство и так понятно (очевидно, что все 8 аксиом выполнены, тк мы до этого доказывали, что \(R^2\) --- линейное пространство). Давайте докажем, что комплексные - это \deff{нормированная алгебра}.
+То, что это линейное пространство и так понятно (очевидно, что все 8 аксиом выполнены, тк мы до этого доказывали, что \(R^2\) --- линейное пространство). Давайте докажем, что комплексные числа - это \deff{нормированная алгебра}.
 
 Значит, мы хотим создать такую операцию умножения, что она будет согласованно с нормой. Посмотрим, тогда чему должно быть равно \(i\cdot i = i^2\).
 
@@ -2195,7 +2209,7 @@ $$z=(x;y)=x+iy$$
 
 Посмотрим, чему у нас будет равна вот такая норма:
 
-$$ ||i^2+ix|| = ||i(i+x) || \leq ||i|| ||i+x|| = \sqrt{1+x^2}$$
+$$ \forall x \in \mathbb{R} : ||i^2 + ix|| = ||i (i + x)|| \leq ||i|| ||i + x|| = \sqrt{1 + x^2} $$
 
 Должно выполняться последнее, если мы хотим, чтобы норма была согласованна с умножением. Но мы знаем что  \(i\cdot i = \lambda + \phi i\)! Подставим:
 
@@ -2207,9 +2221,9 @@ $$\lambda^2 + \phi^2+2\phi x \leq 1$$
 
 Заметим, что, если \(\phi\neq 0\), тогда слева многочлен от \(x\)~--- прямая, с углом наклона не 0. Откуда в какой-то момент она пересечет 1 и будет принимать значения больше 1.
 
-Откуда получаем, что \(\phi=0\). Откуда $i^2 = \lambda$.
+Откуда получаем, что \(\phi=0\). Откуда $i^2 = \lambda \in \mathbb{R}$.
 
-Посмотрим на \(\sqrt{(\lambda+1)^2+4}=||\lambda + 2i + 1||=||(i+1)^2||\leq \sqrt{2}^2 = 2\).
+Посмотрим на \(2 \leq \sqrt{(\lambda+1)^2+4}=||\lambda + 2i + 1||=||(i+1)^2||\leq \sqrt{2}^2 = 2\).
 
 \(\lambda^2+2\lambda+1+4=4\), откуда  \(\lambda^2+2\lambda+1=0 \), откуда \(\lambda = -1\).
 
@@ -2276,7 +2290,7 @@ $$\Leftrightarrow
         arg\,w=\frac{\varphi+2\pi k}{n} & k\in\mathbb{Z} \\
     \end{cases}
 $$
-Получили, что $arg\,w=\frac{\varphi+2\pi k}{n}=\frac{\varphi}{n} + \frac{2\pi}{n}k$ а значит, что корень целой степени n даёт n различных решений, которые лежат на плоскости на одной окружности, через равные углы $\frac{2\pi}{n}$
+Получили, что $arg\,w=\frac{\varphi+2\pi k}{n}=\frac{\varphi}{n} + \frac{2\pi}{n}k$ а значит, что корень целой степени n даёт n различных решений, которые лежат на плоскости на одной окружности, через равные углы $\frac{2\pi}{n}$, и никаких других, так как алгебраическое уравнение $ w^n = r $ имеет ровно $n$ корней.
 
 \subsection{Некоторые функции комплексной переменной}
 \subsubsection{Комплексная экспонента}
@@ -2294,7 +2308,7 @@ $$\exp{z}=e^z=e^x \cdot e^{iy}=e^x(\cos{y}+i\sin{y}); \,z = x + iy;\,x, y\in\mat
 Аналогично вещественным тригонометрическим можем ввести $tg\,z, ctg\,z$, обратные тригонометрические и гиперболические функции комплексного переменного. Например:
 $$ch\,z=\frac{e^z+e^{-z}}{2}$$
 $$sh\,z=\frac{e^z-e^{-z}}{2}$$
-Пусть $Re\,z\in[a_1; a_2]$, а $Im\,z\in[b_1; b_2]$, то есть $z$ лежит внутри некого прямоугольника на комплексной плоскости. В какой области будет лежать $\exp{z}$? Заметим, что модули итоговых чисел ограничены $[a_1; a_2]$, а аргументы $[b_1; b_2]$. Получается, что $\exp{z}$ лежит в неком угловом секторе.
+Пусть $Re\,z\in[a_1; a_2]$, а $Im\,z\in[b_1; b_2]$, то есть $z$ лежит внутри некого прямоугольника на комплексной плоскости. В какой области будет лежать $\exp{z}$? Заметим, что модули итоговых чисел ограничены $[e_1; e_2]$, а аргументы $[b_1; b_2]$. Получается, что $\exp{z}$ лежит в неком угловом секторе.
 \subsubsection{Логарифм комплексного числа}
 Пусть $\ln{z}=w=x+iy$, тогда
 $$z=|z|e^{i(\arg{z}+2\pi k)}=re^{i\varphi}$$
@@ -2312,15 +2326,13 @@ $\ln_0{z}$ -- главное значение логарифма
 Приведём пример подобной ошибки:
 Пусть $\arg{z}\in[0;2\pi)$, $z_1=-1$, $z_2=-i$, $k=0$
 
-$\ln_0{z_1}=\ln{|-1|}+i\arg_0{(-1)}=\ln{1} + \pi i$
+$\ln_0{z_1}=\ln{|-1|}+i\arg_0{(-1)}=\ln{1} + \pi i$ (тут функция $\ln{1}$ --- вещественная $\Rightarrow$ равна нулю)
 
 $\ln_0{z_2}=\ln{|-i|}+i\arg_0{(-i)}=\ln{1} + \frac{3\pi}{2} i$
 
-В сумме получилось $\frac{5\pi}{2}i + 2\ln{1}$
+В сумме получилось $\frac{5\pi}{2}i$
 
 $\ln_0{z_1z_2}=\ln_0{i}=\ln{|i|} + i\arg_0{i} = \ln{1} + \frac{\pi}{2}i$
-
-$\frac{5\pi}{2}i + 2\ln{1}=\ln{1} + \frac{\pi}{2}i \Leftrightarrow \ln{1}=2\pi i$
 
 \subsubsection{Комплексное число в натуральной степени}
 Пусть $w=z^n=r^ne^{in\varphi}$, где $n\in\mathbb{N}$
@@ -2339,7 +2351,7 @@ $w=b^z=e^{z\ln_k{b}}$ -- обобщённая показательная фун�
 \subsection{Основные определения.}
 В этом разделе мы будем рассматривать линейные пространства над $\mathbb C$ и иногда $\mathbb R$.  Обозначать над чем мы будем $K$.
 \subsubsection{Линейная оболочка, линейная независимость векторов.}
-Говорят, что вектор $u$ является \deff{линейной комбинацией} векторов $(v_1;v_2;\ldots;v_n)$, если  $\exists\alpha_1;\alpha_2;\ldots;\alpha_n\in K u=\sum\limits_{i=1}^n\alpha_i\cdot v_i$.
+Говорят, что вектор $u$ является \deff{линейной комбинацией} векторов $(v_1,\ldots,v_n)$, если  $\exists \lambda_1,\ldots,\lambda_n \in K : u=\sum\limits_{i=1}^n\lambda_i\cdot v_i$.
 
 Если все \(\lambda_k = 0\), то линейная комбинация называется \deff{тривиальной}
 
@@ -2347,7 +2359,7 @@ $w=b^z=e^{z\ln_k{b}}$ -- обобщённая показательная фун�
 
 В противном случае, система векторов называется \deff{линейно зависимой}, т.е. \(\exists\) набор \(\lambda_1, \ldots, \lambda_m\) не все нули таких, что \(\sum\limits_{k = 1}^{m} \lambda_k v_k = 0\).
 
-\(\spann (v_1,v_2,\ldots,v_n) \) это \deff{линейная оболочка} векторов, то есть такое множество, что любой ее вектор можно разложить через линейную комбинацию $v_1,v_2,\ldots,v_n$.
+\(\spann (v_1,\ldots,v_m) \) --- \deff{линейная оболочка} векторов --- это множество всех возможных линейных комбинаций $v_1,\ldots,v_m$.
 
 \subsubsection{Теорема о линейно независимых системах векторов}
 \thmm{Теорема}
