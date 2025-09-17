@@ -40,9 +40,9 @@ $S_i$ --- строка матрицы.
 \end{pmatrix}
 \in \mathbb{R}_n(\mathbb{C}_n)\)
 
-\( span(A_1, \ldots, A_n) \subset \mathbb{R}^m(\mathbb{C}^m)\) --- пространство столбцов матрицы.
+\( span(A_1, \ldots, A_n) \subset \mathbb{R}^m(\mathbb{C}^m)\)
 
-Если $m = n$, матрица называется квадратной.
+Если $m = n$, матрица называется \deff{квадратной}.
 
 
 \( A =
@@ -72,11 +72,11 @@ $S_i$ --- строка матрицы.
     0          & 0      & \alpha_{n}
 \end{pmatrix}
 = diag(\alpha_1, \ldots \alpha_n)
-\) --- диагональная матрица.
+\) --- \deff{диагональная} матрица.
 
-\( E = diag(\alpha_1, \ldots \alpha_n), \forall i\: \alpha_i=1\) --- единичная матрица.
+\( E = diag(\alpha_1, \ldots \alpha_n), \forall i\: \alpha_i=1\) --- \deff{единичная} матрица.
 
-$\mathbb{0} = diag(0, \ldots, 0)$ --- нулевая матрица.
+$\mathbb{0} = diag(0, \ldots, 0)$ --- \deff{нулевая} матрица.
 
 \( \forall A_{n \times n} \quad tr(A) = \displaystyle{\sum^{n}_{i=1}}a_{ii}\) --- след матрицы (от англ. trace)
 
@@ -195,7 +195,7 @@ $A$, $B$, $C$ --- квадратные матрицы $ n \times n \newline
 \begin{enumerate}
     \item $ (A^T)^T = A $
     \item $ (A+\lambda B)^T = A^T+\lambda B^T $
-    \item A и B согласованы $ (AB)^T = B^T A^T $ (!!! не путать, я так вторую попытку кр по матрицам слил)
+    \item A и B согласованы $ (AB)^T = B^T A^T $ 
 \end{enumerate}
 
 \textbf{\underline{def:}} $ A_{m \times n} $ называется симметричной, если $ A = A^T$
@@ -261,7 +261,7 @@ $A$, $B$, $C$ --- квадратные матрицы $ n \times n \newline
 \begin{enumerate}
     \item[] \prooff{}
           н.у.о. $i_1,\ldots,i_k = 1,2,\ldots, k$. Значит все оставшиеся - линейно комбинация.
-          Значит я любую строку могу записать, как линейную комбинацию наших строк:
+          Значит любую строку можно записать, как линейную комбинацию наших строк:
 
           $s_{k+l}= \sum\limits_{r=1}^k \alpha_{rl}s_r$. $a_{{k+l}_j}=\sum\limits_{r=1}^k \alpha_{rl}a_{r_j}, \quad l= 1, \ldots, m - k$:
 
