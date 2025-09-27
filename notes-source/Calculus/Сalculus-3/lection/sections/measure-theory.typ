@@ -1,0 +1,436 @@
+#import "../template.typ":*
+= Теория Меры
+
+== Системы множеств
+
+#definition(
+  title: [
+   Полукольцо множеств $cal(P)$
+  ], body: [
+    $X$ - множество. $cal(P) subset 2^X$ - *полукольцо*, если:
+    + $nothing in cal(P)$
+    + $forall A,B in cal(P)$, $A inter B in cal(P)$
+    + $forall A, B in cal(P), exists underbracket(B_1\, ...\, B_n, "диз.") in cal(P): A without B = limits(union.big)_(k = 1)^(n) B_k$
+  ]
+)
+#example_(
+      title: [
+        Полукольцо ячеек в $RR^m$
+      ], body:[
+        $ a,b in R^m:[a,b)={x in RR^m: forall x = 1 ... m: a_k <= x_k < b_k} $
+        То есть множество таких параллелепипедов. Очевидно оно удовлетворяет всем трем аксиомам полукольца.
+      ]
+    )
+    #example_(
+      name:[Еще пример],
+      body:[
+        $X = {1, ..., 6}^m$.
+        Покажем, что $cal(P)$ - полукольцо для этого множества 
+        1. Очевидно принадлежит.
+        2.  $A_(c_1 c_2) inter A_(c_5) = A_(c_1 c_2 c_5) in P$ - работает    
+        3. TODO
+      ]
+    )
+    #example_(
+      title: [
+        Полукольцо рациональных чисел
+      ], body:[
+        $[a, b)$, где $a_i, b_i in QQ$
+      ]
+    )
+    #property_(
+      name: [Антисвойство], 
+      body: [
+          $cal(P)$ - полукольцо: $A,B in cal(P)$. Тогда вообще говоря $A union B, A without B, X without A, A triangle.small B$ не лежат в $cal(P)$ 
+      ]
+    )
+    #property_(
+      body: [
+          $forall A, B_1, ..., B_k in cal(P): exists underbracket(D_1 comma ... comma D_n, "диз.")$ - кон. количество: $A without (limits(union.big)_(i=1)^k B_i) = limits(union.big)_(j=1)^n D_j$
+          
+          Это доказывается по индукции
+      ]
+    )
+
+
+
+#definition(
+  title: [Алгебра подмножеств пространства $X$],
+  body: [
+    $algebra subset 2^X$ - такой объект называется *алгеброй*, если выполнены свойства:
+    1. $X in algebra$
+    2. $A,B in algebra => A without B in algebra $
+  ]
+)
+ #property_(
+      name:[Свойства],
+      body: [
+          1. $emptyset = X without X in algebra$
+          2. $A, B in algebra space => space A inter B = A without (A without B) in algebra$
+          3. $A^c = X without A in algebra$
+          4. $A union B = (A^c inter B^c) ^c in algebra$
+          5. Всякая алгебра есть полукольцо
+      ]
+    ) 
+    #example_(
+      title:[Тривиальный -   $2^X$] ,
+      body:[
+       
+      ]
+    )
+    #example_(
+      title:[Хитрый, но простой],
+      body:[
+        $X = RR^2$. $algebra$ состоит ограниченных множеств и из дополнений ограниченных множеств.
+      - $nothing, X in algebra$
+      - Выполняется вторая аксиома:
+        + $A$ - огр.
+        + $A^c$ - огр.
+          +. $B$ - огр. $=> (A without B)^c$ - огр.
+          +. $B^c$ - огр. $=> A without B subset B^c =>$ огр.
+      ]
+    )
+     #example_(
+      title:[На счётность],
+      body:[
+        $X = $ бесконечное множество: $algebra = {A subset X : A$ НБЧС или $X without A$ НБЧС$}$
+      ]
+    )
+
+#definition(
+  title: [$sigma$-алгебра $algebra$ подмножества $X$],
+  body: [
+    $algebra in 2^X$ и выполняется:
+    + $algebra$ - алгебра
+    + $forall A_1, A_2, ... in algebra: limits(union.big)_(i=1)^(+infinity) A_i in algebra $
+  ]
+)
+
+#property_(
+      body:[
+        $ forall A_1, A_2, ... in algebra: limits(inter.big)_(i = 1)^(+infinity) A_i in algebra $
+      ]
+    )
+
+#pagebreak()
+
+== Объем  
+
+#definition(
+  title: [Конечно аддитивная функция],
+  body: [
+    $X, cal(P)$ - полукольцо подмножеств $X$, $phi: cal(P) -> overline(RR)$. $phi$ - #def[конечно аддитивная функция], если:
+    + $phi(nothing) = 0$
+    + $A, A_1,dots, A_m , A = limits(union.big.sq)_(i=1)^n A_i$ - дизъюнктное объединение, выполнено:
+    $ phi(A) = limits(sum)_(i=1)^m phi(A_i) $
+  ], after: [
+  ]
+)
+
+#definition(
+  title: [Объем],
+  body: [
+    $X, cal(P)$ - полукольцо подмножеств $X$, $phi: cal(P) -> overline(RR)$. $phi$ - #def[объем], если:
+    1. $phi >= 0$
+    2. $phi$ - конечно-аддитивно
+  ], after: [
+  ]
+)
+#example_(
+      body:[
+       $g: RR -> RR$ возрастает и непрерывно. Давайте зададим $mu_g [a,b) = g(b)-g(a)$  - тоже пример объема.
+
+      ]
+    )
+
+
+
+
+#theorem(title:[Свойства], body:[
+  $mu: cal(P) -> RR$, где $cal(P)$ - полукольцо. Тогда выполнено:
+  0.  $B subset A => mu B <= mu A$ --- монотонность объема.
+  
+  1. #def[Усиленная монотонность]: $forall A_1,..., A_n, A in cal(P) :limits(union.big.sq)_(i=1)^n A_i subset A$:
+  
+  $ mu A >= limits(sum)_(i=1)^n mu A_i $
+  2. #def[Конечная полуаддитивность]: $forall A_1 ...., A_n: A  subset limits(union.big)_(i=1)^n A_i$:
+  $ mu A <= limits(sum) u A_i $
+  3. $A,B, A without B in cal(P): mu(B) < + infinity$. Тогда:
+  $ mu (A without B) >= mu A - mu B $
+], proof:[
+1. $A without (union.big.sq A_i)=limits(union.big.sq)_("кон.") B_j$  - по модиф. условию кольца. Тогда по вышесказанному:
+$ A =limits(union.big.sq)A_i union limits(union.big.sq) B_j $
+По определения объема:
+$ mu A = limits(sum)mu A_i + limits(sum)mu B_j $
+Что и требовалось показать.
+
+2. $B_i := A inter A_i in cal(P): A = limits(union.big)_("кон.")B_i$.
+
+Теперь давайте действовать так: Обозначим за $C_i$ - то какие части множества добавляет та или иная $B_i$
+$ C_i = B_i without ( union.big_(j=1)^(i-1) B_j) $
+Тогда $A = limits(union.big.sq)^n_(i=1) C_i$. НО. Мы не можем сразу сделать вывод об объеме, так как не факт что $C_i$ лежат у нас в полукольцо. НО каждое $C_i$ мы можем составить из конечного числа множеств по аксиомам полукольца. Воспользуемся усиленной монотонностью и докажем требуемое.
+
+3. Он очевиден из прошлых пунктов.  
+
+КПК: Это проверка на вашу вменяемость
+
+
+])
+
+#pagebreak()
+
+== Мера
+
+#definition(title:[Мера.],body:[ $X$, $cal(P)$ - полукольцо: $mu : cal(P)-> overline(RR)$ --- #def[мера], если:
+1. $mu$ - объем
+2. $mu$ - счетно-аддитивно
+])
+#def[Замечание:] Счетная аддитивность: $forall A_1,... in cal(P): A = limits(union.big.sq)A_i: mu A = limits(sum)_(i=1)^(+infinity)mu A_i$
+
+#def[Замечание:] Объем $ arrow.not.double$ выполняется счетная аддитивность.
+
+
+
+
+#theorem(name:[Теорема об эквивалентности счетной аддитивности и счетной полуаддитивности ], body:[
+  $mu: cal(P) -> overline(RR)$ --- объем. Тогда эквивалентно:
+  1. $mu$ --- мера, т.е $mu$ --- счетно-аддитивна
+2. $mu$ --- счетно-полуаддитивна (нет дизъюнктивности): $forall A, A_1 dots in cal(P), space A subset union.big A_i:$  
+$ mu A <= sum_i mu A_i $
+], proof:[
+  *$1 => 2$*.  Берем второй пункт теоремы о свойствах объема, но вместо конечного объединения по $k$ берем счетное объединение (так как у нас теперь мера, то все хорошо)  и тадам, все получается.
+  
+*$2 => 1$*. Надо проверить, что:
+$ A = union.sq.big_(i=1)^infinity A_i =>^? mu A = sum_(i=1)^infinity mu A_i $
+Воспользуемся усиленной монотонностью, тогда для любого $n$ будет верно:
+$ sum_(i=1)^n mu A_i <= mu A $
+По определению счетной полуаддитивности:
+$ mu A <= sum_(i=1)^infinity mu A_i $
+Итого :
+$ sum_(i=1)^n mu A_i <= mu A <= sum_(i=1)^infinity mu A_i  $
+И если перейти к пределу при $n -> +oo$ мы сразу получим то, что требуется.
+])
+
+#def[Следствие:] $A in cal(P), A_n in cal(P), mu A_n = 0, mu$ - объем. Пусть $A subset union.big A_n$. Тогда $mu A = 0$
+
+#theorem(name: [
+Формулировка теоремы о непрерывности меры снизу], body:[
+  $algebra$ - алгебра. $mu: algebra -> overline(RR)$ - объем. Тогда:
+  1. $mu$ --- мера
+  2. $mu$ --- непрерывны снизу:
+  $  forall A, A_1, A_2, ... in algebra, quad A_1 subset A_2 subset ..., quad A = limits(union.big)_(i=1)^infinity A_i $         
+  
+    Следует: $ mu A = lim_(i->infinity) mu A_i $
+
+])
+#theorem(name:[Теорема о непрерывности меры сверху],body:[
+  $algebra$ --- алгебра, $mu: algebra -> RR$ --- _конечный_ объем. Тогда эквивалентно:
+1. $mu$ --- мера, т.е счетно-аддитивна
+2. $mu$ --- непрерывна сверху, те:\
+$ forall A, A_1, A_2, ... in algebra, quad A_1 supset A_2 supset ..., quad A = inter.big_(i=1)^infinity A_i $Следует:$ mu A = lim_(i->infinity) mu A_i $
+
+],proof:[
+
+Нарисуем упрощающий рисунок:
+#align(center)[#image("../assets/measure-1.JPG", width:50%)]
+
+*$1 => 2$*\
+Пусть $B_k := A_k without A_(k+1)$. Тогда такие $B_k$ дизъюнктивны. Отсюда получаем, что 
+$ A_1 = union.sq.big_(i=1)^infinity B_i union.sq A $
+Так как $mu$ мера, то получаем, что:
+$ mu A_1 = underbracket(sum_(i=1)^infinity mu B_i, "сходится") + mu A $
+Теперь посмотрим на "хвост" этого ряда, и аналогично первому утверждению доказательства напишем:
+$ mu A_i = sum_(k=i)^infinity mu B_k + mu A $
+Т.к. ряд из $sum_(i=1)^infinity mu B_i$ сходится, то при $i-> +oo$, "хвост" $->0: space sum_(k=i)^infinity mu B_k ->_(i -> +oo) 0$
+Делаем предельный переход в равенстве выше, и получаем:
+
+$ lim_(i->infinity) mu A_i = 0 + mu A = mu A $
+
+*$2 => 1$*. Эта часть доказательства будет потом переписана, автор пока копирует то, что говорит Кохась. Если что это примерно 10 минут после перерыва.
+
+
+В доказательстве этого пункта мы будем пользоваться только следствием пункта 2, а именно:\
+$ A_1 supset A_2 supset dots, quad A = inter.big A_k = emptyset =>mu A = lim_(i->+oo) mu A_i = 0 $
+Мы хотим проверить счетную аддитивность, т.е.\
+$ C = union.sq.big_(i=1)^infinity C_i =>^? mu C = sum_(i=1)^infinity mu C_i $
+Для этого введем множества $A_k$ следующим образом:\
+
+$ A_k = union.big_(i=k+1)^infinity C_i = C without (union.big.sq_(i=1)^k C_i) $
+Так как это конечное объединение, то $limits(union.big.sq)_(i=1)^k C_i in algebra$, а значит и правая часть $in algebra =>A_k in algebra$\ 
+Заметим также, что
+$limits(inter.big)_(k=1)^(+oo) A_k  = emptyset $, т.к. все $C_i$ дизъюнктны, то любая точка из $C$ содержится ровно в одном $C_i$, а значит в $A_(k>i)$ она уже содержаться не будет (по определению $A_k$), и в пересечении всех $A_k$ её тоже не будет\
+Отсюда следует, что мы можем применять следствие 2 пункта из начала доказательства.\ 
+Осталось только заметить, что:
+$ C = union.sq.big_(i=1)^k C_i union.sq A_k $
+Т.к. $mu$ --- объем:
+$ mu C = sum_(i=1)^k mu C_i + mu A_k $
+Делаем предельный переход при $k->+oo$
+$ mu C = sum_(i=1)^(+oo) mu C_i + 0 $
+   
+])
+
+
+
+#pagebreak()
+==  Продолжение меры.
+
+
+
+#definition_(title:[Пространство с мерой], body:[Обозначается  тройкой $(underbracket(X, "мн-во"), underbracket(algebra, sigma"-алг."), underbracket(mu, "мера"))$])
+
+#definition_(title:[Полная мера],body:[
+$mu: cal(P) subset 2^X  -> overline(RR)$ --- мера \
+$mu$ --- *полная мера*, если
+$ (B in cal(P):  space mu(B) = 0) =>  (forall A subset B: space A in cal(P), " а значит" mu(A) = 0) $
+Формально: если в полукольце есть множество меры 0, то все его подмножества также лежат в полукольце, а значит тоже имеют меру 0 
+])
+#definition_(title:[Сигма-конечная мера], body:[
+$mu: cal(P) subset 2^X-> overline(RR)$ --- мера (или объём) \
+$mu$ --- *$sigma$-конечная мера* (или объем), если\
+$ exists A_1, A_2, dots in cal(P) quad  X = union.big_(i = 1)^(+infinity) A_i, space mu(A_i) < +infinity $
+])
+
+#def[Замечание.] Множество измеримо, если оно лежит в области определения меры 
+
+//скопировал у прошлых лет, не хочу даже думать
+#theorem(name:[Теорема о лебеговском продолжении меры], body:[
+$cal(P_0) subset 2^X$ --- полукольцо: $mu_0: cal(P_0) -> overline(RR)$ --- $sigma$-конечная мера. 
+
+Тогда
+$ exists sigma"-алгебра"  algebra: cal(P_0) subset algebra " и " exists mu  "- мера на" algebra$
+такие, что:
++ $mu stretch("|", size:#150%)_#pad(bottom: -8pt)[$cal(P)$]= mu_0$, т.е. $mu$ --- продолжение $mu_0$ на $algebra$ #vtw
++ $mu$ --- полная мера #vtw
++ Если $algebra_1$ - $sigma$-алгебра, $mu_1$-мера, полная, $cal(P) in algebra_1 , mu_1|_(cal(P))$, то $algebra subset algebra_1, mu_1|_a = mu$
++ Если $cal(P)subset cal(P_2) subset algebra: mu_2 |_(cal(P)) = mu_0$, то  тогда $mu|_(cal(P_2))=mu_2$
++ $A in algebra, mu A$ - кон, то 
+$ mu A = inf (sum mu P_k, A subset limits(union.big)_(k=1)^(+infinity)P_k, "где "P_k in cal(P)) $
+])
+К счастью, без доказательства
+
+#definition_(title:[$mu$-измеримое множество], body:[
+$A subset X - mu$-измеримо, если $forall E  subset X:$
+$ mu E = mu (A inter E) + mu (A^C inter E) $
+])
+
+#pagebreak()
+== Мера Лебега.
+
+Автор ничего не понимает и еще в будущем будет стдеть  и перепечатывать доказательство. Пока так.
+
+#lemma(name:[Лемма], title:[Счетная аддитивность классического объема],
+body:[
+  Счетная аддитивность классического объема
+$cal(P)^m$ --- множество всех ячеек на $RR^m$.\
+$mu$ --- классический объем.
+Тогда $mu$ --- $sigma$-конечная мера.
+],proof:[
+  1. $sigma$-конечность очевидна: можно либо разлиновать пространство на клеточки как в тетради, либо просто взять увеличивающийся параллелепипед
+  2. Надо доказать счетную аддитивность. Давайте по теореме об эквив. счетной аддитивности и полуаддитивности, докажем полуаддитивность:
+  $ P = [a, b),  space P_n = [a_n, b_n):  space P subset union.big_(n=1)^(+oo) P_n  space =>^? space mu P <= sum mu P_n $
+  Далее под фразой "чуть уменьшим" вектор из $RR^m$ будем подразумевать небольшое уменьшение каждой из его координат. Возьмем $epsilon>0$: 
+1. Чуть уменьшим $b$ и получим $b':$ 
+$ [a, b'] subset [a, b) : space  mu(P without [a, b')) < epsilon $
+
+2. Теперь для каждого $P_n$ немного уменьшим $a_n$ и получим $a'_n:$
+
+$ (a'_n, b_n) supset [a_n, b_n) : space mu([a'_n, b_n) without P_n) < epsilon / 2^n $
+3. Получаем, что $underbracket([a, b'], "компакт") subset union.big_(n=1)^(+oo) (a'_n, b_n) $\
+  Т.к. это компакт, а справа стоит открытое покрытие, то по определению существует конечное подпокрытие:\
+$ [a, b'] subset union.big_(n=1)^N (a'_n, b_n) $
+  Теперь в правую часть  включения добавим часть точек, а слева уберем. Очевидно включение от этого не сломается:
+$ [a, b') subset union.big_(n=1)^N [a'_n, b_n) $
+
+По конечной аддитивности:
+
+$ mu[a, b) - epsilon <=^((1))  mu[a, b') <=^((3)) sum_(n=1)^N mu [a'_n, b_n) <=^((2)) sum_(n=1)^N (mu [a_n, b_n) + epsilon/2^n) $
+$ mu[a, b) <=  epsilon + sum_(n=1)^N mu [a_n, b_n)<= 2 epsilon + sum_(n=1)^(+oo) mu [a_n, b_n) $
+
+Делаем предельный переход при $eps -> 0$ и получаем ровно то, что и хотели.
+])
+
+
+#definition(title:[Мера Лебега], body:[
+  #def[Мера Лебега] в $RR^m$ --- это результат применения теоремы о продолжении лебеговском продолжении меры к класс. объему. 
+  
+$(RR^m, cal(P), mu_0) arrow.squiggly (RR^m, cal(m)^m, lambda)$, где $mu_0$ - классический объема, 
+$lambda, lambda_m$ --- мера Лебега (иногда хотим указывать размерность пространства)
+])
+
+#property_(body:[
+  1. Объединение, пересечение (в том числе счетные) множеств, изменимые по Лебегу тоже
+  2. Полнота. $lambda A  = 0, B subset A => lambda B = 0$
+  3. Содержит все открытые и замкнутые множества в $RR^m$ (доказательство см ниже)
+  + $E$ --- измеримо и $lambda(E) = 0 => "у " E$ нет внутренних точек
++ $A in cal(M)^m, "тогда" forall eps > 0:$
+  - $exists$ открытое $G_eps: A subset G_eps : lambda(G_eps without A) < eps$
+  - $exists$ замкнутое $F_eps: A supset F_eps : lambda(A without F_eps) < eps$
+], proof:[
+  5. Пусть $lambda A < + infinity:  forall epsilon > 0: exists P_k : A subset union.big P_k$ по пункту 5 теоремы о лебеговском продолжении меры
+
+  $ lambda A <= sum lambda P_k <= lambda A + epsilon $
+
+  Заменим $P_k = [a_k, b_k]$ на $P'_k = (a_k - alpha_k, b_k)$, так, чтобы $lambda P_k' < lambda P_k + epsilon/2^k $.
+
+  Возьмем $G_epsilon := union.big P'_k$ - открытое. Тогда:
+  
+  $ lambda A <= sum lambda P'_k < (sum lambda P_k) + epsilon < lambda + 2 epsilon $
+
+  Заметим, что тогда выбранное $G_eps$ удовлетворяет условию.
+
+  Теперь для произвольного $A$: $RR^m = union.big.sq Q_i$. $A  inter Q_i$. Существует открытое $G_i$, что $(A inter  Q_i) subset G_i$
+
+  $ lambda (G_i without (A inter Q_i))< epsilon / 2^i $
+
+  TODO: тут не совсем понял, как мы такие $G_i$ можем выбрать, ладно
+
+  $A = union.big.sq (A inter Q_i) subset union.big G_i = G$ - открытое.
+
+  Ну и видно, что найденное $G$ подходит условию.
+  
+])
+
+TODO: пропущены следствия, можете пожалуйста их сформулировать кто=то
+
+
+
+#lemma(title:[О    смысле жизни открытых множеств и множеств меры 0], body:[
+  $O subset RR^m$ --- открытое.  Тогда $exists Q_i: space O = limits(union.big.sq)_(i=1)^(+oo) Q_i$, 
+  где $Q_i$ --- кубические ячейки:
+  - можно считать, что у ни с рациональными координатами.
+  - можно даже считать, что с двоично-рациональными
+  - они "закопаны" внутрь области O. $Q_i subset overline(Q_i) subset O$
+], proof:[
+  $forall x in O: $Возьмем $ Q(x)$ - любую кубические ячейку с нужными нам из условия свойствами
+
+  $ O = limits(union.big)_(x in Q)Q(x) limits(=)_("шаманим") limits(union.big)_(i=1)^(+ infinity) Q(x_i) $
+
+  Шаманство: $O$ --- _континуальное_ множество. Казалоcь бы, как такое посчитать. Заметим, что ячеек с двоично-рациональными координатами счетно. Так что мы просто пройдемся по ним и будем нумеровать, так что шаманство работает!
+])
+
+ #def[Пример неизмеримого по Лебегу множества]
+ 
+Зададим отношение $~$ на $RR: $\
+$ x ~ y <=> x - y in QQ $
+$RR \/ _~ thick = A$ --- т.е из каждого класса эквивалентности взяли по одной точке. Заодно можно считать, что $A subset [0, 1]$\ #vtw
+Заметим, что есть следующее включение:
+// $ union.sq.big_(q in QQ) (A + q) = RR $. А также:
+$ [0, 1] subset union.sq.big_(q  in QQ  inter [-1, 1]) (A + q) subset [-1, 2] $
+Левая часть следует из того, что если взять точку $x in [0, 1]$, представителя его класса $y in A$ и найти $x -y$, то окажется что это значение во-первых рациональное, во-вторых $in [-1, 1]$, а т.к. мы перебираем все рациональные числа, из этого отрезка в качестве смещений, то в $x$ мы тоже попадем\
+Правая часть следует из того, что смещая точки из отрезка $[0, 1]$ на смечение от -1 до 1, мы всегда попадаем в отрезок $[-1, 2]$\ #vtw
+
+Предположим $A$ --- измеримо, тогда можем посчитать меру отрезков (воспользуемся счетной аддитивностью):
+$ 1 <=  sum_(q  in QQ  inter [-1, 1]) lambda (A + q) <= 3 $
+Пока строго обосновывать не будем, но при сдвиге мера множества не меняется\
+Значит  $sum lambda (A + q)$ --- сумма счетного числа одинаковых слагаемых, соответственно есть два варианта:
++ $lambda (A + q) =0 => sum lambda (A + q) = 0$
++ $lambda (A + q) != 0 => sum lambda (A + q) = infinity$ #vtw
+В обоих случаях одно из неравенств не выполняется, а значит $A$ --- неизмеримое.
+\
+
+
+
+
+
+
+
