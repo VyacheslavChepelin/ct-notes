@@ -1,54 +1,13 @@
 \section{Лекция 1. Введение в математическую логику}
 
 
-\subsection{Математический анализ и его формализация}
-
-\begin{itemize}
-\item \textbf{Ньютон, Лейбниц} (1664+) - неформальная идея анализа
-\item \textbf{Критика}: Джордж Беркли. <<Аналитик, или Рассуждение, адресованное неверующему математику>>
-\item \textbf{Коши} - последовательности вместо бесконечно-малых, пределы
-\item \textbf{Вейерштрасс} - формализация вещественных чисел
-\item \textbf{Кантор} - теория множеств (1875), формализующая вещественные числа
-\item \textbf{Парадокс Рассела} (1901) - кризис оснований математики
-\item \textbf{Давид Гильберт}: <<Никто не изгонит нас из рая, который основал Кантор>>
-\end{itemize}
-
-\subsection{Парадокс брадобрея, парадокс Рассела}
-
-\begin{itemize}
-\item \textbf{Парадокс брадобрея}: На острове брадобрей бреет всех, кто не бреется сам. Бреется ли сам брадобрей?
-\item \textbf{Парадокс Рассела}: Рассмотрим множество 
-$$X = \{ x \mid x \notin x\}$$
-Что можно сказать про $X \in X$?
-
-\item Анализ:
-\begin{itemize}
-\item Пусть $X \in X$. Тогда по определению $X \notin X$
-\item Пусть $X \notin X$. Тогда по определению $X \in X$
-\end{itemize}
-
-\item Философский вывод: проблема существования математических объектов
-\end{itemize}
-
-\subsection{Программа Гильберта}
-
-\begin{itemize}
-\item \textbf{Цели программы} (1921):
-\begin{enumerate}
-\item Формализация всей математики
-\item Доказательство полноты формализации
-\item Доказательство непротиворечивости
-\item Консервативность (исключение идеальных объектов)
-\item Разрешимость (алгоритмическая проверка истинности)
-\end{enumerate}
-
-\item \textbf{Теоремы Гёделя о неполноте} (1930) - ограничения программы
-\item Современный подход: частичная формализация и изучение ограничений
-\end{itemize}
 
 \subsection{Классическое исчисление высказываний}
 
-\begin{defrus}
+
+
+
+\deff{def:}
 \textbf{Высказывание} (формула) строится по правилам:
 \begin{itemize}
 \item \textbf{Атомарное}: $A, B', C_{1234}$ (пропозициональные переменные)
@@ -60,39 +19,35 @@ $$X = \{ x \mid x \notin x\}$$
 \item Импликация: $(\alpha\rightarrow\beta)$ или $(\alpha\supset\beta)$
 \end{itemize}
 \end{itemize}
-\end{defrus}
+
 
 \begin{exmprus}
 $$(((A\rightarrow B)\vee (B\rightarrow C)) \vee (C \rightarrow A))$$
 \end{exmprus}
 
-\subsection{Метаязыковые соглашения}
 
-\begin{itemize}
-\item \deff{Метапеременные}: $\alpha, \beta, \gamma, \dots$
-\item \textbf{Переменные для пропозициональных переменных}: $X, Y_n, Z'$
-\item \textbf{Приоритет связок}: отрицание, конъюнкция, дизъюнкция, импликация
-\item \textbf{Ассоциативность}: левая для $\with$ и $\vee$, правая для $\rightarrow$
-\end{itemize}
-
-\begin{exmprus}
-Упрощение записи:
-$$(A\rightarrow B)\with Q\vee((\neg B\rightarrow B) \rightarrow C) \vee (C \rightarrow C\rightarrow A)$$
-\end{exmprus}
-
-\subsection{Теория моделей}
+\deff{Метапеременные}: $\alpha, \beta, \gamma, \dots$ --- вместо них в формулу можно подставить, что угодно
+ 
+ \textbf{Переменные для пропозициональных переменных}: $X, Y_n, Z'$
+ 
+ \textbf{Приоритет связок}: отрицание, конъюнкция, дизъюнкция, импликация 
+ 
+ \textbf{Ассоциативность}: левая для $\with$ и $\vee$, правая для $\rightarrow$
 
 
-\begin{defrus}
-\textbf{Оценка высказываний} определяется:
+
+
+
+
+
+\deff{def:} \textbf{Оценка высказываний} определяется:
 \begin{itemize}
 \item Множество значений: $V = \{\textit{И},\textit{Л}\}$
-\item Функция интерпретации: $f: \mathcal{P} \rightarrow V$
+\item Функция интерпретации: $f: \mathcal{P} \rightarrow V$,  где $\mathcal{P}$ - множество пропозициональных переменных.
 \item Синтаксис оценки: $\llbracket \alpha \rrbracket^{X_1 := v_1,\ \dots,\ X_n := v_n}$
 \end{itemize}
-\end{defrus}
 
-\subsection*{Рекурсивное определение оценки}
+
 
 \begin{align*}
 &\llbracket X \rrbracket = f(X)\\
@@ -119,43 +74,38 @@ $$(A\rightarrow B)\with Q\vee((\neg B\rightarrow B) \rightarrow C) \vee (C \righ
   \end{cases}
 \end{align*}
 
-\subsection{Тавтологии и выполнимость}
 
-\begin{defrus}
+
+\deff{def:}
 $\alpha$ - \textbf{тавтология} ($\models \alpha$), если истинна при всех оценках
-\end{defrus}
 
 \begin{exmprus}
 $A\rightarrow A$ - тавтология, $A\rightarrow\neg A$ - не тавтология
 \end{exmprus}
 
-\begin{defrus}
+\deff{def:}
 \begin{itemize}
 \item $\gamma_1, \dots, \gamma_n \models \alpha$ - $\alpha$ \textbf{следствие}
 \item \textbf{Выполнима} - истинна при некоторой оценке
 \item \textbf{Невыполнима} - ложна при всех оценках
 \item \textbf{Опровержима} - ложна при некоторой оценке
 \end{itemize}
-\end{defrus}
+
 
 \subsection{Теория доказательств}
 
-\subsubsection{Схемы высказываний}
-
-\begin{defrus}
+\deff{def:}
 \textbf{Схема высказывания} - строка, где вместо переменных можно использовать метапеременные
-\end{defrus}
 
 
-\begin{defrus}
+
+\deff{def:}
 Высказывание $\sigma$ \textbf{строится по схеме} $\textit{Ш}$, если
 $$\sigma = \textit{Ш}[\textit{ч}_1 := \varphi_1][\textit{ч}_2 := \varphi_2]...[\textit{ч}_n := \varphi_n]$$
-\end{defrus}
 
-\subsubsection{Аксиомы исчисления высказываний}
 
-\begin{defrus}
-\textbf{Схемы аксиом}:
+
+\deff{Схемы аксиом:}
 \begin{enumerate}
 \item $\alpha \rightarrow \beta \rightarrow \alpha$
 \item $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \beta \rightarrow \gamma) \rightarrow (\alpha \rightarrow \gamma)$
@@ -168,38 +118,36 @@ $$\sigma = \textit{Ш}[\textit{ч}_1 := \varphi_1][\textit{ч}_2 := \varphi_2]..
 \item $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg \beta) \rightarrow \neg \alpha$
 \item $\neg \neg \alpha \rightarrow \alpha$
 \end{enumerate}
-\end{defrus}
 
-\subsubsection{Правило вывода Modus Ponens}
+\deff{Правило вывода Modus Ponens}
 
 \begin{itemize}
-\item Исторически: Теофраст (IV-III вв. до н.э.)
 \item Формально: $$\infer{\beta}{\alpha & \alpha\rightarrow\beta}$$
 \item Пример: <<Сейчас сентябрь; если сентябрь, то осень; следовательно, осень>>
 \end{itemize}
 
-\begin{defrus}
+\deff{def:}
 \textbf{Доказательство} - последовательность $\delta_1, \dots, \delta_n$, где каждое $\delta_i$:
 \begin{itemize}
 \item Аксиома, или
 \item Получено по MP из предыдущих
 \end{itemize}
-\end{defrus}
-\begin{defrus}
+
+
+\deff{def:}
 \textbf{Вывод из гипотез} $\Gamma$ - то же, но можно использовать гипотезы из $\Gamma$
-\end{defrus}
 
 
-\begin{defrus}
+\deff{def:}
  \textbf{Корректность}: $\vdash\alpha \Rightarrow \models\alpha$
- \end{defrus}
- \begin{defrus}
- \textbf{Полнота}: $\models\alpha \Rightarrow \vdash\alpha$
-\end{defrus}
 
-\begin{thmrus}
+\deff{def:} \textbf{Полнота}: $\models\alpha \Rightarrow \vdash\alpha$
+
+
+\thmm{Теорема}
+
 Исчисление высказываний корректно
-\end{thmrus}
+\
 
 
 \deff{Доказательство:}
@@ -207,10 +155,10 @@ $$\sigma = \textit{Ш}[\textit{ч}_1 := \varphi_1][\textit{ч}_2 := \varphi_2]..
 Индукция по длине вывода + проверка аксиом и правила MP
 
 
-\begin{thmrus}[о дедукции]
+\thmm{Теорема о дедукции}
 $$\Gamma,\alpha\vdash\beta \Leftrightarrow \Gamma\vdash\alpha\rightarrow\beta$$
-\end{thmrus}
 
 \textbf{Доказательство:}
 
 Конструктивное доказательство: преобразование вывода с гипотезой $\alpha$ в вывод импликации $\alpha\rightarrow\beta$. Оно будет на следующей лекции
+

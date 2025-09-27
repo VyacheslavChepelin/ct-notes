@@ -1,0 +1,327 @@
+\section{Лекция 3.}
+
+
+
+
+
+
+
+\deff{def:} \textbf{Отмеченное (дизъюнктное) объединение}: $A \uplus B := \{ \langle x, 0 \rangle\ |\ x \in A\} \cup \{ \langle y, 1\rangle\ |\ y \in B\}$
+
+\deff{def:} Ложь (необитаемый тип) ??????????? TODO
+
+Перепишем старый пример чуть иначе:
+\begin{lstlisting}[language=Caml]
+let csqrt x =
+   if x >= 0. then sqrt x
+              else failwith "Cannot compute square root"
+\end{lstlisting}
+
+Какой тип у \verb!csqrt!? Рассмотрим ветки \verb!if!
+\begin{itemize}
+\item \verb!then: ! $\sqrt x : \texttt{float}$
+\item \verb!else: ! $\text{failwith s} : \bot$, и поэтому $\text{failwith s} : \bot \vdash \text{failwith s} : \texttt{float}$
+\end{itemize}
+Ветка \verb!else! не возвращает результата --- поэтому возвращает любой тип; <<из лжи следует всё, что угодно>>.
+
+
+
+\deff{def:} \textbf{Изоморфизм Карри-Ховарда} (также известный как соответствие Карри-Ховарда) — это прямая параллель между миром формальной логики и миром теории типов в программировании.
+
+Если говорить просто, это утверждение, что:
+
+Доказательство математического утверждения — это в точности то же самое, что и программа, соответствующая определенному типу.
+\begin{center}\begin{tabular}{ll}
+Программа ($\lambda$-выражение) & Исчисление высказываний\\\hline
+Выражение & доказательство\\
+Тип выражения & высказывание\\
+Тип функции & импликация\\
+Упорядоченная пара & Конъюнкция\\
+Алгебраический тип & Дизъюнкция\\
+Необитаемый тип & Ложь
+\end{tabular}\end{center}
+
+\subsection{Топологические понятия}
+
+\deff{def:}
+Функция $f: X \rightarrow Y$ \textbf{непрерывна}, если прообраз любого открытого множества открыт.
+    
+
+\deff{def:} Будем говорить, что множество \textbf{компактно}, если из любого его открытого покрытия можно выбрать конечное
+подпокрытие
+
+
+\deff{def:} Пространство $\langle X_1, \Omega_1\rangle$ --- \textbf{подпространство} пространства $\langle X, \Omega\rangle$,
+если $X_1 \subseteq X$ и $\Omega_1 = \{ A\cap X_1 | A \in \Omega\}$.
+
+
+\deff{def:} Пространство $\langle X, \Omega\rangle$ \textbf{связно}, если нет $A,B \in \Omega$, что $A\cup B = X$,
+$A \cap B = \varnothing$ и $A,B \ne \varnothing$.
+
+\deff{Топология на деревьях}
+
+\deff{def:} Пусть некоторый лес задан конечным множеством вершин $V$ и
+отношением $(\preceq)$, связывающим предков и потомков ($a \preceq b$, если $b$ --- потомок $a$). Тогда подмножество его вершин $X\subseteq V$ назовём открытым, 
+если из $a \in X$ и $a \preceq b$ следует, что $b \in X$.
+
+
+\begin{center}\tikz[every fit/.style={trapezium,draw,inner sep=-2pt}]{
+\node at (0,2.5)  (Title) {Открыты};
+\node at (1,2)   (A) {$W_1$};
+\node at (0,0.5) (B) {$W_2$};
+\node at (1,0.5) (C) {$W_3$};
+\node at (2,0.5) (D) {$W_4$};
+\node at (0,-1) (E) {$W_5$};
+\node at (2,-1) (F) {$W_6$};
+\draw[->] (A) to (B); \draw[->] (B) to (E);
+\draw[->] (A) to (C);
+\draw[->] (A) to (D); \draw[->] (D) to (F);
+  \begin{pgfonlayer}{background}
+  \draw[red,fill=red,opacity=0.2](B.north west) 
+     to[closed,curve through={
+       (B.south west) ..
+       (E.south west) .. (E.south east) .. ($(E.north east)!0.5!(C.south west)$) .. (C.south east)
+     }] (C.north east);
+  \draw[blue,fill=blue,opacity=0.2](D.north west) to 
+       [closed, curve through={ (D.south west) .. (F.south west) .. (F.south east) .. (D.south east) }
+       ] (D.north east);
+  \end{pgfonlayer}
+}
+\tikz[every fit/.style={trapezium,draw,inner sep=-2pt}]{
+\node at (0,2.8)  (Title) {Не открыты};
+\node at (1,2)   (A) {$W_1$};
+\node at (0,0.5) (B) {$W_2$};
+\node at (1,0.5) (C) {$W_3$};
+\node at (2,0.5) (D) {$W_4$};
+\node at (0,-1) (E) {$W_5$};
+\node at (2,-1) (F) {$W_6$};
+\draw[->] (A) to (B); \draw[->] (B) to (E);
+\draw[->] (A) to (C);
+\draw[->] (A) to (D); \draw[->] (D) to (F);
+  \begin{pgfonlayer}{background}
+  \draw[brown,pattern color=brown!50,pattern=north east lines](A.north west) to 
+       [closed, curve through={ (A.south west) .. (C.north west) .. (C.south west) .. (D.south east) }
+       ] (A.north east);
+  \draw[brown,pattern color=brown!50,pattern=north east lines](B.north west) to 
+       [closed, curve through={ (B.south west) }
+       ] (B.south east);
+  \end{pgfonlayer}
+}
+\end{center}
+
+\thmm{Теорема.} 
+
+Лес связен (является одним деревом) тогда и только тогда, когда соответствующее ему 
+топологическое пространство связно.
+
+\textbf{Доказательство:}
+
+\begin{enumerate}\item Лес связен: пусть не так и найдутся открытые непустые $A$,$B$, что 
+$A \cup B = V$ и $A \cap B = \varnothing$. Пусть $v \in V$ --- корень
+дерева и пусть $v \in A$ (для определённости). Тогда $A = \{ x \ |\ v \preceq x \}$ и $B = \varnothing$.
+\item Пусть лес топологически связен, но есть несколько разных корней $v_1, v_2, \dots, v_k$. 
+Возьмём $A_i = \{ x\ |\ v_i \preceq x \}$. Тогда все $A_i$ открыты, непусты, дизъюнктны и $V = \cup A_i$.
+\end{enumerate}
+
+
+\hfill Q.E.D.
+
+
+
+
+
+\deff{def:}
+\textbf{Множество нижних граней} $X\subseteq\mathcal{U}$: $\mbox{\upshape lwb}_\mathcal{U} X = \{ y\in \mathcal{U}\ |\ y \preceq x\text{ при всех } x \in X\}$.
+
+\deff{def:} \textbf{Множество верхних граней} $X\subseteq\mathcal{U}$: $\mbox{\upshape upb}_\mathcal{U} X = \{ y\in\mathcal{U}\ |\ x \preceq y \text{ при всех } x \in X\}$.
+
+
+
+\deff{def:}
+\begin{tabular}{ll}
+минимальный ($m \in X$): нет меньшего & при всех $y \in X$, $y \preceq m$ влечёт $y = m$ \\
+максимальный ($m \in X$): нет большего & при всех $y \in X$, $m \preceq y$ влечёт $y = m$ \\
+наименьший ($m \in X$): меньше всех & при всех $y \in X$ выполнено $m \preceq y$\\
+наибольший ($m \in X$): больше всех & при всех $y \in X$ выполнено $y \preceq m$\\
+инфимум: наибольшая нижняя грань & $\inf_\mathcal{U} X = \mbox{\upshape наиб}(\mbox{\upshape lwb}_\mathcal{U} X)$\\
+супремум: наименьшая верхняя грань & $\sup_\mathcal{U} X = \mbox{\upshape наим}(\mbox{\upshape upb}_\mathcal{U} X)$
+\end{tabular}
+
+
+
+\deff{def:} \textbf{Внутренность множества} --- рассмотрим $\langle X, \Omega\rangle$ и возьмём $(\subseteq)$ как отношение частичного порядка на $\mathcal{P}(X)$.
+Тогда $A^\circ := \inf_\Omega (\{ A\})$. %То есть, $A^\circ = \text{\upshape наиб}_\Omega\{ Q \in \Omega\ |\ Q \subseteq A\}$.
+
+\thmm{Теорема.}
+
+$A^\circ$ определена для любого $A$.
+
+\textbf{Доказательство:}
+
+Пусть $V = \text{lwb}_\Omega\{ A \} = \{ Q \in \Omega\ |\ Q \subseteq A\}$. Тогда $\inf_\Omega \{A\} = \bigcup V$.
+
+Напомним, $\inf_\mathcal{U} T = \text{наиб}(\text{lwb}_\mathcal{U} T)$.
+
+\begin{enumerate}
+\item Покажем принадлежность: $\bigcup V \subseteq A$ и $\bigcup V \in \Omega$ как объединение открытых.
+\item Покажем, что все из $V$ меньше или равны: пусть $X \in V$, то есть $V = \{ X, \dots \}$, тогда $X \subseteq X \cup \dots$, тогда $X \subseteq \bigcup V$
+\end{enumerate}
+\hfill Q.E.D
+
+\subsection{Решётки}
+
+\deff{def:} \textbf{Решёткой} называется упорядоченная пара: $\langle X, (\preceq)\rangle$, 
+где $X$ --- некоторое множество, а $(\preceq)$ --- частичный порядок на $X$, такой, 
+что для любых $a,b \in X$ определены $a + b = \sup\{a,b\}$ и $a \cdot b = \inf\{a,b\}$.
+
+То есть, $a + b$ --- наименьший элемент $c$, что $a \preceq c$ и $b \preceq c$.
+
+\deff{def:} \textbf{Псевдодополнением} $a \rightarrow b$ называется наибольший из $\{ x \ |\ a \cdot x \preceq b\}$.
+
+
+
+
+\deff{def:} \textbf{Дистрибутивной решёткой} называется такая, что для любых $a,b,c$ выполнено
+$a \cdot (b + c) = a \cdot b + a \cdot c$.
+
+
+\deff{def:} \textbf{Импликативная решётка} --- такая, в которой для любых элементов есть псевдодополнение.
+
+\deff{Лемма:}
+
+Любая импликативная решётка --- дистрибутивна.
+
+
+\deff{def:} 0 --- \textbf{наименьший элемент решётки}, а 1 --- \textbf{наибольший элемент решётки}
+
+\deff{Лемма:} 
+
+В любой импликативной решётке $\langle X, (\preceq)\rangle$ есть 1
+
+\textbf{Доказательство:}
+
+ Рассмотрим $a \rightarrow a$, тогда $a \rightarrow a = \text{наиб}\{ c \ |\ a \cdot c \preceq a\} = 
+\text{наиб} X = 1$.
+
+\hfill Q.E.D.
+
+\deff{def:} \textbf{Импликативная решётка} с 0 --- псевдобулева алгебра (алгебра Гейтинга).
+В такой решётке определено $\sim a := a \rightarrow 0$ 
+
+\deff{def:} \textbf{Булева алгебра} --- псевдобулева алгебра, в которой $a\ + \sim a = 1$ для всех $a$.
+
+\textbf{Булева алгебра является булевой алгеброй в смысле решёток}
+
+\textbf{Доказательство:}
+
+Символы булевой алгебры: $(\with),(\vee),(\neg),\text{Л},\text{И}$.\\
+Символы решёток: $(+),(\cdot),(\rightarrow),(\sim),0,1$\\
+Упорядочивание: $\text{Л} \le \text{И}$.
+
+\begin{enumerate}
+\item $a \with b = \min(a,b)$, $a \vee b = \max(a,b)$ 
+(анализ таблицы истинности), отсюда $a \cdot b = a \with b$ и $a + b = a \vee b$.
+
+\item $a \rightarrow b = \neg a \vee b$, так как:
+$$a \rightarrow b = \text{наиб}\{ c | c \with a \le b\} = \left\{\begin{array}{ll}\neg a,& b = \text{Л}\\
+                                                 \text{И},& b = \text{И}\end{array}\right.$$
+
+\item $0 = \min\{\text{И},\text{Л}\} = \text{Л}$, $1 = \max\{\text{И},\text{Л}\} = \text{И}$, $\sim a = a \rightarrow 0 = \neg a \vee \text{Л} = \neg a$.
+Заметим, что $a\ + \sim a = a \vee \neg a = \text{И}$.
+\end{enumerate}
+Итого: булева алгебра --- импликативная решётка с 0 и с $a\ + \sim a = 1$.
+
+\hfill Q.E.D.
+
+\thmm{Лемма:}
+
+$\langle \mathcal{P}(X), (\subseteq) \rangle$ --- булева алгебра.
+
+\textbf{Доказательство:}
+
+$a \rightarrow b = \text{наиб}\{ c \subseteq X\ |\ a \cap c \subseteq b\}$. Т.е. наибольшее, не содержащее точек из $a \setminus b$.
+Т.е. $X \setminus (a \setminus b)$. То есть $(X \setminus a) \cup b$.
+
+$a\ +\sim a = a \cup (X \setminus a) \cup \varnothing = X$
+
+\hfill Q.E.D.
+
+\thmm{Лемма:}
+$\langle \Omega, (\subseteq) \rangle$ --- псевдобулева алгебра.
+
+
+
+\textbf{Доказательство:}
+
+$a \rightarrow b = \text{наиб}\{ c \in \Omega\ |\ a \cap c \subseteq b\}$. 
+Т.е. наибольшее открытое, не содержащее точек из $a \setminus b$.
+То есть, $(X \setminus (a \setminus b))^\circ$. То есть, $((X \setminus a) \cup b)^\circ$.
+
+\hfill Q.E.D.
+
+\deff{def:} Пусть некоторое исчисление высказываний оценивается значениями из некоторой решётки.
+Назовём оценку согласованной с исчислением, если 
+$\llbracket\alpha\with\beta\rrbracket = \llbracket\alpha\rrbracket\cdot\llbracket\beta\rrbracket$,
+$\llbracket\alpha\vee\beta\rrbracket = \llbracket\alpha\rrbracket+\llbracket\beta\rrbracket$,
+$\llbracket\alpha\rightarrow\beta\rrbracket = \llbracket\alpha\rrbracket\rightarrow\llbracket\beta\rrbracket$,
+$\llbracket\neg\alpha\rrbracket =\ \sim\llbracket\alpha\rrbracket$,
+$\llbracket A \with\neg A\rrbracket = 0$, $\llbracket A\rightarrow A \rrbracket = 1$.
+
+\thmm{Теорема.} 
+
+Любая псевдобулева алгебра, являющаяся согласованной оценкой интуиционистского исчисления высказываний,
+является его корректной моделью: если $\vdash\alpha$, то $\llbracket\alpha\rrbracket = 1$.
+
+
+\thmm{Теорема.}
+
+Любая булева алгебра, являющаяся согласованной оценкой классического исчисления высказываний, 
+является его корректной моделью: если $\vdash\alpha$, то $\llbracket\alpha\rrbracket = 1$
+
+
+\subsection{Алгебра Линденбаума}
+
+\deff{def:} Определим предпорядок на высказываниях: $\alpha \preceq \beta := \alpha \vdash \beta$ в интуиционистском исчислении высказываний.
+Также $\alpha\approx\beta$, если $\alpha\preceq\beta$ и $\beta\preceq\alpha$.
+
+\deff{def:} Пусть $L$ --- множество всех высказываний. Тогда алгебра Линденбаума $\mathcal{L} = L/_\approx$.
+
+
+\thmm{Теорема}
+
+$\mathcal{L}$ --- псевдобулева алгебра.
+
+\textbf{Схема доказательства:}
+
+ Надо показать, что $(\preceq)$ есть отношение порядка на $\mathcal{L}$, что
+$$[\alpha\vee\beta]_\mathcal{L} = [\alpha]_\mathcal{L}+[\beta]_\mathcal{L}$$
+$$[\alpha\with\beta]_\mathcal{L} = [\alpha]_\mathcal{L}\cdot[\beta]_\mathcal{L}$$ Импликация есть псевдодополнение
+$$[A\with\neg A]_\mathcal{L} = 0, \quad [\alpha]_\mathcal{L}\rightarrow 0 = [\neg\alpha]_\mathcal{L}$$
+
+\hfill Q.E.D.
+
+
+\thmm{Теорема.}
+
+Пусть $\llbracket\alpha\rrbracket = [\alpha]_\mathcal{L}$.
+
+Такая оценка интуиционистского исчисления высказываний алгеброй Линденбаума является согласованной.
+
+
+\thmm{Теорема.}
+
+Интуиционистское исчисление высказываний полно в псевдобулевых алгебрах:
+если $\models\alpha$ во всех псевдобулевых алгебрах, то $\vdash\alpha$. 
+
+\textbf{Доказательство:}
+
+Возьмём в качестве модели исчисления алгебру Линденбаума: 
+$\llbracket \alpha \rrbracket = [\alpha]_\mathcal{L}$. 
+
+Пусть $\models\alpha$. Тогда $\llbracket\alpha\rrbracket = 1$ во всех псевдобулевых алгебрах, в том числе
+и $\llbracket\alpha\rrbracket = 1_\mathcal{L}$. То есть $[\alpha]_\mathcal{L} = [A\rightarrow A]_\mathcal{L}$.
+То есть $A \rightarrow A \approx \alpha$. Значит, в частности, $A \rightarrow A \vdash \alpha$. 
+Значит, $\vdash\alpha$.
+
+\hfill Q.E.D
+
