@@ -296,3 +296,275 @@ $V in Lin(RR^m, RR^m)$\
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pagebreak()
+
+== Сходимость по мере и сходимость почти везде
+
+
+#definition(title:[Множество полной меры], body:[
+  $E$ --- #def[множество полной меры] в $X => mu(X without E) = 0$
+])
+
+#theorem(title:[Измеримость функции непрерывной на множестве полной меры], body:[
+    $E subset RR^2, e subset E, lambda_m(e) =0$
+    $f: E -> RR$ непрерывны на $E' = E without e$. 
+    
+    Тогда $f$ измеримая.
+], proof:[
+  $E'(f < a) = H$ - открытое подмножество в $E'$ по топологическому определению
+
+  $exists G$ - открытое в $RR^m$ такое что $H = G inter E'$
+  $ E(f<a) = E'(f<a) union e(f<a) $
+  $E'(f<a)$ --- измеримое, $e(f<a)$ - подмножество $e$, имеющего $lambda e = 0$.
+])
+
+
+ // = Сходимость почти везде и сходимость по мере
+// 24 14.00
+#definition(title:[Свойство, выполняющееся почти везде],body:[
+$(X, algebra, mu), space E in algebra$, 
+$w(x)$ --- высказывание, зависящее от $x$, 
+$w(x)$ выполняется (истинно) *почти везде*, если
+$ mu e = 0, " где" e = {x in E | space w(x) - "ложно"} $
+]) 
+*Свойства:*
+
+Пусть $forall n$ задано высказывание $omega_n (x)$ и оно выполняющееся почти везде.\
+Тогда мегаутверждение $w(x) := w_1 (x) and w_2 (x) and dots$ --- выполняющееся почти везде.  
+
+
+
+#definition(title:[Сходимость почти везде], body:[
+$f, f_n: E -> overline(RR) $,
+$ f_n -> f$ *почти везде*, если:
+$ mu{x in E | space  f_n (x) arrow.not f(x)} = 0 $  
+])
+*Свойства:*
++ $f_n, f: X -> overline(RR), space mu - "полная", space f_n -> f$ почти везде на $X$ и $forall n space f_n$ --- измеримая, тогда $f$ --- измерима
++ $mu$ --- полная мера, $f$ --- измерима, $g$ --- еще одна функция и $f = g$ почти везде, тогда $g$ --- измерима
+
+#definition(title:[Сходимость по мере], body:[
+  $(X, algebra, mu)$ --- пространство с мерой, 
+$f_n, f: X -> overline(RR)$ --- измеримы, почти везде конечны.
+
+Тогда $f_n -> f$ *по мере* $mu space $ (при $n -> +infinity$)
+$ f_n arrow.long.double_mu f: quad forall eps > 0 quad  mu X(abs(f_n - f) >= eps) -> 0 $
+])
+
+#theorem(name:[Теорема Лебега о сходимости почти везде и сходимости по мере], body:[
+$f_n, f: X -> overline(RR)$ --- измеримы, почти всюду конечны,
+$f_n -> f$ --- почти всюду,
+$mu X < + infinity$
+
+Тогда:
+$ f_n arrow.long.double_mu f $  
+], proof:[
+Подменим $f_n, f$ --- на множествах меры 0, так чтобы $f_n -> f$ всюду и $f, f_n$ --- конечны\
+- Рассмотрим частный случай: \
+  $f_n -> 0 quad forall x$ последовательность $f_n (x)$ --- монотонна по $n$, и тогда $f eq.triple 0$:
+$ X(abs(f_n - f) >= eps) = X(abs(f_n) >= eps) supset X(abs(f_(n+1)) >= eps) supset dots $
+$ inter.big_n X(|f_n| >= eps) = emptyset double  => double  underbracket( mu X(|f_n| >= eps) -> 0, "по непрерывности сверху") $
+- Общий случай:\
+  $f_n -> f $\
+  $phi_n (x) := sup_(k>=n) abs(f_k (x) - f(x)) $ \ #vtw
+  Заметим, что: $forall x: space phi_n (x) -> 0$, причем $phi_n >= 0$ и монотонна, тогда по частному случаю:
+$ X(abs(f_n - f) >= eps) subset X(phi_n >= eps) $
+$ mu X(abs(f_n - f) >= eps) <= mu X(phi_n >= eps) -> 0 $
+
+  
+])
+
+
+
+
+
+#theorem(name:[Теорема Рисса], body:[
+$(X, algebra, mu)$,  $f_n, f: X -> overline(RR)$ --- измеримы, почти всюду конечны, $f_n arrow.long.double_mu f$ - сходимость по мере
+
+Тогда $exists n_k$ - строго возрастающая последовательность, по которой $f_n_k -> f$ почти везде при $k -> oo$
+
+
+],
+proof:
+[
+  TODO: Дописать доказательство:
+
+  Набросок: 
+  
+  Построим возрастающую $n_k$ так чтобы $mu X (abs(f_n - f) >= 1/k) < 1/(2^k)$
+
+  Проверим, что $f_n_k -> f$ п.в.
+  $ 
+  E_k = union.big_(j = k)^(+oo) X (abs(f_n_j - f) >= 1/j) \
+  E_1 supset E_2 supset ... \
+  cases(E_0 = inter.big_(k = 1)^(+oo) E_k,
+  mu E_k <= sum_(j = k)^(+oo) mu X (abs(f_n_j - f) >= 1/j) <= sum 1/(2^i) = 2/(2^k) -> 0) =>
+  mu E_0 = 0
+  $
+  Осталось проверить, что для всех $x$ не в $E_0$ $f_n_k (x) -> f(x)$:
+  
+  $exists n, x in.not E_n$, т.е. при $j >= n, |f_n_j (x) - f_(x)| < 1/j$, то есть $f_n_j (x) -> f(x)$
+])
+
+
+#pagebreak()
+
+== Наконец-то интеграл
+У нас есть $(X, algebra, mu)$
+
+#definition(title:[Интеграл ступенчатой функции (Альфа Версия)], body: [
+  $f = sum lambda_k chi_E_k, f >= 0, X = union.sq.big_"кон" E_k$
+
+  Полагаем:
+  $ integral_X f dif mu := sum underbracket(lambda_k mu E_k, 0 dot oo = 0) in [0, +oo] $
+])
+
+#property_(name:[Свойства], body:[
+  + Интеграл не зависит от разложения
+    
+    $f = sum tilde(lambda_j) chi_F_j$
+
+    Тогда $f = sum_(k, j) tilde(lambda_k) chi_(E_k inter F_j)$
+
+    $integral_X f = sum_(k, j) lambda_k mu(E_k inter F_j)$
+  + $f <= g => integral_X f <= integral_X g$
+])
+
+
+#definition(title:[Бета-версия интеграла], body: [
+  $f$ - измерима, $f >= 0$
+
+  $ integral_X f dif mu := sup_(0 <= underbracket(g, "ступ.") <= f)(integral_X g dif mu) $
+])
+
+#remark_(name:[Замечания], body:[
+  + Если $f$ - ступ., то в силу свойства 2.
+  + $f >= 0 => 0 <= integral_X f dif mu <= +oo$ 
+  + $g$ - ступ., $g <= f => integral_X g <= integral_X f$
+])
+
+#definition(title:[Суммируемая функция], body:[
+  $f$ --- суммируемая функция, если $int_X f^+, int_X f^-$ --- конечны (положительная и отрицательная срезка)\
+])
+
+TODO: тут чет другое хотят в условии определения, что?
+#definition(title:[Интеграл суммируемой функции], body: [
+  $f$ - измерима и суммируемая функция, $f^+ = max(f, 0), f^- = max(-f, 0)$. Тогда: 
+
+  $ integral_X f dif mu := integral_X f+ dif mu + integral_X f- dif mu $
+
+])
+
+#definition(title:[Интеграл по подмножеству],body: [
+  $(X, algebra, mu)$ - пространство с мерой, $E in algebra, f$ - измерима на $X$
+  $ integral_E f dif mu := integral_X f chi_E dif mu $
+  Здесь $f$ --- суммируема на $E$, если $integral_E f^+, integral_E f^-$ конечны 
+])
+  
+  #remark_(name: [Замечания], body:[
+    $alpha$ - определение: $f$ - ступ., $integral_E f = sum lambda_k mu (E_k inter E)$
+
+    $beta$ - определение: $integral_E f = sup_(0 <= underbracket(g, "ступ., на" Е) <= f)(integral_E g dif mu) $
+  ])
+
+  TODO: Раздать стилька
+  
+  #property_(name:[Свойства], body:[
+    + Монотонность (по функции):
+    
+      $f, g$ --- суммируемы, $f <= g$. Тогда $integral_X f <= integral_X g$
+      Доказательство
+      + $f, g >= 0$ - очевидно
+      + $f, g$ - любого знака - TODO просто расписать неравенства
+      #remark_(body:[
+        $f$ - сумм. $<=> integral |f|$ - конечен
+        - $arrow.double.l: f^+, f^- <= |f|$
+        - $arrow.double.r: |f| = f^+ + f^-$ - интегрируем, но пока не умеем :(
+        //#circle(radius: 1.03em, align(center + horizon, [:(]))
+      ])
+    + $integral_E 1 dif mu = mu E, integral_E 0 dif mu = 0$
+    + $mu E = 0, f$ - изм. $=> integral_E f dif mu = 0$
+      
+    
+    + $integral_E (-f) dif mu = - integral_E d dif mu$
+    
+      $alpha > 0, integral_E alpha f dif mu = alpha integral_E f dif mu$
+      
+    + $integral_E f dif mu$ - существует $ => abs(integral_E f dif mu) <= integral_E |f| dif mu$
+      
+      Доказательство: $-|f| <= f <= |f|$
+    + $f$ - изм. на $E, mu E < +oo, a <= f <= b$
+
+      Тогда $a mu E <= integral_E f dif mu <= b mu E$
+
+      *Следствие:* $mu E < +oo, f$ - изм., огр. $=> f$ - сумм. 
+      
+    + $f$ - сумм. на $E => f$ - почти везде конечен на $E$ 
+      
+      Суть доказательства: если f больше нуля  и интеграл по E конечен и равен супремуму интегралов ступенчатых функций на E. Если мера множества бесконечности f - $tilde(E)$ больше нуля, то $g := n chi_tilde(E)$
+  ])
+
+  #theorem_(name:[Лемма], body:[
+    $A = union.big.sq A_k$ --- измеримо,
+$g >= 0$ --- ступенчатая. Тогда:
+$ int_A g dif mu = sum_(i=1)^infinity int_A_i g dif mu $
+  ], proof:[
+    Т.к. $g$ --- ступенчата, предствим ее в виде $g = sum_("кон") lambda_i chi_E_i$, где $E_i$ --- допустимое разбиение\
+Тогда найдем интеграл:
+$ int_A g = sum_(i, "кон.") lambda_i mu(E_i inter A)  =sum_(i, "кон.") lambda_i sum_(k=1)^(+oo)  mu(E_i inter A_k) = $  $ =  sum_i sum_k lambda_i mu(E_i inter A_k) =^((star)) sum_k sum_i lambda_i mu (E_i inter A_k) = sum_k int_A_k g dif mu $
+
+$(star):$ в прошлом семестре обсуждалось, что в рядах можно переставлять слагаемые, если все слагаемые неотрицательные, а у нас именно такие     
+  ])
+
+  TODO: украл у прошлого года, обмозговать
+ #theorem(name:[ Счетная аддитивность интеграла (по множеству)],
+body:[
+  $A = union.big.sq A_k$ --- измеримо,
+$f >= 0: X -> overline(RR)$ --- измерима на $A$:
+Тогда: $ int_A f dif mu = sum_(i=1)^infinity int_A_i f dif mu $
+], proof:[
+  Давайте докажем два неравенства $(<=), (>=)$.\
+$(<=)$:\
+$see$ ступенчатую функцию $g$: $0<=g<=f$:
+$ int_A g = sum int_A_i g <= sum int_A_i f  $
+По определению интеграла для измеримой функции:
+$ int_A f = sup_g int_A g  <= sum int_A_i f $
+$(>=)$: 
++ $make A = A_1 union.sq A_2$\
+  Возьмем ступенчатые функции $g_1, g_2$ с общим  разбиением $E_k:$ \
+  $ 0<= &g_1 <= f dot chi_A_1 quad 0 &<= g_2 <= f dot chi_A_2 $
+  Т.е. функция $g_1$ тождественный $0$ вне $A_1$, а на $A_1: space  g_1 <= f$. Аналогично для $g_2$\
+  Найдем их явное представление:
+  $ g_1 &= sum lambda'_i chi_E_i quad g_2 = sum lambda''_i chi_E_i $
+  Тогда очевидно, что когда мы их сложим, они будут меньше $f$ на всем $A$ (т.к. $A_1, A_2$ --- дизъ. то ровно одна из $g_1, g_2$ на ней $!= 0$, а каждая из них по отдельности меньше $f$) 
+  $ 0 <= g_1 + g_2 <= f dot chi_A $
+  Проинтегрируем все это дело:
+  $ int_A_1 g_1 + int_A_2 g_2 =^((star)) int_A (g_1 + g_2) <= int_A f $
+  $(star): $ равенство станет очевидным, если написать интеграл по определению\
+  Теперь перейдем к  $sup$ по $g_1:$
+  $ int_A_1 f + int_A_2 g_2 <= int_A f $
+  И перейдем к $sup$ по $g_2:$
+  $  int_A_1 f + int_A_2 f<= int_A f $ #vfo
++ $make A = union.sq.big_(i=1)^n A_i$ --- доказывается индукцией по   1-му пункту #vfo
++ $A = union.big.sq_(i=1)^(+infinity) A_i = A_1 union.sq A_2 union.sq dots union.sq A_n union.sq B_n$, где $B_n = union.sq.big_(i=n+1)^(+ infinity) A_i$ #v(0.15cm)
+  $ int_A f = sum_(i=1)^n int_A_i f + int_B_n f >= sum_(i=1)^n int_A_i f $ 
+  Делаем предельный переход при $n-> +oo$ и получаем нужное нам неравенство
+]) 
+
+
