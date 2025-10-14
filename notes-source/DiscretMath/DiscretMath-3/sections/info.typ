@@ -8,4 +8,4 @@
 
 Это третий семестр курса по дискретной математике, всем успехов!
 
-#align(center)[#image("../assets/Ruby.jpg", width:80%)]
+#align(center)[#image("../assets/soft_girl.jpg", width:70%)]
