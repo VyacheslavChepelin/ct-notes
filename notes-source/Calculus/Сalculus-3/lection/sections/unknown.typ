@@ -42,26 +42,3 @@ _Следствия:_
 ])
 
 
-
-#definition(title:[Произведение мер], body:[
- $ (X, cal(A), mu), (Y, cal(B), nu)$, $mu,nu$ - сигма-конечные. 
-
- $P = {A times B |A in cal(A), B in cal(B)}$ - полукольцо измеримых прямоугольников
-
- Мера, полученная из $m_0$(из теоремы о произведении мер) по теореме о Лебеговском продолжении меры, на $P$ обозначается $mu times nu$.
-
- Соответствующее пространство и сигма алгебра обозначаются:
- $ (X times Y, cal(A) times cal(B), mu times nu) $
-])
-
-#theorem(title:[Произведение мер], body:[
-  $(X, cal(A), mu), (Y, cal(B), nu)$. Тогда:
-  - $m_0$ мера на $P$, где $m_0(A times B)= mu A dot nu B$
-  - $mu,nu$ - сигма-конечные, откуда $m_0$ - сигма-конечная 
-], proof:[
-  $x_(A times B)(x,y) = x_A(x) dot x_B(y)$
-
-  $P = limits(union.sq.big)_("счетно")P_k, P = A times B, P_k = A_k times B_k$
-  TODO: ТУТ ЧТО-ТО НЕПОНЯТНОЕ
-  
-])

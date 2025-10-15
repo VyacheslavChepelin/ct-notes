@@ -46,7 +46,7 @@
     )
     #property_(
       body: [
-          $forall A, B_1, ..., B_k in cal(P): exists underbracket(D_1 comma ... comma D_n, "диз.")$ - кон. количество: $A without (limits(union.big)_(i=1)^k B_i) = limits(union.big)_(j=1)^n D_j$
+          $forall A, B_1, ..., B_k in cal(P): exists underbracket(D_1 comma ... comma D_n, "диз.")$ - кон. количество: $A without (limits(union.big)_(i=1)^k B_i) = limits(union.big.sq)_(j=1)^n D_j$
           
           Это доказывается по индукции
       ]
@@ -215,12 +215,12 @@ $ sum_(i=1)^n mu A_i <= mu A <= sum_(i=1)^infinity mu A_i  $
 
 #theorem(name: [
 Формулировка теоремы о непрерывности меры снизу], body:[
-  $algebra$ - алгебра. $mu: algebra -> overline(RR)$ - объем. Тогда:
+  $algebra$ - алгебра. $mu: algebra -> overline(RR)$ - объем. Тогда если выполнено:
   1. $mu$ --- мера
   2. $mu$ --- непрерывны снизу:
   $  forall A, A_1, A_2, ... in algebra, quad A_1 subset A_2 subset ..., quad A = limits(union.big)_(i=1)^infinity A_i $         
   
-    Следует: $ mu A = lim_(i->infinity) mu A_i $
+    То выполнено: $ mu A = lim_(i->infinity) mu A_i $
 
 ])
 #theorem(name:[Теорема о непрерывности меры сверху],body:[
@@ -246,10 +246,9 @@ $ mu A_i = sum_(k=i)^infinity mu B_k + mu A $
 
 $ lim_(i->infinity) mu A_i = 0 + mu A = mu A $
 
-*$2 => 1$*. Эта часть доказательства будет потом переписана, автор пока копирует то, что говорит Кохась. Если что это примерно 10 минут после перерыва.
+*$2 => 1$*.
 
-
-В доказательстве этого пункта мы будем пользоваться только следствием пункта 2, а именно:\
+Заметим, что из условия следует:
 $ A_1 supset A_2 supset dots, quad A = inter.big A_k = emptyset =>mu A = lim_(i->+oo) mu A_i = 0 $
 Мы хотим проверить счетную аддитивность, т.е.\
 $ C = union.sq.big_(i=1)^infinity C_i =>^? mu C = sum_(i=1)^infinity mu C_i $
@@ -258,8 +257,9 @@ $ C = union.sq.big_(i=1)^infinity C_i =>^? mu C = sum_(i=1)^infinity mu C_i $
 $ A_k = union.big_(i=k+1)^infinity C_i = C without (union.big.sq_(i=1)^k C_i) $
 Так как это конечное объединение, то $limits(union.big.sq)_(i=1)^k C_i in algebra$, а значит и правая часть $in algebra =>A_k in algebra$\ 
 Заметим также, что
-$limits(inter.big)_(k=1)^(+oo) A_k  = emptyset $, т.к. все $C_i$ дизъюнктны, то любая точка из $C$ содержится ровно в одном $C_i$, а значит в $A_(k>i)$ она уже содержаться не будет (по определению $A_k$), и в пересечении всех $A_k$ её тоже не будет\
-Отсюда следует, что мы можем применять следствие 2 пункта из начала доказательства.\ 
+$limits(inter.big)_(k=1)^(+oo) A_k  = emptyset $, т.к. все $C_i$ дизъюнктны, то любая точка из $C$ содержится ровно в одном $C_i$, а значит в $A_(k>i)$ она уже содержаться не будет (по определению $A_k$), и в пересечении всех $A_k$ её тоже не будет
+
+Отсюда следует, что мы можем применять замечание из начала доказательства.\ 
 Осталось только заметить, что:
 $ C = union.sq.big_(i=1)^k C_i union.sq A_k $
 Т.к. $mu$ --- объем:
@@ -326,7 +326,7 @@ $mu$ --- классический объем.
 Тогда $mu$ --- $sigma$-конечная мера.
 ],proof:[
   1. $sigma$-конечность очевидна: можно либо разлиновать пространство на клеточки как в тетради, либо просто взять увеличивающийся параллелепипед
-  2. Надо доказать счетную аддитивность. Давайте по теореме об эквив. счетной аддитивности и полуаддитивности, докажем полуаддитивность:
+  2. Осталось доказатьь, что $mu$ - мера. Если докажем счетную полуаддитивность, то по т. об эквив. счетной аддитивности и счетной полуадитивности, получим, что $mu$ - мера.
   $ P = [a, b),  space P_n = [a_n, b_n):  space P subset union.big_(n=1)^(+oo) P_n  space =>^? space mu P <= sum mu P_n $
   Далее под фразой "чуть уменьшим" вектор из $RR^m$ будем подразумевать небольшое уменьшение каждой из его координат. Возьмем $epsilon>0$: 
 1. Чуть уменьшим $b$ и получим $b':$ 
@@ -335,7 +335,7 @@ $ [a, b'] subset [a, b) : space  mu(P without [a, b')) < epsilon $
 2. Теперь для каждого $P_n$ немного уменьшим $a_n$ и получим $a'_n:$
 
 $ (a'_n, b_n) supset [a_n, b_n) : space mu([a'_n, b_n) without P_n) < epsilon / 2^n $
-3. Получаем, что $underbracket([a, b'], "компакт") subset union.big_(n=1)^(+oo) (a'_n, b_n) $\
+3. Получаем, что $underbracket([a, b'], "компакт") subset limits(union.big)_(n=1)^(+oo) (a'_n, b_n) $\
   Т.к. это компакт, а справа стоит открытое покрытие, то по определению существует конечное подпокрытие:\
 $ [a, b'] subset union.big_(n=1)^N (a'_n, b_n) $
   Теперь в правую часть  включения добавим часть точек, а слева уберем. Очевидно включение от этого не сломается:
@@ -390,22 +390,42 @@ $lambda, lambda_m$ --- мера Лебега (иногда хотим указы
   
 ])
 
-TODO: пропущены следствия, можете пожалуйста их сформулировать кто=то
 
 
-
-#lemma(title:[О    смысле жизни открытых множеств и множеств меры 0], body:[
+#lemma(title:[О    смысле жизни  множеств меры 0], body:[
   $O subset RR^m$ --- открытое.  Тогда $exists Q_i: space O = limits(union.big.sq)_(i=1)^(+oo) Q_i$, 
   где $Q_i$ --- кубические ячейки:
-  - можно считать, что у ни с рациональными координатами.
+  - можно считать, что они с рациональными координатами.
   - можно даже считать, что с двоично-рациональными
   - они "закопаны" внутрь области O. $Q_i subset overline(Q_i) subset O$
 ], proof:[
-  $forall x in O: $Возьмем $ Q(x)$ - любую кубические ячейку с нужными нам из условия свойствами
+  $forall x in O: $Возьмем $ Q(x)$ - любую кубические ячейку с нужными нам из условия свойствами, в которую входит $x$
 
   $ O = limits(union.big)_(x in Q)Q(x) limits(=)_("шаманим") limits(union.big)_(i=1)^(+ infinity) Q(x_i) $
 
   Шаманство: $O$ --- _континуальное_ множество. Казалоcь бы, как такое посчитать. Заметим, что ячеек с двоично-рациональными координатами счетно. Так что мы просто пройдемся по ним и будем нумеровать, так что шаманство работает!
+
+  Теперь осталось сделать их дизъюнктными. Ну давайте брать лишь ту часть, которую наша ячейка добавляет и разбивать ее на ячейки, каждая из которых из очевидных соображений будет удовлетворять условию
+])
+#lemma(title:[О    смысле жизни множеств меры 0], body:[
+  $E$ --- измеримо, $lambda E =0$.  Тогда $forall epsilon > 0: exists Q_i$, такие что:
+$ E subset limits(union.big)_(i=1)^(+infinity)Q_i " и " sum_(i=1)^(+infinity)lambda Q_i < epsilon $
+  где $Q_i$ --- кубические ячейки с двоично-рациональными координатами
+
+  *Замечание:* Вместо кубических ячеек можно взять шары, потому что $ Q(a, r/sqrt(m)) subset B(a, r) subset Q(a, r) subset  B(a, r sqrt(m)) $
+], proof:[
+   Из 5го пункта продолжения меры:
+   
+  $ 0 = lambda E = inf{sum_(i=1)^(+oo) lambda P_i stretch(|, size: #200%) E subset union.big P_i} $ 
+  Т.к. inf равен 0, то мы можем найти там сколько угодно малое значение 
+  
+  Подберем покрытие $E$ параллепипедами $P_i:sum_(i=1)^(+oo) lambda P_i < eps/2$
+  
+  Теперь каждую ячейку $P_i$ "поместим"  в ячейку $R_i$ с двоично-рациональными координатами, так чтобы $ lambda(R_i without P_i) < eps / 2^(i+1) $
+  Получается, что $sum_(i=1)^(+oo) lambda R_i < eps$
+
+  
+  Чтобы ячейки стали кубическими, аналогично прошлому лемме раздробим $R_i$ 
 ])
 
  #def[Пример неизмеримого по Лебегу множества]
@@ -426,7 +446,139 @@ $ 1 <=  sum_(q  in QQ  inter [-1, 1]) lambda (A + q) <= 3 $
 + $lambda (A + q) =0 => sum lambda (A + q) = 0$
 + $lambda (A + q) != 0 => sum lambda (A + q) = infinity$ #vtw
 В обоих случаях одно из неравенств не выполняется, а значит $A$ --- неизмеримое.
-\
+
+
+#theorem(name:[Регулярность меры Лебега], body:[
+  $A in cal(M)^m, forall eps > 0:$
+  1. $exists$ открытое $G_eps: A subset G_eps : lambda(G_eps without A) < eps$
+  2. $exists$ замкнутое $F_eps: A supset F_eps : lambda(A without F_eps) < eps$
+], proof:[
+ 1. а) Пусть $lambda A < + infinity$. 
+  \ Тогда:
+  $lambda A = inf {sum_(k=1)^(+oo) lambda P_k stretch("|", size: #200%) A subset limits(union.big)_(k=1)^(+oo) P_k}$ по теореме о продолжении меры.
+  
+  Из технического описания мы можем выбрать элемент, который лежит сколь угодно близко к inf: \ $ forall eps > 0 space exists (P_k): lambda A <= sum_(k=1)^(+oo) lambda P_k <= lambda A + eps /2 $
+  Теперь осталось сделать каждое $P_k$ открытым, чтобы их счетное объединение было тоже открытым, содержало $A$ и было ограничено. На это мы оставили "запас" $eps/2$, как раз на то чтобы раздуть ячейки
+  
+  Немного уменьшим $a_k$ и получим $a'_k:$
+  $ (a'_k, b_k) supset P_k, " а также " mu((a'_k, b_k) without P_k) < eps/2^(k+1) $
+
+  Тогда наше $G_eps := union.big_(k=1)^(+oo) (a'_k, b_k)$ --- открытое, т.к. это счетное объединение открытых\ 
+
+  Очевидно, что:
+  + Т.к. $(a'_k, b_k) supset P_k => A subset G_eps => lambda A <= lambda G_eps$ 
+  
+  + $lambda G_eps <= (sum_(k=1)^(+oo) lambda P_k )+ eps/2 < lambda A + eps /2 + eps /2 = lambda A + eps$
+  
+  Мы получили ровно то что хотели: $mu (G_eps without A) < eps$
+
+  б) Теперь предположим, что $mu A = +oo$
+  
+  Тогда по $sigma$-конечности: $RR^m = union.big.sq Q_i$, где $Q_i$ --- кубические ячейки\ #vtw
+  Рассмотрим $A$ как пересечение с этой "сеткой" и для каждого пересечения будем брать свое $G_(e,j)$ такое что:
+  $ A = union.big.sq_(j=1)^(+oo) underbracket(A inter Q_j, subset G_(eps, j)), quad lambda (G_(eps, j) without (A inter Q_j)) < eps / 2 ^ j $
+  
+  Тогда $ G_eps := limits(union.big)_(j=1)^(+oo) G_(eps, j)$ --- открыто, т.к. счетное объединение открытых. 
+
+2. Возьмем дополнение и проделаем все рассуждения про него. А дальше, у получившегося открытого множества возьмем дополнение и заметим, что его разница с $A$ как раз есть $eps$
+
+]
+
+)
+
+#pagebreak()
+== Произведение мер
+
+
+#definition(title:[Произведение мер], body:[
+ $ (X, cal(A), mu), (Y, cal(B), nu)$, $mu,nu$ - сигма-конечные. 
+
+ $P = {A times B |A in cal(A), B in cal(B)}$ - полукольцо измеримых прямоугольников
+
+ Мера, полученная из $m_0$(из теоремы о произведении мер) по теореме о Лебеговском продолжении меры, на $P$ обозначается $mu times nu$.
+
+ Соответствующее пространство и сигма алгебра обозначаются:
+ $ (X times Y, cal(A) times cal(B), mu times nu) $
+])
+
+#theorem(title:[Произведение мер], body:[
+  $(X, cal(A), mu), (Y, cal(B), nu)$. Тогда:
+  - $m_0$ мера на $P$, где $m_0(A times B)= mu A dot nu B$
+  - $mu,nu$ - сигма-конечные, откуда $m_0$ - сигма-конечная 
+], proof:[
+  $x_(A times B)(x,y) = x_A(x) dot x_B(y)$
+
+  $P = limits(union.sq.big)_("счетно")P_k, P = A times B, P_k = A_k times B_k$
+  
+  TODO: ТУТ ЧТО-ТО НЕПОНЯТНОЕ
+  
+])
+
+
+#theorem(name:[Принцип Кавальери], body:[
+  $(X, cal(A), mu)$ и $(Y, cal(B), nu)$. Меры $mu, nu$ - $sigma$-конечные и полные
+  
+  $m = mu times v$. Построим $(X times Y, A times.circle B, m), C in A times.circle B$
+
+  Тогда:
+  1. При п.в $x: C_x in Beta$, где $C_x = {y:(x,y) in C}$ - "типо сечение"
+  2. $x |-> nu (C_x)$ $"измеримо"^*$ на $X$, $*: exists overline(f)$ всюду совпадвет с $f$ почти везде.
+  3. $m C  = int_X nu(C_x)d mu$
+], proof:[
+  Оно в процессе
+])
+
+#theorem_(name:[Следствие о равенстве интеграла Лебега и определенного интеграла], body:[
+  $f:[a,b]-> RR$ - непр $f>=0$. Тогда: $ int_(a)^b f(x)dif x = int_([a,b]) f dif lambda_1 $
+], proof:[
+  $ int_a^b f(x)dif x = lambda_2 ("ПГ"([a,b], f))= int_([a,b]) f(x) d lambda_1 $
+])
+
+
+
+
+
+#definition( title:[Сечение функции], body:[ $f: C -> overline(RR), C subset X times Y$
+
+$forall x in X:f_x (y) = f(x,y), y in C_x$
+
+$forall y in Y:f_y (x) = f(x,y), x in C_y$
+])
+
+#theorem(name:[Теорема Тоннели],  body:[
+  $(X, algebra, mu), (Y, cal(B), nu)$ - $m, nu$ - $sigma$-кон и полные, $m= mu times nu$
+
+  $f: X times Y -> overline(RR), f>=0, f - "m - изм"$
+
+  Тогда:
+  1. при п.в. $x: f_x$ - измеримо относительно $sigma$-алгебры $cal(B)$
+  2. $x |-> phi(x) = int_Y f_x d mu$ - $"изм"^*$ на $X$
+  3. $int_(X times Y) d m = int_X phi(x)dif x =int_X (int_Y f(x,y)dif nu(y))dif mu(x) $
+
+  Аналогичные рассуждения можно повторить по $y$.
+], proof:[
+  0) $f = chi_C, C subset X times Y$ - изм. 
+  
+  $f_x(y) = chi_(C_x)(y)$ при почти всех $C_x$ изм. мн-во в $X =>$ при этих $x, f_x$ - измеримо.
+  
+  $ phi(x) = int_Y chi_(C_x)y dif nu(y)= nu C_x "- измеримо как функция по принципу Кавальери" $
+  $ m C = int_(X times Y) chi_C dif m = int_X nu(C_x) dif mu = int phi(x) dif mu $
+  
+  1) $f$ - ступ. $f = sum_(k) alpha_k (chi_(C_k))_X$ - используем первый пункт и линейность интеграла
+  
+  2) $f>= 0$, $f$-изм. $f = lim g_n$, $g_n$ - ступ, $0<= g_n < f$ - по теореме     о характеристики функций  с помощью ступ. $g_n <= g_(n+1)$
+
+  $ phi(x)=int_Y f_X dif nu =_("Теорема Леви")= lim_(n->+infinity) int (g_n)_x dif nu $
+
+  Обозначим $phi_n (x) = int (g_n)_x dif nu$:
+  $0<= phi_n(x)<=phi_(n+1)(x)$
+  $ int_X phi(x) dif mu = lim int_X phi_n (x) d mu = lim_(n-> + oo) int_X (int_Y g_n(x,y) dif nu) dif nu = $
+  $ = lim_(n -> +infinity) int_(X times Y) g_n dif mu = int_(X times Y) f    dif mu  $
+])
+
+TODO:
+
+
 
 
 
