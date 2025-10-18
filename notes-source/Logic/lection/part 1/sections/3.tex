@@ -1,11 +1,6 @@
 \section{Лекция 3.}
 
 
-
-
-
-
-
 \deff{def:} \textbf{Отмеченное (дизъюнктное) объединение}: $A \uplus B := \{ \langle x, 0 \rangle\ |\ x \in A\} \cup \{ \langle y, 1\rangle\ |\ y \in B\}$
 
 \deff{def:} Ложь (необитаемый тип) ??????????? TODO
@@ -56,7 +51,9 @@ let csqrt x =
 
 
 \deff{def:} Пространство $\langle X, \Omega\rangle$ \textbf{связно}, если нет $A,B \in \Omega$, что $A\cup B = X$,
-$A \cap B = \varnothing$ и $A,B \ne \varnothing$.
+$A \cap B = \varnothing$ и $A,B \ne \varnothing$
+
+\deff{def:}  Множество \textbf{связно}, если соотв. ему подпространство связно. 
 
 \deff{Топология на деревьях}
 
@@ -175,6 +172,10 @@ $A^\circ$ определена для любого $A$.
 что для любых $a,b \in X$ определены $a + b = \sup\{a,b\}$ и $a \cdot b = \inf\{a,b\}$.
 
 То есть, $a + b$ --- наименьший элемент $c$, что $a \preceq c$ и $b \preceq c$.
+
+\thmm{Теорема.}
+
+Рассмотрим топологическое пространство $\langle X, \Omega\rangle$. Введем отношение порядка $\forall A,B: A \subseteq B:A \preceq B$. Тогда получившаяся вещь - решетка.
 
 \deff{def:} \textbf{Псевдодополнением} $a \rightarrow b$ называется наибольший из $\{ x \ |\ a \cdot x \preceq b\}$.
 
