@@ -1,1 +1,300 @@
-ds
+\section{Лекция 7:}
+
+\subsection{Машина Тьюринга}
+
+\deff{def:} Машина Тьюринга:
+\begin{enumerate}
+\item Внешний алфавит $q_1, \dots, q_n$, выделенный символ-заполнитель $q_\varepsilon$
+\item Внутренний алфавит (состояний) $s_1, \dots, s_k$; $s_s$ --- начальное, $s_f$ --- допускающее, $s_r$ --- отвергающее.
+\item Таблица переходов $\langle k, s \rangle \Rightarrow \langle k', s', \leftrightarrow \rangle$
+\end{enumerate}
+
+\deff{def:} Состояние машины Тьюринга:
+\begin{enumerate}
+\item Бесконечная лента с символом-заполнителем $q_\varepsilon$, текст конечной длины.
+\item Головка над определённым символом.
+\item Символ состояния (состояние в узком смысле) --- символ внутреннего алфавита.
+\end{enumerate}
+
+Машина, меняющая все 0 на 1, а все 1 --- на 0.
+\begin{enumerate}
+\item Внешний алфавит $\varepsilon, 0, 1$.
+\item Внутренний алфавит $s_s, s_f$ (начальное и допускающее состояния соответственно).
+\item Переходы:
+\begin{center}
+\begin{tabular}{l|lll}
+    & $\varepsilon$ & 0 & 1\\\hline
+$s_s$ & $\langle s_f,\varepsilon,\cdot\rangle$ & $\langle s_s,1,\rightarrow\rangle$ & $\langle s_s,0,\rightarrow\rangle$\\
+$s_f$ & $\langle s_f,\varepsilon,\cdot\rangle$ & $\langle s_f,0,\cdot\rangle$ & $\langle s_f,1,\cdot\rangle$
+\end{tabular}\end{center}
+\end{enumerate}
+
+\deff{def:} \textbf{Язык} --- множество строк
+
+\deff{def:} Язык $L$ \textbf{разрешим}, если существует машина Тьюринга, которая для любого слова $w$ переходит в допускающее состояние, если $w \in L$,
+и в отвергающее, если $w \notin L$.
+
+\subsubsection{Неразрешимость задачи останова}
+
+\deff{def:} Рассмотрим все возможные описания машин Тьюринга. Составим упорядоченные пары: описание машины Тьюринга и входная строка.
+Из них выделим язык останавливающихся на данном входе машин Тьюринга.
+
+\thmm{Теорема}
+
+Язык всех останавливающихся машин Тьюринга неразрешим
+
+\textbf{Доказательство:}
+
+От противного. Пусть $S(x,y)$ --- машина Тьюринга, определяющая, остановится ли машина $x$, примененная к строке $y$.
+
+\begin{center}W(x) = if (S(x,x)) \{ while (true); return 0; \} else \{ return 1; \}\end{center}
+
+Что вернёт $S(code(W),code(W))$?
+
+\hfill Q.E.D.
+
+Кодируем состояния:
+
+\begin{enumerate}
+\item внешний алфавит: $n$ 0-местных функциональных символов $q_1, \dots, q_n$; $q_\varepsilon$ --- символ-заполнитель.
+\item список: $\varepsilon$ и $c(l,s)$; <<abc>> представим как $c(q_a,c(q_b,c(q_c,\varepsilon)))$.
+\item положение головки: <<$ab\underline{p}q$>> как $(c(q_b,c(q_a,\varepsilon)), c(q_p,c(q_q,\varepsilon)))$.
+\item внутренний алфавит: $k$ 0-местных функциональных символов $s_1, \dots, s_k$. Из них выделенные $s_s$ --- начальное и
+$s_f$ --- допускающее состояние.
+\end{enumerate}
+
+Достижимые состояния:
+
+Предикатный символ $F_{x,y}(w_l,w_r,s)$: если у машины $x$ с начальной строкой $y$ состояние $s$ достижимо на строке $rev(w_l) @ w_r$. 
+
+Будем накладывать условия: семейство формул $C_m$. 
+
+Очевидно, начальное состояние достижимо:
+$$C_0 := F_{x,y}(\varepsilon,y,s_s)$$
+
+Кодируем переходы:
+
+\begin{enumerate}
+\item Занумеруем переходы.
+
+\item Закодируем переход $m$: $$\langle k, s \rangle \Rightarrow \langle k', s', \rightarrow \rangle, \text{ в случае } q_k \ne q_\varepsilon$$
+$C_m = \forall w_l.\forall w_r.F_{x,y}(w_l,c(q_k,w_r),s_s) \rightarrow F_{x,y}(c(q_{k'},w_l),w_r,s_{s'})$\\
+(здесь требуется, чтобы под головкой находился непустой символ $q_k$, потому мы обязательно требуем, чтобы лента была
+непуста)
+
+\item Переход посложнее:
+$$\langle k, s \rangle \Rightarrow \langle k', s', \leftarrow \rangle, \text{ в случае } q_k \ne q_\varepsilon$$
+$C_m = \forall w_l.\forall w_r.\forall t.F_{x,y}(c(t,w_l),c(q_k,w_r),s_s) \rightarrow F_{x,y}(w_l,c(t,c(q_{k'},w_r)),s_{s'}) \with
+\forall w_l.\forall w_r.F_{x,y}(\varepsilon,c(q_k,w_r),s_s) \rightarrow F_{x,y}(\varepsilon,c(q_\varepsilon,c(q_{k'},w_r)),s_{s'})$
+
+\item и т.п.
+\end{enumerate}
+
+Итоговая формула:
+
+$$C = C_0 \with C_1 \with \dots \with C_n$$
+<<правильное начальное состояние и правильные переходы между состояниями>>
+
+\thmm{Теорема:}
+
+Состояние $s$ со строкой $rev(w_l)@w_r$ достижимо тогда и только тогда, когда
+$C \vdash F_{x,y}(w_l,w_r,s)$
+
+\textbf{Доказательство:}
+
+$(\Leftarrow)$ Рассмотрим модель: предикат $F_{x,y}(w_l,w_r,s)$ положим истинным, если состояние достижимо. 
+Это --- модель для $C$ (по построению $C_m$). 
+Значит, доказуемость влечёт истинность (по корректности). 
+
+$(\Rightarrow)$ Индукция по длине лога исполнения.
+
+\textbf{Неразрешимость исчисления предикатов: доказательство}
+
+\thmm{Теорема.} Язык всех доказуемых формул исчисления предикатов неразрешим
+
+Т.е. нет машины Тьюринга, которая бы по любой формуле $\alpha$ определяла, доказуема ли она.
+
+\textbf{Доказательство:}
+
+Пусть существует машина Тьюринга, разрешающая любую формулу. 
+На её основе тогда несложно построить некоторую машину Тьюринга, перестраивающую любую машину $S$ (с допускающим состоянием $s_f$ и входом $y$) 
+в её ограничения $C$ и разрешающую формулу ИП $C \rightarrow \exists w_l.\exists w_r.F_{S,y}(w_l,w_r,s_f)$. 
+Эта машина разрешит задачу останова.
+
+\hfill Q.E.D.
+
+\subsection{Аксиоматика Пеано и формальная арифметика}
+
+{\itshape \hfill \begin{tabular}{r} <<Бог создал целые числа, всё остальное — дело рук человека.>>\\
+                                 Леопольд Кронекер, 1886 г.\end{tabular}}
+
+\begin{enumerate}
+\item Рациональные ($\mathbb{Q}$).
+
+      $Q = \mathbb{Z} \times \mathbb{N}$ --- множество всех простых дробей.
+
+      $\langle p,q \rangle$ --- то же, что $\frac{p}{q}$ 
+
+      $\langle p_1,q_1 \rangle \equiv \langle p_2, q_2 \rangle$, если $p_1q_2 = p_2q_1$
+
+      $\mathbb{Q} = Q/_\equiv$
+
+\item Вещественные ($\mathbb{R}$). $X = \{ A, B \}$, где $A,B \subseteq \mathbb{Q}$ --- дедекиндово сечение, если:
+\begin{enumerate}
+\item $A\cup B = \mathbb{Q}$
+\item Если $a \in A$, $x \in \mathbb{Q}$ и $x \le a$, то $x \in A$
+\item Если $b \in B$, $x \in \mathbb{Q}$ и $b \le x$, то $x \in B$
+\item $A$ не содержит наибольшего.
+\end{enumerate}
+
+       $\mathbb{R}$ --- множество всех возможных дедекиндовых сечений. 
+
+$\sqrt 2 = \{\{ x\in\mathbb{Q}\ |\ x < 0 \vee x^2 < 2 \}, \{ x\in\mathbb{Q}\ |\ x > 0 \ \& \ x^2 > 2\}\}$
+\end{enumerate}
+
+Целые числа тоже попробуем определить
+ $$\mathbb{Z}: \dots -3, -2, -1, 0, 1, 2, 3, \dots$$
+\begin{itemize}
+\item     $Z = \{\langle x, y \rangle\ |\ x,y\in \mathbb{N}_0\}$ 
+\item Интуиция: $\langle x,y\rangle = x-y$
+\item $$\begin{array}{rcl}
+      \langle a, b \rangle + \langle c, d \rangle & = & \langle a + c, b + d \rangle \\
+      \langle a, b \rangle - \langle c, d \rangle & = & \langle a + d, b + c \rangle 
+  \end{array}$$
+\item     Пусть $\langle a, b \rangle \equiv \langle c,d\rangle$, если $a + d = b + c$. Тогда $\mathbb{Z} = Z/_\equiv$
+\item      $0 = [\langle 0,0 \rangle],\; 1 = [\langle 1,0\rangle],\; -7 = [\langle 0,7 \rangle]$
+
+\end{itemize}
+
+\subsection{Натуральные числа: аксиоматика Пеано}
+ $$\mathbb{N}: 1, 2, \dots \mbox{ или } \mathbb{N}_0: 0, 1, 2, \dots$$
+
+\deff{def:}  $N$ (или, более точно, $\langle N, 0, (')\rangle$) \emph{соответствует} \textbf{аксиоматике Пеано}, 
+  если следующее определено/выполнено:
+  \begin{enumerate}
+     \item Операция <<штрих>> $('): N \to N$, причём нет $a,b \in N$, что $a \ne b$, но $a' = b'$.
+           
+           Если $x = y'$, то $x$ назовём следующим за $y$, а $y$ --- предшествующим $x$.
+     \item Константа $0 \in N$: нет $x \in N$, что $x' = 0$.
+     \item Индукция. Каково бы ни было свойство (<<предикат>>) $P: N \to V$, если:
+           \begin{enumerate}
+           \item $P(0)$
+           \item При любом $x\in N$ из $P(x)$ следует $P(x')$
+           \end{enumerate}
+           то при любом $x \in N$ выполнено $P(x)$.
+  \end{enumerate}
+
+Как построить? Например, в стиле алгебры Линденбаума:
+\begin{enumerate}
+\item $N$ --- язык, порождённый грамматикой $\nu ::= \texttt{0}\ |\ \nu \texttt{<<'>>}$
+\item $0$ --- это $\texttt{<<0>>}$, $x'$ --- это $x + \texttt{<<'>>}$
+\end{enumerate}
+
+
+\subsubsection{Обозначения и определения}
+
+\deff{def:}
+$1 = 0'$, $2 = 0''$, $3 = 0'''$, $4 = 0''''$, $5 = 0'''''$, $6 = 0''''''$,
+$7 = 0'''''''$, $8 = 0''''''''$, $9 = 0'''''''''$
+
+
+\deff{def:}
+$$a + b = \left\{ \begin{array}{ll} a, & \mbox{если } b = 0\\
+                                    (a + c)', & \mbox{если } b = c'
+                  \end{array}\right.$$
+
+Например, $$2 + 2 = 0'' + 0'' = (0'' + 0')' = ((0'' + 0)')' = ((0'')')' = 0'''' = 4$$
+
+\deff{def:}
+$$a \cdot b = \left\{ \begin{array}{ll} 0, & \mbox{если } b = 0\\
+                                    a \cdot c + a, & \mbox{если } b = c'
+                  \end{array}\right.$$
+
+
+
+\subsection{Уточнение исчисления предикатов}
+
+\begin{itemize}
+\item Пусть требуется доказывать утверждения про равенство. Введём $E(p,q)$ --- предикат <<равенство>>.
+\item Однако $\not\vdash E(p,q)\to E(q,p)$: если $D = \{0,1\}$ и $E(p,q) ::= (p>q)$,
+то $\not\models E(p,q)\to E(q,p)$.
+\item Конечно, можем указывать $\forall p.\forall q.E(p,q)\to E(q,p) \vdash \varphi$.
+\item Но лучше добавим аксиому $\forall p.\forall q.E(p,q)\to E(q,p)$.
+\item Добавив необходимые аксиомы, получим \emph{теорию первого порядка}.
+\end{itemize}
+
+\subsection{Теория первого порядка}
+
+\deff{def:}
+\textbf{Теорией первого порядка} назовём исчисление предикатов с дополнительными (<<нелогическими>>
+или <<математическими>>):
+\begin{itemize}
+\item предикатными и функциональными символами;
+\item аксиомами.
+\end{itemize}
+
+Сущности, взятые из исходного исчисления предикатов, назовём \emph{логическими}
+
+\subsection{Порядок логики/теории}
+
+\begin{tabular}{llll}
+Порядок & Кванторы & Формализует суждения\dots & Пример\\\hline
+нулевой & запрещены & об отдельных значениях & И.В.\\
+первый & по предметным переменным & о множествах & И.П.\\
+    &   \multicolumn{2}{l}{\color{olive}$\{2,3,5,7,\dots\} = \{ t\ |\ \forall p.\forall q.(p \ne 1 \with q \ne 1) \rightarrow (t \ne p\cdot q)\}$}\\
+второй & по предикатным переменным & о множествах множеств & Типы\\
+    &   \multicolumn{2}{l}{\color{olive}$S = \{ \{t\ |\ P(t)\}\ |\ \varphi[p := P] \}$}\\
+ & \dots 
+\end{tabular}
+
+\textbf{Пример логики 2 порядка}
+\begin{tabular}{ll}
+$\alpha\rightarrow\beta\rightarrow\alpha$ (сх. акс. 1) & $\forall a.\forall b.a \rightarrow b \rightarrow a$ \vspace{0.1cm}\\
+\texttt{let rec map f l = match l with} & $map: \forall a.\forall b.(a \rightarrow b) \rightarrow a\texttt{ list} \rightarrow b\texttt{ list}$ \\
+\texttt{| [] -> []} \\
+\texttt{| l1::ls -> f l1 :: map f ls}\vspace{0.1cm}\\
+\texttt{map ((+) 1) [1;2;3] = [2;3;4]}
+\end{tabular}
+
+
+\subsection{Формальная арифметика}
+
+\deff{def:}
+Формальная арифметика --- теория первого порядка, со следующими добавленными нелогическими \dots
+\begin{itemize}
+\item двухместными функциональными символами $(+)$, $(\cdot)$; одноместным функциональным символом $(')$, 
+нульместным функциональным символом $0$;
+\item двухместным предикатным символом $(=)$;
+\item восемью нелогическими \emph{аксиомами}:\vspace{0.1cm}
+
+\begin{tabular}{ll}
+(A1) $a=b \to a=c \to b=c$             &(A5) $a+0 = a$                     \\
+(A2) $a=b \to a'=b'$                   &(A6) $a+b' = (a+b)'$               \\
+(A3) $a'=b' \to a=b$                   &(A7) $a\cdot 0 = 0$                \\
+(A4) $\neg a' = 0$                     &(A8) $a\cdot b' = a \cdot b + a$
+\end{tabular}
+\item нелогической схемой аксиом индукции $\psi[x:=0]\with(\forall x.\psi\to \psi[x:=x'])\to \psi$ с метапеременными $x$ и $\psi$.
+\end{itemize}
+
+\textbf{Пример:} Докажем, что $a=a$:
+
+Пусть $\top ::= 0=0\to 0=0 \to 0=0$, тогда:
+
+\begin{tabular}{lll}
+(1) & $a=b\to a=c \to b=c$ & (Акс. А1)\\
+(2) & $(a=b\to a=c \to b=c) \to \top \to (a=b\to a=c \to b=c)$ & (Сх. акс. 1)\\
+(3) & $\top \to (a=b\to a=c \to b=c)$ & (M.P. 1, 2)\\
+(4) & $\top \to (\forall c.a = b\to a = c \to b = c)$ & (Введ. $\forall$)\\
+(5) & $\top \to (\forall b.\forall c.a = b\to a = c \to b = c)$ & (Введ. $\forall$)\\
+(6) & $\top \to (\forall a.\forall b.\forall c.a = b\to a = c \to b = c)$ & (Введ. $\forall$)\\
+(7) & $\top$ & (Сх. акс 1)\\
+(8) & $(\forall a.\forall b.\forall c.a = b\to a = c \to b = c)$ & (M.P. 7, 6)\\
+(9) & $(\forall a.\forall b.\forall c.a = b\to a = c \to b = c) \to $\\
+    & $\to (\forall b.\forall c.a+0 = b\to a+0 = c \to b = c)$ & (Сх. акс. 11)\\
+(10) & $\forall b.\forall c.a+0 = b\to a+0 = c \to b = c$ & (M.P. 8, 9)\\
+(12) & $\forall c.a+0 = a\to a+0 = c \to a = c$ & (M.P. 10, 11)\\
+(14) & $a+0 = a\to a+0 = a \to a = a$ & (M.P. 12, 13)\\
+(15) & $a+0 = a$ & (Акс. А5)\\
+(16) & $a+0 = a \to a = a$ & (M.P. 15, 14)\\
+(17) & $a = a$ & (M.P. 15, 16)
+\end{tabular}
