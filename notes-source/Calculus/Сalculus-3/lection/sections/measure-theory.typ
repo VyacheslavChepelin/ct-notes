@@ -522,10 +522,77 @@ $ 1 <=  sum_(q  in QQ  inter [-1, 1]) lambda (A + q) <= 3 $
 
   Тогда:
   1. При п.в $x: C_x in Beta$, где $C_x = {y:(x,y) in C}$ - "типо сечение"
-  2. $x |-> nu (C_x)$ $"измеримо"^*$ на $X$, $*: exists overline(f)$ всюду совпадвет с $f$ почти везде.
+  2. $x |-> nu (C_x)$ $"измеримо"^*$ на $X$, $*: exists overline(f)$ всюду совпадает с $f$ почти везде.
   3. $m C  = int_X nu(C_x)d mu$
 ], proof:[
-  Оно в процессе
+  *Замечание*:  
+  1. $C$ измеримое $arrow.not.double forall x: C_x$ - измеримо
+  2. $forall x, forall y: C_x, C^y$ измеримы $arrow.not.double C$ измеримое
+
+  Рассмотрим *много случаев*
+
+  Пусть $D$ - это класс (множество) подмножеств $X times Y$, для которых принцип верен
+
+  *$(1)$ Простой случай: *
+  
+  $C = A times B$, где $A in cal(A), B in cal(B)$. Покажем, что $C in D$, то есть что принцип выполнен:
+  1. $C_x = B, x in A$ или $C_x = nothing, x in.not A$. Очевидно, что это измеримо при любых $x$
+  2. $x |-> nu(C_x)$ это $nu B chi_A (x)$
+  3. $m(c) = mu A nu B = int_X nu B dot chi_A(x) d mu$
+
+  *(2) Случай дизъюнктных входящих:*  
+  
+  $E_i$ - дизъюнктны  и $E_i in D$. Покажем, что $E= limits(union.sq.big)_(i=1)^(+oo)E_i in D$, то есть что принцип выполнен:
+
+  1. $E_x = limits(union.sq.big)_(i=1)^(+infinity) (E_i)_x$ - измеримо при п.в $x$ $(E_i)_x => E_x$ измеримо  при почти всех $x$
+  2.  $nu E_x = sum nu (E_i)_x $, тогда получим, что это будет сумма неотрицательных изм. функций.
+  
+  Откуда $x |-> nu(C_x)$ - измеримо$""^*$
+  3.  $int_X nu E_x dif mu = int_X sum nu (E_i)_x dif mu =_("по т. об инт. полож рядов")= sum_i  (int_X nu (E_i)_x dif mu) = sum_i mu E_i = m E$
+
+  *(3) Случай пересечения входящих в $D$:*
+
+  $E_i in D, m E_i < +infinity, E_1 supset E_2 supset ...$ Заметим, что:
+
+$(E_i)_x subset (E_1)_x, int nu(E_1)_x d mu = m E_1 < +infinity => nu (E_1)_x$ п.в конечна $=> nu(E_i)_x$ п.в. конечна
+  
+  Покажем, что $E := limits(inter.big)_(i=1)^(+ oo) E_i in D$, то есть что принцип выполнен:
+
+  1. $E_x$ измеримо, как пересечение измеримых
+  2. $nu (E_i)_x ->_(i -> + oo) nu E_x$ по непрерывности меры $v$ сверху (измеримо, как предел измеримых)
+  3. $int_X nu E_x dif mu  =  lim_(i -> oo) int_X nu (E_i)_x dif mu = lim_(i ->  +infinity) m E_i = m E$ - по непрерывности меры $m$ сверху.
+
+
+  *Промежуточный итог*: $cal(P) = cal(A) times cal(B): limits(inter.big)_i limits(union.big)_j A_(i j) in D$, где $A_(i j) in cal(P)$
+  
+  *(4) Множества меры 0:* 
+
+  $m E = 0$. Покажем, что $E in D$
+
+  $exists$ (почему?) $H = limits(inter.big)_i limits(union.big)_j P_(i j)$, такой что $E subset H, m H = 0, H in D$ по построению
+
+ $0 = m H = int_X nu H_x d mu => nu H_x =0 $ при п.в. $x$
+
+ 1. $forall x: E_x subset H_x => E_x$ измеримо 
+ 2. $nu E_x = 0$
+ 3. $integral nu E_x d mu = 0 = m E$
+
+ *(5) Без куска меры 0:*
+
+ $C$ - измеримо, $m C < +oo.  C = H without e$, где $m e = 0 , e in D, H = inter.big union.big P_(i j) in D$
+
+ 1. $C_x = H_x without e_x$ - изм. почти везде, так как $e subset H$
+ 2. $x |-> nu C_x = nu H_x - nu e_x$ - измеримо.
+ 3. $int_X  nu C_x d mu = int_X nu H_x d mu = m H = m C$
+
+ *(6) Любое:*
+
+
+ $X = limits(union.sq.big)_(i=1)^(+oo)X_i,Y = limits(union.sq.big)_(j=1)^(+oo)Y_j, mu X_i < + inf, nu Y_i < + infinity$
+
+ $X times Y = limits(union.sq.big)_(i,j)(X_i times Y_j)$
+
+ $C = limits(union.sq.big)_(i,j)((X_i times Y_j) inter C)$ - то что внутри принадлежит по пункту 5., а итог верен по пункту  2.
 ])
 
 #theorem_(name:[Следствие о равенстве интеграла Лебега и определенного интеграла], body:[
@@ -576,7 +643,37 @@ $forall y in Y:f_y (x) = f(x,y), x in C_y$
   $ = lim_(n -> +infinity) int_(X times Y) g_n dif mu = int_(X times Y) f    dif mu  $
 ])
 
-TODO:
+
+#definition_(title:[Бета - функция], body:[
+$ Beta(s,t)  = int_(0)^(1)x^(s-1) (1-x)^(t-1) dif x, s, t >0 $  
+])
+
+#theorem_(name:[Пример], body:[
+  $B(s,t) = (Gamma(s) dot Gamma(t))/ (Gamma (s+t))$
+], proof:[
+  $ Gamma(s) Gamma(t) = int_(0)^(infinity) x^(s-1)e^(-x) (int_(0)^(+infinity) y^(t-1)e^(-y)dif  y)dif x $
+
+  Сделаем замену $ y = u -x:$
+  $ int_0^(+ infinity)x^(s-1)(int_0^(+infinity)(u-x)^(t-1)e^(-u) dif u) dif x = int_0^(+infinity)x^(s-1) (u-x)^(t-1) e^(-u) d lambda_2 =  $
+  $ =int ...(int... d x) d u = int_0^(+ infinity)e^u (int_0^u x^(s-1)(u-x)^(t-1)dif x) dif u =  $
+  $ =  int_0^(+ infinity) e^u integral_0^1 (u v )^(s-1) dot u^(???)  $
+
+  дальше не распарсил свои записи, позже допишу
+])
+
+#theorem_(name:[Пример. Объем шара в $RR^m$], body:[
+  Выведем привычные нам формулы для шаров в $RR^m$
+
+  Пусть $alpha_m = lambda_m (B(0,1)), lambda_m (B(0,r)) =alpha_m dot r^m$
+  
+  $ alpha_m = int_(-1)^1 alpha_(m-1)(1-y^2)^((n-1)/2)dif y =_([t = y^2]) alpha_(m-1) int_0^1 t^(-2) (1-t)^((m-1)/2)dif y = alpha_(m-1)Beta(1/2, (m+1)/2) =  alpha_(m-1) (Gamma(1/2) Gamma((m+1)/2))/(Gamma(m/2 + 1)) $
+  $ a_m = a_(m-1)  (Gamma(1/2) Gamma((m+1)/2))/(Gamma(m/2 + 1)) = ... = (Gamma(1/2)^(n-1) Gamma(3/2))/(Gamma (m/2+1) ) = (sqrt(pi^(n+1))dot 3/2 )/Gamma(m/2 + 1) $
+])
+
+
+
+
+
 
 
 
