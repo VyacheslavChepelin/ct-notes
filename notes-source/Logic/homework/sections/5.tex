@@ -1,0 +1,92 @@
+\newpage
+\subsection{Задание № 3.}
+
+Утверждение:
+
+$\cfrac{\text{Все Саши любят матлог}  \quad \text{Все Саши - люди (человеки)} }{\text{Существует человек, который любит матлог}}$
+
+$\cfrac{\text{Все единороги имеют рога}  \quad \text{Все единороги млекопитающие} }{\text{Существует млекопитающее с рогом}}$
+
+
+В предикатах:
+$$\exists x: M(xы),\forall x: M(x) \rightarrow P(x), \forall x: M(x) \rightarrow S(x) \vdash \exists x: S(x) \& P(x)$$
+Доказательство:
+
+\begin{tabular}{lll}
+(1) & $\forall x. M(x) \rightarrow P(x)$ & Гипотеза\\
+(2) & $\forall x. M(x) \rightarrow S(x)$ & Гипотеза\\
+(3) & $\exists x. M(x)$ & Гипотеза (условие существования)\\
+(3.5)& $\exists x. M(x) \rightarrow M(a)$ & Аксиома 12\\
+(4) & $M(a)$ & Modus Ponens из 3 и (3.5)\\
+(5) & $M(a) \rightarrow P(a)$ & см замечание\\
+(6) & $M(a) \rightarrow S(a)$ & см замечание\\
+(7) & $P(a)$ & Modus ponens из (4) и (5)\\
+(8) & $S(a)$ & Modus ponens из (4) и (6)\\
+(9) & $S(a) \& P(a)$ & Введение конъюнкции из (7) и (8)\\
+(10) & $S(a) \& P(a) \rightarrow\exists x. S(x) \& P(x)$ & (12) аксиома\\
+(11) & $\exists x. S(x) \& P(x)$ & Modus ponens из (9) и (10)\\
+
+\end{tabular}
+
+
+
+\textbf{Замечание:} 5,6 пункт следуют из 11 аксиомы при подстановке $a$ вместо $x$ и modus ponens.
+
+\textbf{Контрпример с существованием:}
+
+$D = \{0, 1\}$
+
+$M(x) = (x ==   0) \& (x == 1)$,
+$S(x) = (x ==   0) $,
+$P(x) = (x ==   1) $
+
+\newpage
+\subsection{Задание № 5.}
+
+Докажите или опровергните следующие формулы:
+
+\begin{enumerate}
+\item $(\forall x.\phi)\rightarrow (\forall y.\phi[x := y])$, если есть свобода для подстановки $y$ вместо $x$ в $\phi$ и $y$ не входит свободно в $\phi$.
+
+\textbf{Решение:}
+
+\begin{tabular}{lll}
+    (1) &  $(\forall x.\varphi) \rightarrow \varphi[x:= y]$  &  \text{(A11)}\\
+    (2) & $(\forall x.\varphi) \rightarrow \forall y.\varphi[x:= y]$ & Правило вывода $\forall$ \\
+\end{tabular}
+
+\item $(\forall x.\phi)\rightarrow (\exists x.\phi)$ и $(\forall x.\forall x.\phi) \rightarrow (\forall x.\phi)$
+
+\textbf{Решение:}
+
+$x$ свободно для подстановки в $\varphi$ вместо $x$,
+
+\begin{tabular}{lll}
+    (1) & $(\forall x.\phi) \rightarrow \phi[x:=x]$  &  \text{(A11)}\\
+    (2) & $\phi \rightarrow (\exists x.\phi[x:=x])$ & (А12) \\
+    (3) & $\axiomTwo{(\forall x.\phi)}{\phi}{(\exists x.\phi)}$ & (А2) \\
+    (4) & $((\forall x. \phi) \rightarrow \phi \rightarrow (\exists x. \phi))\rightarrow( (\forall x. \phi) \rightarrow (\exists x. \phi))$ & \moduse{1}{3}\\
+    (5) & $\axiomOne{(\phi \rightarrow (\exists x. \phi))}{(\forall x. \phi)}$ & (А1) \\
+    (6) & $(\forall x. \phi) \rightarrow \phi \rightarrow (\exists x. \phi)$ & \moduse{1}{5}\\
+    (7) & $(\forall x. \phi) \rightarrow (\exists x. \phi)$ & \moduse{6}{4}
+\end{tabular}
+
+
+Второе:
+
+\begin{tabular}{lll}
+    (1) &  $(\forall x.\varphi) \rightarrow (\forall x.\varphi)$  &  $\alpha \rightarrow \alpha $\\
+    (2) & $(\forall x.(\forall x.\varphi)) \rightarrow (\forall x.\varphi)$  & (A11) \\
+\end{tabular}
+
+
+
+\item $(\forall x.\phi) \rightarrow (\neg \exists x.\neg \phi)$ и $(\exists x.\neg\phi) \rightarrow (\neg \forall x.\phi)$
+\item $(\forall x.\alpha\vee\beta) \rightarrow (\neg \exists x.\neg \alpha) \& (\neg \exists x.\neg\beta)$
+\item $((\forall x.\alpha) \vee (\forall y.\beta)) \rightarrow \forall x.\forall y.\alpha\vee\beta$. Какие условия
+надо наложить на переменные и формулы? Приведите контрпримеры, поясняющие необходимость условий.
+\item $(\alpha\rightarrow\beta) \rightarrow \forall x.(\alpha\rightarrow\beta)$. Возможно, нужно наложить
+какие-то условия на переменные и формулы? Приведите контрпримеры, поясняющие необходимость условий (если 
+условия требуются).
+\item $(\alpha \rightarrow \forall x.\beta) \rightarrow (\forall x.\alpha\rightarrow\beta)$ при условии, что $x$ не входит свободно в $\alpha$.
+\end{enumerate}

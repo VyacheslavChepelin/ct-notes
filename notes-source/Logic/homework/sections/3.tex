@@ -1,0 +1,19 @@
+\newpage
+
+3f
+\begin{lstlisting}[mathescape]
+// (A -> B) -> (not B -> not A)
+
+template<typename A, typename B, typename C>
+//f_a_to_b = A -> B
+auto proof_f(std::function<B(A)> f_a_to_b) {
+    // not B = B -> false
+    return [f](std::function<C(B)> not_b) {    
+        return [f_a_to_b, not_b](A a){
+             b = f_a_to_b(a)
+             return not_b(b) // C
+             $\text{// -> мы вернули функцию, которая по A возвращает false }$
+        }       
+    };
+}
+\end{lstlisting}
