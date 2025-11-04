@@ -721,7 +721,7 @@ $(X,algebra, mu), f_n >= 0$ измеримо $f_n -> f $ п.в
 ], proof:[
   $ g_n = inf (f_n, f_(n+1), ...) $
   Заметим, что $g_n<= g_(n+1)$, $g_n-> underline(lim) f_n =f$ почти везде
-  $ int_X g_n = int_X f_n <= C $
+  $ int_X g_n <= int_X f_n <= C $
   $ int f<=_("по т. Леви") C $
 ])
 

@@ -109,3 +109,5 @@ $X$ - множество, $|X| = k > 23$
 
 
 #align(center)[#image("../assets/creative-crisis-kantor-stairs.png", width:40%)]  
+
+

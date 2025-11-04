@@ -8,9 +8,11 @@
    Полукольцо множеств $cal(P)$
   ], body: [
     $X$ - множество. $cal(P) subset 2^X$ - *полукольцо*, если:
-    + $nothing in cal(P)$
+    + $emptyset in cal(P)$
     + $forall A,B in cal(P)$, $A inter B in cal(P)$
-    + $forall A, B in cal(P), exists underbracket(B_1\, ...\, B_n, "диз.") in cal(P): A without B = limits(union.big)_(k = 1)^(n) B_k$
+    + $forall A, B in cal(P), exists underbracket(B_1\, ...\, B_n, "диз.") in cal(P): A without B = limits(union.big.sq)_(k = 1)^(n) B_k$
+    // yokhor: union.big -> union.big.sq
+    // yokhor: nothing -> emptyset
   ]
 )
 #example_(
@@ -82,7 +84,7 @@
       title:[Хитрый, но простой],
       body:[
         $X = RR^2$. $algebra$ состоит ограниченных множеств и из дополнений ограниченных множеств.
-      - $nothing, X in algebra$
+      - $emptyset, X in algebra$
       - Выполняется вторая аксиома:
         + $A$ - огр.
         + $A^c$ - огр.
@@ -100,7 +102,8 @@
 #definition(
   title: [$sigma$-алгебра $algebra$ подмножества $X$],
   body: [
-    $algebra in 2^X$ и выполняется:
+    // yokhor: in -> subset
+    $algebra subset 2^X$ и выполняется:
     + $algebra$ - алгебра
     + $forall A_1, A_2, ... in algebra: limits(union.big)_(i=1)^(+infinity) A_i in algebra $
   ]
@@ -120,8 +123,9 @@
   title: [Конечно аддитивная функция],
   body: [
     $X, cal(P)$ - полукольцо подмножеств $X$, $phi: cal(P) -> overline(RR)$. $phi$ - #def[конечно аддитивная функция], если:
-    + $phi(nothing) = 0$
-    + $A, A_1,dots, A_m , A = limits(union.big.sq)_(i=1)^n A_i$ - дизъюнктное объединение, выполнено:
+    + $phi(emptyset) = 0$
+    // yokhor: ^n -> ^m
+    + $A, A_1,dots, A_m , A = limits(union.big.sq)_(i=1)^m A_i$ - дизъюнктное объединение, выполнено:
     $ phi(A) = limits(sum)_(i=1)^m phi(A_i) $
   ], after: [
   ]
@@ -154,13 +158,16 @@
   
   $ mu A >= limits(sum)_(i=1)^n mu A_i $
   2. #def[Конечная полуаддитивность]: $forall A_1 ...., A_n: A  subset limits(union.big)_(i=1)^n A_i$:
-  $ mu A <= limits(sum) u A_i $
+  // yokhor: limits(sum) -> limits(sum)_(i=1)^n
+  $ mu A <= limits(sum)_(i=1)^n mu A_i $
+  // yokhor: u -> mu
   3. $A,B, A without B in cal(P): mu(B) < + infinity$. Тогда:
   $ mu (A without B) >= mu A - mu B $
 ], proof:[
 1. $A without (union.big.sq A_i)=limits(union.big.sq)_("кон.") B_j$  - по модиф. условию кольца. Тогда по вышесказанному:
 $ A =limits(union.big.sq)A_i union limits(union.big.sq) B_j $
-По определения объема:
+// yokhor: определения -> конечной аддитивности
+По конечной аддитивности объема:
 $ mu A = limits(sum)mu A_i + limits(sum)mu B_j $
 Что и требовалось показать.
 
@@ -192,7 +199,7 @@ $ C_i = B_i without ( union.big_(j=1)^(i-1) B_j) $
 
 
 
-#theorem(name:[Теорема об эквивалентности счетной аддитивности и счетной полуаддитивности ], body:[
+#theorem(name:[Теорема об эквивалентности счетной аддитивности и счетной полуаддитивности], body:[
   $mu: cal(P) -> overline(RR)$ --- объем. Тогда эквивалентно:
   1. $mu$ --- мера, т.е $mu$ --- счетно-аддитивна
 2. $mu$ --- счетно-полуаддитивна (нет дизъюнктивности): $forall A, A_1 dots in cal(P), space A subset union.big A_i:$  
@@ -206,7 +213,7 @@ $ A = union.sq.big_(i=1)^infinity A_i =>^? mu A = sum_(i=1)^infinity mu A_i $
 $ sum_(i=1)^n mu A_i <= mu A $
 По определению счетной полуаддитивности:
 $ mu A <= sum_(i=1)^infinity mu A_i $
-Итого :
+Итого:
 $ sum_(i=1)^n mu A_i <= mu A <= sum_(i=1)^infinity mu A_i  $
 И если перейти к пределу при $n -> +oo$ мы сразу получим то, что требуется.
 ])
@@ -254,7 +261,7 @@ $ A_1 supset A_2 supset dots, quad A = inter.big A_k = emptyset =>mu A = lim_(i-
 $ C = union.sq.big_(i=1)^infinity C_i =>^? mu C = sum_(i=1)^infinity mu C_i $
 Для этого введем множества $A_k$ следующим образом:\
 
-$ A_k = union.big_(i=k+1)^infinity C_i = C without (union.big.sq_(i=1)^k C_i) $
+$ A_k = union.big.sq_(i=k+1)^infinity C_i = C without (union.big.sq_(i=1)^k C_i) $
 Так как это конечное объединение, то $limits(union.big.sq)_(i=1)^k C_i in algebra$, а значит и правая часть $in algebra =>A_k in algebra$\ 
 Заметим также, что
 $limits(inter.big)_(k=1)^(+oo) A_k  = emptyset $, т.к. все $C_i$ дизъюнктны, то любая точка из $C$ содержится ровно в одном $C_i$, а значит в $A_(k>i)$ она уже содержаться не будет (по определению $A_k$), и в пересечении всех $A_k$ её тоже не будет
@@ -536,7 +543,7 @@ $ 1 <=  sum_(q  in QQ  inter [-1, 1]) lambda (A + q) <= 3 $
   *$(1)$ Простой случай: *
   
   $C = A times B$, где $A in cal(A), B in cal(B)$. Покажем, что $C in D$, то есть что принцип выполнен:
-  1. $C_x = B, x in A$ или $C_x = nothing, x in.not A$. Очевидно, что это измеримо при любых $x$
+  1. $C_x = B, x in A$ или $C_x = emptyset, x in.not A$. Очевидно, что это измеримо при любых $x$
   2. $x |-> nu(C_x)$ это $nu B chi_A (x)$
   3. $m(c) = mu A nu B = int_X nu B dot chi_A(x) d mu$
 
@@ -671,15 +678,165 @@ $ Beta(s,t)  = int_(0)^(1)x^(s-1) (1-x)^(t-1) dif x, s, t >0 $
 ])
 
 
+#theorem(title:[Фубини], body:[
+  $(X, algebra, mu), (Y, beta, nu), m = mu times nu$, $mu, nu$ - сигма-конечные, полные.
+  
+  $f: X times Y -> overline(R)$ сумм по мере $m$
+
+  1. при п.в. $x: f_x$ - сумм. на $Y$
+
+  2. $x -> phi(x) = int_Y f(x,y) d nu(x)$ - сумм. на $X$
+
+  3. $int_(X times Y) d m = int_X phi(x) d mu (x) = int_X (int_Y f(x,y) d nu (y))d mu ( x) = int_Y (int_X f(x,y) d mu (x))d nu ( y)$
+])
+
+*Следствие:* $int_C f d mu =$ что тут кохась написали
+
+
+#pagebreak()
+
+== Плотность меры относительно другой и замена переменных.
+
+$(X, algebra, mu)$, $(Y, beta, )$, $Phi: X -> Y$
+
+Упражнение. $Phi^(-1)(beta)$ - $sigma$ - алгебра.
+
+#definition(body:[
+  1. $Phi$ - *измеримое*, если $Phi^(-1) subset algebra$
+  2. Определим меру $nu$ на $beta: E subset beta: v(E) = mu(Phi^(-1)(E))$. Надо проверить, что это мера.
+])
+
+#definition(title:[Взвешанный образ],body:[
+ $w: X -> overline(RR), w>=0 $ и изм.$, forall E in beta: nu(E) = int_(Phi^(-1)(E))w d mu$ - взвешанный образ меры, а само $w$ называется весом.
+])
+
+#theorem(body:[
+  $Phi: X -> Y, Phi$ - изм, $w: X -> overline(RR), w>=0,$ изм. $nu  =$ взв. образ  меры $mu$. $f: Y -> overline(RR)$ - изм., $ f>=0$. Тогда:
+
+  $ int_Y f(y) d mu(y) = int_X f(Phi(x))w(x) d mu (x) $
+], proof:[
+  1. $f = chi_B, B in beta$
+
+  $f(Phi(x)) = cases(
+    1\, Phi(x) in B , 0\, Phi(x) in.not B
+  ) = chi_(Phi^(-1)(B))(x)$
+
+  $int_Y f(y) d nu(y) = nu(B) $
+  
+  $int_X f(Phi(x)) w(x) d mu = int_(Phi^(-1)(B))1 w(x) d mu = nu(B)$
+
+  2. $f$ - ступ. $f>=0$. Пользуемся линейностью интеграла и побеждаем
+  3. $f$ - изм, $f>=0$, $exists f_n ->f$, $f_n <= f_(n+1)$ и используем теорему Леви
+
+])
+
+
+*Следствие.* $B in beta, f$ - сумм на $Y$(или на B). Тогда $int_B f dif nu = int_(Phi^(-1)(B))f(Phi(x)) w d mu$.
+ 
+
+
+#theorem(title:[Критерий плотности], body:[
+  $(X, algebra, mu), nu$ - еще одна мера на $algebra$, $w >=0$
+
+  Тогда $w$ - плотность $nu$ относительно $mu <=>$
+  $ forall A in algebra: mu A inf_A w<=nu(A)<= mu(A) sup_A w $
+], proof:[
+  $=> $ Очевидно.
+
+  $arrow.l.double$ Будем считать, что $omega >0$.
+
+  $q in (0,1), j in Z: A_j = A (q^j <= w <= q^(j-1))$
+
+  $A = union.big.sq A_j$
+  
+  $ q^j mu A_j<= nu A_j <= mu A_j q^(j-1) $
+
+  TODO: дописать и расписать док-во лекция 7 1.15
+])
+
+
+#theorem(name:[Лемма о единственности плотности], body:[
+  $f,g$ - сумм: $forall A in algebra: int_A f = int_A g$. Тогда $f =g$ почти везде
+], proof:[
+  $h: = f-g: forall A: integral_A h = 0$. Докажем, что $h=0$ почти везде.
+
+  Очевидно положит и отриц срезка в интеграле дадут ноль. Откуда $int_X |h| = 0$, откуда $|h| = 0$ почти везде
+])
+
+#definition(title:[Абсолютная непрерывность меры по отношению к мере],
+ body:[
+   $(X, algebra, mu), nu$ - еще одна мера на $algebra$. 
+   
+   $nu$ - абсолютно непрерывна по отношению к $mu$ обозначается $v prec mu$, если $mu E = 0 => nu E =0$
+ ]
+)
+
+#theorem(name:[Теорема Радона-Никодима], body:[
+  $(X, algebra, mu), nu$ - мера на $algebra$, $mu, nu$-конечные меры, причем $nu prec mu$.
+
+  Тогда $exists ! f$ с точн. до п.в. $f>=0 , f$ - плотность $nu$ относительно $mu$: $ forall A - "изм": nu A = int_A f d mu $
+])
+
+#theorem(name:[Лемма об оценке мер образов малых кубов], body:[
+$Phi: O subset RR^m -> RR^m: Phi in C^1, algebra in O$ число $c > |det Phi'(a)| != 0$
+
+Тогда 
+$ exists delta > 0: forall "куб" Q: a in Q, Q subset B(a,delta): lambda Phi(Q)<c lambda Q $
+  
+], proof:[
+
+  $L = Phi'(a)$ - обратим.
+
+  $Phi(x) = Phi(a) + L(x-a) + o(x-a)$
+  
+  $a +  L^(-1)(Phi(x)-Phi(a)) = x + o(x-a)$
+
+  $psi(x) = x + o(x-a)$
+
+  $forall epsilon > 0: exists "шар" B_epsilon(a): forall x in B_eps (a): |psi(x)-x|< eps/sqrt(m) |x-a|$
+
+  Пусть $Q subset B_eps (a); a in Q, h -$ длина стороны $Q$, при $x in Q, |x-a|<= sqrt(m) h$ и тогда $|psi(x) - x|<= eps h$
+
+  Тогда при $x,y in Q$
+
+  $|psi(x) - psi(y)|<= |psi_i(x)- x_i| + |x_i - y_i| + |y - psi(y)| <= (1+2 eps) h $
+
+  $=> psi(Q) subset "Куб со стороной" (1+2 eps) h$
+
+  $lambda psi(Q)<= (1+ 2 eps)^m lambda Q$
+
+  $lambda Phi(Q)<= |det L| (1+ 2 eps)^m lambda Q$
+
+  Откуда уже очевидно требуемое. TODO: дописать 
+])
+
+#lemma(title:[Вариации на тему регулярности], body:[
+  $f: O subset RR^m -> RR$ непр. $A subset Q subset overline(Q) subset O$ измеримо по Лебегу. Тогда 
+  $ inf_(A subset G subset Q - "откр") (lambda(G) sup_(G) f) = lambda A sup_A f $
+])
+
+
+#theorem(title:[Теорема о преобразовании меры Лебега при диффеоморфизме], body:[
+  $Phi: O subset RR^m -> RR^m$- диффеоморфизм. Тогда:
+  $ forall A subset O, A in.not m^m: lambda Phi(A) = int_A |det Phi'(x)| d lambda(x) $
+], proof:[
+ $nu(A) = lambda Phi (A)$ заданно на $m$, проверим, что выполнен критерий плотности.
+
+ todo
+])
+
+
+#theorem(body:[
+  $Phi: O subset RR^m -> RR^m$, $O$ - область, диффеоморфизм. $f$ изм $>=0$, $f: O -> overline(RR)$, пусть $O' = Phi(O)$. Тогда:
+  $ int_(O')f(y)d lambda(y) = int_O f (Phi(x)) |det  Phi'(x)|d x $
+], proof:[
+
+Нечего доказывать. Буквально сложите  теорему о преобразовании меры Лебега при диффеоморфизме  и теорема из начала параграфа. 
+  
+])
+
+То же утверждение верно, но и для суммируемой.
 
 
 
-
-
-
-
-
-
-
-
-
+  

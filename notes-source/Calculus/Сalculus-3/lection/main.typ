@@ -16,6 +16,10 @@
 
 #pagebreak()
 
+#include "sections/function.typ"
+
+#pagebreak()
+
 #include "sections/unknown.typ"
 
 #pagebreak()

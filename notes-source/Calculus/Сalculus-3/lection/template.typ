@@ -55,7 +55,7 @@
   qed: false,
   after: none
 ) = {
-  block(
+   block(
     width: 100%,
     fill: fill,
     
