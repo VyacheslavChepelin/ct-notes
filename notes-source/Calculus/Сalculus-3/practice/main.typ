@@ -12,6 +12,17 @@
 #pagebreak()
 
 #include "sections/4.typ"
+#pagebreak()
+
+#include "sections/5.typ"
+#pagebreak()
+
+#include "sections/6.typ"
+
+#pagebreak()
+
+#include "sections/7.typ"
+
 
 
 
