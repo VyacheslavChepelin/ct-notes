@@ -176,7 +176,7 @@
 }
 
 #let theorem_ = statement_.with(name: "Теорема", fill: rgb(245, 245, 255), frame: blue)
-#let lemma_ = statement_.with(name: "Лемма", fill: rgb(245, 255, 245), frame: green)
+#let lemma_ = statement_.with(name: "Лемма", fill: rgb(255, 255, 255), frame: green)
 #let corollary_ = statement_.with(name: "Следствие", fill: rgb(245, 255, 255), frame: aqua)
 #let remark_ = statement_.with(name: "Замечание", frame: purple)
 
