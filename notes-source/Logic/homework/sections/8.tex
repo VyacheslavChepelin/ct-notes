@@ -1,0 +1,219 @@
+\subsection{ № 3}
+
+С использованием эмулятора рекурсивных функций (применённый на лекции синтаксис
+подсказывает использование библиотеки на С++, но вы можете выбрать любой другой способ эмуляции),
+покажите, что следующие функции примитивно-рекурсивны. Ваше решение должно быть продемонстрировано
+в работе на простых примерах. Возможно, при реализации сложных функций вам потребуется 
+для ускорения работы заменить базовые функции на <<нативные>> (например, умножение, реализованное
+через примитивы, заменить на встроенную операцию) --- это можно делать при условии, что 
+для них у вас есть эквивалентная примитивно-рекурсивная реализация.
+\begin{enumerate}
+\item умножение и ограниченное вычитание;
+\item целочисленное деление и остаток от деления;
+\item вычисление $n$-го простого числа (напомним теорему Бертрана-Чебышёва: для любого натурального $n \ge 2$ найдётся
+простое число между $n$ и $2n$);
+\item частичный логарифм $\textsc{plog}_n(k) = \max\{p\ |\ k\ \raisebox{-0.5ex}{\vdots}\ n^p\}$ (например, $\textsc{plog}_2(96)=5$);
+\item вычисление длины списка в гёделевой нумерации (например, $\textsc{len}(3796875000) = \textsc{len}(2^3\cdot 3^5\cdot 5^9) = 3$);
+\item выделение подсписка из списка (например, $\textsc{sublist}(2^2 \cdot 3^3 \cdot 5^4 \cdot 7^5, 2, 2) = 2^4 \cdot 3^5$);
+\end{enumerate}
+
+\begin{lstlisting}[mathescape]
+$\text{// Реализация конкретных примитивно-рекурсивных функций}$
+class PRFunctions {
+private:
+    $\text{// Сложение}$
+    static unsigned add_recursive(unsigned x, unsigned y) {
+        // add(0, y) = y
+        // add(x', y) = incr(add(x, y))
+        auto f = [](const vector<unsigned>& args) { return args[0]; }; // f(y) = y
+        auto g = [](unsigned n, unsigned prev, const vector<unsigned>& args) { 
+            return PrimitiveRecursive::incr (prev); 
+        };
+        return PrimitiveRecursive::recursion(f, g, x, {y});
+    }
+    
+    $\text{// Умножение}$
+    static unsigned mult_recursive(unsigned x, unsigned y) {
+        // mult(0, y) = 0
+        // mult(x', y) = add(mult(x, y), y)
+        auto f = [](const vector<unsigned>& args) { return 0; };
+        auto g = [](unsigned n, unsigned prev, const vector<unsigned>& args) { 
+            return add_recursive(prev, args[0]); 
+        };
+        return PrimitiveRecursive::recursion(f, g, x, {y});
+    }
+    
+    $\text{// Предшественник}$
+    static unsigned pred_recursive(unsigned x) {
+        // pred(0) = 0
+        // pred(x') = x
+        auto f = [](const vector<unsigned>& args) { return 0; };
+        auto g = [](unsigned n, unsigned prev, const vector<unsigned>& args) { 
+            return n; 
+        };
+        return PrimitiveRecursive::recursion(f, g, x, {}); 
+    }
+    
+    $\text{// Ограниченное вычитание }$
+    static unsigned monus_recursive(unsigned x, unsigned y) {
+        // x - 0 = x
+        // x - (y+1) = pred(x - y)
+        auto f = [](const vector<unsigned>& args) { return args[0]; };
+        auto g = [](unsigned n, unsigned prev, const vector<unsigned>& args) { 
+            return pred_recursive(prev); 
+        };
+        return PrimitiveRecursive::recursion(f, g, y, {x});
+    }
+
+public:
+    static unsigned add(unsigned x, unsigned y) {
+        return x + y;
+    }
+    
+    static unsigned mult(unsigned x, unsigned y) {
+        return x * y;
+    }
+    
+    static unsigned pred(unsigned x) {
+        return (x == 0) ? 0 : x - 1;
+    }
+    
+    static unsigned monus(unsigned x, unsigned y) {
+        return (x < y) ? 0 : x - y;
+    }
+    
+     $\text{// Функция сравнения (x <= y)}$
+    static unsigned leq(unsigned x, unsigned y) {
+        return (monus(x, y) == 0) ? 1 : 0;
+    }
+    
+    $\text{ // Функция равенства}$
+    static unsigned eq(unsigned x, unsigned y) {
+        return (leq(x, y) == 1 && leq(y, x) == 1) ? 1 : 0;
+    }
+};
+
+\end{lstlisting}
+
+2.\begin{lstlisting}[mathescape]
+$\text{// Целочисленное деление }$
+unsigned div(unsigned x, unsigned y) {
+    if (y == 0) return 0; $\text{// защита от деления на 0}$
+    
+    unsigned q = 0;
+    while ((q + 1) * y <= x) { $\text{// это на самом деле for}$
+        q++;
+    }
+    return q;
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{№ 4.}
+
+Определите следующие функции в общерекурсивных функциях:
+\begin{enumerate}
+\item умножение, деление;
+\item проверку числа на простоту;
+\item частичный логарифм;
+\item функцию Аккермана.
+\end{enumerate}
+
+\begin{enumerate}
+    \item 
+
+Вспомогательное:
+
+$\begin{cases}
+    monus(x, 0) = x\\
+monus(0, y') = 0\\
+monus(x', y') = monus(x, y)\\
+g(x, 0) = 1\\
+g(0, y') = 0\\
+g(x', y') = g(x, y)
+\end{cases}
+$
+
+Умножение:
+
+$
+\begin{cases}
+    mult(x, 0) = 0\\
+    mult(x, y') = add(mult(x, y), x)
+\end{cases}
+$
+
+Деление:
+
+$
+\begin{cases}
+div(0, y') = 0\\
+div(x, y') = add(g(x, y'), div(monus(x, y'), y'))\\
+\end{cases}
+$
+
+\item 
+
+
+Эквивалентность:
+
+$\begin{cases}
+    eq(0, 0) = 1\\
+eq(0, y') = 0\\
+eq(x', 0) = 0\\
+eq(x', y') = eq(x, y)
+\end{cases}$
+
+Больше или равно:
+
+$\begin{cases}
+ge(0, 0) = 1 \\
+ge(0, y') = 0\\
+ge(x', 0) = 1\\
+ge(x', y') = gt(x, y)
+\end{cases}$
+
+Не:
+
+$
+    not(x) = monus(0', x)
+$
+
+И:
+
+$and(x, y) = gt(mult(x, y),0)$ 
+
+Или:
+
+$or(x, y) = not(and(not(x), not(y)))$
+
+$\begin{cases}
+    divides(n, d) = eq(n, mult(d, div(n, d)))\\
+D(n, n) = 0\\
+D(n, d) = or(divides(n, d), D(n, d'))\\
+has\_divisor(n) = D(n, 2)\\
+is\_prime(n) = and(gt(n, 1), not(has\_divisor(n)))
+\end{cases}$
+
+\item $
+\begin{cases}
+llog(m, n) = 0,  gt(m, n) = 1 \\
+llog(m, n) = llog(m, div(n, m))'\\
+log(m, n)' = llog(m,n)\\
+\end{cases}$
+
+Или по-другмоу
+$
+\begin{cases}
+log(m, n) = 0, \text{если }  gt(m, n) = 1 \\
+log(m, n) = log(m, div(n, m))'\\
+\end{cases}$
+
+\item $\begin{cases}
+A(0, n) = n'\\
+A(m', 0) = A(m, 1)\\
+A(m', n') = A(m, A(m', n))
+\end{cases}$
+\end{enumerate}
+
