@@ -1,0 +1,165 @@
+\section{Лекция 6.}
+\subsection{Вспомогательные (Помогите) следствия}
+
+\textbf{Замечание:} Через $r_i$ обозначаем компоненты вектора $r \in \mathbb{R}^n.$ Векторы из $\mathbb{R}^n$ нумеруются верхними индексами. Через $A_i$ обозначаем строки, $A^j$ - столбцы, $A^j_i$ - компоненты матрицы $A.$
+
+\deff{def:} Пусть $r \in \mathbb{R}^n$. Тогда $|r| := \max\limits_{i \in [1:n]} |r_i|$.
+
+\deff{def:} Пусть $A \in \text{Mat}_{n \times m}(\mathbb{R})$. Тогда $|A| := \max\limits_{i \in [1:n], j \in [1:m]} |A^j_i|$.
+
+\thmm{Лемма.} 
+
+Пусть $f \in C([a, b] \rightarrow \mathbb{R}^n)$. Тогда
+$$\left| \int_a^b f(\tau) d\tau \right| \leq \int_a^b |f(\tau)| d\tau.$$
+\textbf{Доказательство.} 
+
+Принимая во внимание определение нормы, имеем:
+$$\left| \int_a^b f(\tau) d\tau \right| = \max_i \left| \int_a^b f_i(\tau) d\tau \right| \leq \max_i \int_a^b |f_i(\tau)| d\tau \leq \max_i \int_a^b \max_j |f_j(\tau)| d\tau = \max_i \int_a^b |f(\tau)| d\tau =$$
+$$ = \int_a^b |f(\tau)| d\tau.$$
+\hfill Q.E.D.
+
+\thmm{Лемма.} 
+
+Пусть $A \in \text{Mat}_{m \times n}(\mathbb{R})$, $B \in \text{Mat}_{n \times l}(\mathbb{R})$. Тогда
+$$|AB| \leq n |A||B|.$$
+\textbf{Доказательство.} 
+
+Пусть $AB = C$. Тогда
+$$|C_i^j| = \left| \sum_{k=1}^n A_i^k B_k^j \right| \leq \sum_{k=1}^n \left| A_i^k B_k^j \right| \leq \sum_{k=1}^n |A||B| = n |A||B|.$$
+\hfill Q.E.D.
+
+\deff{def:} Функция $f: G \subset \mathbb{R}^m \rightarrow \mathbb{R}^n$ удовлетворяет \deff{условию Липшица} на множестве $G$, если найдется $L \in \mathbb{R}$ (\deff{константа Липшица}), такое что для любых точек $x^1, x^2 \in G$ выполнено
+$$|f(x^2) - f(x^1)| \leq L |x^2 - x^1|.$$
+Обозначение: $f \in \text{Lip } G$.
+
+\deff{def:} Функция $f: G \subset \mathbb{R}^m \rightarrow \mathbb{R}^n$ удовлетворяет \deff{условию Липшица локально} на множестве $G$, если для любой точки $x \in G$ можно указать её окрестность $U(x)$, такую что $f \in \text{Lip}(U(x) \cap G)$. Обозначение: $f \in \text{Lip}_{\text{loc}} G$.
+
+\textbf{Пример.} Если $f \in C^1[a, b]$, то $f \in \text{Lip}[a, b]$. Обратное неверно.
+
+\deff{def:} Функция $f: G \subset \mathbb{R}_{t, r}^{n+1} \rightarrow \mathbb{R}^n$ удовлетворяет \deff{условию Липшица по $r$} (равномерно по $t$) на множестве $G$, если найдётся $L \in \mathbb{R}$, такое что для любых точек $(t, r^1)$, $(t, r^2) \in G$ справедливо неравенство
+$$|f(t, r^2) - f(t, r^1)| \leq L |r^2 - r^1|.$$
+Обозначение: $f \in \text{Lip}_r G$.
+
+\deff{def:} Функция $f: G \subset \mathbb{R}_t^{n+1} \rightarrow \mathbb{R}^n$ удовлетворяет \deff{условию Липшица по $r$ локально} на множестве $G$, если для любой точки $x \in G$ можно указать её окрестность $U(x)$, такую что $f \in \text{Lip}_r (U(x) \cap G)$. Обозначение: $f \in \text{Lip}_{r, \text{loc}} G$. 
+
+
+\deff{Лемма (достаточное условие локальной липшицевости).} 
+
+
+Пусть $G \subset \mathbb{R}_{t,r}^{n+1}$ - область, $f \in C(G \rightarrow \mathbb{R}^n)$, $f'_r \in \text{Mat}_n (C(G))$. Тогда $f \in \text{Lip}_{r, \text{loc}} G$.
+
+%меня рубит ща как спать лягу скоро
+\textbf{Доказательство.} 
+
+Возьмём произвольную точку из области $G$ и построим открытый шар $B \subset G$ с центром в этой точке. 
+Пусть $(t, r^1)$, $(t, r^2) \in B$. В силу выпуклости шара $B$ будет $(t, r^1 + s(r^2 - r^1)) \in B$ при $s \in [0, 1]$. Положим
+$$g(s) = f(t, r^1 + s(r^2 - r^1)).$$
+Тогда
+$$f(t, r^2) - f(t, r^1) = g(1) - g(0) = \int_0^1 g'(s) ds = \int_0^1 f'_r \cdot r'_s ds = \int_0^1 f'_r (t, r^1 + s(r^2 - r^1)) \cdot (r^2 - r^1) ds.$$
+Принимая во внимание леммы, получаем 
+$$|f(t, r^2) - f(t, r^1)| \leq \int_0^1 n |f'_r(t, r^1 + s(r^2 - r^1))| \, |r^2 - r^1| ds \leq n \sup_{x \in \bar{B}} |f'_r(x)| \cdot |r^2 - r^1|.$$
+Следовательно, $f \in \text{Lip}_r B$. По определению будет $f \in \text{Lip}_{r, \text{loc}} G$.
+
+\hfill Q.E.D.
+
+\thmm{Лемма (достаточное условие глобальной липшицевости).}
+
+Пусть область $G \subset \mathbb{R}_{t,r}^{n+1}$, $f \in C(G \rightarrow \mathbb{R}^n) \bigcap \text{Lip}_{r, \text{loc}}$, компакт $K \subset G$. Тогда $f \in \text{Lip}_r K$.
+
+\textbf{Доказательство.} 
+
+Докажем методом от противного. Пусть $f \notin \text{Lip}_r K$. Тогда для любого $N \in \mathbb{N}$ найдётся пара точек $(t_N, r^N)$, $(t_N, \tilde{r}^N) \in K$, для которых верно неравенство
+$$|f(t_N, r^N) - f(t_N, \tilde{r}^N)| > N |r^N - \tilde{r}^N|. $$
+Поскольку $K$ - компакт, то из последовательности $\{(t_N, r^N)\}$ можно выбрать подпоследовательность с номерами $\{N_k\}$, сходящуюся к некоторой точке $(t, r) \in K$. Затем из последовательности $\{(t_{N_k}, \tilde{r}_{N_k})\}$ выберем подпоследовательность с номерами $\{N_{k_l}\}$, сходящуюся к $(t, \tilde{r})$. Пусть $\nu = \{N_{k_l} | l \in \mathbb{N}\}$.
+
+Возможны два случая: $r = \tilde{r}$ и $r \neq \tilde{r}$. Рассмотрим сначала первый.
+
+По условию $f \in \text{Lip}_{r, \text{loc}} G$, значит, найдётся окрестность $U$ точки $(t, r)$, в которой $f \in \text{Lip}_r U$, то есть существует постоянная $L$, для которой
+$$|f(\tau, \rho) - f(\tau, \tilde{\rho})| \leq L |\rho - \tilde{\rho}|$$
+при любых $(\tau, \rho)$, $(\tau, \tilde{\rho}) \in U$. Выберем номер $N \in \nu$ так, чтобы $N > L$ и $(t_N, r^N)$, $(t_N, \tilde{r}^N) \in U$, и положим $\tau = t_N$, $\rho = r^N$, $\tilde{\rho} = \tilde{r}^N$. Тогда из неравенства следует
+$$|f(\tau, \rho) - f(\tau, \tilde{\rho})| > N |\rho - \tilde{\rho}| \geq L |\rho - \tilde{\rho}|,$$
+что противоречит предыдущему неравенству.
+
+Пусть теперь $r \neq \tilde{r}$. В неравенстве перейдём к пределу при $\nu \ni N \rightarrow \infty$. В силу непрерывности функции $f$ получаем
+$$
+|f(t, r) - f(t, \tilde{r})| \geq \infty,
+$$
+что неверно.
+
+\hfill Q.E.D.
+
+
+\deff{def:} Пусть $f: G \subset \mathbb{R}^{n+1} \rightarrow \mathbb{R}^n$. Функция $\varphi: E \rightarrow \mathbb{R}^n$ - \deff{решение на $E$ интегрального уравнения}
+$$r(t) = r^0 + \int_{t_0}^t f(\tau, r(\tau)) d\tau,$$
+если $E = \langle a, b\rangle$ и $\varphi(t) \equiv r^0 + \int_{t_0}^t f(\tau, \varphi(\tau)) d\tau$ на $E$, где интеграл понимается в смысле Римана.
+
+\thmm{Лемма (о равносильном интегральном уравнении).} 
+
+Пусть $E = \langle a, b\rangle$, $t_0 \in E$, $G$ - область в $\mathbb{R}^{n+1}$, $(t_0, r^0) \in G$, $f \in C(G \rightarrow \mathbb{R}^n)$. Тогда $\varphi$ - решение на $E$ задачи Коши
+$$r' = f(t, r), \quad r(t_0) = r^0$$
+если и только если $\varphi$ - решение на $E$ уравнения
+$$r(t) = r^0 + \int_{t_0}^t f(\tau, r(\tau)) d\tau$$ 
+
+\textbf{Доказательство:} 
+
+Пусть $\varphi$ - решение на $E$. Интегрируя равенство $\varphi'(\tau) = f(\tau, \varphi(\tau))$ от $t_0$ до $t \in E$, обе части которого - непрерывные функции, имеем
+
+$$\varphi(t) - \varphi(t_0) = \int_{t_0}^t f(\tau, \varphi(\tau)) d\tau.$$
+
+Поскольку $\varphi(t_0) = r^0$, то функция $\varphi$ - решение уравнения по определению.
+
+Докажем обратное. Пусть $\varphi$ - решение (3) на $E$. Тогда из равенства
+$$\varphi(t) = r^0 + \int_{t_0}^t f(\tau, \varphi(\tau)) d\tau (4)$$
+следует, что $\varphi \in C(E)$. Отсюда и из (4) вытекает дифференцируемость $\varphi$. Дифференцируя (4) по $t$, получаем: $\varphi'(t) \equiv f(t, \varphi(t))$. Кроме того, имеем $\varphi(t_0) = r^0$. Таким образом, $\varphi$ - решение задачи по определению. 
+
+\hfill Q.E.D.
+
+
+\thmm{Лемма (о гладкой стыковке решений).} 
+
+Пусть область $G \subset \mathbb{R}_{t,r}^{n+1}$, $f \in C(G \rightarrow \mathbb{R}^n)$, $(t_0, r^0) \in G$, уравнение $r' = f(t, r)$ имеет решения: $\varphi_-$ на $(a, t_0)$, $\varphi_+$ на $(t_0, b)$. Кроме того, $\varphi_-(t_0 -) = \varphi_+(t_0 +) = r^0$. Тогда функция
+$$\varphi(t) =
+\begin{cases}
+\varphi_-(t), & \text{если } t \in (a, t_0), \\
+r^0, & \text{если } t = t_0, \\
+\varphi_+(t), & \text{если } t \in (t_0, b)
+\end{cases}$$
+является решением того же уравнения на $(a, b)$.
+
+\textbf{Доказательство.}
+
+Пусть $t, t_- \in (a, t_0)$. По прошлой лемме 
+$$\varphi_-(t) = \varphi_-(t_-) + \int_{t_-}^t f(\tau, \varphi_-(\tau)) d\tau.$$
+Переходя в этом равенстве к пределу при $t_- \rightarrow t_0$ и замечая, что $\varphi_- = \varphi$ для точек из отрезка $\overline{t, t_{-}}$, получаем
+$$\varphi(t) = r^0 + \int_{t_0}^t f(\tau, \varphi(\tau)) d\tau. (5)$$
+Поступая аналогично для точек $t, t_+ \in (t_0, b)$, при $t_+ \rightarrow t_0$ приходим к равенству (5).
+
+Таким образом, равенство (5) выполнено для всех $t \in (a, b)$. Остаётся применить прошлую лемму.
+
+\hfill Q.E.D.
+
+\thmm{Лемма (Гронуолл).}  
+
+Пусть $D = \langle a, b\rangle$, $\varphi \in C(D)$, $t_0 \in D$, $\lambda, \mu \geq 0$, при любом $t \in D$ верно двойное неравенство
+$$0 \leq \varphi(t) \leq \lambda + \left|\mu \int_{t_0}^t \varphi(\tau) d\tau \right|.$$
+Тогда для любого $t \in D$
+$$\varphi(t) \leq \lambda e^{\mu |t - t_0|}.$$
+\textbf{Доказательство:}
+
+Рассмотрим случай $t \geq t_0$ (при $t < t_0$ доказательство аналогично). Предположим, что $\lambda > 0$, и определим функцию
+$$v(t) = \lambda + \mu \int_{t_0}^t \varphi(\tau) d\tau.$$
+Имеем $v(t) > 0$, $v'(t) = \mu \varphi(t) \leq \mu v(t)$. Отсюда
+$$\frac{v'(t)}{v(t)} \leq \mu.$$
+Интегрируя это неравенство по отрезку $[t_0, t]$, получаем
+$$v(t) \leq v(t_0) e^{\mu(t - t_0)}.$$
+Следовательно,
+$$\varphi(t) \leq v(t) \leq v(t_0) e^{\mu(t - t_0)} = \lambda e^{\mu(t - t_0)}.$$
+Если же $\lambda = 0$, то при любом $\varepsilon > 0$ верно
+$$
+\varphi(t) \leq \mu \int_{t_0}^t \varphi(\tau) d\tau \leq \varepsilon + \mu \int_{t_0}^t \varphi(\tau) d\tau.
+$$
+По уже доказанному имеем
+$$\varphi(t) \leq \varepsilon e^{\mu (t - t_0)}.$$
+Переходя здесь к пределу при $\varepsilon \rightarrow 0$, получаем $\varphi(t) \leq 0$. Значит, лемма верна и при $\lambda = 0$.
+
+\hfill Q.E.D.

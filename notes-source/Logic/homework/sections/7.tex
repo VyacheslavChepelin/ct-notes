@@ -1,0 +1,372 @@
+\subsection{ № 5}
+
+Рассмотрим аксиоматику Пеано. 
+Пусть $$a^b = \left\{\begin{array}{ll}1,& b= 0 \\a^c\cdot a,&b = c'\end{array}\right.$$
+
+\textbf{Сложение}:
+$$
+\begin{cases}
+   a + 0 = a\\
+    a + b' = (a + b)'
+\end{cases}
+$$
+\textbf{Умножение}:
+$$
+\begin{cases}
+    a \cdot 0 = 0\\
+     a \cdot b' = a \cdot b + a
+\end{cases}
+$$
+
+Докажите, что:
+\begin{enumerate}
+\item $a \cdot b = b \cdot a$
+
+
+
+\item $(a + b) \cdot c = a \cdot c + b \cdot c$
+\item $a^{b+c} = a^b \cdot a^c$
+\item $(a^b)^c = a^{b \cdot c}$
+\item $(a + b) + c = a + (b + c)$
+\end{enumerate}
+
+
+\textbf{Доказательство}
+
+5.\((a + b) + c = a + (b + c)\)
+
+\textbf{Доказательство индукцией по \( c \):}
+
+\textbf{База:} \( c = 0 \)
+  \[
+  (a + b) + 0 = a + b = a + (b + 0)
+  \]
+
+\textbf{Предположение индукции:} 
+  \[
+  (a + b) + c = a + (b + c)
+  \]
+
+\textbf{Шаг индукции:} \( c \to c' \)
+  \[
+  \begin{aligned}
+  (a + b) + c' &= ((a + b) + c)' = (a + (b + c))' \\
+  a + (b + c') &= a + (b + c)' = (a + (b + c))'
+  \end{aligned}
+  \]
+
+
+1. \( a \cdot b = b \cdot a \)
+
+\textbf{Докажем вспомогательное утверждение}
+
+$$b'\cdot a=b \cdot a + a $$
+
+\textbf{База:} \( a = 0 \)
+  \[
+  b' \cdot 0 = 0
+  \]
+  очевидно
+
+\textbf{Предположение:} \( b'\cdot a=b \cdot a + a \)
+
+\textbf{Шаг:} \( a \to a' \)
+  \[
+  b'\cdot a'=b' \cdot a + b'=b \cdot a + a + b' =  \]
+  $$= b \cdot a + (a+b)' =  b \cdot a + (b + a)' = b \cdot a + b + a' = b \cdot a' + a'$$
+
+Доказано вернемся к искомой задаче
+
+\textbf{База:} \( b = 0 \)
+  \[
+  a \cdot 0 = 0 = 0 \cdot a
+  \]
+  очевидно
+
+\textbf{Предположение:} \( a \cdot b = b \cdot a \)
+
+\textbf{Шаг:} \( b \to b' \)
+  \[
+  \begin{aligned}
+  a \cdot b' = a \cdot b + a = b \cdot a + a = b'\cdot a
+  \end{aligned}
+  \]
+
+
+
+
+ 2.\((a + b) \cdot c = a \cdot c + b \cdot c\)
+
+\textbf{База:} \( c = 0 \)
+  \[
+  (a + b) \cdot 0 = 0 = 0 + 0 = a \cdot 0 + b \cdot 0
+  \]
+
+\textbf{Предположение:}
+  \[
+  (a + b) \cdot c = a \cdot c + b \cdot c
+  \]
+
+\textbf{Шаг: \( c \to c' \)}
+  \[
+  (a + b) \cdot c' = (a + b) \cdot c + (a + b) \\
+  = (a \cdot c + b \cdot c) + (a + b) \]
+  \[
+  a \cdot c' + b \cdot c' = (a \cdot c + a) + (b \cdot c + b) \\
+  = a \cdot c + b \cdot c + a + b
+  \]
+
+
+
+
+3. \( a^{b + c} = a^b \cdot a^c \)
+
+
+
+\textbf{База:} \( c = 0 \)
+  \[
+  a^{b + 0} = a^b = a^b \cdot 1 = a^b \cdot a^0
+  \]
+\textbf{Предположение:} 
+  \[
+  a^{b + c} = a^b \cdot a^c
+  \]
+
+\textbf{Шаг:} \( c \to c' \)
+  $$
+  a^{b + c'} = a^{(b + c)'} = a^{b + c} \cdot a = (a^b \cdot a^c) \cdot a$$ 
+  $$ 
+  a^b \cdot a^{c'} = a^b \cdot (a^c \cdot a) = (a^b \cdot a^c) \cdot a$$
+
+  
+
+4. \( (a^b)^c = a^{b \cdot c} \)
+
+
+
+\textbf{База:} \( c = 0 \)
+  \[
+  (a^b)^0 = 1 = a^0 = a^{b \cdot 0}
+  \]
+\textbf{Предположение:} 
+  \[
+  (a^b)^c = a^{b \cdot c}
+  \]
+\textbf{Шаг:} \( c \to c' \)
+  \[
+  (a^b)^{c'} = (a^b)^c \cdot a^b = a^{b \cdot c} \cdot a^b \]
+  \[
+  a^{b \cdot c'} = a^{b \cdot c + b} = a^{b \cdot c} \cdot a^b
+  \]
+  
+\newpage
+\subsection{№ 6}
+
+Определим отношение <<меньше или равно>> так: $0 \le a$ и $a' \le b'$, если $a \le b$. Докажите, что:
+\begin{enumerate}
+\item $x \le x+y$;
+\item $x \le x \cdot y$ (укажите, когда это так --- в остальных случаях приведите контрпримеры);
+\item Если $a \le b$ и $m \le n$, то $a \cdot m \le b \cdot n$;
+\item $x \le y$ тогда и только тогда, когда существует $n$, что $x + n = y$;
+\item Будем говорить, что $a$ делится на $b$ с остатком, если существуют такие $p$ и $q$, что 
+$a = b \cdot p + q$ и $0 \le q < b$. Покажите, что $p$ и $q$ всегда существуют и единственны,
+если $b > 0$.
+\end{enumerate}
+
+$a \leq a'$ - очевидно
+
+
+1. \( x \le x + y \)
+
+
+
+\textbf{База:} \( y = 0 \)  
+  \( x + 0 = x \), очевидно \( x \le x \). 
+
+\textbf{Предположение индукции:} \( x \le x + y \)
+
+\textbf{Шаг индукции:} \( y \to y' \)  
+  \[
+  x + y' = (x + y)'
+  \]  
+  Из предположения \( x \le x + y \) и  \( a \le a' \):  
+  \[
+  x + y \le (x + y)' = x + y'
+  \]  
+
+
+2. \( x \le x \cdot y \)
+
+\( x \le x \cdot y \) выполняется тогда и только тогда, когда \( x = 0 \) или \( y \ge 1 \).
+
+\textbf{Доказательство:}
+
+Если \( x = 0 \):  
+  \( 0 \cdot y = 0 \), и \( 0 \le 0 \). 
+
+ Если \( y = 1 \):  
+  \( x \cdot 1 = x \), и \( x \le x \). 
+
+ Если \( y \ge 1 \):  
+
+  \textbf{База:} \( y = 1 \) — уже проверено.  
+  
+  \textbf{Предположение:} \( x \le x \cdot y \)
+  
+  \textbf{Шаг:} \( y \to y' \)  
+  \[
+  x \cdot y' = x \cdot y + x
+  \]  
+  \[
+  x \le x \cdot y 
+  \]
+  По пункту 1.
+  \[
+  x \le x \cdot y + x = x \cdot y'
+  \]
+
+
+\textbf{Контрпример:}
+
+При \( x = a \), \( y = 0 \):  
+\( a \cdot 0 = 0 \), но \( a \nleq 0 \).
+
+
+
+ 3. Если \( a \le b \) и \( m \le n \), то \( a \cdot m \le b \cdot n \)
+
+\textbf{Доказательство:}
+
+Из пункта 4:  
+\[
+\begin{aligned}
+a \le b &\Leftrightarrow \exists k : b = a + k \\
+m \le n &\Leftrightarrow \exists l : n = m + l
+\end{aligned}
+\]  
+Тогда:  
+\[
+b \cdot n = (a + k)(m + l) \]
+\[ a \cdot m + a \cdot l + k \cdot m + k \cdot l
+\]  
+Следовательно,  
+\[
+b \cdot n = a \cdot m + (a \cdot l + k \cdot m + k \cdot l)
+\]  
+По пункту 4: \( a \cdot m \le b \cdot n \).
+
+4. \( x \le y \iff \exists n : x + n = y \)
+
+\textbf{Доказательство:}
+
+\( \Rightarrow \):  
+  \begin{enumerate}
+      \item База: Если \( x = 0 \), то \( n = y \). 
+      \item Если \( x = a' \), \( y = b' \) и \( a \le b \), то по предположению \( \exists n : a + n = b \). 
+    
+    Тогда:  
+    \[
+    b' = (a + n)' = a' + n \Rightarrow x + n = y
+    \]  
+  \end{enumerate}
+
+
+\( \Leftarrow \)
+\begin{enumerate}
+    \item База: $$n = 0 :  x + 0 = x \Rightarrow x \le x $$
+    \item По предположению: \( x \le x + n \).  
+    Так как \(x \leq  x + n, x\le x + n' = y \) по пункту 1
+ 
+\end{enumerate}
+
+
+\newpage
+\subsection{№ 7}
+
+Обозначим за $\overline{n}$ представление числа $n$ в формальной арифметике: %, по сути это ноль с $n$ штрихами:
+
+$$\overline{n} = \left\{\begin{array}{ll}0, &n = 0\\
+           \left(\overline{k}\right)', & n=k+1\end{array}\right.$$
+
+Например, $\overline{5} = 0'''''$. Докажите в формальной арифметике (доказательства могут использовать
+метаязык, но при этом из текста должно быть понятно, как выстроить полное доказательство):
+\begin{enumerate}
+\item $\vdash \overline{2} \cdot \overline{2} = \overline{4}$;
+
+\item $\vdash \forall a.a \cdot 0 = 0 \cdot a$;
+\item $\vdash \forall a.a \cdot \overline{2} = a + a$;
+\item $\vdash \forall p.(\exists q.q' = p) \vee p = 0$ (единственность нуля);
+\end{enumerate}
+
+
+1. $\vdash \overline{2} \cdot \overline{2} = \overline{4}$
+
+Используем аксиомы умножения и сложения:
+\begin{enumerate}
+    \item $\overline{2} = 0''$, $\overline{1} = 0'$, $\overline{0} = 0$.
+    \item По аксиоме умножения: $a \cdot b' = a \cdot b + a$.
+    \item По аксиоме сложения: $a + b' = (a + b)'$.
+\end{enumerate}
+
+Вычисляем:
+
+1. $\overline{2} \cdot \overline{1} = \overline{2} \cdot \overline{0}' = \overline{2} \cdot \overline{0} + \overline{2} = 0 + \overline{2} = \overline{2}$ (так как $0 + a = a$ — ранее доказанное свойство).
+
+2. $\overline{2} \cdot \overline{2} = \overline{2} \cdot \overline{1}' = \overline{2} \cdot \overline{1} + \overline{2} = \overline{2} + \overline{2}$.
+
+3. $\overline{2} + \overline{2} = \overline{2} + \overline{1}' = (\overline{2} + \overline{1})' = \overline{3}' = \overline{4}$.
+
+Таким образом, $\overline{2} \cdot \overline{2} = \overline{4}$. 
+
+2. $\vdash \forall a.a \cdot 0 = 0 \cdot a$;
+
+\textbf{Лемма 2:} $ a = b \vdash b = a$
+
+\begin{tabular}{lll}
+     (1)&$a =b $& Гипотеза \\
+     (2)&$a =a $& из лекции \\
+     (3)&$a =b \rightarrow a = a \rightarrow b = a $& А1 \\
+     (4)&$b= a$ & MP (1,2),3
+\end{tabular}
+
+\newpage
+\textbf{Лемма 2:} $0 \cdot a = 0$
+
+\begin{tabular}{lll}
+     (1)&$0 \cdot 0 = 0$& А7 \\
+     (2)&$0 \cdot a' = 0 \cdot a + 0$ & А8\\
+     (3)&$0 \cdot a + 0= 0 \cdot a $ & А7\\
+     (4)&$0 \cdot a' = 0 \cdot a$ &  Из аксиомы 1, см доказательство(транзитивность =)\\
+     (5)&$0 \cdot a = 0 \cdot a'$ &  по Лемме 1\\
+     (6)& $0 \cdot a = 0 \cdot a' \rightarrow 0 \cdot a = 0 \rightarrow 0 =0 \cdot a'$ & A1\\
+     (7)& $0 \cdot a = 0 \rightarrow 0 =0 \cdot a' $ & MP 5,6\\
+     (7.5)& $\forall a.0 \cdot a = 0 \rightarrow 0 =0 \cdot a' $ & MP 5,6, обозначим это за T\\
+     (8)& $\varphi[a:=0] \& (\forall a.\varphi \rightarrow \varphi[a := a']) \rightarrow \varphi$ & по схеме индукции, где $\varphi(a) := 0 \cdot a = 0$\\
+     (9)&$0\cdot 0 = 0 \rightarrow T \rightarrow 0 \& T$& А4 из исчисления предикатов\\
+     (10)& $T \rightarrow 0 \& T$ & MP 9,1\\
+     (11)& $ 0 \& T$ & MP 7.5,10\\
+     (12)& $\varphi$ & MP 11,8\\
+\end{tabular}
+
+\textbf{Доказательство}
+
+\begin{tabular}{lll}
+     (1) &$0 = a\cdot 0 \rightarrow 0 =0 \cdot  a \rightarrow a\cdot 0 = 0 \cdot a$& А1 \\
+     (2) &$a\cdot 0 = 0 \rightarrow a\cdot 0 = a 
+     \cdot 0 \rightarrow  0 = a \cdot 0$& А1   \\
+     (3) &$a\cdot 0 = 0$& А7  \\
+     (4) &$a\cdot 0 = a \cdot 0$& из лекции  \\
+     (5) &$a\cdot a \cdot 0 \rightarrow  0 = a \cdot 0$ & MP 3,2 \\
+     (6) &$0 = a \cdot 0$ & MP 4,5 \\
+     (7) &$0 \cdot a = 0 $& по Лемме 2 \\
+     (8) &$ 0= 0 \cdot a $& из Лемме 1 \\
+     (9) &$0 =0 \cdot  a \rightarrow a\cdot 0 = 0 \cdot a$& MP 7,1\\
+     (10)& $ a\cdot 0 = 0 \cdot a$& MP 8,9
+\end{tabular}
+
+\pagebreak
+
+\subsection{№ 2}
+
+
+

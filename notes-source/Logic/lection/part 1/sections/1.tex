@@ -1,0 +1,165 @@
+\section{Лекция 1. Введение в математическую логику}
+
+
+
+\subsection{Классическое исчисление высказываний}
+
+
+
+
+\deff{def:}
+\textbf{Высказывание} (формула) строится по правилам:
+\begin{itemize}
+\item \textbf{Атомарное}: $A, B', C_{1234}$ (пропозициональные переменные)
+\item \textbf{Составное}: если $\alpha$ и $\beta$ - высказывания, то:
+\begin{itemize}
+\item Отрицание: $(\neg\alpha)$
+\item Конъюнкция: $(\alpha\with\beta)$ или $(\alpha\wedge\beta)$
+\item Дизъюнкция: $(\alpha\vee\beta)$
+\item Импликация: $(\alpha\rightarrow\beta)$ или $(\alpha\supset\beta)$
+\end{itemize}
+\end{itemize}
+
+
+\begin{exmprus}
+$$(((A\rightarrow B)\vee (B\rightarrow C)) \vee (C \rightarrow A))$$
+\end{exmprus}
+
+
+\deff{Метапеременные}: $\alpha, \beta, \gamma, \dots$ --- вместо них в формулу можно подставить, что угодно
+ 
+ \textbf{Переменные для пропозициональных переменных}: $X, Y_n, Z'$
+ 
+ \textbf{Приоритет связок}: отрицание, конъюнкция, дизъюнкция, импликация 
+ 
+ \textbf{Ассоциативность}: левая для $\with$ и $\vee$, правая для $\rightarrow$
+
+
+
+
+
+
+
+\deff{def:} \textbf{Оценка высказываний} определяется:
+\begin{itemize}
+\item Множество значений: $V = \{\textit{И},\textit{Л}\}$
+\item Функция интерпретации: $f: \mathcal{P} \rightarrow V$,  где $\mathcal{P}$ - множество пропозициональных переменных.
+\item Синтаксис оценки: $\llbracket \alpha \rrbracket^{X_1 := v_1,\ \dots,\ X_n := v_n}$
+\end{itemize}
+
+
+
+\begin{align*}
+&\llbracket X \rrbracket = f(X)\\
+&\llbracket X \rrbracket^{X := a} = a\\
+&\llbracket \neg \alpha \rrbracket = 
+  \begin{cases}
+  \textit{Л}, & \text{если }\llbracket\alpha\rrbracket=\textit{И}\\
+  \textit{И}, & \text{иначе}
+  \end{cases}\\
+&\llbracket \alpha \with \beta \rrbracket = 
+  \begin{cases}
+  \textit{И}, & \text{если }\llbracket\alpha\rrbracket=\llbracket\beta\rrbracket=\textit{И}\\ 
+  \textit{Л}, & \text{иначе}
+  \end{cases}\\
+&\llbracket \alpha \vee \beta \rrbracket = 
+  \begin{cases}
+  \textit{Л}, & \text{если }\llbracket\alpha\rrbracket=\llbracket\beta\rrbracket=\textit{Л}\\
+  \textit{И}, & \text{иначе}
+  \end{cases}\\
+&\llbracket \alpha \rightarrow \beta \rrbracket = 
+  \begin{cases}
+  \textit{Л}, & \text{если }\llbracket\alpha\rrbracket=\textit{И},\ \llbracket\beta\rrbracket=\textit{Л}\\
+  \textit{И}, & \text{иначе}
+  \end{cases}
+\end{align*}
+
+
+
+\deff{def:}
+$\alpha$ - \textbf{тавтология} ($\models \alpha$), если истинна при всех оценках
+
+\begin{exmprus}
+$A\rightarrow A$ - тавтология, $A\rightarrow\neg A$ - не тавтология
+\end{exmprus}
+
+\deff{def:}
+\begin{itemize}
+\item $\gamma_1, \dots, \gamma_n \models \alpha$ - $\alpha$ \textbf{следствие}
+\item \textbf{Выполнима} - истинна при некоторой оценке
+\item \textbf{Невыполнима} - ложна при всех оценках
+\item \textbf{Опровержима} - ложна при некоторой оценке
+\end{itemize}
+
+
+\subsection{Теория доказательств}
+
+\deff{def:}
+\textbf{Схема высказывания} - строка, где вместо переменных можно использовать метапеременные
+
+
+
+\deff{def:}
+Высказывание $\sigma$ \textbf{строится по схеме} $\textit{Ш}$, если
+$$\sigma = \textit{Ш}[\textit{ч}_1 := \varphi_1][\textit{ч}_2 := \varphi_2]...[\textit{ч}_n := \varphi_n]$$
+
+
+
+\deff{Схемы аксиом:}
+\begin{enumerate}
+\item $\alpha \rightarrow \beta \rightarrow \alpha$
+\item $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \beta \rightarrow \gamma) \rightarrow (\alpha \rightarrow \gamma)$
+\item $\alpha \rightarrow \beta \rightarrow \alpha \& \beta$
+\item $\alpha \& \beta \rightarrow \alpha$
+\item $\alpha \& \beta \rightarrow \beta$
+\item $\alpha \rightarrow \alpha \vee \beta$
+\item $\beta \rightarrow \alpha \vee \beta$
+\item $(\alpha \rightarrow \gamma) \rightarrow (\beta \rightarrow \gamma) \rightarrow (\alpha \vee \beta \rightarrow \gamma)$
+\item $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg \beta) \rightarrow \neg \alpha$
+\item $\neg \neg \alpha \rightarrow \alpha$
+\end{enumerate}
+
+\deff{Правило вывода Modus Ponens}
+
+\begin{itemize}
+\item Формально: $$\infer{\beta}{\alpha & \alpha\rightarrow\beta}$$
+\item Пример: <<Сейчас сентябрь; если сентябрь, то осень; следовательно, осень>>
+\end{itemize}
+
+\deff{def:}
+\textbf{Доказательство} - последовательность $\delta_1, \dots, \delta_n$, где каждое $\delta_i$:
+\begin{itemize}
+\item Аксиома, или
+\item Получено по MP из предыдущих
+\end{itemize}
+
+
+\deff{def:}
+\textbf{Вывод из гипотез} $\Gamma$ - то же, но можно использовать гипотезы из $\Gamma$
+
+
+\deff{def:}
+ \textbf{Корректность}: $\vdash\alpha \Rightarrow \models\alpha$
+
+\deff{def:} \textbf{Полнота}: $\models\alpha \Rightarrow \vdash\alpha$
+
+
+\thmm{Теорема}
+
+Исчисление высказываний корректно
+\
+
+
+\deff{Доказательство:}
+
+Индукция по длине вывода + проверка аксиом и правила MP
+
+
+\thmm{Теорема о дедукции}
+$$\Gamma,\alpha\vdash\beta \Leftrightarrow \Gamma\vdash\alpha\rightarrow\beta$$
+
+\textbf{Доказательство:}
+
+Конструктивное доказательство: преобразование вывода с гипотезой $\alpha$ в вывод импликации $\alpha\rightarrow\beta$. Оно будет на следующей лекции
+
+\textbf{def:} \deff{Формула доказуема}, если $\exists$ последовательность формул, каждая из которых это либо аксиома, либо получена правилом вывода и последней формулой является $\alpha$.
