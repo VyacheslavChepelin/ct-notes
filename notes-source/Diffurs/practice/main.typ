@@ -18,4 +18,6 @@
 #pagebreak()
 #include "sections/6.typ"
 #pagebreak()
+#include "sections/7.typ"
+#pagebreak()
 #include "sections/info.typ"
