@@ -1,0 +1,287 @@
+
+\section{Лекция 12.}
+\subsection{Аксиома выбора}
+
+\deff{def:} Аксиома выбора:
+
+Из любого семейства дизъюнктных непустых множеств $\mathcal{A}$ можно выбрать непустую трансверсаль --- 
+множество $S$, что $|S \cap A| = 1$ для каждого $A\in\mathcal{A}$. Иначе, $S \in \times \mathcal{A}$.
+
+\thmm{Теорема: функциональный вариант аксиомы выбора}
+Пусть $\mathcal{A}$ --- семейство непустых множеств. Тогда существует
+$f : \mathcal{A} \rightarrow \cup \mathcal{A}$, причём $\forall a.a \in \mathcal{A} \rightarrow f(a) \in a$
+
+
+\textbf{Доказательство:}
+
+Пусть $X(A) = \{ \langle A, a \rangle \ |\ a \in A \}$, 
+по семейству $\mathcal{A}$ рассмотрим $\{X(A)\ |\ A\in\mathcal{A}\}$
+\begin{itemize}
+\item непустых: если $A\in\mathcal{A}$, $A \ne \varnothing$, то $X(A) \ne \varnothing$;
+\item дизъюнктное: если $A_0,A_1\in\mathcal{A}$, $A_0 \ne A_1$, то $X(A_0) \cap X(A_1) = \varnothing$
+\end{itemize}
+тогда по аксиоме выбора $\exists f.f \in \times \mathcal{A}$.
+
+\hfill Q.E.D.
+
+Обратное утверждение также легко показать.
+
+
+\thmm{Теорема. Лемма Цорна}
+
+Если задано $\langle M, (\preceq) \rangle$ и для всякого линейно упорядоченного $S \subseteq M$ выполнено
+$\text{upb}_M S \ne \varnothing$, то в $M$ существует максимальный элемент.
+
+\thmm{Теорема Цермело}
+
+На любом множестве можно задать полный порядок.
+
+\thmm{Теорема:}
+
+У любой сюръективной функции существует частичная обратная.
+
+\thmm{Теорема}
+
+Аксиома выбора $\Rightarrow$ лемма Цорна: без доказательства.
+
+
+\subsection{Начальный отрезок}
+
+\deff{def:}
+
+Назовём (для данного раздела) упорядоченным множеством пару $\langle S, (\prec_S)\rangle$.
+Отношение порядка $(\prec_S)$ может быть как строгим, так и нестрогим.
+Будем говорить, что $\langle S, (\prec_S)\rangle$ --- начальный отрезок $\langle T, (\prec_T) \rangle$,
+если:\begin{itemize}
+\item $S \subseteq T$;
+\item если $a,b \in S$, то $a \prec_S b$ тогда и только тогда, когда $a \prec_T b$;
+\item если $a \in S$, $b \in T\setminus S$, то $a \prec_T b$.
+\end{itemize}
+Будем обозначать это как $\langle S, (\prec_S)\rangle\sqsubseteq\langle T, (\prec_T)\rangle$ или как $S \sqsubseteq T$, если порядок на множествах понятен из контекста.
+
+
+\thmm{Теорема.}
+
+Отношение <<быть начальным отрезком>> является отношением нестрогого порядка.
+
+
+\thmm{Теорема о верхней грани}
+Если семейство упорядоченных множеств $X$ линейно упорядочено отношением <<быть начальным отрезком>>, то у него есть верхняя грань.
+
+\textbf{Доказательство:}
+
+Пусть $M = \cup \{ T | \langle T, (\prec) \rangle \in X \}$ и
+$(\prec)_M = \cup \{ (\prec) | \langle T, (\prec) \rangle \in X \}$.
+
+Покажем, что если $\langle A, (\prec_A)\rangle \in X$, то $A \sqsubseteq M$. Рассмотрим определение:
+\begin{itemize}
+\item $A \subseteq M$ --- выполнено по построению $M$;
+\item если $a,b \in A$, то $a \prec_A b$ влечёт $a \prec_M b$ (по построению $M$). Если же $a \prec_M b$, но $a \not\prec_A b$,
+то существует $A'$, что $a,b \in A'$ и $a \prec_{A'} b$. Тогда $A\not\sqsubseteq A'$ и $A'\not\sqsubseteq A$, что невозможно
+по линейности порядка;
+\item если $a \in A$, $b \in M\setminus A$, то найдётся $B$, что $b\in B$, отчего $a \prec_B b$ (так как $A \sqsubseteq B$) 
+и $a \prec_M b$ (по построению $M$).
+\end{itemize}
+
+Тогда $\langle M, (\prec_M)\rangle$ --- требуемая верхняя грань.
+
+\hfill Q.E.D.
+
+\thmm{Теорема.}
+
+Лемма Цорна $\Rightarrow$ теорема Цермело
+
+Пусть выполнена лемма Цорна и дано некоторое $X$. Покажем, что на нём можно ввести полный порядок.
+\begin{itemize}
+\item Пусть $S = \{ \langle P, (\prec)\rangle \ |\ P \subseteq X, (\prec)\text{ --- полный порядок} \}$.
+{\color{gray}Например, для $X = \{0,1\}$ множество
+$S = \{
+\langle\varnothing,\varnothing\rangle,
+\langle \{0\},\varnothing\rangle,
+\langle\{1\},\varnothing\rangle,
+\langle X, 0 \prec 1\rangle,
+\langle X, 1 \prec 0\rangle
+\}$}
+
+\item Введём порядок на $S$ как $(\sqsubseteq)$. Заметим, что это --- частичный, но не линейный порядок. 
+{\color{gray}Например, $\langle X, 0 \prec 1\rangle$ несравним с $\langle X, 1 \prec 0\rangle$.}
+
+\item По теореме о верхней грани любое линейно упорядоченное подмножество 
+$\langle T, (\sqsubseteq) \rangle$ (где $T \subseteq S$) имеет
+верхнюю грань.
+
+{\color{gray}Например, 
+для $\{\langle\varnothing,\varnothing\rangle,
+\langle \{0\},\varnothing\rangle,
+\langle X, 0 \prec 1\rangle\}$ это $\langle X, 0 \prec 1\rangle$.}
+
+\item По лемме Цорна тогда есть $\langle R, (\sqsubseteq_R)\rangle = \max S$. Заметим, что $R = X$, потому что иначе пусть
+$a \in X\setminus R$. Тогда положив $M = \langle R\cup\{a\}, (\sqsubseteq_R)\cup\{x\prec a\ |\ x \in R\} \rangle$
+получим, что $M$ тоже вполне упорядоченное (и потому $M \in S$), значит, $R$ не максимальное.
+\end{itemize}
+
+\thmm{Теорема Цермело $\Rightarrow$ существование обратной $\Rightarrow$ аксиома выбора}
+
+\thmm{Теорема Цермело $\Rightarrow$ у сюръективных функций существует частичная обратная.}
+
+\textbf{Доказательство:}
+
+Рассмотрим сюръективную $f: A \rightarrow B$. Рассмотрим семейство $R_b = \{ a \in A\ |\ f(a) = b \}$.
+Построим полный порядок на каждом из $R_b$. Тогда $f^{-1}(b) = \min R_b$.
+
+
+\thmm{Теорема.}
+
+Существует частичная обратная у сюръективных функций $\Rightarrow$ существует трансверсаль у семейства непустых дизъюнктных множеств.
+
+\textbf{Доказательство:}
+
+Пусть дано семейство непустых дизъюнктных множеств $\mathcal{A}$. 
+Рассмотрим $f: \cup \mathcal{A} \rightarrow \mathcal{A}$, что
+$f(a) = \cup\{ A \in \mathcal{A}\ |\ a \in A \}$. Поскольку элементы $\mathcal{A}$ дизъюнктны,
+$f(a) \in \mathcal{A}$ при всех $a$. Тогда существует $f^{-1}: \mathcal{A} \rightarrow \cup\mathcal{A}$. Тогда 
+$\{ f^{-1}(A)\ |\ A\in\mathcal{A} \} \in \times \mathcal{A}$.
+
+\hfill Q.E.D
+
+
+\subsection{Равенство и функции}
+
+Пусть $A_0 = \{0,1,3,5\}$ и $A_1 = \{3,5,1,0,0,5,3\}$.
+Верно ли, что $A_0 = A_1$?
+
+Да, так как $\forall x.x \in \{0,1,3,5\} \leftrightarrow x \in \{3,5,1,0,0,5,3\}$.
+
+\thmm{Конгруэнтность}
+
+Если $f: A \rightarrow B$, также $a,b\in A$ и $a=b$, то $f(a) = f(b)$.
+
+\textbf{Доказательство:}
+
+Пусть $F \subseteq A\times B$ --- график функции $f$.
+
+По определению функции, $\forall x.\forall y_1.\forall y_2.\langle x,y_1\rangle \in F \with \langle x,y_2 \rangle \in F \rightarrow y_1 = y_2$.\\
+Также, если $f(a) = y_1$, $f(b) = y_2$, то $\langle a,y_1 \rangle \in F$ и $\langle b,y_2 \rangle \in F$.\\
+Тогда: $\langle a,y_1\rangle = \langle b,y_1\rangle = \langle b,y_2 \rangle = \langle a,y_2\rangle$,
+то есть $f(a) = y_2 = f(b)$.
+
+\hfill Q.E.D.
+
+\subsection{Теорема Диаконеску}
+
+Если рассмотреть ИИП с ZFC, то для любого $P$ выполнено $\vdash P \vee \neg P$.
+
+\textbf{Доказательство:}
+
+Рассмотрим $\mathcal{B} = \{0,1\}$, $A_0 = \{ x \in \mathcal{B} | x = 0 \vee P \}$ и 
+$A_1 = \{ x \in \mathcal{B} | x = 1 \vee P\}$.
+$\{A_0,A_1\}$ --- семейство непустых множеств, и по акс. выбора существует
+$f: \{A_0,A_1\} \rightarrow \cup A_i$, что $f(A_i) \in A_i$. (Если $P$, то $A_0 = A_1$ и $\{A_0,A_1\} = \{\mathcal{B}\}$).
+
+\begin{tabular}{ll}
+$\vdash f(A_0) \in A_0 \with f(A_1) \in A_1$ & а.выбора: $f(A_i) \in A_i$\\
+$\vdash {\color{olive}f(A_0) \in \mathcal{B}} \with (f(A_0) = 0 \vee P) \with {\color{olive}f(A_1) \in \mathcal{B}} \with (f(A_1) = 1 \vee P)$ & а.выделения\\
+$\vdash (f(A_0) = 0 \with f(A_1) = 1) \vee P$ & Удал. $(\with)$ + дистр.\\
+$\vdash P\vee{\color{blue}f(A_0) \ne f(A_1)}$ & $0 \ne 1$ и транз.\\
+$\vdash P \rightarrow A_0 = A_1$ & Определение $A_i$\\
+$\vdash A_0 = A_1 \rightarrow f(A_0) = f(A_1)$ & Конгруэнтность\\
+$\vdash \color{blue} f(A_0) \ne f(A_1) \rightarrow \neg P$ & Контрапозиция\\
+$\vdash P \vee \neg P$ & Подставили
+\end{tabular}
+
+\subsection{Слабые варианты аксиомы выбора}
+
+\thmm{Теорема конечного выбора}
+
+Если $X_1\ne\varnothing, \dots, X_n\ne\varnothing$, $X_i\cap X_j = \varnothing$ при $i \ne j$, то $\times \{X_1, \dots, X_n\} \ne \varnothing$.
+
+
+
+\textbf{Доказательство:}
+
+\begin{itemize}\item База: $n=1$. Тогда $\exists x_1.x_1 \in X_1$, поэтому $\exists x_1.\{x_1\} \in \times \{X_1\}$.
+
+\item Переход: $\exists v.v \in \times \{X_{1,n}\}\rightarrow\exists x_{n+1}.x_{n+1} \in X_{n+1}\rightarrow
+v \cup \{x_{n+1}\} \in \times (X_{1,n}\cup\{X_{n+1}\})$
+\end{itemize}
+
+\textbf{Аксиома счётного выбора}
+
+Для счётного семейства непустых множеств существует функция, каждому из которых сопоставляющая один из своих элементов
+
+
+\textbf{Аксиома зависимого выбора}
+
+Если $\forall x \in E.\exists y \in E. x R y$, то существует последовательность $x_n: \forall n.x_n R x_{n+1}$
+
+
+Заметим, что семейство $\{A_0, A_1\}$ из теоремы Диаконеску в ИИП не является конечным (равно как и бесконечным).
+\deff{def:} Конечное множество --- равномощное некоторому конечному кардинальному числу.
+
+\begin{itemize}
+\item Какова мощность семейства? 
+\item 1, если $P$, и 2, если $\neg P$. 
+\item Но поскольку $P \vee \neg P$ не выполнено в ИИП, мы не можем
+доказать, что мощность семейства 1 или 2.
+\item Поэтому мы не можем воспользоваться теоремой конечного выбора.
+\end{itemize}
+
+\subsection{Наследственные фундированные множества}
+
+\deff{def:} \textbf{Наследственным свойством множества} назовём такое свойство, которым обладает как само
+множество, так и все его подмножества.
+
+
+\deff{def:} \textbf{Фундированным множеством} назовём такое, которое не пересекается хотя бы с одним своим элементом.
+
+
+\subsection{Каковы возможные модели для теории множеств?}
+
+\deff{def:} \emph{Универсум фон Неймана} $V$ --- все наследственные фундированные множества.
+
+При наличии аксиомы фундирования можно показать, что $V = \cup_a V_a$, где:
+$$V_a = \left\{\begin{array}{ll}
+    \varnothing, & a=0\\
+    \mathcal{P}(V_b), & a = b'\\
+    \bigcup_{b < a}(V_b), & a \text{ --- предельный}
+\end{array}\right.$$
+
+\deff{def:}
+\emph{Конструктивный универсум} $L = \cup_a L_a$, где:
+$$L_a = \left\{\begin{array}{ll}
+    \varnothing, & a=0\\
+    \{ \{ x\in L_b\ |\ \varphi(x,t_1,\dots,t_k) \}\ |\ \varphi\text{ --- формула}, t_i \in L_b\}, & a = b'\\
+    \bigcup_{b < a}(L_b), & a \text{ --- пред.}
+\end{array}\right.$$
+
+
+\subsection{Усиление аксиомы выбора}
+
+\deff{def:}
+Аксиома конструктивности: $V=L$, то есть допустимы только те фундированные множества, которые задаются формулами.
+
+
+\thmm{Теорема.} Аксиома выбора и континуум-гипотеза следуют из аксиомы конструктивности
+
+Для некоторых теорий аксиома слишком сильна.
+
+\subsection{Заключительный обзор}
+
+Конструктивность теории --- насколько легко строить сложные объекты в ней:
+\begin{enumerate}
+\item Неконструктивные теории допускают доказательства чистого существования произвольных по сложности объектов.
+\item Конструктивные теории: требуют процесс построения (желательно конечный или хотя бы счётный), 
+состоящий из интуитивно понятных шагов.
+\end{enumerate}
+
+Аксиома выбора и её рассмотренные варианты влияют на её конструктивность:
+\begin{enumerate}
+\item КИП + ЦФ + Акс. выбора: менее конструктивна.
+Например, возможно показать существование разбиения шара на 5 частей, из которых можно составить два шара,
+равных исходному (теорема Банаха-Тарского).
+Интуитивно нарушается аддитивность объёма (формального парадокса нет).
+
+\item КИП + ЦФ
+\item ИИП + ЦФ: более конструктивна. Она проще формализуется с помощью компьютера, но мат. анализ в ней сложнее и довольно сильно отличается от классического.
+\end{enumerate}
+
