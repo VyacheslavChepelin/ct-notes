@@ -27,8 +27,18 @@
 #include "sections/8.typ"
 #pagebreak()
 #include "sections/9.typ"
-
 #pagebreak()
+#include "sections/10.typ"
+#pagebreak()
+#include "sections/11.typ"
+#pagebreak()
+#include "sections/12.typ"
+#pagebreak()
+#include "sections/13.typ"
+#pagebreak()
+#include "sections/14.typ"
+#pagebreak()
+
 
 
 #include "sections/info.typ"
