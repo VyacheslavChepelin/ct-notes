@@ -8,4 +8,4 @@
 
 
 
-#align(center)[#image("../assets/lelouche.jpg", width:100%)]  
+#align(center)[#image("../assets/lovely_cat.jpg", width:70%)]  

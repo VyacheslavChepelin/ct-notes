@@ -20,4 +20,10 @@
 #pagebreak()
 #include "sections/7.typ"
 #pagebreak()
+#include "sections/9.typ"
+#pagebreak()
+#include "sections/10.typ"
+#pagebreak()
+#include "sections/11.typ"
+#pagebreak()
 #include "sections/info.typ"
