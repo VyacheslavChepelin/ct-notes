@@ -20,6 +20,10 @@
 
 #pagebreak()
 
+#include "sections/line-integral.typ"
+
+#pagebreak()
+
 #include "sections/unknown.typ"
 
 #pagebreak()

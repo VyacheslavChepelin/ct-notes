@@ -132,6 +132,8 @@
   }
 }
 
+#let Cos = $"Cos"$
+#let Sin = $"Sin"$
 #let algebra = $cal(a)$
 #let limsup = $overline(lim)$
 #let liminf = $underline(lim)$

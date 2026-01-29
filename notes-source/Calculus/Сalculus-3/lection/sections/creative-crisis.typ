@@ -111,3 +111,48 @@ $X$ - множество, $|X| = k > 23$
 #align(center)[#image("../assets/creative-crisis-kantor-stairs.png", width:40%)]  
 
 
+== О смысле жизни модифицированных определений
+
+#theorem(title:[Таубера], body:[
+  $lim_(x -> 1 - 0)sum a_n x^n = A in RR$. $a_n = o(1/n)$. Тогда $sum a_n = A$
+], proof:[
+  $delta_n : = max_(k>=n)(k a_k)$, $delta_n -> 0$ монотонно
+  $ sum_(n=0)^N a_n- A = (sum_(n=0)^N a_n - sum_(n=0)^N a_n x^n) - sum_(n = N+1)^(+infinity) a_n x^n + (sum_(n=0)^(+infinity) a_n x^n - A) $
+  $ |sum_(n=0)^N a_n - A|<= sum |a_n|(1-x^n)+ sum (|n a_n|x^n)/n + |sum^(+infinity)_(n=0) a_n x^n - A|<= $
+
+  Хочу использовать оценку $1-x^n <= n(1-x)$:
+  $ <=(1-x) N delta_1 + (delta_(N+1))/((N+1)(1-x)) + |sum^(+infinity)_(n=0) a_n x^n - A| $
+
+  Берем $eps > 0:$
+
+  Будем считать $N(1-x) < eps$, берем $N$, что 
+  - $delta_(n+1)<eps^2$
+  - $N$ - большое => $x$ близко к 1 так, что последнее слагаемое $<eps$
+
+  ну и получаем, что $<= eps delta_1 + eps + eps$ - определение предела
+])
+
+
+Метод суммы.
+
+$cal(F): Q -> RR$. Если ряд $(sum a_k) in Q$, то $F(sum_k) = S$, $S$ - сумма ряда $sum a_k$ в смысле метода $cal(F)$
+
+Обычные требования:
+
+- Линейность
+- Перманентность, если $sum a_k = S => (sum a_k) in Q$, $F(sum a_k) = S$
+
+#definition(title:[Метод суммирования средними арифметическими или Цезаро], body:[
+  $sum_(n=0)^(+infinity) a_n$. Давайте будем считать $sigma_n = (S_0 + ... + S_n)/(n+1)$.
+
+  Если $exists$ кон $lim_(n-> +infinity) sigma_n$, то $S$ сумма ряда в смысле метода ср. ар.
+])
+
+#theorem(title:[Коши], body:[
+  $(S_n)$- вещ. последовательность $lim_(n-> + infinity)S_n =S$, тогда $lim sigma_n = S$
+], proof:[
+  $forall eps > 0: exists N_1: forall n > N_1: |S_n - S|< eps/2$
+
+  $ |sigma_n -S| <= sum_(k=0)^(n) (|S_k -S|)/(n+1) = sum_(k=0)^(N_1)(|S_k -S|)/(n+1) + sum_(k=N_1)^(n)(|S_k -S|)/(n+1) $
+  Выбираем $N: forall n>N:sum_(k=0)^(N_1)(|S_k -S|)/(n+1) < eps/2 $  и заметим, что у второго числители будут меньше $eps/2$, а идейно там написано что-то меньшее чем среднее арифметическое, откуда все меньше $eps/2$
+])
