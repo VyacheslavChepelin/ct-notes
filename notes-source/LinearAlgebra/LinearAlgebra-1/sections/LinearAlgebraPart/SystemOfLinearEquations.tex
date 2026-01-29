@@ -11,33 +11,35 @@
     a_{m1}x_1 + a_{m2} + \cdots + a_{mn} x_n = b_m \\
 \end{cases}\)
 
-\textbf{Матричная форма записи} --- \(Ax = b\), где
+Это общий вид СЛАУ, причём $a_{ij}, x_k, b_r\in K$
 
-\(A = (a_{ij})_{m\times n} =
+\textbf{Матричная форма записи} \(Ax = b\), где
+
+\(\underbracket{A}_{\text{матрица системы}} = (a_{ij})_{m\times n} =
 \begin{pmatrix}
     a_{11} & \ldots & a_{1n} \\
     \vdots & \ddots & \vdots \\
     a_{m1} & \ldots & a_{mn}
 \end{pmatrix}\),
-\(x = \begin{pmatrix}
+\(x = \underbracket{\begin{pmatrix}
     x_1 \\
     x_2 \\ \vdots \\ x_n \\
-\end{pmatrix}\),
-\(b = \begin{pmatrix}
+\end{pmatrix}}_{\text{столбец неизвестных}}\),
+\(b = \underbracket{\begin{pmatrix}
     b_1 \\
     b_2 \\ \vdots \\ b_m \\
-\end{pmatrix}\)
+\end{pmatrix}}_{\text{столбец свободных членов}}\)
 
-\(Ax = b\), где \(A = (A_1, \ldots, A_n)\) - столбики --- матричная запись.
+\(A = (A_1, \ldots, A_n)\), где $A_j$ --- столбцы. \fbox{\(\displaystyle \sum_{i=1}^{n} x_iA_i = b\)}  --- \textbf{векторная форма записи}
 
 
 \(Ax = b\) --- \textbf{система однородных линейных уравнений (СЛОУ) (однородная система)}, если \(b = \mathbb{0}\).
 
 \(Ax = b\) --- \textbf{система неоднородных линейных уравнений (СЛНУ) (неоднородная система)}, если \(b \neq \mathbb{0}\).
 
-Система \(Ax = b\) --- \textbf{совместная (разрешенная)}, если \(\exists x\), то есть существует решение.
+Система \(Ax = b\) --- \textbf{совместная (разрешимая)}, если \(\exists x\), то есть существует решение.
 
-Система \(Ax = b\) --- \textbf{несовместная (неразрешенная)}, если \(\not\exists x\), то есть решения не существует.
+Система \(Ax = b\) --- \textbf{несовместная (неразрешимая)}, если \(\not\exists x\), то есть решения не существует.
 
 \textbf{Замечание}: СЛОУ всегда совместна, т.к. \(x = \mathbb{0}\) всегда является решением.
 
@@ -73,6 +75,7 @@
 
 \textbf{Теорема}: \(Ax = \mathbb{0}\), \(u,v \in K^n\) --- решения СЛОУ \(\Rightarrow \forall \lambda \in K: \lambda u + v\) --- тоже решение СЛОУ.
 
+\prooff{} 
 \(u, v\) --- решения \(\Rightarrow Au = \mathbb{0}, Av = \mathbb{0}\)
 
 \(A(\lambda u + v) = \lambda Au + Av = \lambda \mathbb{0} + \mathbb{0} = \mathbb{0} \Rightarrow \lambda u + v\) --- тоже решение СЛОУ \(Q.E.D.\)
@@ -83,6 +86,7 @@
 
 \textbf{Теорема (размерность общего  решения СЛОУ)}: \(Ax = \mathbb{0}\), \(\rg(A) = k\), \(L\) --- общее решение СЛОУ \(\Rightarrow \dim(L) = n - k = n - \rg(A)\), где \(n\) --- число неизвестных.
 
+\prooff{} 
 \begin{itemize}
     \item \(k = 0\):
 
@@ -90,9 +94,11 @@
 
     \item \(1\leq k < n\):
 
-          Тогда \(\rg(A) = k = \rg_{col}(A) = \rg(A_1, \ldots, A_n)\) --- база столбцов из \(k\) элементов. Не умаляя общности переставим столбцы чтобы базисом были столбцы \(A_1,\ldots, A_k\), а все остальные столбцы будут их линейными комбинациями.
+          Тогда \(\rg(A) = k = \rg_{col}(A) = \rg(A_1, \ldots, A_n)\) --- база столбцов из \(k\) элементов. Переставим неизвестные $x_i$, чтобы базисом были столбцы \(A_1,\ldots, A_k\), а все остальные столбцы будут их линейными комбинациями.
 
-          \(A_{k + j} = \sum\limits_{i = 1}^k \alpha_i^j A_j\), где \(\alpha_i^j \in K\). (\(j\) --- тоже индекс, просто для удобства записанный сверху)
+          $\forall j = 1, \ldots, n-k:$
+          
+          \(A_{k + j} = \sum\limits_{i = 1}^k \alpha_i^j A_i\), где \(\alpha_i^j \in K\). (\(j\) --- тоже индекс, просто для удобства записанный сверху)
 
           \(\sum\limits_{i = 1}^k \alpha_i^j A_i - A_{k + j} = \mathbb{0} \Leftrightarrow
           u_1 = \begin{pmatrix}
@@ -126,7 +132,7 @@
               -1
           \end{pmatrix}\)
 
-          \(u_1, \ldots, u_{n - k}\) --- решения \(Ax = \mathbb{0}\), причём линейно независимые из-за нулевых координат в нижней части векторов.
+          \(u_1, \ldots, u_{n - k}\) --- решения \(Ax = \mathbb{0}\), причём линейно независимые, т.к. ни один не является линейной комбинацией остальных.
 
           Покажем, что \(u_1, \ldots, u_{n - k}\) --- порождающая система. Пусть \(u\) --- решение \(Ax = \mathbb{0}\).
 
@@ -212,12 +218,14 @@
 \begin{itemize}
     \item \(0 \leq \rg(A) < n \Rightarrow\) система неопределенная, имеет бесконечно много решений, образующие линейное подпространство.
 
-    \item \(\rg(A) = n \Rightarrow\) система определенная, имеет единственный корень равный нулю, то есть система тривиальная.
+    \item \(\rg(A) = n \Rightarrow\) система определенная, имеет единственное решение равное нулю, то есть система тривиальная.
 \end{itemize}
 
 \textbf{Фундаментальная система решения} --- базис линейного подпространства решений СЛОУ.
 
 \textbf{Теорема (о структуре решения СЛНУ)}: Пусть Ax = b совместна, \(x_0\) --- частное решение СЛНУ: \(x\) --- решение СЛНУ \(\Leftrightarrow x = x_0 + u\), где \(u\) --- некоторое решение \(Ax = \mathbb{0}\)
+
+\prooff{}
 \begin{itemize}
     \item \(\Rightarrow\):
 
@@ -227,7 +235,7 @@
 
           \(x = x_0 + u\), \(Au = \mathbb{0}\), \(Ax_0 = b \Rightarrow Ax = A(x_0 + u) = b + \mathbb{0} = b \Rightarrow x\) --- решение \(Ax = b\)
 \end{itemize}
-\textbf{Следствия}:
+\textbf{Следствия (если система $Ax=0$ совместна, то)}:
 \begin{enumerate}
     \item Общее решение \(Ax = b\) --- линейное многообразие \(P = L + x_0\), где \(x_0\) --- частное решение СЛНУ, \(L = \spann(u_1, \ldots, u_{n-k})\) --- общее решение \(Ax = \mathbb{0}\)
 
@@ -245,10 +253,8 @@
 
 То есть, \(\forall b \in K^m\), существует решение \(Ax = b \Leftrightarrow A^Ty = \mathbb{0}\) тривиальна.
 
-\begin{itemize}
-    \item \(\Rightarrow\)
-
-          \(\forall b \in K^m Ax = b\) совместно \(\Leftrightarrow b = \sum\limits_{i=1}^n x_iA_i  \Rightarrow b \in span(A_1,\ldots,A_n)\)
+\prooff{}
+          \(\forall b \in K^m Ax = b\) совместна \(\Leftrightarrow b = \sum\limits_{i=1}^n x_iA_i  \Leftrightarrow b \in span(A_1,\ldots,A_n)\)
 
           Пусть \(b = E_j = \begin{pmatrix}
               0 \\ \vdots\\a_j\\ \vdots\\ 0 \\
@@ -256,14 +262,10 @@
 
           \(E_j \in \spann(A_1,\ldots, A_n)\)
 
-          Заметим, что \(K^m \subset span(A_1,\ldots A_m) \subset K^m\), потому что любой базисный вектор  содержится в нашей оболочке. Откуда:
+          Заметим, что \(K^m \subset span(A_1,\ldots A_n) \subset K^m\), потому что любой базисный вектор  содержится в нашей оболочке. Откуда:
 
-          \(span(A_1,\ldots A_n)  = K^m \Rightarrow rg A = m = rg A^T \Rightarrow A^Ty=0\) будем иметь одно решение, по ранее сказанной теореме.
+          \(span(A_1,\ldots A_n)  = K^m \Rightarrow rg A = m = rg A^T \Leftrightarrow A^Ty=0\) будем иметь одно решение, по ранее сказанной теореме.
 
-    \item \(\Leftarrow:\)
-          Заметим, что все переходы сверху работают в обе стороны.
-
-\end{itemize}
 
 \subsection{Метод Гаусса решения СЛНУ}
 
@@ -282,15 +284,16 @@
 \textbf{Замечание:}
 \begin{enumerate}
     \item все элементарные преобразования приводят к эквивалентной системе.
-    \item все элементарные преобразования эквиваленты элементарным преобразованиям \(A | b\) и перестановкой в ней столбцов (пункт 5).
+    \item все элементарные преобразования эквиваленты элементарным преобразованиям со строками матрицы \(A | b\) и перестановкой в ней столбцов (пункт 5).
 \end{enumerate}
 
 \textbf{Теорема (прямой ход метода Гаусса)}
 
 \(\forall Ax = b\)
 
-Элементарными преобразованиями системы исходная система может быть замена на эквивалентную систему, матрица которой будет иметь трапециевидную форму.
+Элементарными преобразованиями системы исходная система может быть замена на эквивалентную систему, матрица которой будет иметь трапециевидную (в частном случае, треугольную) форму.
 
+\prooff{}
 \begin{itemize}
     \item Находим в необработанной части матрицы самую левую верхнюю ненулевую ячейку. Переставляем её в самый левый верхний угол необработанной части матрицы.
 
@@ -302,14 +305,15 @@
 \textbf{Метод Гаусса решения СЛАУ}:
 
 \begin{enumerate}
-    \item Прямой ход
-
+    \item Прямой ход $(A|b) \sim (\tilde{A}|\tilde{b})$
+    
           См. теорему о приведении матрицы к трапециевидной форме. Проводить её мы будем с расширенной матрицей системы. Один лишь нюанс в том, что переставлять столбец \(B\) ни с чем нельзя, то есть на нём мы заканчиваем алгоритм.
+          Нужно также учесть, что если в матрице $(\tilde{A}|\tilde{b})$ будет строка вида $(0 \dots 0 | \underbracket{\tilde{b}_j}_{\neq 0})$, то система несовместна.
 
     \item Обратный ход
 
           \begin{enumerate}
-              \item Вид матрицы треугольный
+              \item Вид матрицы треугольный (rg A = n --- числу неизвестных)
 
                     Обнулим последний столбец при помощи последней строки:
 
@@ -346,20 +350,21 @@
                         \vdots \\
                         b_n'
                     \end{pmatrix}
-                    \) --- решение СЛАУ.
+                    \) --- решение СЛАУ, причём единственное в силу теоремы о структуре общего решения СЛНУ.
 
 
-              \item Вид матрицы не треугольный
+              \item Вид матрицы трапецевидный (rg A < n)
 
-                    Возьму из матрицы треугольник, а остальные переменные временно занулим. Так найдем одно решение.
+                    Возьму из матрицы треугольник, а остальные переменные возьмём за параметры. Их перенесём в правую часть относительно ``='', затем повторим алгоритм пункта (а). В результате, получим общее решение, зависящее от $n-k$ параметров.
           \end{enumerate}
 \end{enumerate}
 
 \subsection{Нахождение обратной матрицы методом Гаусса.}
 
-|\(A_{n \times n}\)|. Найти \(A^{-1}_{n\times n}\), такую, что \(A \times A^{-1} = E\)
+\(A_{n \times n}\). Найти \(A^{-1}_{n\times n}\), такую, что \(A \cdot A^{-1} = E = A^{-1}\cdot A\)
 
-\(A^{-1}\) - \(n\) неизвестных столбцов. \(A^{-1} =(X_1,\ldots, X_n) = X\)
+\(A^{-1}\) - \(n\) неизвестных столбцов. \(A^{-1} =(X_1,\ldots, X_n) = X =\) 
+
 \(
 \begin{pmatrix}
     x_{11} & x_{12} & \cdots & x_{1n} \\
@@ -378,8 +383,9 @@
     AX_n = E_n
 \end{cases}
 \)
+$E = (E_1, \dots, E_n)$
 
-В процессе нахождения неизвестных столбцов мы делаем с левой частью матрицы одни и те же преобразования. Давайте решать \(n\) систем одновременно:
+Пусть все системы совместны. Тогда, в процессе нахождения неизвестных столбцов мы делаем с левой частью матрицы одни и те же преобразования. Давайте решать \(n\) систем одновременно:
 
 \(
 \begin{pmatrix}[cccc|cccc]
@@ -402,36 +408,41 @@
 
 \(\exists A^{-1}\) (A обратима) \(\Leftrightarrow rg A = n\)
 
-Причем \(A^{-1}\) может быть найден методом Гаусса.
+Причем \(A^{-1}\) может быть найдена методом Гаусса.
 \begin{enumerate}
     \item[] \prooff{}
-          Такая $A^{-1}$ если есть решения $AX_i = E_i$, это значит, что $\rg(A|E_i) = \rg A$, откуда каждый $E_i$ в спане. Откуда, $rg A = n$.
+          $\exists A^{-1}$, если $\exists$ решения $AX_i = E_i$ $(\forall i = 1 \dots n)$, это значит, что $\rg(A|E_i) = \rg A$ $(\forall i = 1 \dots n)$, откуда каждый $E_i \in span(A_1, \dots, A_n) \subset K^n \Rightarrow rg A = n.$
 \end{enumerate}
 
-\textbf{Следствие}. Дано \(A_{n \times n}, Ax=b\). \(A\) обратимо \(\Leftrightarrow\) существует единственное решение СЛНУ. Причем, \(x = A^{-1} b\)
+\textbf{Следствие}. Дано \(A_{n \times n}, Ax=b\). \(A\) обратима \(\Leftrightarrow \exists ^^21\) решение СЛНУ. Причем, \(x = A^{-1} b\)
 
-\(A\) обратима \(\Leftrightarrow\) \(rg A = n \Leftrightarrow\) существует единственное решение СЛНУ \(\Leftrightarrow A^{-1}\).
+\(\exists A^{-1} \Leftrightarrow A\) обратима \(\Leftrightarrow\) \(rg A = n \Leftrightarrow\) \(\Leftrightarrow \exists ^^21\) решение СЛНУ \(Ax = b\).
+
+Пусть \(x = A^{-1}b\)
 
 \(Ax = b \Leftrightarrow A (A^{-1}b) = b \Leftrightarrow b = b\) Q.E.D
 
-\textbf{Теорема (о ранге произведения матрицы и обратимой матрицы)}
+\textbf{Теорема (о ранге произведения матриц)}
 
-\(A_{n\times n}\), A - обратима, \(B_{m \times n} \Rightarrow
-\begin{cases}
-    \rg(AB) = \rg B \\
-    \rg(BA) = \rg B
-\end{cases}
-\)
+\(A_{n\times n}\), A - обратима, \(B \Rightarrow 
+\begin{aligned}
+    &\rg(AB) = \rg B, \text{если определено A$\cdot$B} \\
+    &\rg(BA) = \rg B, \text{если определено B$\cdot$A}
+\end{aligned}\)
+
+\prooff{}
 \begin{enumerate}
-    \item[] \prooff{}
+    \item
           $\rg(AB)\leq (\rg A, \rg B)\leq \rg B$.
 
           $\rg B = \rg EB = \rg (A^{-1}AB)\leq rg(AB) \leq \rg B$
+    \item
+          $\rg(BA) = \rg(BA)^T = \rg(A^T B^T)= \rg(B^T) = \rg B$ (т.к. $\rg(A^T) = \rg(A) = n$)
 \end{enumerate}
 
 
 \subsection{Геометрическая интерпретация СЛАУ}
-
+% TODO: я ничего не понял тут: ни то, что было написано до Екатерины Аркадьевны, ни после. Возможно, нужно будет полностью переписать. Секцию про Геометрическую интерпретацию СЛАУ я скипнул. -- Сергей
 \(V, \dim V = n\)
 
 \(e_1,e_2,\ldots, e_n\) - базис
@@ -470,25 +481,25 @@ $\alpha_1,\ldots,\alpha_m$ - гиперплоскости
 
 \subsection{Матрица перехода от старого базиса к новому. Связь координат вектора в разных базисах.}
 
-\(V, e_1, e_2, \ldots , e_n\) - старый базис - \(E\).
+\(V, e_1, e_2, \ldots , e_n\) --- ``старый'' базис --- \(e = (e_1, \dots, e_n)\).
 
-\(e_1',e_2',\ldots e_n'\) - новый базис - \(E'\).
+\(e_1',e_2',\ldots e_n'\) --- новый базис --- \(e' = (e_1', \dots, e_n')\).
 
-\(x\in V \leftrightarrow x = \begin{pmatrix}
-    x_1    \\
-    x_2    \\
+\(x\in V \leftrightarrow \mathbf{x} = \begin{pmatrix}
+    \mathbf{x}_1    \\
+    \mathbf{x}_2    \\
     \vdots \\
-    x_n
-\end{pmatrix} \in K^n\)  - координаты в базисе \(E\).
+    \mathbf{x}_n
+\end{pmatrix} \in K^n\)  - координаты в базисе \(e\).
 
-\(x\in V \leftrightarrow x = \begin{pmatrix}
-    x_1'   \\
-    x_2'   \\
+\(x\in V \leftrightarrow \mathbf{x} = \begin{pmatrix}
+    \mathbf{x}_1'   \\
+    \mathbf{x}_2'   \\
     \vdots \\
-    x_n'
-\end{pmatrix} \in K^n\)  - координаты в базисе \(E'\).
+    \mathbf{x}_n'
+\end{pmatrix} \in K^n\)  - координаты в базисе \(e'\).
 
-\(x = \sum\limits_{i=1}^n x_i e_i = \sum\limits_{i=1}^n x_i' e_i'\).
+\(x = \sum\limits_{i=1}^n \mathbf{x}_i e_i = \sum\limits_{i=1}^n \mathbf{x}_i' e_i'\).
 
 Давайте представим \(e_j'\) через старый базис: \(T_j = \begin{pmatrix}
     t_{1j} \\
@@ -496,36 +507,39 @@ $\alpha_1,\ldots,\alpha_m$ - гиперплоскости
     t_{nj}
 \end{pmatrix}\) - координаты в базисе \(e\).
 
-\(T = T_{e \rightarrow e'} = (T_1, T_2, \ldots, T_n)\)
+$e_j' = \displaystyle \sum_{k=1}^{n} t_{kj}e_k$
+
+\(T = T_{e \rightarrow e'} = (T_1, T_2, \ldots, T_n)\) --- матрица перехода от базиса $e$ к $e'$
 
 \((e_1', \ldots, e_n') = (e_1, \ldots, e_n) T_{e \rightarrow e'}\)
 
 \textbf{Свойства T:}
 
 \begin{enumerate}
-    \item \(\rg T = n\) (T обратима)
+    \item \(\rg T = n\) (T обратима) (очевидно, т.к. координатный изоморфизм)
 
 
-    \item \(T^{-1}\) - матрица перехода из \(e_1'\) в\(e_1\).
+    \item \(T^{-1}\) - матрица перехода из \(e'\) в \(e\).
 
           Пусть B - матрица перехода от e' к e.
 
-          \((e_1,\ldots,e_n) = (e_1',\ldots,e_n')B = ((e_1,\ldots,e_n)T)B = (e_1,\ldots,e_n) (BT)\), откуда \(BT = 1\),  откуда  \(B = T^{-1}\)
+          \((e_1,\ldots,e_n) = (e_1',\ldots,e_n')B = ((e_1,\ldots,e_n)T)B = (e_1,\ldots,e_n) (BT)\), откуда \(BT = E\),  откуда  \(B = T^{-1}\)
 
 
     \item связь координат вектора в разных базисах:
 
           %обозначать координаты X - координатная матрица
-          \(x \leftrightarrow X\) в старом базисе
+          \(x \leftrightarrow \mathbf{x}\) в старом базисе
 
-          \(x \leftrightarrow X'\) в новом базисе
+          \(x \leftrightarrow \mathbf{x}'\) в новом базисе
 
-          \(x = \sum\limits_{i=1}^n x_i e_i  = \sum \limits_{j=1}^n = x_j'e_j' = \sum\limits_{j=1}^n x_j' \sum\limits_{i=1}^n t_{ij} e_j = \sum\limits_{i=1}^n (\sum\limits_{j=1}^n t_{ij} e_i)\)
+          \(x = \sum\limits_{i=1}^n \mathbf{x}_i e_i  = \sum \limits_{j=1}^n \mathbf{x}_j'e_j' = \sum\limits_{j=1}^n \mathbf{x}_j' \sum\limits_{i=1}^n t_{ij} e_i = \sum\limits_{i=1}^n (\sum\limits_{j=1}^n t_{ij}x_j')e_i\)
 
-          т.е координаты определяются единственный образом
+          т.к координаты определяются единственным образом
 
-          \(\forall i = 1\ldots n: x_i =\sum\limits_{j=1}^n t_{ij} x_j' = (TX')_i\)
+          \(\forall i = 1\ldots n: \mathbf{x}_i =\sum\limits_{j=1}^n t_{ij} \mathbf{x}_j' = (TX')_i \Leftrightarrow \mathbf{X}=\text{T}\mathbf{X}'\), а
 
-          \(X' = T^{-1} X\)
+          \(\mathbf{X}'=\text{T}^{-1}\mathbf{X}\)
 \end{enumerate}
+
 

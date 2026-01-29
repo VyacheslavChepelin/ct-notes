@@ -4,7 +4,7 @@
 
 \(\dim V = n\) - лин. пространство над полем K
 
-\(f: V \times V \times \ldots \times V \rightarrow K\) (p штук) - называется \uline{\textbf{полилинейной}} формой (функцией), если выполнено:
+\(f: \underbracket{V \times V \times \ldots \times V}_{\text{p штук}} \rightarrow K\) --- называется \uline{\textbf{полилинейной}} формой (функцией), если выполнено:
 
 \begin{enumerate}
     \item[]
@@ -12,6 +12,8 @@
           \(f(\xi_1,\ldots,\xi_p) = \) число в K.
 
           \(\forall \lambda \in K, \forall \psi, \mu \in V: f(\ldots,\psi + \lambda \mu,\ldots) = f(\ldots, \psi, \ldots) + \lambda f(\ldots,\mu,\ldots)\)
+
+          (линейна по каждому аргументу)
 \end{enumerate}
 
 
@@ -32,8 +34,11 @@ $\xi_1,\ldots, \xi_p \in V$.
     \xi_j^n
 \end{pmatrix} \in K^n \)
 
-Тогда: \(f(\xi_1,\ldots,\xi_p) = f(\xi_1^{i_1}e_{i_1}, \xi_2^{i_2}e_{i_2},\ldots, \xi{i_p}_p e_{i_p}) =  \xi_1^{i_1} \xi_2^{i_2}\ldots \xi_p^{i_p} f(e_{i_1},
-\ldots,e_{i_p})\)
+Тогда: \(f(\xi_1,\ldots,\xi_p) = f(\xi_1^{i_1}e_{i_1}, \xi_2^{i_2}e_{i_2},\ldots, \xi^{i_p}_p e_{i_p}) =  \xi_1^{i_1} \xi_2^{i_2}\ldots \xi_p^{i_p} f(e_{i_1},
+\ldots,e_{i_p})\), 
+
+где \( f(e_{i_1},
+\ldots,e_{i_p}) \text{ := }\alpha_{i_1\dots i_p}\in K - \text{коэффициенты (координаты) формы }f\)
 
 \begin{enumerate}
     \item[] \prooff{}
@@ -42,36 +47,45 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 
 
-\(f: V^p \rightarrow K\) - полилинейная форма. если f=0 при любых двух равных элементах, то f наз-ся \uline{\textbf{антисимметричной.}}
+\(f: V^p \rightarrow K\) - полилинейная форма. если f=0 при любых двух равных аргументах, то f наз-ся \uline{\textbf{антисимметричной.}}
 
-\textbf{Утв.} f антисимметрична \(\Leftrightarrow \forall(i,j): f(\ldots,\xi_i,\ldots, \xi_j,\ldots) =- f(\ldots,\xi_j,\ldots, \xi_i,\ldots) \).
+\textbf{Утверждение.} f антисимметрична \(\Leftrightarrow \forall(i,j): f(\ldots,\xi_i,\ldots, \xi_j,\ldots) =- f(\ldots,\xi_j,\ldots, \xi_i,\ldots) \).
 
 \begin{enumerate}
     \item[] \prooff{}
-
+        \begin{enumerate}
+            \item[] \fbox{${\Rightarrow}$}
+            
           \(f(\ldots, \xi_i + \xi_j,\ldots, \xi_i + \xi_j,\ldots) = 0\)
 
-          Разложим через линейность:
+          Разложим через линейность и учтём антисимметричность:
 
           \(f(\ldots, \xi_i,\ldots,  \xi_j,\ldots)  + f(\ldots, \xi_i,\ldots,  \xi_j,\ldots)  = 0\). Откуда уже следует искомое.
 
-          В обратную сторону  \(f(\ldots, \xi ,\ldots, \xi_i,\ldots) = - f(\ldots, \xi ,\ldots, \xi_i,\ldots)\), откуда уже следует искомое.  Q.E.D
+          
+            \item[] \fbox{${\Leftarrow}$}
+            
+            \(f(\ldots, \xi_i ,\ldots, \xi,\ldots) = - f(\ldots, \xi ,\ldots, \xi_i,\ldots)\), откуда уже следует искомое.  Q.E.D
+          
+        \end{enumerate}
 \end{enumerate}
 
 Антисимметричные полилинейные формы будем называть \textbf{p - формами}.
 
-Следствие: f - p-форма \(\Leftrightarrow \forall  (k,m): \alpha_{i_1 \ldots i_k \ldots i_m, \ldots, i_p} = - \alpha_{i_1 \ldots i_m \ldots i_k, \ldots, i_p} \Leftrightarrow\)
+\textbf{Следствие}: f - p-форма \(\Leftrightarrow \forall  (k,m): \alpha_{i_1 \ldots i_k \ldots i_m, \ldots, i_p} = - \alpha_{i_1 \ldots i_m \ldots i_k, \ldots, i_p} \Leftrightarrow\)
 
 \(\Leftrightarrow \forall (k,m) \alpha_{i_1 \ldots i_k \ldots i_m, \ldots, i_p}=0,\) если \(i_k = i_m\).
 
 
-Откуда можно из суммы убрать все не перестановки (они занулятся) и формула получится такой:
+Если $p > n$, то, очевидно, $f = 0$. Пусть $p=n$, $f$ --- n-форма, тогда все координаты $\alpha_{i_1 \dots i_n} = 0$, если совпадают хотя бы 2 индекса. 
 
-\(f(\xi_1,\ldots,\xi_n) =  \sum\limits_{\sigma \in S_n} \xi_1^{i_1} \ldots \xi_n^{i_n} f(e_{i_1},\ldots,e_{i_n})\), где $i_1,\ldots,i_n$ это текущая перестановка индексов
+\(f(\xi_1,\ldots,\xi_n) =  \sum\limits_{\sigma \in S_n} \xi_1^{i_1} \ldots \xi_n^{i_n} \underbracket{f(e_{i_1},\ldots,e_{i_n})}_{\alpha_{i_1 \dots i_n}}\), где $i_1,\ldots,i_n$ это перестановка индексов
+
+Здесь $S_n$ --- множество всех перестановок чисел $1 \dots n$.
 
 \deff{Подстановки и перестановки}
 
-\(\varphi: (1, \ldots,n) \rightarrow (1,\ldots,n)\) подстановка. Удобнее всего показывать стрелочками. Перестановка - образ.
+\(\underbracket{\varphi: (1, \ldots,n) \rightarrow (1,\ldots,n)}_{\text{отображение (биекция)}}\) --- \deff{подстановка}. Удобнее всего показывать стрелочками. Перестановка - образ.
 
 \(\varphi, \psi\) - 2 подстановки. Произведением перестановок назовем образ композиции отображений.
 
@@ -84,16 +98,18 @@ $\xi_1,\ldots, \xi_p \in V$.
 \((i_1,\ldots,i_a,\ldots,i_b,\ldots,i_n)\)
 перейдет в \((i_1,\ldots,i_b,\ldots,i_a,\ldots,i_n)\)
 
-Любую перестановку можно привести к тривиальной транспозициями, так как можно найти единицу, поменять местами с первым элементом, затем найти двойку, поменять местами со вторым, и так далее.
+Любую перестановку можно привести к тривиальной конечным числом транспозиций, так как можно найти единицу, поменять местами с первым элементом, затем найти двойку, поменять местами со вторым, и так далее.
 
 Перестановка называется \textbf{четной} или \textbf{нечетной}, если она приводится к тривиальной за четное или соответственно нечетное количество транспозиций (именно тем алгоритмом который сверху)
 
 \(\varepsilon(\sigma) = \begin{cases}
     0, \sigma - \text{четная} \\
     1, \sigma - \text{нечетная}
-\end{cases}\)
+\end{cases}\) --- \deff{чётность (функция чётности)} перестановки.
 
-Заметим, что сумму из формы теперь можно привести к другой, если применить транспозиции показанные выше к \((e_{i_1},\ldots,e_{i_n})\):
+Тогда $(-1)^{\varepsilon(\sigma)}$ -- знак перестановки.
+
+Приведём каждую из перестановок $(i_1, \dots, i_n)$ к тривиальной, описанным выше способом и учтём, что f антисимметричная форма.
 
 \(f(\xi_1,\ldots,\xi_n) =  \sum\limits_{\sigma \in S_n} \xi_1^{i_1} \ldots \xi_n^{i_n} f(e_{i_1},\ldots,e_{i_n}) = \sum\limits_{\sigma \in S_n} \xi_1^{i_1} \ldots \xi_n^{i_n} f(e_1,\ldots,e_n)\cdot (-1)^{\varepsilon(\sigma)} =\)
 
@@ -101,12 +117,14 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 \(n\)-форму, у которой значение на упорядоченном наборе базиса векторов \(e_1,\ldots,e_n\). равно 1 назовем \(D\).
 
-\(D\) - \(n\)-форма, т.к \(D(e_1,\ldots,e_n) = 1: \forall \xi_1 \ldots \xi_n: D(\xi_1,\ldots, \xi_n) = \sum\limits_{\sigma \in S_n} \xi_1^{i_1} \ldots \xi_n^{i_n} (-1)^{\varepsilon(\sigma)}\) = \(\det (\xi_1,\ldots, \xi_n)\) --- \uline{\textbf{определитель системы векторов}.}
+Пусть \(D\) - \(n\)-форма, т.ч. \(D(e_1,\ldots,e_n) = 1 \newline \Rightarrow  \forall \xi_1 \ldots \xi_n: D(\xi_1,\ldots, \xi_n) = \sum\limits_{\sigma \in S_n} \xi_1^{i_1} \ldots \xi_n^{i_n} (-1)^{\varepsilon(\sigma)}\) $\underbracket{\text{=}}_{\text{def}}$ \(\det (\xi_1,\ldots, \xi_n)\)
+
+--- \uline{\textbf{определитель системы векторов $\xi_1, \dots, \xi_n \in V$}.}
 
 \textbf{Замечания:}
 \begin{enumerate}
     \item \(\forall f\) - \(n\)-форма  \(f = \alpha D\), где \(\alpha = f(e_1,\ldots,e_n)\).
-    \item Форма \(D\) существует единственная.
+    \item Форма \(D\) существует и единственная.
     \item Определение \(D\)-формы зависит от базиса, т.к. чтобы её определить, должен быть зафиксирован базис.
 \end{enumerate}
 
@@ -114,7 +132,7 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 Есть матрица \(A_{n\times n}\), \(a_{ij} \in \mathbb{R}(\mathbb{C})\)
 
-\(A = (A_1, \ldots, A_n)\), \(A_j, \in K_n\)
+\(A = (A_1, \ldots, A_n)\), \(A_j, \in K^n\)
 
 \(E_j =
 \begin{pmatrix}
@@ -123,7 +141,7 @@ $\xi_1,\ldots, \xi_p \in V$.
     E_{jj} = 1 \\
     \vdots     \\
     0
-\end{pmatrix}\) --- канонический базис
+\end{pmatrix}\) --- канонический базис пространства $K^n$
 
 \(A_j = \sum\limits_{i = 1}^n a_{ij} E_i\)
 
@@ -138,7 +156,7 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 \(\forall A_1,\ldots A_n \in K^n \)
 
-\(D(A_1,\ldots,A_n)  = \sum\limits_{\sigma \in S_n} (-1)^{\varepsilon(\sigma)} a_{i_11}\ldots a_{i_nn} = \det A\)
+\(D(A_1,\ldots,A_n)  = \) \fbox{\(\sum\limits_{\sigma \in S_n} (-1)^{\varepsilon(\sigma)} a_{i_11}\ldots a_{i_nn} = \det A\)} --- \deff{1-ая формула det числовой матрицы.}
 
 
 Замечания:
@@ -167,15 +185,15 @@ $\xi_1,\ldots, \xi_p \in V$.
 Доказательство:
 
 \begin{enumerate}
-    \item Применим алгоритм из определения \(\varepsilon\) одновременно для \(\sigma\) и \(\sigma^{-1}\). На каждом шаге алгоритма перестановкми, полученные из \(\sigma\) и \(\sigma^{-1}\) остаются обратными друг-другу, значит добираются до тривиальной за одинаковое количество транспозиций. Значит, их чётности равны.
-    \item Поменяем местами \(i_\alpha\) и \(i_\beta\). приблизим \(i_\beta\) к \(i_\alpha\) \(k\) транспозициями соседних элементов. Поменяем \(i_\alpha\) и \(i_\beta\) местами. Отодвинем \(i_\alpha\) от \(i_\beta\) \(k\) транспозициями. Всего \(2k + 1\) транспозиций.
-    \item Пусть перестановка имеет вид \(A, i_\alpha, i_\beta, B\), где \(A\) и \(B\) --- части перестановки. \(i_\alpha\) образует \(m\) инверсий с \(A\), \(i_\beta\) образует \(k\) инверсий с \(B\). Транспозиция  \(i_\alpha\) и \(i_\beta\) или создаст или уничтожит их инверсию и не изменит \(m\) или \(k\).
+    \item Применим алгоритм из определения \(\varepsilon\) одновременно для \(\sigma\) и \(\sigma^{-1}\). На каждом шаге алгоритма перестановками, полученные из \(\sigma\) и \(\sigma^{-1}\) остаются обратными друг-другу, значит добираются до тривиальной за одинаковое количество транспозиций. Значит, их чётности равны.
+    \item Поменяем местами \(i_\alpha\) и \(i_\beta\); приблизим \(i_\beta\) к \(i_\alpha\) \(k\) транспозициями соседних элементов. Поменяем \(i_\alpha\) и \(i_\beta\) местами. Отодвинем \(i_\alpha\) от \(i_\beta\) \(k\) транспозициями. Всего \(2k + 1\) транспозиций.
+    \item Пусть перестановка имеет вид (\(A, i_\alpha, i_\beta, B\)), где \(A\) и \(B\) --- части перестановки. \(i_\alpha\) образует \(m\) инверсий с \(A\), \(i_\beta\) образует \(k\) инверсий с \(B\). Транспозиция  \(i_\alpha\) и \(i_\beta\) или создаст или уничтожит их инверсию и не изменит \(m\) или \(k\).
     \item  Пусть \(\sigma\) четная \(\Rightarrow\) четное число транспозиций приводят к тривиальной \(\Rightarrow\) четное число соседних транспозиций приводят к тривиальной перестановке, т.е. число инверсий изменилось на четное число. Число инверсий в конце --- 0, чётное число, а значит изначально \(\inv \sigma\) --- четное число. Пусть \(\sigma\) нечетная \(\Rightarrow\) нечетное число транспозиций приводят к тривиальной \(\Rightarrow\) нечетное число соседних транспозиций приводят к тривиальной перестановке, т.е. число инверсий изменилось на нечетное число. Число инверсий в конце --- 0, чётное число, а значит изначально \(\inv \sigma\) --- нечетное число.
 \end{enumerate}
 
-Вторая формула для определителя:
+\deff{Вторая формула для определителя:}
 
-\(\det A = \sum\limits_{\sigma \in S_n} (-1)^{\inv(\sigma)} a_{i_1 1}, \ldots, a_{i_n n}\), где \(\sigma = (i_1, \ldots, i_n)\)
+\fbox{\(\det A = \sum\limits_{\sigma \in S_n} (-1)^{\inv(\sigma)} a_{i_1 1}, \ldots, a_{i_n n}\), где \(\sigma = (i_1, \ldots, i_n)\)}
 
 \subsection{Свойства определителя}
 
@@ -188,9 +206,15 @@ $\xi_1,\ldots, \xi_p \in V$.
               A_n^T
           \end{pmatrix}\)
 
-          \(\det A^T = \sum\limits{\sigma \in S_n} (-1) ^{\varepsilon(\sigma)} a_{i_1 1}, \ldots, a_{i_n n}\), \(\sigma = (i_1, \ldots, i_n) = (\varphi(1), \ldots, \varphi(n)) = \varphi(1, \ldots, n) \Leftrightarrow (\det A^T = \sum\limits_{\sigma \in S_N} (-1) ^{\varepsilon(\sigma) a_{j+1}}\)
+          \(\det A^T = \sum\limits_{\sigma \in S_n} (-1) ^{\varepsilon(\sigma)} a_{1 i_1}, \ldots, a_{n i_n}\), \(\sigma = (i_1, \ldots, i_n) = (\varphi(1), \ldots, \varphi(n)) = \varphi(1, \ldots, n) \Leftrightarrow \)
+          
+          \(\sigma^{-1}\) обратная \(= (j_1 \dots j_n)\)
 
-          Следствие: \(det A = \sum\limits_{\sigma \in S_n}(-1)^{\inv (\sigma)a_{1i_1}\ldots a_{ni_n}}\), для \(\sigma = (i_1\ldots i_n)\)
+          \((-1)^{\varepsilon(\sigma^{-1})} = (-1)^{\varepsilon(\sigma)}\)
+
+          \(\det A^T = \sum\limits_{\sigma^{-1}\in S_n}(-1)^{\varepsilon(\sigma^{-1})}a_{j_1i} \dots a_{j_n n} = \det A\)
+
+          Следствие: \(det A = \sum\limits_{\sigma \in S_n}(-1)^{\inv (\sigma)}a_{1i_1}\ldots a_{ni_n}\), для \(\sigma = (i_1\ldots i_n)\)
 
           Замечание: все свойства, сформулированные для столбцов, верны и для строк.
 
@@ -218,7 +242,7 @@ $\xi_1,\ldots, \xi_p \in V$.
           \(\det (\ldots A_i + \lambda A_j\ldots A_j\ldots) = \det (\ldots A_i + \ldots A_j\ldots)  + \det (\ldots \lambda A_j\ldots A_j\ldots) = \det (\ldots A_i + \ldots A_j\ldots) + \lambda\cdot 0\) Q.E.D
 
 
-    \item Определитель ступенчатой (блочно-диагональной) матрицы:
+    \item Определитель ступенчатой матрицы:
 
           \(\det
           \begin{pmatrix}
@@ -229,7 +253,7 @@ $\xi_1,\ldots, \xi_p \in V$.
           \end{pmatrix} = \prod\limits_{k=1}^m \det A^k\)
 
 
-          \(A^k = (a_{i_j}^k)\)
+          \(A^k = (a_{i_j}^k)\) -- квадратная матрица.
 
           Доказательство:
           \begin{itemize}
@@ -240,12 +264,12 @@ $\xi_1,\ldots, \xi_p \in V$.
                     \end{pmatrix}\)
 
 
-                    Решим простой случай \(A_1 = 1, A_2 = 1\):
+                    Решим простой случай \(A_1 = E_1, A_2 = E_2\):
 
                     \(\det\begin{pmatrix}
                         E_1 & 0   \\
                         *   & E_2 \\
-                    \end{pmatrix} =
+                    \end{pmatrix} \underbracket{=}_{\text{5 св-во det}}
                     \det\begin{pmatrix}
                         E_1 & 0   \\
                         0   & E_2 \\
@@ -258,16 +282,16 @@ $\xi_1,\ldots, \xi_p \in V$.
                     \(\det\begin{pmatrix}
                         B & 0       \\
                         * & E_{k_2} \\
-                    \end{pmatrix} =
+                    \end{pmatrix} \underbracket{=}_{\text{5 св-во det}}
                     \det\begin{pmatrix}
                         B & 0       \\
                         0 & E_{k_2} \\
                     \end{pmatrix} \)
                     \(= f(B_1, \ldots, B_{k_1}) = f(E_1, \ldots, E_{k_1}) \det B = \det B\)
 
-                    \(f\) --- \(k_1\)-форма, значит полилинейная и антисимметричная. (\(f\) - функция, которая для заданной \(B\) находит определитель матрицы)
+                    \(f\) --- \(k_1\)-форма, т.к. полилинейная относительно $B_j$ и антисимметричная из свойства det. (\(f\) - функция, которая для заданной \(B\) находит определитель матрицы)
 
-                    \(f =\alpha D\), \(\alpha = f(e_1, \ldots, e_{k_1})\)
+                    \(f =\alpha D\), \(\alpha = f(e_1, \ldots, e_{k_1})\), \(D(B_1, \dots, B_{k_2}) = \det B\)
 
                     \(f(E_1, \ldots, E_{k_1}) = \det\begin{pmatrix}
                         E_{k_1} & 0       \\
@@ -280,7 +304,7 @@ $\xi_1,\ldots, \xi_p \in V$.
                     \(\det\begin{pmatrix}
                         B & 0 \\
                         * & C \\
-                    \end{pmatrix} = g(C_1,\ldots,C_{k_2}) = g(E_1,\ldots,E_{k_2})\cdot \det C = \det B \det C\), что следует из того, что \(g\) - полилинейная форма и из прошлого
+                    \end{pmatrix} = g(C_1,\ldots,C_{k_2}) = g(E_1,\ldots,E_{k_2})\cdot \det C = \det B \det C\), что следует из того, что \(g\) - $k_2$ форма относительно $C_j$, при фиксированном $B$
 
               \item Индукционный переход
                     Пусть верно для \(m - 1\), тогда докажем, что верно для \(m\):
@@ -318,7 +342,7 @@ $\xi_1,\ldots, \xi_p \in V$.
 
           Замечание: в силу свойства 1, всё сказанное верно и для верхнетреугольных матриц.
 
-    \item \(\det A = \sum\limits_{i=1}^n a_{ij} A_{ij} = \), для какого-то столбца j.
+    \item \(\det A = \sum\limits_{i=1}^n a_{ij} A_{ij}\), для любого столбца j = \(\sum\limits_{j=1}^na_{ij}A_{ij}\) для любой строки $i$, где $A_{ij}$ -- алгебраическое дополнение элемента $a_{ij}$
 
           \( A_{ij} = ({-1})^{i+j} \cdot M_{ij}\), где \(M_{ij}\) - минор.
 
@@ -365,13 +389,13 @@ $\xi_1,\ldots, \xi_p \in V$.
               a_{n1} & a_{n2} & \ldots & a_{nn} \\
           \end{vmatrix} = a_{11} M_{11} - a_{21} M_{21} + a_{31} M_{31} - \ldots + (-1)^{n-1} a_{n1} M_{n1} =\)
 
-          \(= \sum\limits_{i = 1}^n (-1)^{i + 1} M_{i1} a_{i1}\)
+          \(= \sum\limits_{i = 1}^n (-1)^{i + 1} M_{i1} a_{i1}\) (свойства 2, 4, 6)
 
           % здесь мы пользуемся свойством линейности и симметричности, раскрываем одну матрица на много матриц: TODO: подробнее расписать а то не понятно
 
           Докажем для произвольного j-ого столбца
 
-          \(\det A = \det (\ldots A_j \ldots) = (-1)^{j-1} \det (A_j A_1 \ldots A_n) = \sum\limits_{i=1}^n(-1)^{j-1}(-1)^{i+1} a_{ij} M_{ij}\)
+          \(\det A = \det (\ldots A_j \ldots) \underbracket{=}_{\text{св-во 4}} (-1)^{j-1} \det (A_j A_1 \ldots A_n) = \sum\limits_{i=1}^n(-1)^{j-1}(-1)^{i+1} a_{ij} M_{ij}\)
 
 
 
@@ -381,16 +405,15 @@ $\xi_1,\ldots, \xi_p \in V$.
 
           Доказательство:
 
-          \( \sum\limits_{i=1}^n a_{ij}A_{ik} = \det (A_1\ldots A_i \ldots A_j\ldots A_n)\)
+          $A_{ik}$ -- алгебраические дополнения элементов $k$-ого столбца
 
-          \(\det A = \sum\limits_{i=1}^n a_{ik}A_{ik} = \det (A_1\ldots A_k \ldots A_j\ldots A_n)\)
-
-
+          \( \sum\limits_{i=1}^n a_{ij}A_{ik} = \det (A_1\ldots A_j \ldots A_j\ldots A_n) \underbracket{=}_{\text{св-ва 4, 7}} 0\)
+    
     \item \(\det(A \cdot B) = \det A \cdot \det B\)
 
           \(AB = (AB_1, \ldots, AB_n)\), \(B = (B_1, \ldots, B_n)\)
 
-          \(\det(A \cdot B) = f(B_1, \ldots, B_n)\) (полилинейная, антисимметричная \(n\) - форма, \(f = \alpha D\))
+          \(\det(A \cdot B) = f(B_1, \ldots, B_n)\) (\(n\) - форма, \(f = \alpha D\))
           \(= f(E_1, \ldots, E_n) \cdot \det B = \det(A \cdot E) \cdot \det B = \det a \cdot \det B\)
 
 \end{enumerate}
@@ -470,7 +493,7 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 Доказательство:
 
-\(\exists! \) решение \(\Leftrightarrow \rg A = n \Leftrightarrow \det A \neq 0\), то есть A - невырожденная
+\(\exists! \) решение \(\Leftrightarrow \rg A = n \Leftrightarrow \det A \neq 0\), то есть A - невырожденная $(x = A^{-1}b)$
 
 \(x = \cfrac{1}{\det A} \begin{pmatrix}
     A_{11} & \ldots & A_{n1} \\
@@ -487,10 +510,10 @@ $\xi_1,\ldots, \xi_p \in V$.
 =
 \cfrac{1}{\det A}
 \begin{pmatrix}
-    \sum\limits_{i=1}^n A_{i1}b_1 \\
-    \sum\limits_{i=1}^n A_{i2}b_2 \\
+    \sum\limits_{i=1}^n A_{i1}b_i \\
+    \sum\limits_{i=1}^n A_{i2}b_i \\
     \vdots                        \\
-    \sum\limits_{i=1}^n A_{i1}b_n
+    \sum\limits_{i=1}^n A_{i1}b_i
 \end{pmatrix} =\)
 
 \(=\cfrac{1}{\det A}
@@ -520,20 +543,22 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 Минор \(k\)-того порядка \(M_{i_1, \ldots, i_k}^{j_1, \ldots, j_k} =
 \begin{vmatrix}
-    a_{i_1 j_1} & \ldots & a_{i_n j_1} \\
+    a_{i_1 j_1} & \ldots & a_{i_k j_1} \\
     \vdots      & \ddots & \vdots      \\
-    a_{i_1 j_n} & \ldots & a_{i_n j_n} \\
+    a_{i_1 j_k} & \ldots & a_{i_k j_k} \\
 \end{vmatrix}\)
 
 \(\overline{M}_{i_1, \ldots, i_k}^{j_1, \ldots, j_k} = M_{s_1, \ldots, s_m}^{t_1, \ldots, t_m}\) --- называется \deff{дополнительным минором}, где $t_i \neq j_j$, $s_i\neq i_j$.
 
 \deff{Алгебраическим дополнением} называется дополнительный минор, домноженный на единицу в степени суммы номеров строк и столбцов.
 
+$A_{j_1\dots j_k}^{i_1\dots i_k} = (-1)^{i_1+\dots+i_k+j_1+\dots+j_k}\overline{M}_{j_1\dots j_k}^{i_1\dots i_k}$
+
 \thmm{Теорема Лапласа}
 
 \(A_{n\times n }\), зафиксируем какие-то $k$ строчек $i_1,\ldots, i_k$
 
-\(\det A = \sum\limits_{j_1<\ldots<j_k} \overline{M}_{j_1\ldots j_k}^{i_1\ldots i_k} A_{j_1\ldots j_k}^{i_1\ldots i_k}\)
+\(\det A = \sum\limits_{j_1<\ldots<j_k} {M}_{j_1\ldots j_k}^{i_1\ldots i_k} A_{j_1\ldots j_k}^{i_1\ldots i_k}\) (аналогично для столбцов)
 
 Доказательство:
 
@@ -544,11 +569,11 @@ $\xi_1,\ldots, \xi_p \in V$.
 \begin{itemize}
     \item \textbf{База индукции:}
 
-          Свойство 7: \(\sum\limits_{j}(-1)^{i+j}\overline{M}_j^i M_j^i = \det A\)
+          Свойство 7: \(\sum\limits_{j}(-1)^{i+j}\overline{M}_j^i M_j^i = \det A\), где $M_i^j = a_{ij}$
 
     \item \textbf{Индукционное предположение:}
 
-          Пусть формула верна для первых \(k-1\) строчек ($i_1,\ldots, i_{k-1}$):
+          Пусть формула верна для \(k-1\) строчки ($i_1,\ldots, i_{k-1}$):
 
 
           \(\det A = \sum\limits_{j_1<j_2<\ldots<j_{k-1}} (-1)^{i_1 + \cdots + i_{k-1}+j_1 + \cdots + j_{k-1}} \overline{M}_{j_1,\ldots, j_{k-1}}^{i_1,\ldots,i_{k-1}}M_{j_1,\ldots, j_{k-1}}^{i_1,\ldots,i_{k-1}}\)
@@ -556,16 +581,18 @@ $\xi_1,\ldots, \xi_p \in V$.
 
     \item \textbf{Индукционный переход:}
 
-          Заметим, что в дополнительный минор входит $i_k$ строчка:
+          Пусть $i_k$ строка такая, что $i_k > i_{k - 1}$
+
+          Заметим, что в дополнительный минор входит $i_k$ строка:
 
           \[\overline{M}_{j_1, \ldots, j_{k - 1}}^{i_1, \ldots, i_{k - 1}} = M_{\ldots}^{\ldots, i_k, \ldots}\]
 
-          Давайте разложим данный минор, по данной строчке. Получим:
+          Давайте разложим данный минор, по данной строке. Получим:
 
 
           \[\sum\limits_{j \in (1, \ldots, n) \setminus (j_1, \ldots, j_{k-1})} a_{i_k j} (-1)^{\# i_k + \# j} \overline{M}_{j_1, \ldots, j_{k - 1},j}^{i_1, \ldots, i_{k - 1}, i_k}\]
 
-          где $\#i_k$ и $\# j_k$ - номер строчки в матрице без этих $k-1$ столбцов и без этих $k-1$ строчек.
+          где $\#i_k$ и $\# j$ - номер строки в матрице без $k-1$ столбцов $(j_1, \dots, j_{k-1})$  и без этих $k-1$ строк $(i_1, \dots, i_{k-1})$.
 
 
           Не трудно заметить, что \(\# i_k = i_k - (k - 1)\). Теперь давайте подставим в формулу наш получившийся минор.
@@ -577,20 +604,20 @@ $\xi_1,\ldots, \xi_p \in V$.
           \small\[\sum\limits_{j_1<j_2<\ldots<j_{k-1}}  \sum\limits_{j \in (1, \ldots, n) \setminus (j_1, \ldots, j_{k-1})} a_{i_k j} (-1)^{\# i_k + \# j} \overline{M}_{j_1, \ldots, j_{k - 1},j}^{i_1, \ldots, i_{k - 1}, i_k} (-1)^{i_1 + \cdots + i_{k-1}+j_1 + \cdots + j_{k-1}} M_{j_1,\ldots, j_{k-1}}^{i_1,\ldots,i_{k-1}}\]\normalsize
 
 
-          И что мы делаем в этой формуле, выбираем сначала $k-1$ столбик, а потом еще один. Давайте делать это по-другому. Выберем $k$ столбиков и 1, который выкидываем. Получится вот такая формула:
+          И что мы делаем в этой формуле, выбираем сначала $k-1$ столбец, а потом еще один. Давайте делать это по-другому. Выберем $k$ столбцов и 1, который выкидываем. Получится вот такая формула:
 
 
-          \small\[\sum\limits_{j_1<\ldots<j_k} \sum\limits_{s \in \{1,\ldots,k\}} (-1)^{i_k -(k-1) +\# j_s} a_{i_kj_s}\overline{M}_{j_1,\ldots,j_{k}}^{i_1,\ldots i_k} M_{\{j_1,\ldots,j_{k-1}, j_k\}\setminus\{j_s\} }^{i_1,\ldots i_{k-1}} \cdot (-1)^{i_1+ \ldots+i_{k-1} + j_1 + \cdots + j_{k}-j_{s}}\]\normalsize
+          \small\[\sum\limits_{j_1<\ldots<j_k} \sum\limits_{s \in \{1,\ldots,k\}} (-1)^{i_k -(k-1) +\# j_s} a_{i_kj_s}\overline{M}_{j_1,\ldots,j_{k}}^{i_1,\ldots i_k} M_{\{j_1,\ldots,j_{k-1}, j_k\}\setminus\{j_s\} }^{i_1,\ldots i_{k-1}} \cdot (-1)^{i_1+ \ldots+i_{k-1} + j_1 + \cdots + \widehat{j_{s}}+j_{k}}\]\normalsize
 
           Найдем $\#j_s = j_s-(s-1)$:
 
-          \small\[\sum\limits_{j_1<\ldots<j_k} \sum\limits_{s \in \{1,\ldots,k\}} (-1)^{i_k -(k-1) +j_s-(s-1)} a_{i_kj_s}\overline{M}_{j_1,\ldots,j_{k}}^{i_1,\ldots i_k} M_{\{j_1,\ldots,j_{k-1}, j_k\}\setminus\{j_s\}}^{i_1,\ldots i_{k-1}} \cdot (-1)^{i_1+ \ldots+i_{k-1} + j_1 + \cdots + j_{k}-j_{s}}\]\normalsize
+          \small\[\sum\limits_{j_1<\ldots<j_k} \sum\limits_{s \in \{1,\ldots,k\}} (-1)^{i_k -(k-1) +j_s-(s-1)} a_{i_kj_s}\overline{M}_{j_1,\ldots,j_{k}}^{i_1,\ldots i_k} M_{\{j_1,\ldots,j_{k-1}, j_k\}\setminus\{j_s\}}^{i_1,\ldots i_{k-1}} \cdot (-1)^{i_1+ \ldots+i_{k-1} + j_1 + \cdots + \widehat{j_{s}}+j_{k}}\]\normalsize
 
           В итоге:
 
           \small\[\sum\limits_{j_1<\ldots<j_k} (-1)^{i_1+ \ldots+i_{k} + j_1 + \cdots + j_{k}}\overline{M}_{j_1,\ldots,j_{k}}^{i_1,\ldots i_k}\sum\limits_{s \in \{1,\ldots,k\}} (-1)^{ -(k-1) +-(s-1)} a_{i_kj_s} M_{\{j_1,\ldots,j_{k-1}, j_k\}\setminus\{j_s\}}^{i_1,\ldots i_{k-1}}\]\normalsize
 
-          А это будет разложением по $k$ -ой строчке, откуда получаем искомое. Q.E.D.
+          А это будет разложением по $k$ -ой строче $M_{j_1, \dots, j_k}^{i_1, \dots, i_k}$, откуда получаем искомое. Q.E.D.
 
 
           \sout{Кажется, вам тяжело! Единый общероссийский телефон доверия:}
@@ -604,7 +631,7 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 
 
-\(\rg A\) называется наибольший порядок минора отличного от нуля, то есть \(\rg A = k\), если существует минор не равный нулю, а любой минор большего порядка равен 0. Такой минор является \textbf{базисным}, а строки и столбцы, входящие в этот минор --- \textbf{базисными}.
+\(\rg A\) называется наибольший порядок минора отличного от нуля, то есть \(\rg A = k\), если существует минор $k$-ого порядка не равный нулю, а любой минор большего порядка равен 0. Такой минор называется \textbf{базисным}, а строки и столбцы, входящие в этот минор --- \textbf{базисными}.
 
 Базисный минор не определён единственным образом.
 
@@ -615,14 +642,14 @@ $\xi_1,\ldots, \xi_p \in V$.
 \( \rg A_{\text{def 1}} = \rg A_{\text{def 2}}\)
 
 \begin{enumerate}
-    \item[]\prooff{} Давайте докажем, что \( \rg A_{\text{def 1}} \leq \rg A_{\text{def 2}}\).
+    \item[]\prooff{} Давайте докажем, что \( \rg A_{\text{def 1}} \geq \rg A_{\text{def 2}}\).
 
-          Возьму минор, состоящий из строк базы столбцов и базы строк, из их линейной независимости следует, что определитель данного минора не 0.
+          Пусть $\rg\space A_{\text{def 1}} = k \Rightarrow$ любые $(k + 1)$ столбцов линейно зависимы $\Rightarrow$ любые отрезки длины $(k + 1)$ будут линейно зависимы $\Rightarrow$ любой минор $(k + 1)$-ого порядка $ = 0 \Rightarrow \rg\space A_{\text{def 2}} \leq k = \rg\space A_{\text{def 1}}$ 
 
 
-          Давайте докажем, что \( \rg A_{\text{def 1}} \geq \rg A_{\text{def 2}}\)
+          Давайте докажем, что \( \rg A_{\text{def 1}} \leq \rg A_{\text{def 2}}\)
 
-          Возьму минор $k+1$ порядка. Если бы столбцы были линейно независимы, то по первому утверждению (из раздела про ранг матрицы) получу, что столбики линейно независимы, откуда $\rg A > k$. А такого не может быть. Откуда столбцы линейно зависимы, а уже отсюда следует, что определитель получившегося минора равен нулю.
+          Пусть $\rg\space A_{\text{def 1}} = k$, возьмём отрезки длины $k$, соответствующие базисным столбцам и строкам. Тогда отрезки столбцов будут линейно независимы, т.к. в противном случае, по утверждению 2 были бы линейно зависимы исходные столбцы $\Rightarrow$ получим минор $k$-ого порядка $\neq 0 \Rightarrow \rg\space A_{\text{def 2}} \geq k = \rg\space A_{\text{def 1}}$
 
 \end{enumerate}
 
@@ -635,15 +662,15 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 Алгоритм:
 
-Берем смотрим на минор \(k\)-ого порядка:
+Берем смотрим на минор \(k\)-ого порядка $\neq 0$:
 \begin{enumerate}
-    \item Если все его (окаймляющие прошлого этапа) миноры 0, то \(\rg A = k\).
-    \item Если существует минор не равный 0, тогда k++ и повторить алгоритм
+    \item Если все его окаймляющие миноры 0, то \(\rg A = k\).
+    \item Если существует минор $(k+1)$-ого порядка не равный 0, тогда k++ и повторить алгоритм
 \end{enumerate}
 
-Окаймляющие миноры - миноры, в разложениях по строкам и столбцов которых присутствует данный минор
+Окаймляющий минор - минор, строки и столбцы которого содержат строки и столбцы данного минора.
 
-Пусть \(M_{j_1, \ldots, j_k}^{i_1, \ldots, i_k} \neq 0\), а все его окаймляющие его равны 0 \(\rg A = k\)
+Пусть \(M_{j_1, \ldots, j_k}^{i_1, \ldots, i_k} \neq 0\), а все его окаймляющие его равны 0 \(\Rightarrow \rg A = k\)
 
 \(\forall i \forall j \notin(j_1,
 \ldots, j_k):
@@ -657,13 +684,15 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 Если \(i\) совпадает с каким-либо индексом из \(i_1, \ldots, i_k\), то это определитель с равными строками, значит нулевой. Если \(i\) не совпадает ни с одним индексом из \(i_1, \ldots, i_k\), то тогда это окаймляющий минор \((k + 1)\)-го порядка, который нулевой по условию.
 
-Распишем определитель по последней строке.
+Разложим определитель по последней строке.
 
-\( 0  = \sum\limits_{s=1}^{k} a_{i j_s} A_{ij_s} + a_{ij} (-1)^{k+1+k+1} M_{j_1\ldots j_k}^{i_1 \ldots i_k}\)
+\( 0  = \sum\limits_{s=1}^{k} a_{i j_s} A_{ij_s} + a_{ij} (-1)^{k+1+k+1} \underbracket{M_{j_1\ldots j_k}^{i_1 \ldots i_k}}_{\neq 0}\) -- не зависит от $i$
 
-\(\forall i : a_{ij} =  0 \sum\limits_{s=1}^k a_{i j_s} A_{i,j_s} = \sum\limits_{s=1}^{k}a_{ij_S} \lambda_s \Leftrightarrow A_j = \sum\limits_{s=1}^{k}  A_{j_s} \lambda s\)
+\(\lambda_s=-\cfrac{A_{ij_s}}{M_{j_1,\dots,j_k}^{i_1, \dots, i_k}}\)
 
-мы показали, что для \(\forall j \in \{j_1,\ldots,j_k\}\) --- линейная комбинация  соответствующих столбцов.
+\(\forall i : a_{ij} = \sum\limits_{s=1}^{k}a_{ij_s} \lambda_s \Leftrightarrow A_j = \sum\limits_{s=1}^{k}  A_{j_s} \lambda s\)
+
+мы показали, что для \(\forall j \cancel{\in} \{j_1,\ldots,j_k\}\) столбец $A_{j}$ --- линейная комбинация $k$ линейно независимых столбцов $A_{j_1}, \dots, A_{j_k} \Rightarrow \rg A = k$.
 
 
 \subsection{Определитель \(n\)-ого порядка.}
@@ -736,7 +765,9 @@ $\xi_1,\ldots, \xi_p \in V$.
 \end{vmatrix} = p(x_i) = (x_1 - x_2) \cdot (x_1  - x_3) \cdot \ldots \cdot (x_1 - x_n) \cdot (x_2 - x_3) \cdot \ldots \cdot (x_{n-1}-x_n) C
 \)
 
-\(\Delta_n = (x_n - x_1)(x_n - x_2)\ldots(x_n - x_{n - 1}) c' = \Delta_{n - 1} x_n^{n - 1} + \ldots\)
+Посмотрим на $\Delta_n$ как на многочлен от $x_n$
+
+\(\Delta_n = (x_n - x_1)(x_n - x_2)\ldots(x_n - x_{n - 1}) c' = \Delta_{n - 1} x_n^{n - 1} + \ldots\), при этом $\Delta_{n-1}=const$, т.к. не содержит $x_n$.
 
 \(c' = \Delta_{n - 1}\)
 
@@ -746,7 +777,7 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 \textbf{Метод рекуррентных соотношений}
 
-Возвратная последовательность. Пример.  \(x_2 = 2, x_1 = 4\). Рекуррентная последовательность задается выражением \(x_n = x_{n - 1} + 2 x_{n - 2}\) . И ее решая можно получить  корень
+Возвратная последовательность. Пример.  \(x_2 = 2, x_1 = 4\). Рекуррентная последовательность задается выражением \(x_n = x_{n - 1} + 2 x_{n - 2}\) . Можно получить явное выражение.
 
 Пример решения. \(x_1 = 3, x_2 = 9, x_n = 3 x_{n-1} - \cfrac{9}{4} x_{n-2}, n >2\).
 
@@ -758,7 +789,9 @@ $\xi_1,\ldots, \xi_p \in V$.
 
 \(x_n  = c_1 \left(\cfrac{3}{2}\right)^n  + c_2 n \left(\cfrac{3}{2}\right)^n \)
 
-\(x_1 = c_1 \left(\cfrac{3}{2}\right) + c_2 \left(\cfrac{3}{2}\right)\)
-\(x_2 = c_1 \left(\cfrac{3}{2}\right)^2 + c_2 2 \left(\cfrac{3}{2}\right)^2\)
+\(3 = x_1 = c_1 \left(\cfrac{3}{2}\right) + c_2 \left(\cfrac{3}{2}\right)\)
 
-Найдя \(c_1\) и \(c_2\), можно найти общую рекурренту и её решить.
+\(x_2 = c_1 \left(\cfrac{3}{2}\right)^2 + c_2 2 \left(\cfrac{3}{2}\right)^2 = 9\)
+
+Найдём \(c_1\) и \(c_2\), получим явно выражение.
+
