@@ -55,7 +55,7 @@
   qed: false,
   after: none
 ) = {
-  block(
+   block(
     width: 100%,
     fill: fill,
     
@@ -104,8 +104,91 @@
 
 #let proof = statement.with(name: "Доказательство",  frame: fuchsia, qed: true)
 
+
+
+#let bsr  = $bracket.r.stroked$
+#let bsl  = $bracket.l.stroked$
+#let uor  = $⦈$
+#let uol  =  $⦇$
+#let mk = $⊩$
+
 #let divides = $med dots.v med$
  #let def(body) = [#underline[*#body*]]
+ #let smile = text(size: 3em, "\u{263a}")
+ #let prod = $display(limits(product))$
+#let double = $space space$
+#let make = sym.supset.sq
+#let see = $angle.spheric space$
+#let dp(first, second)=$angle.l #first, #second angle.r$
+#let sum=$limits(sum)$
+#let lim=$limits(lim)$
+#let proof=par(strong("Доказательство:"))
+#let th=strong("Теорема:")
+#let lm=strong("Лемма:")
+#let defnot = strong("Обозначение:")
+#let nb = strong("Замечание: ")
+#let int=$display(integral)$
+#let emptyset=$diameter$
+#let qed=$space qed$
+#let note=strong("Замечание:")
+#let cor(..number)= {
+  if number.pos().len() == 0 {
+    strong("Следствие:")
+  }
+  else {
+    strong("Следствие " + str(number.pos().at(0)) + ":")
+  }
+}
+
+#let Cos = $"Cos"$
+#let Sin = $"Sin"$
+#let algebra = $cal(a)$
+#let limsup = $overline(lim)$
+#let liminf = $underline(lim)$
+#let smile = emoji.face.smile.slight
+#let frown = emoji.face.frown.slight
+#let wink = emoji.face.wink
+#let pole(a, b) = $lr(|, size: #200%)_#pad(bottom: -13pt)[$#a$]^#pad(top: -13pt)[$#b$]$
+
+#let gr(body) = text(fill: gray)[#body]
+#let wh(body) = text(fill: white)[#body]
+#let eps = $epsilon$
+
+#let Lin(first, second) = $"Lin"(#first, #second)$
+#let von = v(0.1cm)
+#let vtw = v(0.2cm)
+#let vth = v(0.3cm) 
+#let vfo = v(0.4cm)
+#let vfi = v(0.5cm)
+
+#let Re = "Re"
+#let Im = "Im"
+
+#let list_depth = counter("list_depth")
+#let clist_cnt = counter("clist_cnt")
+#let clist = [
+  #context clist_cnt.step()
+]
+#let llist = [
+  #context clist_cnt.update(0)
+]
+#show enum: it => [
+  #context list_depth.step()
+  #it
+  #context list_depth.update(0)
+]
+#show enum: it => [
+  #context if (list_depth.get() == (0, )) and (clist_cnt.get() == (1, )) {
+  table(columns: (1fr, auto, 1fr), inset: 0pt, stroke: none, [], [#it], [])
+} else {
+    [#it]
+}
+]
+#show math.equation.where(block: true): e => box(width: 100%, inset: 0em, [
+  #set align(center)
+  #e
+])
+
 
 
 
@@ -175,7 +258,7 @@
   )
 }
 
-#let theorem_ = statement_.with(name: "Теорема", fill: rgb(245, 245, 255), frame: blue)
+#let theorem_ = statement_.with(name: "Теорема", fill: rgb(255, 255, 255), frame: blue)
 #let lemma_ = statement_.with(name: "Лемма", fill: rgb(245, 255, 245), frame: green)
 #let corollary_ = statement_.with(name: "Следствие", fill: rgb(245, 255, 255), frame: aqua)
 #let remark_ = statement_.with(name: "Замечание", frame: purple)
