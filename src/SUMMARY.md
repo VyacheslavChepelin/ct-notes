@@ -10,3 +10,4 @@
 - [Алгоритмы и структуры данных](./Algorithms.md)
 - [Математическая Логика](./Logic/Logic.md)
 - [Дифференциальные уравнения](./Diffurs/Diffurs.md)
+- [Теория вероятностей](./ProbabilityTheory/PB.md)
